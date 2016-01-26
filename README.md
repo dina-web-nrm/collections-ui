@@ -1,5 +1,3 @@
-.. code-block::
-
           _                              _  _              _    _
        __| |__      __        ___  ___  | || |  ___   ___ | |_ (_)  ___   _ __   ___         _ __ ___    __ _  _ __    __ _   __ _   ___  _ __
       / _` |\ \ /\ / /_____  / __|/ _ \ | || | / _ \ / __|| __|| | / _ \ | '_ \ / __| _____ | '_ ` _ \  / _` || '_ \  / _` | / _` | / _ \| '__|
@@ -57,4 +55,3 @@ Specify what it takes to deploy your app.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
