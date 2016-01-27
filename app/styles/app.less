@@ -1,6 +1,7 @@
 @import "../../bower_components/bootstrap/less/bootstrap.less";
 @import "color.less";
-@import "components/language-changer.less";
+@import "variables.less";
+@import "components/language-selector.less";
 
 @import "bootstrap_overrides.less";
 
@@ -22,7 +23,7 @@
 
         .open > a, li > a:hover, .open > a:hover {
             color: @light-text;
-            background: darken(@middle-grey, 5%);
+            background: darken(@middle-grey, @darken-percentage);
         }
 
         .active > a {
@@ -31,7 +32,7 @@
 
             &:hover {
                 color: @light-text;
-                background: darken(@dark-grey, 5%);
+                background: darken(@dark-grey, @darken-percentage);
             }
         }
 

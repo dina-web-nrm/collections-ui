@@ -5,7 +5,7 @@ export default Ember.Component.extend({
 
     tagName: 'ul',
 
-    classNames: ['dwcm-component-language-changer'],
+    classNames: ['dwcm-component-language-selector'],
 
     actions: {
         changeLanguage: function (language) {
