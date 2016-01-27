@@ -6,6 +6,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+    this.route('collectionobject', function () {
+        this.route('add')
+    });
 });
 
 export default Router;

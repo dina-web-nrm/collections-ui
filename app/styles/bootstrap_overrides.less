@@ -7,13 +7,19 @@
 }
 
 /* Buttons */
-.btn-primary {
+
+.btn {
+    border-radius: @border-radius-default;
+}
+
+.btn-default {
     color: @light-text;
     background-color: @grey;
     border-color: @dark-grey;
 
     &:hover {
-        background-color: darken(@grey, 20%);
-        border-color: darken(@dark-grey, 20%);
+        background-color: darken(@grey, @darken-percentage);
+        border-color: darken(@dark-grey, @darken-percentage);
+        color: @light-text;
     }
 }

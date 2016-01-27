@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
     <div class="container">
         {{#link-to "index" class="navbar-brand"}}{{t "main.application_name"}}{{/link-to}}
-        {{language-changer class="pull-right"}}
+        {{language-selector class="pull-right"}}
         <p class="pull-right navbar-text">Carl Claesson(Zoologi), <a href="#">{{t "navigation.sign_out"}}</a></p>
     </div>
     <div class="container dwcm-secondary-navigation">
@@ -18,7 +18,9 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="#">{{t "navigation.collection_object.list"}}</a></li>
-                    <li><a href="#">{{t "navigation.collection_object.add"}}</a></li>
+                    {{#link-to "collectionobject.add" tagName="li"}}
+                        <a href="#">{{t "navigation.collection_object.add"}}</a>
+                    {{/link-to}}
                 </ul>
             </li>
       </ul>
@@ -26,7 +28,7 @@
         <div class="form-group">
           <input type="text" class="form-control" placeholder="{{t 'navigation.search.input'}}">
         </div>
-        <button type="submit" class="btn btn-primary">{{t "navigation.search.button"}}</button>
+        <button type="submit" class="btn btn-default">{{t "navigation.search.button"}}</button>
       </form>
     </div>
 </nav>
