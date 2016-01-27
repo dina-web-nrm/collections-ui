@@ -2,6 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     i18n: Ember.inject.service(),
+
+    tagName: 'ul',
+
+    classNames: ['dwcm-component-language-changer'],
+
     actions: {
         changeLanguage: function (language) {
 
