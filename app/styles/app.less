@@ -1,3 +1,42 @@
 @import "../../bower_components/bootstrap/less/bootstrap.less";
 @import "color.less";
 @import "components/language-changer.less";
+
+@import "bootstrap_overrides.less";
+
+.navbar-default {
+
+    .navbar-brand {
+        color: @dark-text;
+
+        font-size: 25px;
+    }
+
+    .dwcm-secondary-navigation {
+        background: @middle-grey;
+
+        li > a {
+            color: @light-text;
+            font-size: 16px;
+        }
+
+        .open > a, li > a:hover, .open > a:hover {
+            color: @light-text;
+            background: darken(@middle-grey, 5%);
+        }
+
+        .active > a {
+            color: @light-text;
+            background: @dark-grey;
+
+            &:hover {
+                color: @light-text;
+                background: darken(@dark-grey, 5%);
+            }
+        }
+
+        .dropdown-menu {
+            background: @middle-grey;
+        }
+    }
+}

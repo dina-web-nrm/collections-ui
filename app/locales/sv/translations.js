@@ -8,5 +8,19 @@ export default {
     // },
     //
     // "key.with.interpolation": "Text with {{anInterpolation}}"
-    "main.welcome": "Välkommen till Samlingshanteraren!"
+    main: {
+        application_name: "DINA Samlingshanteraren",
+        welcome: "Välkommen till Samlingshanteraren!"
+    },
+    navigation: {
+        start: "Start",
+        "collections": "Samlingar",
+        "collection_object.root": "Samlingsföremål",
+        "collection_object.add": "Registrera nytt",
+        "collection_object.list": "Lista",
+        "search.button": "Sök",
+        "search.input": "Sök på art/ID",
+        sign_out: "Logga ut"
+    }
+
 };
