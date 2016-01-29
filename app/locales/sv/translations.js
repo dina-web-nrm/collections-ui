@@ -27,7 +27,13 @@ export default {
     },
     collectionobject: {
         new: {
-            title: "Nytt {{name}} föremål"
+            title: "Nytt {{name}} föremål",
+            toolbar: {
+                save: "Spara",
+                print: "Skriv ut etikett",
+                close: "Stäng",
+                duplicate: "Duplicera"
+            }
         }
     }
 

@@ -18,8 +18,13 @@ export default {
     },
     collectionobject: {
         new: {
-            title: "New {{name}} object"
+            title: "New {{name}} object",
+            toolbar: {
+                save: "Save",
+                print: "Print label",
+                close: "Close",
+                duplicate: "Duplicate"
+            }
         }
     }
-
 };
