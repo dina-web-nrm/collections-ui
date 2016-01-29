@@ -8,6 +8,9 @@ export default {
     // },
     //
     // "key.with.interpolation": "Text with {{anInterpolation}}"
+    definitions: {
+        zoological: "zoologiskt"
+    },
     main: {
         application_name: "DINA Samlingshanteraren",
         welcome: "Välkommen till Samlingshanteraren!"
@@ -21,6 +24,11 @@ export default {
         "search.button": "Sök",
         "search.input": "Sök på art/ID",
         sign_out: "Logga ut"
+    },
+    collectionobject: {
+        new: {
+            title: "Nytt {{name}} föremål"
+        }
     }
 
 };

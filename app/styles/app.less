@@ -1,43 +1,19 @@
 @import "../../bower_components/bootstrap/less/bootstrap.less";
-@import "color.less";
-@import "variables.less";
+@import "dina/dina.less";
+
 @import "components/language-selector.less";
 
-@import "bootstrap_overrides.less";
-
-.navbar-default {
-
-    .navbar-brand {
-        color: @dark-text;
-
-        font-size: 25px;
+.dwcm-collectionobject-new__body {
+    .page-header, h2 {
+        margin-top: 0;
     }
+}
 
-    .dwcm-secondary-navigation {
-        background: @middle-grey;
+.dwcm-collectionobject-new__toolbar {
 
-        li > a {
-            color: @light-text;
-            font-size: 16px;
-        }
+    background: @middle-grey;
 
-        .open > a, li > a:hover, .open > a:hover {
-            color: @light-text;
-            background: darken(@middle-grey, @darken-percentage);
-        }
-
-        .active > a {
-            color: @light-text;
-            background: @dark-grey;
-
-            &:hover {
-                color: @light-text;
-                background: darken(@dark-grey, @darken-percentage);
-            }
-        }
-
-        .dropdown-menu {
-            background: @middle-grey;
-        }
+    .btn-toolbar {
+        padding: 10px 0;
     }
 }
