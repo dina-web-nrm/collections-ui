@@ -14,7 +14,9 @@ export default Ember.Controller.extend({
     },
     
     entityType: t('definitions.zoological'),
-
+    
+    // TODO: Collect these fieldGroups from a Service based on the
+    // department the user belongs to.
     fieldGroups: [
         {
             title: 'field_group_basic_data',
