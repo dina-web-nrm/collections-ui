@@ -1,30 +1,23 @@
 .dwcm-component-language-selector {
-    height: 50px;
-    width: 105px;
-    padding: 0 0 5px 0;
-
+    margin: 15px 0 0 0;
     li {
         list-style-type: none;
         float: right;
-        height: 30px;
-
-        width: 40px;
         text-align: center;
-        line-height: 30px;
-        text-transform: uppercase;
-        margin: 10px 0 10px 5px;
         cursor: pointer;
-
-        color: @light-text;
-        background-color: @grey;
-        border-color: @dark-grey;
-
-        border-radius: @border-radius-default;
-        border: 1px solid @dark-grey;
+        padding: 0 5px;
+        color: @dark-text;
 
         &:hover {
-            background-color: darken(@grey, @darken-percentage);
-            border-color: darken(@dark-grey, @darken-percentage);
+            color: @dark-text-hover;
+        }
+        
+        &:last-child {
+            border-right: 1px solid @dark-text;
+        }
+        
+        &.active {
+            text-decoration: underline;
         }
     }
 }
