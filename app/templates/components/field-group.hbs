@@ -1,0 +1,17 @@
+<div class="panel panel-default" id="field-group-{{group.title}}">
+    <div class="panel-heading">
+        {{t group.title}} 
+        <i
+            class="
+                pull-right glyphicon clickable
+                {{if collapsed 'glyphicon-plus-sign' 'glyphicon-minus-sign'}}
+            "
+            {{action "toggleCollapse"}}
+        ></i>
+    </div>
+    {{#unless collapsed}}
+        <div class="panel-body">
+            {{yield}}
+        </div>
+    {{/unless}}
+</div>

@@ -35,6 +35,12 @@ export default {
                 duplicate: "Duplicera"
             }
         }
-    }
+    },
 
+    // Use underscore to be able to use the name as id and class name in HTML.
+    field_group_basic_data: 'Grunddata',
+    field_group_taxonomy: 'Taxonomi/Bestämning',
+    field_group_site: 'Insamling/Fyndplats',
+    field_group_preparation: 'Objekt/Preparationer',
+    field_group_other: 'Övrigt'
 };
