@@ -9,7 +9,9 @@ export default {
     //
     // "key.with.interpolation": "Text with {{anInterpolation}}"
     definitions: {
-        zoological: "zoologiskt"
+        zoological: "zoologiskt",
+        name: "Namn",
+        accession: "Accession"
     },
     main: {
         application_name: "DINA Samlingshanteraren",
