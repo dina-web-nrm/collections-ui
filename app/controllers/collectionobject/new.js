@@ -15,6 +15,11 @@ export default Ember.Controller.extend({
     
     entityType: t('definitions.zoological'),
 
-    groups: ['dwcm-basic-data', 'dwcm-taxonomy', 'dwcm-preparation']
+    groups: [
+        'dwcm-basic-data',
+        'dwcm-taxonomy',
+        'dwcm-preparation',
+        'dwcm-collecting-event'
+    ]
 
 });
