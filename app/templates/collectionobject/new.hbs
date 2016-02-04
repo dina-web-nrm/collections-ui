@@ -7,10 +7,8 @@
             <li><a class="clickable" {{action "navigationClick" group.title}}>{{t group.title}}</a></li>
         {{/each}}
     </ul>
-    {{#each fieldGroups as |group|}}
-        {{#field-group group=group}}
-
-        {{/field-group}}
+    {{#each groups as |group|}}
+        {{component group}}
     {{/each}}
 </div>
 <div class="container dwcm-collectionobject-new__toolbar">

@@ -9,7 +9,9 @@ export default {
     //
     // "key.with.interpolation": "Text with {{anInterpolation}}"
     definitions: {
-        zoological: "zoologiskt"
+        zoological: "zoologiskt",
+        name: "Namn",
+        accession: "Accession"
     },
     main: {
         application_name: "DINA Samlingshanteraren",
@@ -42,5 +44,12 @@ export default {
     field_group_taxonomy: 'Taxonomi/Bestämning',
     field_group_site: 'Insamling/Fyndplats',
     field_group_preparation: 'Objekt/Preparationer',
-    field_group_other: 'Övrigt'
+    field_group_other: 'Övrigt',
+    fields: {
+        labels: {
+            collector: 'Insamlare',
+            collecting_place: 'Fyndplats(lokal)',
+            collecting_event: 'Insamlingstillfälle'
+        }
+    }
 };

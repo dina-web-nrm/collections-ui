@@ -3,6 +3,14 @@
 
 @import "components/language-selector.less";
 
+
+.transition-properties(...) {
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}
+
 .dwcm-collectionobject-new__body {
     .page-header, h2 {
         margin-top: 0;
@@ -32,6 +40,15 @@
     }
 }
 
-.panel-body {
-    height: 300px;
+.input-group {
+    width: 100%;
+}
+.row .row {
+    background: #ddd;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    &:first-child {
+        margin-top: 5px;
+    }
 }

@@ -14,28 +14,12 @@ export default Ember.Controller.extend({
     },
     
     entityType: t('definitions.zoological'),
-    
-    // TODO: Collect these fieldGroups from a Service based on the
-    // department the user belongs to.
-    fieldGroups: [
-        {
-            title: 'field_group_basic_data',
-            fields: [{
-                type: 'autocomplete',
-                title: 'definitions.name'
-            }] 
-        }, {
-            title: 'field_group_taxonomy',
-            fields: [] 
-        }, {
-            title: 'field_group_site',
-            fields: [] 
-        }, {
-            title: 'field_group_preparation',
-            fields: [] 
-        }, {
-            title: 'field_group_other',
-            fields: [] 
-        }
+
+    groups: [
+        'dwcm-basic-data',
+        'dwcm-taxonomy',
+        'dwcm-preparation',
+        'dwcm-collecting-event'
     ]
+
 });
