@@ -12,7 +12,8 @@ export default DS.JSONSerializer.extend({
     attrs: {
         'agent': 'createdByAgentID',
         'collection': 'collectionMemberID',
-        'accession': 'accessionID'
+        'accession': 'accessionID',
+        'determinations': 'determination'
     },
     normalizeResponse(store, primaryModelClass, payload) {
         
