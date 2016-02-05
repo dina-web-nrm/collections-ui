@@ -35,7 +35,7 @@
         {{#each model.determinations as |determination|}}
             <li>
                 <input type="checkbox" checked={{determination.isCurrent}}>
-                {{determination.id}}: Taxonomy: {{determination.taxonomy}}
+                {{determination.taxon.fullName}} - {{determination.taxon.author}}
             </li>
         {{/each}}
     </ul>
