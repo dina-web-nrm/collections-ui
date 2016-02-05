@@ -15,11 +15,11 @@
                 <tbody>
                     <tr>
                         <th scope="row">Enhet:</th>
-                        <td>Zoo</td>
+                        <td>parentOrganizationID || institutionCCID</td>
                     </tr>
                     <tr>
                         <th scope="row">Accession:</th>
-                        <td>na</td>
+                        <td>{{if model.accession model.accession.accessionNumber 'Ingen accession tillgänglig'}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Samling:</th>
