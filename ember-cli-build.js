@@ -21,6 +21,7 @@ module.exports = function(defaults) {
     // along with the exports of each module as its value.
 
     app.import(app.bowerDirectory + '/bootstrap/dist/js/bootstrap.js');
+    app.import(app.bowerDirectory + '/moment/moment.js');
 
     app.import(app.bowerDirectory + '/bootstrap/fonts/glyphicons-halflings-regular.eot', {
         destDir: 'fonts'
