@@ -1,32 +1,28 @@
 import DS from 'ember-data';
 
-function convertId(item, field, target) {
-    if (item[field]) {
-        var _idArray = item[field].split('/');
-        item[target] = _idArray[_idArray.length - 1];
-    }
-}
-
 export default DS.JSONSerializer.extend({
     primaryKey: 'collectionObjectID',
     attrs: {
         'agent': 'createdByAgentID',
         'collection': 'collectionMemberID',
         'accession': 'accessionID',
-        'determinations': 'determination'
-    },
-    normalizeResponse(store, primaryModelClass, payload) {
-        
-        // This convertion can be removed once the API
-        // returns id instead of links.
-        if (Array.isArray(payload)) {
-            payload.forEach(function (item) {
-                convertId(item, 'createdByAgentID', 'createdByAgentID');
-            });
-        } else {
-            convertId(payload, 'createdByAgentID', 'createdByAgentID');
+        'determinations': {
+            key: 'determination',
+            serialize: false
         }
-        console.log(payload);
-        return this._super(...arguments);
+    },
+
+    /**
+     * Override serialize to set attributes required by the
+     * database that are not used in UI.
+     */
+    serialize() {
+        var json = this._super(...arguments);
+
+        // Copy CollectionMemberID to CollectionID.
+        json.collectionID = parseInt(json.collectionMemberID);
+        json.collectionMemberID = json.collectionID;
+
+        return json;
     }
 });
