@@ -7,7 +7,8 @@ export default DS.Model.extend({
     guid: DS.attr(),
     catalogNumber: DS.attr(),
     timestampCreated: DS.attr(),
-    
+    name: DS.attr(),
+
     agent: DS.belongsTo('agent', {async: true}),
     collection: DS.belongsTo('collection', {async: true}),
     accession: DS.belongsTo('accession', {async: true}),

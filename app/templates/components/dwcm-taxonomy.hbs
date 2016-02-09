@@ -1,7 +1,14 @@
 {{#dwcm-field-group identifier="field_group_taxonomy"}}
     <div class="row">
         <div class="col-xs-6">
-            {{dwcm-autocomplete-textfield label="definitions.name"}}
+            {{
+                dwcm-autocomplete-textfield
+                label="definitions.name"
+                store=store
+                storeName='taxon'
+                displayField='fullName'
+                filterField='fullName'
+            }}
         </div>
         {{dwcm-field-placeholder width=3 label='Osäkerhet'}}
         {{dwcm-field-placeholder width=3 label='Metod'}}       
