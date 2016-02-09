@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'dw-collections-manager',
     environment: environment,
     baseURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
     i18n: {
         defaultLocale: 'sv'
     },
@@ -23,10 +23,18 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+
+    // Basic logging, e.g. "Transitioned into 'post'"
+    ENV.LOG_TRANSITIONS = true, 
+
+    // Extremely detailed logging, highlighting every internal
+    // step made while transitioning into a route, including
+    // `beforeModel`, `model`, and `afterModel` hooks, and
+    // information about redirects and aborted transitions
+    ENV.LOG_TRANSITIONS_INTERNAL = true
+
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
@@ -43,7 +51,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+      ENV.SENTRY_LOGGING = true;
   }
 
   return ENV;
