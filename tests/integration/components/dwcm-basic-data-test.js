@@ -11,14 +11,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{dwcm-basic-data}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:"
-  this.render(hbs`
-    {{#dwcm-basic-data}}
-      template block text
-    {{/dwcm-basic-data}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('.panel-heading').text().trim(), 'Grunddata');
 });

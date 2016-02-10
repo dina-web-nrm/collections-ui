@@ -39,12 +39,11 @@ export default {
         }
     },
 
-    // Use underscore to be able to use the name as id and class name in HTML.
-    field_group_basic_data: 'Grunddata',
-    field_group_taxonomy: 'Taxonomi/Bestämning',
-    field_group_site: 'Insamling/Fyndplats',
-    field_group_preparation: 'Objekt/Preparationer',
-    field_group_other: 'Övrigt',
+    "dwcm-basic-data": 'Grunddata',
+    "dwcm-taxonomy": 'Taxonomi/Bestämning',
+    "dwcm-collecting-event": 'Insamling/Fyndplats',
+    "dwcm-preparation": 'Objekt/Preparationer',
+    "dwcm-other": 'Övrigt',
     fields: {
         labels: {
             collector: 'Insamlare',

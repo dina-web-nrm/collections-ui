@@ -1,11 +1,27 @@
-{{#dwcm-field-group identifier="field_group_basic_data"}}
+{{#dwcm-field-group identifier="dwcm-basic-data"}}
     <div class="row">
         <div class="col-xs-6">
-            {{dwcm-autocomplete-textfield label="definitions.name"}}
+            {{
+                dwcm-autocomplete-textfield
+                label="definitions.name"
+                store=store
+                storeName='collection'
+                displayField='name'
+                filterField='collectionName'
+                itemSelected=(action 'collectionSelected')
+            }}
         </div>
         {{dwcm-field-placeholder width=2 label='Katalognr'}}
         <div class="col-xs-4">
-            {{dwcm-autocomplete-textfield label="definitions.accession"}}
+            {{
+                dwcm-autocomplete-textfield
+                label="definitions.accession"
+                store=store
+                storeName='accession'
+                displayField='accessionNumber'
+                filterField='accessionNumber'
+                itemSelected=(action 'accessionSelected')
+            }}
         </div>
    </div>
 {{/dwcm-field-group}}

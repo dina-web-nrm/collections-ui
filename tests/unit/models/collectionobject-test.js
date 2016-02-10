@@ -2,7 +2,12 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('collectionobject', 'Unit | Model | collectionobject', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: [
+      'model:agent',
+      'model:determination',
+      'model:collection',
+      'model:accession'
+  ]
 });
 
 test('it exists', function(assert) {
