@@ -3,14 +3,14 @@
         <h2>{{t 'collectionobject.new.title' name=entityType}}: <small>#######</small></h2>
     </div>
     <ul class="nav nav-pills">
-        {{#each fieldGroups as |group|}}
+        {{#each groups as |group|}}
             <li>
-                <a class="clickable" {{action "navigationClick" group.title}}>{{t group.title}}</a>
+                <a class="clickable" {{action "navigationClick" group}}>{{t group}}</a>
             </li>
         {{/each}}
     </ul>
     {{#each groups as |group|}}
-        {{component group store=store model=model}}
+        {{component group store=store model=model identifier=group}}
     {{/each}}
 </div>
 <div class="container dwcm-collectionobject-new__toolbar">
