@@ -45,6 +45,7 @@ export default Ember.Component.extend(ClickOutsideComponent, {
         });
     },
 
+    /** Handle event when user clicks outside of component. */
     onOutsideClick () {
         this.set('hasFocus', false);
     },

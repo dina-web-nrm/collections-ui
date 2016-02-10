@@ -1,5 +1,5 @@
 <div class="container">
-    List all collection objects
+    List all collection objects <a {{action "nextPage"}}>Next page</a>
     <ul>
         {{#each model as |collectionObject|}}
             <li>
@@ -11,5 +11,4 @@
             </li>
         {{/each}}
     </ul>
-    {{outlet}}
 </div>
