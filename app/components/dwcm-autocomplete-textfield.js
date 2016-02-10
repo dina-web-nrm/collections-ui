@@ -1,6 +1,7 @@
+import ClickOutsideComponent from '../mixins/click-outside-component';
 import Ember from 'ember';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(ClickOutsideComponent, {
 
     /** Required store. */
     store: null,
@@ -44,6 +45,10 @@ export default Ember.Component.extend({
         });
     },
 
+    onOutsideClick () {
+        this.set('hasFocus', false);
+    },
+
     /**
      * Handle keyup events in input field.
      */
@@ -78,7 +83,8 @@ export default Ember.Component.extend({
          * Handle blur events from input field.
          */
         onBlur () {
-            this.set('hasFocus', false);
+            // Don't close when blurred.
+            // this.set('hasFocus', false);
         },
 
         /**
