@@ -4,8 +4,8 @@
         {{#each model as |collectionObject|}}
             <li>
                 {{#link-to 'collectionobject.view' collectionObject}}
-                    {{collectionObject.id}} - 
-                    {{collectionObject.collection.name}} - 
+                    {{collectionObject.id}} -
+                    {{collectionObject.collection.collectionName}} -
                     {{collectionObject.agent.fullName}}
                 {{/link-to}}
             </li>
