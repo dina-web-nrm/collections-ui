@@ -11,14 +11,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{dwcm-preparation}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:"
-  this.render(hbs`
-    {{#dwcm-preparation}}
-      template block text
-    {{/dwcm-preparation}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('.panel-heading').text().trim(), 'Objekt/Preparationer');
 });

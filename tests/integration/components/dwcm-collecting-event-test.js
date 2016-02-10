@@ -11,14 +11,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{dwcm-collecting-event}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:"
-  this.render(hbs`
-    {{#dwcm-collecting-event}}
-      template block text
-    {{/dwcm-collecting-event}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('.panel-heading').text().trim(), 'Insamling/Fyndplats');
 });
