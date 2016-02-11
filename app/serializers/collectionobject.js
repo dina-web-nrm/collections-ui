@@ -23,6 +23,9 @@ export default DS.JSONSerializer.extend({
         json.collectionID = parseInt(json.collectionMemberID);
         json.collectionMemberID = json.collectionID;
 
+        // Parse AccessionID to integer.
+        json.accessionID = json.accessionID && parseInt(json.accessionID);
+
         return json;
     }
 });

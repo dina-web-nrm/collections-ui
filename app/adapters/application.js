@@ -8,7 +8,7 @@ export default DS.JSONAPIAdapter.extend({
         "Accept": "application/json",
         "Content-type": "application/json"
     },
-    
+
     /**
      * Override to disable pluralization for object types.
      */

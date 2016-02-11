@@ -28,10 +28,7 @@ export default Ember.Controller.extend({
                 this.model.set('createdByAgentID', agent);
                 this.model.set('name', 'test-create');
                 this.model.save().then((record) => {
-                        controller.transitionToCollectionObject(record);
-                }).catch((reason) => {
-                    console.log(reason);
-                    // Handle any error and present it.
+                    controller.transitionToCollectionObject(record);
                 });
             });
         }
