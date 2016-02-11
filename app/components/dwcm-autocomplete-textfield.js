@@ -45,6 +45,10 @@ export default Ember.Component.extend(ClickOutsideComponent, {
 
         this.store.query(this.storeName, queryParams).then((response) => {
             this.set('previewData', response);
+        }).catch((reason) => {
+            this.set('previewData', []);
+
+            console.warn('Invalid response from server: ', reason);
         });
     },
 
