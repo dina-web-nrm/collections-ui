@@ -48,7 +48,12 @@ export default {
         labels: {
             collector: 'Insamlare',
             collecting_place: 'Fyndplats(lokal)',
-            collecting_event: 'Insamlingstillfälle'
+            collecting_event: 'Insamlingstillfälle',
+            collection: 'Samling/delsamling',
+            catalogNumber: 'Katalognr',
+            accession: 'Accession',
+            confidence: 'Osäkerhet',
+            method: 'Metod'
         }
     }
 };

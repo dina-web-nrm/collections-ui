@@ -1,26 +1,14 @@
 {{#dwcm-field-group identifier="dwcm-taxonomy"}}
-    <div class="row">
-        <div class="col-xs-6">
-            {{
-                dwcm-autocomplete-textfield
-                label="definitions.name"
-                store=store
-                storeName='taxon'
-                displayField='fullName'
-                filterField='fullName'
-            }}
-        </div>
-        {{dwcm-field-placeholder width=3 label='Osäkerhet'}}
-        {{dwcm-field-placeholder width=3 label='Metod'}}
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            {{dwcm-autocomplete-textfield label="definitions.name"}}
-        </div>
-        {{dwcm-field-placeholder width=3 label='Datum(åååå/mm/dd)'}}
-        {{dwcm-field-placeholder width=3 label='Typstatus'}}
-   </div>
-   <div class="row">
-        {{dwcm-field-placeholder width=12 label='Taxonomi, bestämmare, datum'}}
-   </div>
+    {{#each model.determinations as |determination|}}
+        {{
+            dwcm-single-determination
+            model=determination
+            store=store
+            remove=(action "removeDetermination")
+        }}
+    {{/each}}
+
+    <a class="clickable" {{action "addDetermination"}}>
+        <i class="glyphicon glyphicon-plus"></i> Lägg till bestämning
+    </a>
 {{/dwcm-field-group}}
