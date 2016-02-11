@@ -53,7 +53,8 @@ export default {
             catalogNumber: 'Katalognr',
             accession: 'Accession',
             confidence: 'Osäkerhet',
-            method: 'Metod'
+            method: 'Metod',
+            determiner: 'Bestämmare'
         }
     }
 };

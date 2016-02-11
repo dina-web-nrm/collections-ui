@@ -11,14 +11,6 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{dwcm-single-determination}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$('.dwcm-autocomplete-textfield label').text().trim(), 'Namn:Bestämmare:');
 
-  // Template block usage:"
-  this.render(hbs`
-    {{#dwcm-single-determination}}
-      template block text
-    {{/dwcm-single-determination}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });

@@ -3,6 +3,9 @@ import Ember from 'ember';
 
 export default Ember.Component.extend(ClickOutsideComponent, {
 
+    /** Setup component css classes. */
+    classNames: ['dwcm-autocomplete-textfield'],
+
     /** Required store. */
     store: null,
 

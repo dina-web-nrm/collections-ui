@@ -9,16 +9,7 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });"
 
-  this.render(hbs`{{dwcm-textfield}}`);
+  this.render(hbs`{{dwcm-textfield label='definitions.name'}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:"
-  this.render(hbs`
-    {{#dwcm-textfield}}
-      template block text
-    {{/dwcm-textfield}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), 'Namn:');
 });
