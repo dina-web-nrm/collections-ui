@@ -17,6 +17,11 @@ export default Ember.Component.extend({
         /** Call external `remove` method with current model. */
         remove () {
             this.get('remove')(this.model);
+        },
+
+        /** Set *agent* as determiner. */
+        setDeterminer (agent) {
+            this.model.set('determiner', agent);
         }
     }
 });

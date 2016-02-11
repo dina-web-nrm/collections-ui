@@ -1,3 +1,5 @@
+/* global moment */
+
 import Ember from 'ember';
 
 export default Ember.Component.extend({
@@ -17,7 +19,9 @@ export default Ember.Component.extend({
 
         /** Add new determination. */
         addDetermination () {
-            let determination = this.store.createRecord('determination', {});
+            let determination = this.store.createRecord('determination', {
+                timestampCreated: moment().unix()
+            });
             this.model.get('determinations').pushObject(determination);
         },
 

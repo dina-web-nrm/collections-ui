@@ -7,6 +7,10 @@ export default DS.Model.extend({
     guid: DS.attr(),
     lastName: DS.attr(),
     fullName: Ember.computed('firstName', 'lastName', function() {
-        return `${this.get('firstName')} ${this.get('lastName')}`;
+        if (this.get('firstName') && this.get('lastName')) {
+            return `${this.get('firstName')} ${this.get('lastName')}`;
+        } else {
+            return `${this.get('firstName') || this.get('lastName')}`;
+        }
     })
 });

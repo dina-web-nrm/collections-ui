@@ -1,6 +1,6 @@
 import DS from 'ember-data';
 
-export default DS.JSONSerializer.extend({
+export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
     primaryKey: 'collectionObjectID',
     attrs: {
         'agent': 'createdByAgentID',
@@ -8,7 +8,7 @@ export default DS.JSONSerializer.extend({
         'accession': 'accessionID',
         'determinations': {
             key: 'determination',
-            serialize: false
+            serialize: 'records'
         }
     },
 
@@ -25,6 +25,18 @@ export default DS.JSONSerializer.extend({
 
         // Parse AccessionID to integer.
         json.accessionID = json.accessionID && parseInt(json.accessionID);
+
+        json.determinationList = json.determinations;
+        json.determinationList.forEach(function(element) {
+            element.collectionMemberID = json.collectionMemberID;
+            element.taxonID = parseInt(element.taxonID);
+            element.createdByAgentID = parseInt(element.createdByAgentID);
+            element.determinerID = parseInt(element.determinerID);
+        });
+
+        delete json.determinations;
+
+        console.table([json]);
 
         return json;
     }

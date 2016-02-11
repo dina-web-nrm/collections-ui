@@ -11,8 +11,10 @@
         {{
             dwcm-autocomplete-textfield
             label="definitions.name"
+
             store=store
             storeName='taxon'
+
             displayField='fullName'
             filterField='fullName'
             itemSelected=(action 'setTaxonomy')
@@ -23,7 +25,17 @@
 </div>
 <div class="row">
     <div class="col-xs-6">
-        {{dwcm-autocomplete-textfield label="fields.labels.determiner"}}
+        {{
+            dwcm-autocomplete-textfield
+            label="fields.labels.determiner"
+
+            store=store
+            storeName='agent'
+
+            displayField='fullName'
+            filterField='lastName'
+            itemSelected=(action 'setDeterminer')
+        }}
     </div>
     {{dwcm-field-placeholder width=3 label='Datum(åååå/mm/dd)'}}
     {{dwcm-field-placeholder width=3 label='Typstatus'}}
