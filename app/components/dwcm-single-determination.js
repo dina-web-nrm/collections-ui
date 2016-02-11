@@ -8,9 +8,13 @@ export default Ember.Component.extend({
     model: null,
 
     actions: {
+
+        /** Set *taxon* for current model. */
         setTaxonomy (taxon) {
             this.model.set('taxon', taxon);
         },
+
+        /** Call external `remove` method with current model. */
         remove () {
             this.get('remove')(this.model);
         }

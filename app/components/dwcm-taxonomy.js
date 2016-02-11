@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     determinations: [],
 
+    /** Initialise component. */
     init () {
         let result = this._super(...arguments);
 
@@ -13,12 +14,14 @@ export default Ember.Component.extend({
     },
 
     actions: {
+
+        /** Add new determination. */
         addDetermination () {
             let determination = this.store.createRecord('determination', {});
-
-            console.log(determination);
             this.model.get('determinations').pushObject(determination);
         },
+
+        /** Remove single *determination*. */
         removeDetermination (determination) {
             this.model.get('determinations').removeObject(determination);
         }
