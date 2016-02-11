@@ -2,10 +2,10 @@ import DS from 'ember-data';
 import Ember from 'ember';
 
 export default DS.Model.extend({
-    email: DS.attr(),
-    firstName: DS.attr(),
-    guid: DS.attr(),
-    lastName: DS.attr(),
+    email: DS.attr('string'),
+    firstName: DS.attr('string'),
+    guid: DS.attr('string'),
+    lastName: DS.attr('string'),
     fullName: Ember.computed('firstName', 'lastName', function() {
         if (this.get('firstName') && this.get('lastName')) {
             return `${this.get('firstName')} ${this.get('lastName')}`;
