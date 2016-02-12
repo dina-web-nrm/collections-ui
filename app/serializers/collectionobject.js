@@ -7,7 +7,7 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         'collection': 'collectionMemberID',
         'accession': 'accessionID',
         'determinations': {
-            key: 'determination',
+            key: 'determinationList',
             serialize: 'records'
         }
     },
@@ -25,6 +25,7 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
 
         // Parse AccessionID to integer.
         json.accessionID = json.accessionID && parseInt(json.accessionID);
+        json.createdByAgentID = parseInt(json.createdByAgentID);
 
         json.determinationList = json.determinations;
         json.determinationList.forEach(function(element) {
