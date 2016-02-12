@@ -3,14 +3,16 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    determinations: [],
+
+    /** Required store. */
+    store: Ember.inject.service('store'),
 
     /** Initialise component. */
     init () {
         let result = this._super(...arguments);
 
         // Add a single determination as start value.
-        this.send('addDetermination');
+        // this.send('addDetermination');
 
         return result;
     },
@@ -19,7 +21,7 @@ export default Ember.Component.extend({
 
         /** Add new determination. */
         addDetermination () {
-            let determination = this.store.createRecord('determination', {
+            let determination = this.get('store').createRecord('determination', {
                 timestampCreated: moment().unix()
             });
             this.model.get('determinations').pushObject(determination);

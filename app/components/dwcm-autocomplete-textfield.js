@@ -7,7 +7,7 @@ export default Ember.Component.extend(ClickOutsideComponent, {
     classNames: ['dwcm-autocomplete-textfield'],
 
     /** Required store. */
-    store: null,
+    store: Ember.inject.service('store'),
 
     /** Name of the store to fetch data from. */
     storeName: null,
@@ -43,7 +43,7 @@ export default Ember.Component.extend(ClickOutsideComponent, {
 
         queryParams[this.get('filterField')] = this.get('value');
 
-        this.store.query(this.storeName, queryParams).then((response) => {
+        this.get('store').query(this.storeName, queryParams).then((response) => {
             this.set('previewData', response);
         }).catch((reason) => {
             this.set('previewData', []);
