@@ -54,7 +54,9 @@ export default {
             accession: 'Accession',
             confidence: 'Osäkerhet',
             method: 'Metod',
-            determiner: 'Bestämmare'
+            determiner: 'Bestämmare',
+            'preparation-type': 'Preparationstyp',
+            count: 'Antal'
         }
     }
 };

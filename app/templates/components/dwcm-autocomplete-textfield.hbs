@@ -10,15 +10,17 @@
             focus-in="onFocus"
 
             placeholder=(if placeholder placeholder 'Skriv in/välj')
-            
+
         }}
 
-        <div class="input-group-btn">
-            <button disabled title="Create new(not supported yet)" type="button" class="btn btn-primary" aria-label="Add">
-                <span class="glyphicon glyphicon-plus"></span>
-            </button>
-        </div>
-        
+        {{#unless removeCreate}}
+            <div class="input-group-btn">
+                <button disabled title="Create new(not supported yet)" type="button" class="btn btn-primary" aria-label="Add">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </div>
+        {{/unless}}
+
         {{#if isDropdownVisible}}
             <ul class="dwcm-autocomplete-dropdown">
                 {{#each previewData as |preview|}}

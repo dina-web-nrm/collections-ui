@@ -13,7 +13,7 @@ export default DS.JSONAPIAdapter.extend({
      * Override to disable pluralization for object types.
      */
     pathForType (type) {
-        return Ember.String.underscore(type);
+        return type.classify().toLowerCase();
     },
 
     /**

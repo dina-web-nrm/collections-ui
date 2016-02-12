@@ -6,6 +6,12 @@ export default Ember.Component.extend(ClickOutsideComponent, {
     /** Setup component css classes. */
     classNames: ['dwcm-autocomplete-textfield'],
 
+    /** Setting to disable create button. */
+    disableCreate: true,
+
+    /** Setting to hide the create button. */
+    removeCreate: false,
+
     /** Required store. */
     store: Ember.inject.service('store'),
 

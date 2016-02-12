@@ -39,4 +39,13 @@
             </li>
         {{/each}}
     </ul>
+
+    <ul>
+        Preparations
+        {{#each model.preparations as |preparation index|}}
+            <li>
+                {{index}}. {{preparation.preparationType.name}} - {{preparation.countAmt}}
+            </li>
+        {{/each}}
+    </ul>
 </div>

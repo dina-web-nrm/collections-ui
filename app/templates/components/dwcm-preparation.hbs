@@ -1,38 +1,15 @@
 {{#dwcm-field-group identifier="dwcm-preparation"}}
-    <div class="row">
+    {{index}}
+    <div class="row {{unless model.preparations.length 'closed'}}">
         {{dwcm-field-placeholder width=3 label='Livsstadie'}}
         {{dwcm-field-placeholder width=1 label='Kön'}}
         {{dwcm-field-placeholder width=2 label='Kondition'}}
         {{dwcm-field-placeholder width=6 label='Mätningar'}}
     </div>
-    <div class="row">
-        <div class="col-xs-11 col-xs-offset-1">
-            <div class="row">
-                {{dwcm-field-placeholder width=6 label='Preparationstyp'}}
-                {{dwcm-field-placeholder width=3 label='Förvaringssätt'}}
-                {{dwcm-field-placeholder width=3 label='Status'}}
-            </div>
-            <div class="row">
-                {{dwcm-field-placeholder width=4 label='Del'}}
-                {{dwcm-field-placeholder width=2 label='Antal'}}
-                {{dwcm-field-placeholder width=3 label='Placering'}}
-                {{dwcm-field-placeholder width=3 label='Kondition'}}
-            </div>
-         </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-11 col-xs-offset-1">
-            <div class="row">
-                {{dwcm-field-placeholder width=6 label='Preparationstyp'}}
-                {{dwcm-field-placeholder width=3 label='Förvaringssätt'}}
-                {{dwcm-field-placeholder width=3 label='Status'}}
-            </div>
-            <div class="row">
-                {{dwcm-field-placeholder width=4 label='Del'}}
-                {{dwcm-field-placeholder width=2 label='Antal'}}
-                {{dwcm-field-placeholder width=3 label='Placering'}}
-                {{dwcm-field-placeholder width=3 label='Kondition'}}
-            </div>
-         </div>
-    </div>
+    {{#each model.preparations as |preparation|}}
+        {{dwcm-single-preparation model=preparation remove=(action 'removePreparation')}}
+    {{/each}}
+    <a class="clickable" {{action "addPreparation"}}>
+        <i class="glyphicon glyphicon-plus"></i> Lägg till del/preparation
+    </a>
 {{/dwcm-field-group}}

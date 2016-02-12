@@ -9,6 +9,10 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         'determinations': {
             key: 'determinationList',
             serialize: 'records'
+        },
+        'preparations': {
+            key: 'preparationList',
+            serialize: 'records'
         }
     },
 
@@ -31,11 +35,20 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         json.determinationList.forEach(function(element) {
             element.collectionMemberID = json.collectionMemberID;
             element.taxonID = parseInt(element.taxonID);
-            element.createdByAgentID = parseInt(element.createdByAgentID);
+            element.createdByAgentID = parseInt(json.createdByAgentID);
             element.determinerID = parseInt(element.determinerID);
         });
 
         delete json.determinations;
+
+        json.preparationList = json.preparations;
+        json.preparationList.forEach(function(element) {
+            element.collectionMemberID = json.collectionMemberID;
+            element.createdByAgentID = parseInt(json.createdByAgentID);
+            element.prepTypeID = parseInt(element.prepTypeID);
+        });
+
+        delete json.preparations;
 
         console.table([json]);
 
