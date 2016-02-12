@@ -25,7 +25,7 @@ export default Ember.Controller.extend({
             this.model.set('timestampCreated', moment().unix());
 
             this.store.findRecord('agent', 3).then((agent) => {
-                this.model.set('createdByAgentID', agent);
+                this.model.set('agent', agent);
                 this.model.set('name', 'test-create');
                 this.model.save().then((record) => {
                     controller.transitionToCollectionObject(record);
