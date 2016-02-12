@@ -1,23 +1,30 @@
----
 language: node_js
 node_js:
-  - "0.12"
-
+    - '0.12'
 sudo: false
-
 cache:
   directories:
     - node_modules
-
 before_install:
-  - export PATH=/usr/local/phantomjs-2.0.0/bin:$PATH
-  - "npm config set spin false"
-  - "npm install -g npm@^2"
-
+    - export PATH=/usr/local/phantomjs-2.0.0/bin:$PATH
+    - npm config set spin false
+    - npm install -g npm@^2
 install:
-  - npm install -g bower
-  - npm install
-  - bower install
-
+    - npm install -g bower
+    - npm install -g ember-cli@1.13.15
+    - npm install
+    - bower install
 script:
-  - npm test
+    - npm test
+    - ember build --environment production --output-path dw-collection-manager
+before_deploy:
+    - tar -zcvf release.tar.gz dw-collection-manager
+deploy:
+  provider: releases
+  api_key:
+    secure: MI/rackOpCtqtc4aw6jJlm/kzF+kLVOmK+BiSITPTg+uRkU7MZP+Yz3Sb9KdUbJ3DcxVcUVpMt57cE1/kQleJZVIHtmA8PeQ6O9isRq4I2lqdPzbQiqEPPDaeaptRn+79BBnXr/eo7sVYo/fDAGp1uVpclKmfCX2jzsu1vUVvGpuWyGhQyi/5loHWu2P71c0BlPAZHc3khm1pZfz4sADWHVuINdhu8ORR1M6LLI6VruTmSiQ5c/V5fSteeDecqZ96b9CyLVywOQio1VafOZm7Hdy6hju5GnRaEbuT/WYrPYBq0bkbgIWdQX3kejtPgCfvoUsVFBdnAH2R5d5Un/RzI2h26A2tWSJLjT6x8/m8kH9ljzyANZpAPiMlms5GtXUag9XYi76lFfA957Qz6+5HcdyWqYt41cKMA8KncwoCRvNiSJ3jC6sD/HRPQLguZRBICrMz4NH9UabajDfZQVX8CuNXllNmCxb+75ief6kKOmV/5I+3sWJzk6B46I34C8fHEeZrV7DBQk76ibX/KNE7dtC5VWTzIOI/Uc1JcoN8fRYKCwZcqtJSxETeVag0b7IEVKh9usKsSZzeACQ63wePS2WiaKydJd8/DzFEaRJcTFsG6Q2cWiwQQ4arsqVBf2PJgnlFmgmt+4phddcRswcjJYUS+XssPtfclRmwVSSM2Y=
+  file: release.tar.gz
+  on:
+    repo: DINA-Web/collections-ui
+    all_branches: true
+    tags: true

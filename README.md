@@ -1,12 +1,8 @@
-          _                              _  _              _    _
-       __| |__      __        ___  ___  | || |  ___   ___ | |_ (_)  ___   _ __   ___         _ __ ___    __ _  _ __    __ _   __ _   ___  _ __
-      / _` |\ \ /\ / /_____  / __|/ _ \ | || | / _ \ / __|| __|| | / _ \ | '_ \ / __| _____ | '_ ` _ \  / _` || '_ \  / _` | / _` | / _ \| '__|
-     | (_| | \ V  V /|_____|| (__| (_) || || ||  __/| (__ | |_ | || (_) || | | |\__ \|_____|| | | | | || (_| || | | || (_| || (_| ||  __/| |
-      \__,_|  \_/\_/         \___|\___/ |_||_| \___| \___| \__||_| \___/ |_| |_||___/       |_| |_| |_| \__,_||_| |_| \__,_| \__, | \___||_|
-                                                                                                                             |___/
+# DINA Collections UI
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+[![Build Status](https://travis-ci.org/DINA-Web/collections-ui.svg?branch=master)](https://travis-ci.org/DINA-Web/collections-ui)
+
+Source code for Collection Manager User Interface for managing Museum Collections.
 
 ## Prerequisites
 
