@@ -16,7 +16,7 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         },
         'objectAttribute': {
             key: 'collectionObjectAttributeID',
-            serialize: false
+            serialize: 'records'
         }
     },
 
@@ -54,8 +54,16 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
 
         delete json.preparations;
 
-        console.table([json]);
+        json.collectionObjectAttributeID = json.objectAttribute;
 
+        json.collectionObjectAttributeID.collectionMemberID = json.collectionMemberID;
+        json.collectionObjectAttributeID.createdByAgentID = parseInt(json.createdByAgentID);
+
+        delete json.objectAttribute;
+
+        console.table([json.objectAttribute]);
+
+        debugger;
         return json;
     }
 });
