@@ -6,7 +6,8 @@ moduleForModel('collectionobject', 'Unit | Model | collectionobject', {
       'model:agent',
       'model:determination',
       'model:collection',
-      'model:accession'
+      'model:accession',
+      'model:preparation'
   ]
 });
 
