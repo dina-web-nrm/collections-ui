@@ -3,6 +3,9 @@ import Ember from 'ember';
 
 export default Ember.Component.extend(ClickOutsideComponent, {
 
+    /** Bind conditional classes. */
+    classNameBindings: ['hasSelected:has-success', 'isInvalid:has-error'],
+
     /** Setup component css classes. */
     classNames: ['dwcm-autocomplete-textfield'],
 
@@ -20,6 +23,14 @@ export default Ember.Component.extend(ClickOutsideComponent, {
 
     /** Value of the input field */
     value: '',
+
+    /** Has valid selection. */
+    hasSelected: false,
+
+    /** Return if input is invalid. */
+    isInvalid: Ember.computed('hasSelected', 'hasFocus', 'value', function () {
+        return this.get('value').length > 0 && !this.get('hasFocus') && !this.get('hasSelected');
+    }),
 
     /** Data to display in preview dropdown. */
     previewData: [],
@@ -122,6 +133,10 @@ export default Ember.Component.extend(ClickOutsideComponent, {
         onKeyup () {
             // Debounce keyup event if user types fast.
             Ember.run.debounce(this, this._onKeyup, this.keyupTimeout);
+
+            // Set item as undefined.
+            this.get('itemSelected')();
+            this.set('hasSelected', false);
         },
 
         /**
@@ -150,6 +165,7 @@ export default Ember.Component.extend(ClickOutsideComponent, {
 
             // Should be set from parent.
             this.get('itemSelected')(item);
+            this.set('hasSelected', item);
         }
     }
 });

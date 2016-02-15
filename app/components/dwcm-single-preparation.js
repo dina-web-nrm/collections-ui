@@ -9,7 +9,7 @@ export default Ember.Component.extend({
 
     actions: {
 
-        /** Set *taxon* for current model. */
+        /** Set *preparationType* for current model. */
         setPreparationType (preparationType) {
             this.model.set('preparationType', preparationType);
         },
