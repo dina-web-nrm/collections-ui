@@ -7,7 +7,8 @@ moduleForModel('collectionobject', 'Unit | Model | collectionobject', {
       'model:determination',
       'model:collection',
       'model:accession',
-      'model:preparation'
+      'model:preparation',
+      'model:collection-object-attribute'
   ]
 });
 

@@ -11,7 +11,10 @@ export default {
     definitions: {
         zoological: "zoologiskt",
         name: "Namn",
-        accession: "Accession"
+        accession: "Accession",
+        male: 'Hane',
+        female: 'Hona',
+        unknown: 'Okänt'
     },
     main: {
         application_name: "DINA Samlingshanteraren",
@@ -56,7 +59,11 @@ export default {
             method: 'Metod',
             determiner: 'Bestämmare',
             'preparation-type': 'Preparationstyp',
-            count: 'Antal'
+            count: 'Antal',
+            'life-stage': 'Livsstadie',
+            'sex': 'Kön',
+            'measurements': 'Mätningar',
+            'condition': 'Kondition'
         }
     }
 };

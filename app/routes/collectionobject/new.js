@@ -1,8 +1,14 @@
+/* global moment */
+
 import Ember from 'ember';
 
 export default Ember.Route.extend({
     model () {
-        return this.store.createRecord('collectionobject', {});
+        return this.store.createRecord('collectionobject', {
+            objectAttribute: this.store.createRecord('collection-object-attribute', {
+                timestampCreated: moment().unix()
+            })
+        });
     },
 
     deactivate () {

@@ -7,6 +7,17 @@ export default Ember.Component.extend({
     /** Required store. */
     store: Ember.inject.service('store'),
 
+    sexOptions: [{
+            value: 'unknown',
+            displayName: 'definitions.unknown'
+        }, {
+            value: 'female',
+            displayName: 'definitions.female'
+        }, {
+            value: 'male',
+            displayName: 'definitions.male'
+    }],
+
     actions: {
 
         /** Add new preparation. */

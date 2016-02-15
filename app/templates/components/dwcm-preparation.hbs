@@ -1,10 +1,27 @@
 {{#dwcm-field-group identifier="dwcm-preparation"}}
     {{index}}
-    <div class="row {{unless model.preparations.length 'closed'}}">
-        {{dwcm-field-placeholder width=3 label='Livsstadie'}}
-        {{dwcm-field-placeholder width=1 label='Kön'}}
-        {{dwcm-field-placeholder width=2 label='Kondition'}}
-        {{dwcm-field-placeholder width=6 label='Mätningar'}}
+    <div class="row">
+        {{
+            dwcm-textfield width=3
+            label='fields.labels.life-stage'
+            value=model.objectAttribute.lifeStage
+        }}
+        {{
+            dwcm-select width=2
+            label='fields.labels.sex'
+            value=model.objectAttribute.sex
+            options=sexOptions
+        }}
+        {{
+            dwcm-textfield width=2
+            label='fields.labels.condition'
+            value=model.objectAttribute.condition
+        }}
+        {{
+            dwcm-textfield width=5
+            label='fields.labels.measurements'
+            value=model.objectAttribute.measurements
+        }}
     </div>
     {{#each model.preparations as |preparation|}}
         {{dwcm-single-preparation model=preparation remove=(action 'removePreparation')}}

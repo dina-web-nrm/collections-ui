@@ -13,6 +13,10 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         'preparations': {
             key: 'preparationList',
             serialize: 'records'
+        },
+        'objectAttribute': {
+            key: 'collectionObjectAttributeID',
+            serialize: false
         }
     },
 
