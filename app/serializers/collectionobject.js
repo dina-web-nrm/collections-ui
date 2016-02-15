@@ -61,9 +61,6 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
 
         delete json.objectAttribute;
 
-        console.table([json.objectAttribute]);
-
-        debugger;
         return json;
     }
 });
