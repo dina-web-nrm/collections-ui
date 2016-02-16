@@ -3,20 +3,24 @@
         <div class="col-xs-6">
             {{
                 dwcm-autocomplete-textfield
-                label="definitions.name"
-                store=store
+                label="fields.labels.collection"
                 storeName='collection'
-                displayField='name'
+                displayField='collectionName'
                 filterField='collectionName'
                 itemSelected=(action 'collectionSelected')
+                localData=true
             }}
         </div>
-        {{dwcm-field-placeholder width=2 label='Katalognr'}}
+        {{
+            dwcm-textfield
+            width=2
+            label='fields.labels.catalogNumber'
+            value=model.catalogNumber
+        }}
         <div class="col-xs-4">
             {{
                 dwcm-autocomplete-textfield
-                label="definitions.accession"
-                store=store
+                label="fields.labels.accession"
                 storeName='accession'
                 displayField='accessionNumber'
                 filterField='accessionNumber'

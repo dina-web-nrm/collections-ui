@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.JSONAPIAdapter.extend({
@@ -8,12 +7,12 @@ export default DS.JSONAPIAdapter.extend({
         "Accept": "application/json",
         "Content-type": "application/json"
     },
-    
+
     /**
      * Override to disable pluralization for object types.
      */
     pathForType (type) {
-        return Ember.String.underscore(type);
+        return type.classify().toLowerCase();
     },
 
     /**
