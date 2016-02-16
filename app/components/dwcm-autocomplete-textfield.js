@@ -27,6 +27,24 @@ export default Ember.Component.extend(ClickOutsideComponent, {
     /** Has valid selection. */
     hasSelected: false,
 
+    /** Highligted index in dropdown. */
+    highlightedIndex: -1,
+
+    onHighlightedIndexChange: function () {
+
+        if (this.get('hasFocus')) {
+            var elementQuery = 'li[tabindex='+ this.get('highlightedIndex') +']' ;
+            var listItem = this.$(elementQuery);
+            console.log(listItem);
+            console.log(elementQuery);
+            if (listItem) {
+                listItem.addClass('active').siblings().removeClass();
+            }
+        } else {
+            this.set('highlightedIndex', -1);
+        }
+    }.observes('highlightedIndex', 'hasFocus'),
+
     /** Return if input is invalid. */
     isInvalid: Ember.computed('hasSelected', 'hasFocus', 'value', function () {
         return this.get('value').length > 0 && !this.get('hasFocus') && !this.get('hasSelected');
@@ -115,8 +133,21 @@ export default Ember.Component.extend(ClickOutsideComponent, {
     /**
      * Handle keyup events in input field.
      */
-    _onKeyup () {
-        if (!this.get('value').length) {
+    _onKeyup (event) {
+        let offset = 0;
+        if (event.keyCode === 38) {
+            offset = -1;
+        } else if (event.keyCode === 40) {
+            offset = 1;
+        }
+
+        if (offset !== 0) {
+            this.set(
+                'highlightedIndex',
+                this.get('highlightedIndex') + offset
+            );
+        }
+        else if (!this.get('value').length) {
             this.set('previewData', []);
         } else {
             this.fetchData();
@@ -130,9 +161,10 @@ export default Ember.Component.extend(ClickOutsideComponent, {
         * Triggers private method to be able to delay execution.
         *
         */
-        onKeyup () {
+        onKeyup (value, event) {
+            console.log(arguments);
             // Debounce keyup event if user types fast.
-            Ember.run.debounce(this, this._onKeyup, this.keyupTimeout);
+            Ember.run.debounce(this, this._onKeyup, event, this.keyupTimeout);
 
             // Set item as undefined.
             this.get('itemSelected')();

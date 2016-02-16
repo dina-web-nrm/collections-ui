@@ -23,8 +23,8 @@
 
         {{#if isDropdownVisible}}
             <ul class="dwcm-autocomplete-dropdown">
-                {{#each previewData as |preview|}}
-                    <li {{action "onItemClick" preview}}>{{get preview displayField}}</li>
+                {{#each previewData as |preview index|}}
+                    <li tabIndex={{index}} {{action "onItemClick" preview}}>{{get preview displayField}}</li>
                 {{else}}
                     <li>Inget resultat</li>
                 {{/each}}
