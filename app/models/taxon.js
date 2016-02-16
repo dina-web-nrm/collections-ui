@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-    fullName: DS.attr(),
-    name: DS.attr(),
-    author: DS.attr()
+    fullName: DS.attr('string'),
+    name: DS.attr('string'),
+    author: DS.attr('string')
 });

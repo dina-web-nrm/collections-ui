@@ -1,14 +1,22 @@
 import DS from 'ember-data';
 
-export default DS.JSONSerializer.extend({
+export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
     primaryKey: 'collectionObjectID',
     attrs: {
         'agent': 'createdByAgentID',
         'collection': 'collectionMemberID',
         'accession': 'accessionID',
         'determinations': {
-            key: 'determination',
-            serialize: false
+            key: 'determinationList',
+            serialize: 'records'
+        },
+        'preparations': {
+            key: 'preparationList',
+            serialize: 'records'
+        },
+        'objectAttribute': {
+            key: 'collectionObjectAttributeID',
+            serialize: 'records'
         }
     },
 
@@ -22,6 +30,36 @@ export default DS.JSONSerializer.extend({
         // Copy CollectionMemberID to CollectionID.
         json.collectionID = parseInt(json.collectionMemberID);
         json.collectionMemberID = json.collectionID;
+
+        // Parse AccessionID to integer.
+        json.accessionID = json.accessionID && parseInt(json.accessionID);
+        json.createdByAgentID = parseInt(json.createdByAgentID);
+
+        json.determinationList = json.determinations;
+        json.determinationList.forEach(function(element) {
+            element.collectionMemberID = json.collectionMemberID;
+            element.taxonID = parseInt(element.taxonID);
+            element.createdByAgentID = parseInt(json.createdByAgentID);
+            element.determinerID = parseInt(element.determinerID);
+        });
+
+        delete json.determinations;
+
+        json.preparationList = json.preparations;
+        json.preparationList.forEach(function(element) {
+            element.collectionMemberID = json.collectionMemberID;
+            element.createdByAgentID = parseInt(json.createdByAgentID);
+            element.prepTypeID = parseInt(element.prepTypeID);
+        });
+
+        delete json.preparations;
+
+        json.collectionObjectAttributeID = json.objectAttribute;
+
+        json.collectionObjectAttributeID.collectionMemberID = json.collectionMemberID;
+        json.collectionObjectAttributeID.createdByAgentID = parseInt(json.createdByAgentID);
+
+        delete json.objectAttribute;
 
         return json;
     }

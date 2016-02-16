@@ -23,13 +23,13 @@
                     </tr>
                     <tr>
                         <th scope="row">Samling:</th>
-                        <td>{{model.collection.name}}</td>
+                        <td>{{model.collection.collectionName}}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    
+
     <ul>
         Determinations
         {{#each model.determinations as |determination|}}
@@ -38,5 +38,30 @@
                 {{determination.taxon.fullName}} - {{determination.taxon.author}}
             </li>
         {{/each}}
+    </ul>
+
+    <ul>
+        Preparations
+        {{#each model.preparations as |preparation index|}}
+            <li>
+                {{index}}. {{preparation.preparationType.name}} - {{preparation.countAmt}}
+            </li>
+        {{/each}}
+    </ul>
+
+    <ul>
+        Attributes
+            <li>
+                Stage: {{model.objectAttribute.lifeStage}}
+            </li>
+            <li>
+                Sex: {{model.objectAttribute.sex}}
+            </li>
+            <li>
+                Condition: {{model.objectAttribute.condition}}
+            </li>
+            <li>
+                Measurements: {{model.objectAttribute.measurements}}
+            </li>
     </ul>
 </div>
