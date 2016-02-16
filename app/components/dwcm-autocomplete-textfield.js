@@ -27,9 +27,20 @@ export default Ember.Component.extend(ClickOutsideComponent, {
     /** Has valid selection. */
     hasSelected: false,
 
+    /** Handle item select. */
+    onSelected: function () {
+        if (this.get('hasSelected')) {
+            this.set(
+                'value', this.get('hasSelected').get(this.get('displayField', 'name'))
+            );
+
+            this.set('hasFocus', false);
+        }
+    }.observes('hasSelected'),
+
     /** Return if input is invalid. */
     isInvalid: Ember.computed('hasSelected', 'hasFocus', 'value', function () {
-        return this.get('value').length > 0 && !this.get('hasFocus') && !this.get('hasSelected');
+        return (this.get('value') && this.get('value').length > 0) && !this.get('hasFocus') && !this.get('hasSelected');
     }),
 
     /** Data to display in preview dropdown. */
@@ -158,11 +169,6 @@ export default Ember.Component.extend(ClickOutsideComponent, {
          * Handle click event in dropdown list.
          */
         onItemClick (item) {
-            this.set('hasFocus', false);
-            this.set(
-                'value', item.get(this.get('displayField', 'name'))
-            );
-
             // Should be set from parent.
             this.get('itemSelected')(item);
             this.set('hasSelected', item);

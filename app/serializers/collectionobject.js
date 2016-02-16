@@ -17,6 +17,10 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         'objectAttribute': {
             key: 'collectionObjectAttributeID',
             serialize: 'records'
+        },
+        'collectingEvent': {
+            key: 'collectingEventID',
+            serialize: 'records'
         }
     },
 

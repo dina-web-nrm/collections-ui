@@ -1,20 +1,12 @@
 export default {
-    // "some.translation.key": "Text for some.translation.key",
-    //
-    // "a": {
-    //   "nested": {
-    //     "key": "Text for a.nested.key"
-    //   }
-    // },
-    //
-    // "key.with.interpolation": "Text with {{anInterpolation}}"
     definitions: {
         zoological: "zoologiskt",
         name: "Namn",
         accession: "Accession",
         male: 'Hane',
         female: 'Hona',
-        unknown: 'Okänt'
+        unknown: 'Okänt',
+        date: 'Datum'
     },
     main: {
         application_name: "DINA Samlingshanteraren",
@@ -61,9 +53,13 @@ export default {
             'preparation-type': 'Preparationstyp',
             count: 'Antal',
             'life-stage': 'Livsstadie',
-            'sex': 'Kön',
-            'measurements': 'Mätningar',
-            'condition': 'Kondition'
+            sex: 'Kön',
+            measurements: 'Mätningar',
+            condition: 'Kondition',
+            'collecting-event': {
+                'start-date': 'Insamlingsdatum(åååå/mm/dd)',
+                method: 'Insamlingsmetod'
+            }
         }
     }
 };

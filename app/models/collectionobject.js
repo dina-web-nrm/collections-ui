@@ -16,6 +16,7 @@ export default DS.Model.extend(DependentRelationships, {
     determinations: DS.hasMany('determinations', {async: true}),
     preparations: DS.hasMany('preparations', {async: true}),
     objectAttribute: DS.belongsTo('collection-object-attribute', {async: true}),
+    collectingEvent: DS.belongsTo('collecting-event', {async: true}),
 
     formattedDate: Ember.computed('timestampCreated', function () {
         return moment(this.get('timestampCreated')).format('Do MMMM YYYY');
