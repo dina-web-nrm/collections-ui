@@ -65,6 +65,20 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
 
         delete json.objectAttribute;
 
+        json.collectingEventID = json.collectingEvent;
+        json.collectingEventID.collectingEventID = parseInt(json.collectingEventID.collectingEventID);
+        json.collectingEventID.disciplineID = 3;
+
+        if(!json.collectingEventID.collectingEventID) {
+            delete json.collectingEventID.collectingEventID;
+        }
+
+        json.collectingEventID.localityID = parseInt(json.collectingEventID.localityID);
+
+        console.log(json.collectingEventID)
+
+        delete json.collectingEvent;
+
         return json;
     }
 });

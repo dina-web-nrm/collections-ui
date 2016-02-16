@@ -40,7 +40,10 @@ export default Ember.Component.extend(ClickOutsideComponent, {
 
     /** Return if input is invalid. */
     isInvalid: Ember.computed('hasSelected', 'hasFocus', 'value', function () {
-        return (this.get('value') && this.get('value').length > 0) && !this.get('hasFocus') && !this.get('hasSelected');
+        return (
+            (this.get('value') && this.get('value').length > 0) &&
+            !this.get('hasFocus') && !this.get('hasSelected')
+        );
     }),
 
     /** Data to display in preview dropdown. */

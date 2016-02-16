@@ -63,21 +63,25 @@
                 {{
                     dwcm-autocomplete-textfield
                     label="fields.labels.collecting_place"
-                    disabled=disableFields
-                    hasSelected=model.collectingEvent.locality
 
+                    storeName='locality'
                     displayField='localityName'
+                    filterField='localityName'
+
+                    itemSelected=(action 'selectedLocality')
                 }}
             </div>
-            {{dwcm-field-placeholder width=3 label='Land' disabled=disableFields}}
-            {{dwcm-field-placeholder width=3 label='...eller högre geografi' disabled=disableFields}}
+            {{dwcm-field-placeholder width=3 label='Land' disabled=true}}
+            {{dwcm-field-placeholder width=3 label='...eller högre geografi' disabled=true}}
         </div>
         <div class="row">
-            {{dwcm-field-placeholder width=6 label='Lokal' disabled=disableFields}}
-            {{dwcm-field-placeholder width=3 label='Fältrubrik' disabled=disableFields}}
-            {{dwcm-field-placeholder width=3 label='Fältrubrik' disabled=disableFields}}
+            {{dwcm-field-placeholder width=6 label='Lokal' disabled=true}}
+            {{dwcm-field-placeholder width=3 label='Fältrubrik' disabled=true}}
+            {{dwcm-field-placeholder width=3 label='Fältrubrik' disabled=true}}
         </div>
     {{else}}
-        {{dwcm-collecting-event-view model=model.collectingEvent}}
+        {{#if model.collectingEvent}}
+            {{dwcm-collecting-event-view model=model.collectingEvent}}
+        {{/if}}
     {{/unless}}
 {{/dwcm-field-group}}
