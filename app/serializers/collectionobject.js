@@ -40,6 +40,9 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         json.accessionID = json.accessionID && parseInt(json.accessionID);
         json.createdByAgentID = parseInt(json.createdByAgentID);
 
+        json.catalogerID = parseInt(json.createdByAgentID);
+        json.catalogedDate = json.timestampCreated;
+
         json.determinationList = json.determinations;
         json.determinationList.forEach(function(element) {
             element.collectionMemberID = json.collectionMemberID;
@@ -66,15 +69,17 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
 
         delete json.objectAttribute;
 
-        json.collectingEventID = json.collectingEvent;
-        json.collectingEventID.collectingEventID = parseInt(json.collectingEventID.collectingEventID);
-        json.collectingEventID.disciplineID = 3;
+        if (json.collectingEvent) {
+            json.collectingEventID = json.collectingEvent;
+            json.collectingEventID.collectingEventID = parseInt(json.collectingEventID.collectingEventID);
+            json.collectingEventID.disciplineID = 3;
 
-        if(!json.collectingEventID.collectingEventID) {
-            delete json.collectingEventID.collectingEventID;
+            if(!json.collectingEventID.collectingEventID) {
+                delete json.collectingEventID.collectingEventID;
+            }
+
+            json.collectingEventID.localityID = parseInt(json.collectingEventID.localityID);
         }
-
-        json.collectingEventID.localityID = parseInt(json.collectingEventID.localityID);
 
         delete json.collectingEvent;
 
