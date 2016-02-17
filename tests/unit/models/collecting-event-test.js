@@ -2,7 +2,7 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('collecting-event', 'Unit | Model | collecting event', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:locality']
 });
 
 test('it exists', function(assert) {
