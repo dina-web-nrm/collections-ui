@@ -89,8 +89,18 @@
                 placeholder='fields.labels.collecting-event.verbatim-locality'
                 value=model.collectingEvent.verbatimLocality
             }}
-            {{dwcm-field-placeholder width=2 label='Nivå ö hav' disabled=true}}
-            {{dwcm-field-placeholder width=2 label='Nivå u hav' disabled=true}}
+            {{
+                dwcm-textfield type='number' width=2
+                label='fields.labels.collecting-event.min-elevation'
+                disabled=true
+                value=model.collectingEvent.locality.maxElevation
+            }}
+                        {{
+                dwcm-textfield type='number' width=2
+                label='fields.labels.collecting-event.min-elevation'
+                disabled=true
+                value=model.collectingEvent.locality.minElevation
+            }}
             {{dwcm-field-placeholder width=2 label='Värdväxt/djur' disabled=true}}
         </div>
     {{/unless}}

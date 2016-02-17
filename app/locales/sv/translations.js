@@ -61,7 +61,9 @@ export default {
                 'start-date': 'Insamlingsdatum(åååå/mm/dd)',
                 method: 'Insamlingsmetod',
                 'verbatim-locality': 'Lokal',
-                'verbatim-collector': 'Insamlare'
+                'verbatim-collector': 'Insamlare',
+                'max-elevation': 'Nivå ö hav',
+                'min-elevation': 'Nivå u hav'
             }
         }
     }
