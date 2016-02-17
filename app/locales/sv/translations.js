@@ -63,7 +63,8 @@ export default {
                 'verbatim-locality': 'Lokal',
                 'verbatim-collector': 'Insamlare',
                 'max-elevation': 'Nivå ö hav',
-                'min-elevation': 'Nivå u hav'
+                'min-elevation': 'Nivå u hav',
+                'select-existing': 'Välj från sparade insamlingstillfällen'
             }
         }
     }

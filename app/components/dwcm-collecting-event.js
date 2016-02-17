@@ -21,12 +21,16 @@ export default Ember.Component.extend({
 
     actions: {
         enableCreate () {
-            this.set('createOrSelect', false);
             this.set('isCreating', true);
 
             this.get('model').set(
                 'collectingEvent', this.get('newCollectingEvent')
             );
+        },
+
+        selectExisting () {
+            this.set('isCreating', false);
+            this.get('model').set('collectingEvent', undefined);
         },
 
         selectedCollectingEvent (collectingEvent) {
