@@ -30,18 +30,15 @@ export default Ember.Component.extend(ClickOutsideComponent, {
     /** Highligted index in dropdown. */
     highlightedIndex: -1,
 
+    /** Update dropdown list when index change. */
     onHighlightedIndexChange: function () {
-
         if (this.get('hasFocus')) {
             var elementQuery = 'li[tabindex='+ this.get('highlightedIndex') +']' ;
             var listItem = this.$(elementQuery);
             console.log(listItem);
-            console.log(elementQuery);
             if (listItem) {
-                listItem.addClass('active').siblings().removeClass();
+                listItem.addClass('active').siblings().removeClass('active');
             }
-        } else {
-            this.set('highlightedIndex', -1);
         }
     }.observes('highlightedIndex', 'hasFocus'),
 
@@ -147,25 +144,18 @@ export default Ember.Component.extend(ClickOutsideComponent, {
     /**
      * Handle keyup events in input field.
      */
-    _onKeyup (event) {
-        let offset = 0;
-        if (event.keyCode === 38) {
-            offset = -1;
-        } else if (event.keyCode === 40) {
-            offset = 1;
-        }
-
-        if (offset !== 0) {
-            this.set(
-                'highlightedIndex',
-                this.get('highlightedIndex') + offset
-            );
-        }
-        else if (!this.get('value').length) {
+    _onKeyup () {
+        if (!this.get('value').length) {
             this.set('previewData', []);
         } else {
             this.fetchData();
         }
+
+        // Set item as undefined.
+        this.get('itemSelected')();
+        this.set('hasSelected', false);
+
+        this.set('highlightedIndex', -1);
     },
 
     actions: {
@@ -176,13 +166,44 @@ export default Ember.Component.extend(ClickOutsideComponent, {
         *
         */
         onKeyup (value, event) {
-            console.log(arguments);
-            // Debounce keyup event if user types fast.
-            Ember.run.debounce(this, this._onKeyup, event, this.keyupTimeout);
+            this.set('hasFocus', true);
 
-            // Set item as undefined.
-            this.get('itemSelected')();
-            this.set('hasSelected', false);
+            if ([38, 40, 13, 27].indexOf(event.keyCode) !== -1) {
+                let index = this.get('highlightedIndex');
+
+                // Arrow key up.
+                if (event.keyCode === 38) {
+                    index -= 1;
+                // Arrow key down
+                } else if (event.keyCode === 40) {
+                    index += 1;
+
+                // Enter key
+                } else if (event.keyCode === 13) {
+                    this.send(
+                        'onItemClick', this.get('previewData').objectAt(index)
+                    );
+
+                    return;
+
+                // ESC key
+                } else if (event.keyCode === 27) {
+                    this.set('hasFocus', false);
+                }
+
+                if (index < 0) {
+                    index = 0;
+                } else if (index > this.get('previewData').length - 1) {
+                    index = this.get('previewData').length - 1;
+                }
+
+                this.set('highlightedIndex', index);
+
+                return false;
+            }
+
+            // Debounce keyup event if user types fast.
+            Ember.run.debounce(this, this._onKeyup, this.keyupTimeout);
         },
 
         /**

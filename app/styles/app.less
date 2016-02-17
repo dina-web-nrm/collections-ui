@@ -1,9 +1,11 @@
 @import "../../bower_components/bootstrap/less/bootstrap.less";
 @import "dina/dina.less";
 
-@import "components/language-selector.less";
-@import "components/spinner.less";
+@import "components/dwcm-language-selector.less";
+@import "components/dwcm-spinner.less";
 
+@import "components/dwcm-error.less";
+@import "components/dwcm-autocomplete-textfield.less";
 @import "components/dwcm-single-determination.less";
 @import "components/dwcm-preparation.less";
 @import "components/dwcm-single-preparation.less";
@@ -48,44 +50,6 @@
     width: 100%;
 }
 
-.dwcm-autocomplete-dropdown {
-    position: absolute;
-    z-index: 10;
-    background: @white;
-    width: 100%;
-    left: 0px;
-    top: 35px;
-    list-style-type: none;
-    padding: 0;
-    border: 1px solid #ccc;
-    border-radius: @border-radius-default;
-
-    li {
-        padding: 5px;
-        border-bottom: 1px solid @light-grey;
-    }
-
-    li:hover {
-        background: @light-grey;
-        cursor: pointer;
-    }
-
-    li:last-child {
-        border-bottom: nonce;
-    }
-}
-
 .closed {
     display: none;
-}
-
-.dwcm-error {
-    margin: 100px auto 10px auto;
-
-    color: @dark-grey;
-    text-align: center;
-    font-size: 20px;
-    .glyphicon {
-        font-size: 30px;
-    }
 }
