@@ -1,24 +1,17 @@
 export default {
-    // "some.translation.key": "Text for some.translation.key",
-    //
-    // "a": {
-    //   "nested": {
-    //     "key": "Text for a.nested.key"
-    //   }
-    // },
-    //
-    // "key.with.interpolation": "Text with {{anInterpolation}}"
     definitions: {
         zoological: "zoologiskt",
         name: "Namn",
         accession: "Accession",
         male: 'Hane',
         female: 'Hona',
-        unknown: 'Okänt'
+        unknown: 'Okänt',
+        date: 'Datum'
     },
     main: {
         application_name: "DINA Samlingshanteraren",
-        welcome: "Välkommen till Samlingshanteraren!"
+        welcome: "Välkommen till Samlingshanteraren!",
+        error: "Ett fel uppstod, försök igen eller gå till startsidan."
     },
     navigation: {
         start: "Start",
@@ -61,9 +54,18 @@ export default {
             'preparation-type': 'Preparationstyp',
             count: 'Antal',
             'life-stage': 'Livsstadie',
-            'sex': 'Kön',
-            'measurements': 'Mätningar',
-            'condition': 'Kondition'
+            sex: 'Kön',
+            measurements: 'Mätningar',
+            condition: 'Kondition',
+            'collecting-event': {
+                'start-date': 'Insamlingsdatum(åååå/mm/dd)',
+                method: 'Insamlingsmetod',
+                'verbatim-locality': 'Lokal',
+                'verbatim-collector': 'Insamlare',
+                'max-elevation': 'Nivå ö hav',
+                'min-elevation': 'Nivå u hav',
+                'select-existing': 'Välj från sparade insamlingstillfällen'
+            }
         }
     }
 };

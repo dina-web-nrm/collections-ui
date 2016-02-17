@@ -40,7 +40,7 @@ export default Ember.Controller.extend({
         'dwcm-basic-data',
         'dwcm-taxonomy',
         'dwcm-preparation',
-        // 'dwcm-collecting-event'
+        'dwcm-collecting-event'
     ]
 
 });

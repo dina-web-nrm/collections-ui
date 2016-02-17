@@ -3,19 +3,24 @@ import DS from 'ember-data';
 export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
     primaryKey: 'collectionObjectID',
     attrs: {
-        'agent': 'createdByAgentID',
-        'collection': 'collectionMemberID',
-        'accession': 'accessionID',
-        'determinations': {
+        agent: 'createdByAgentID',
+        cataloger: 'catalogerID',
+        collection: 'collectionMemberID',
+        accession: 'accessionID',
+        determinations: {
             key: 'determinationList',
             serialize: 'records'
         },
-        'preparations': {
+        preparations: {
             key: 'preparationList',
             serialize: 'records'
         },
-        'objectAttribute': {
+        objectAttribute: {
             key: 'collectionObjectAttributeID',
+            serialize: 'records'
+        },
+        collectingEvent: {
+            key: 'collectingEventID',
             serialize: 'records'
         }
     },
@@ -34,6 +39,9 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         // Parse AccessionID to integer.
         json.accessionID = json.accessionID && parseInt(json.accessionID);
         json.createdByAgentID = parseInt(json.createdByAgentID);
+
+        json.catalogerID = parseInt(json.createdByAgentID);
+        json.catalogedDate = json.timestampCreated;
 
         json.determinationList = json.determinations;
         json.determinationList.forEach(function(element) {
@@ -60,6 +68,20 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         json.collectionObjectAttributeID.createdByAgentID = parseInt(json.createdByAgentID);
 
         delete json.objectAttribute;
+
+        if (json.collectingEvent) {
+            json.collectingEventID = json.collectingEvent;
+            json.collectingEventID.collectingEventID = parseInt(json.collectingEventID.collectingEventID);
+            json.collectingEventID.disciplineID = 3;
+
+            if(!json.collectingEventID.collectingEventID) {
+                delete json.collectingEventID.collectingEventID;
+            }
+
+            json.collectingEventID.localityID = parseInt(json.collectingEventID.localityID);
+        }
+
+        delete json.collectingEvent;
 
         return json;
     }

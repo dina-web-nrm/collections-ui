@@ -1,30 +1,109 @@
 {{#dwcm-field-group identifier="dwcm-collecting-event"}}
-    <div class="row">
-        <div class="col-xs-8">
-            {{dwcm-autocomplete-textfield label="fields.labels.collecting_event"}}
+    {{#unless isCreating}}
+        <div class="row">
+            <div class="col-xs-8">
+                {{
+                    dwcm-autocomplete-textfield
+                    label="fields.labels.collecting_event"
+
+                    storeName="collecting-event"
+                    filterField="text1"
+                    displayField="givenName"
+                    itemSelected=(action "selectedCollectingEvent")
+
+                    removeCreate=true
+                }}
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label class="control-label"></label>
+                    <div class="input-group">
+                        <a class="btn btn-link" {{action "enableCreate"}}>Skapa nytt</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        {{dwcm-field-placeholder width=4 label='Insamlingsmetod'}}
-    </div>
-    <div class="row">
-        {{dwcm-field-placeholder width=6 label='Insamlingsdatum(åååå/mm/dd)'}}
-        <div class="col-xs-6">
-            {{dwcm-autocomplete-textfield label="fields.labels.collector"}}
+        {{#if model.collectingEvent}}
+            {{dwcm-collecting-event-view model=model.collectingEvent}}
+        {{/if}}
+    {{else}}
+        <div class="row">
+            {{
+                dwcm-textfield width=8
+                label='definitions.name'
+                value=model.collectingEvent.givenName
+                labelAction=(action 'selectExisting')
+                actionText='fields.labels.collecting-event.select-existing'
+            }}
+            {{
+                dwcm-textfield width=4
+                label='fields.labels.collecting-event.method'
+                value=model.collectingEvent.method
+            }}
         </div>
-    </div>
-    <div class="row">
-        {{dwcm-field-placeholder width=6 label='Datum'}}
-        {{dwcm-field-placeholder width=6 label='Insamlare'}}
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            {{dwcm-autocomplete-textfield label="fields.labels.collecting_place"}}
+        <div class="row">
+            {{
+                dwcm-textfield
+                width=6
+                label='fields.labels.collecting-event.start-date'
+                value=model.collectingEvent.startDate
+            }}
+            <div class="col-xs-6">
+                {{
+                    dwcm-autocomplete-textfield label="fields.labels.collector"
+                    disabled=true
+                }}
+            </div>
         </div>
-        {{dwcm-field-placeholder width=3 label='Land'}}
-        {{dwcm-field-placeholder width=3 label='...eller högre geografi'}}
-    </div>
-    <div class="row">
-        {{dwcm-field-placeholder width=6 label='Lokal'}}
-        {{dwcm-field-placeholder width=3 label='Fältrubrik'}}
-        {{dwcm-field-placeholder width=3 label='Fältrubrik'}}
-    </div>
+        <div class="row">
+            {{
+                dwcm-textfield
+                width=6
+
+                placeholder='definitions.date'
+                value=model.collectingEvent.verbatimDate
+            }}
+            {{
+                dwcm-textfield width=6 disabled=true
+                placeholder="fields.labels.collecting-event.verbatim-collector"
+            }}
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                {{
+                    dwcm-autocomplete-textfield
+                    label="fields.labels.collecting_place"
+
+                    storeName='locality'
+                    displayField='localityName'
+                    filterField='localityName'
+
+                    itemSelected=(action 'selectedLocality')
+                }}
+            </div>
+            {{dwcm-field-placeholder width=3 label='Land' disabled=true}}
+            {{dwcm-field-placeholder width=3 label='...eller högre geografi' disabled=true}}
+        </div>
+        <div class="row">
+            {{
+                dwcm-textfield width=6
+                label=false
+                placeholder='fields.labels.collecting-event.verbatim-locality'
+                value=model.collectingEvent.verbatimLocality
+            }}
+            {{
+                dwcm-textfield type='number' width=2
+                label='fields.labels.collecting-event.min-elevation'
+                disabled=true
+                value=model.collectingEvent.locality.maxElevation
+            }}
+                        {{
+                dwcm-textfield type='number' width=2
+                label='fields.labels.collecting-event.min-elevation'
+                disabled=true
+                value=model.collectingEvent.locality.minElevation
+            }}
+            {{dwcm-field-placeholder width=2 label='Värdväxt/djur' disabled=true}}
+        </div>
+    {{/unless}}
 {{/dwcm-field-group}}

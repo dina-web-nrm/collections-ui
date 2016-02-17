@@ -9,6 +9,7 @@ export default Ember.Component.extend({
     /** Required store. */
     store: Ember.inject.service('store'),
 
+    /** Default options for sex field. */
     sexOptions: [{
             value: 'unknown',
             displayName: 'definitions.unknown'
