@@ -10,9 +10,8 @@
             focus-in="onFocus"
 
             placeholder=(if placeholder placeholder 'Skriv in/välj')
-
+            disabled=disabled
         }}
-
         {{#unless removeCreate}}
             <div class="input-group-btn">
                 <button disabled title="Create new(not supported yet)" type="button" class="btn btn-primary" aria-label="Add">
