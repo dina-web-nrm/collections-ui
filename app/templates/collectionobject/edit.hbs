@@ -1,0 +1,27 @@
+<div class="container dwcm-collectionobject-new__body">
+    <div class="page-header">
+        <h2>{{t 'collectionobject.new.title' name=entityType}}: <small>{{model.catalogNumber}}</small></h2>
+    </div>
+    <ul class="nav nav-pills">
+        {{#each groups as |group|}}
+            <li>
+                <a class="clickable" {{action "navigationClick" group}}>{{t group}}</a>
+            </li>
+        {{/each}}
+    </ul>
+    {{#each groups as |group|}}
+        {{component group model=model}}
+    {{/each}}
+</div>
+<div class="container dwcm-collectionobject-new__toolbar">
+    <div class="btn-toolbar">
+        <a class="btn btn-success" {{action 'submitForm'}}>{{t 'collectionobject.new.toolbar.save'}}</a>
+        <div class="btn-group">
+            <a class="btn btn-default">{{t 'collectionobject.new.toolbar.duplicate'}}</a>
+            <a class="btn btn-default">{{t 'collectionobject.new.toolbar.print'}}</a>
+        </div>
+        {{#link-to 'collectionobject.view' model class="btn btn-danger pull-right"}}
+            {{t 'collectionobject.new.toolbar.close'}}
+        {{/link-to}}
+    </div>
+</div>

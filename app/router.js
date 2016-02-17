@@ -12,6 +12,10 @@ Router.map(function() {
         path: 'collectionobject/:collectionobject_id'
     });
 
+    this.route('collectionobject.edit', {
+        path: 'collectionobject/:collectionobject_id/edit'
+    });
+
     this.route('collectionobject.new', {
         path: 'collectionobject/new'
     });
