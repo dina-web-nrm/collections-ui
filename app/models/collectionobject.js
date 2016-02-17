@@ -8,9 +8,12 @@ export default DS.Model.extend(DependentRelationships, {
     guid: DS.attr('string'),
     catalogNumber: DS.attr('string'),
     timestampCreated: DS.attr('number'),
+    catalogedDate: DS.attr('date'),
     name: DS.attr('string'),
 
     agent: DS.belongsTo('agent', {async: true}),
+
+    cataloger: DS.belongsTo('agent', {async: true}),
     collection: DS.belongsTo('collection', {async: true}),
     accession: DS.belongsTo('accession', {async: true}),
     determinations: DS.hasMany('determinations', {async: true}),

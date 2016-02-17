@@ -3,22 +3,23 @@ import DS from 'ember-data';
 export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
     primaryKey: 'collectionObjectID',
     attrs: {
-        'agent': 'createdByAgentID',
-        'collection': 'collectionMemberID',
-        'accession': 'accessionID',
-        'determinations': {
+        agent: 'createdByAgentID',
+        cataloger: 'catalogerID',
+        collection: 'collectionMemberID',
+        accession: 'accessionID',
+        determinations: {
             key: 'determinationList',
             serialize: 'records'
         },
-        'preparations': {
+        preparations: {
             key: 'preparationList',
             serialize: 'records'
         },
-        'objectAttribute': {
+        objectAttribute: {
             key: 'collectionObjectAttributeID',
             serialize: 'records'
         },
-        'collectingEvent': {
+        collectingEvent: {
             key: 'collectingEventID',
             serialize: 'records'
         }
@@ -74,8 +75,6 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         }
 
         json.collectingEventID.localityID = parseInt(json.collectingEventID.localityID);
-
-        console.log(json.collectingEventID)
 
         delete json.collectingEvent;
 
