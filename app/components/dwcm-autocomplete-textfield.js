@@ -33,9 +33,8 @@ export default Ember.Component.extend(ClickOutsideComponent, {
     /** Update dropdown list when index change. */
     onHighlightedIndexChange: function () {
         if (this.get('hasFocus')) {
-            var elementQuery = 'li[tabindex='+ this.get('highlightedIndex') +']' ;
-            var listItem = this.$(elementQuery);
-            console.log(listItem);
+            let listItem = this.$('li[tabindex='+ this.get('highlightedIndex') +']');
+
             if (listItem) {
                 listItem.addClass('active').siblings().removeClass('active');
             }
