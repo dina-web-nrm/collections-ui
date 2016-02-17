@@ -59,7 +59,9 @@ export default {
             condition: 'Kondition',
             'collecting-event': {
                 'start-date': 'Insamlingsdatum(åååå/mm/dd)',
-                method: 'Insamlingsmetod'
+                method: 'Insamlingsmetod',
+                'verbatim-locality': 'Lokal',
+                'verbatim-collector': 'Insamlare'
             }
         }
     }

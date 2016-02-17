@@ -7,8 +7,6 @@ export default Ember.Component.extend({
     /** Required store. */
     store: Ember.inject.service('store'),
 
-    createOrSelect: true,
-
     isCreating: false,
 
     newCollectingEvent: function () {

@@ -1,20 +1,19 @@
 {{#dwcm-field-group identifier="dwcm-collecting-event"}}
-    <div class="row">
-        <div class="col-xs-8">
-            {{
-                dwcm-autocomplete-textfield
-                label="fields.labels.collecting_event"
+    {{#unless isCreating}}
+        <div class="row">
+            <div class="col-xs-8">
+                {{
+                    dwcm-autocomplete-textfield
+                    label="fields.labels.collecting_event"
 
-                storeName="collecting-event"
-                filterField="collectingEventID"
-                displayField="id"
-                itemSelected=(action "selectedCollectingEvent")
+                    storeName="collecting-event"
+                    filterField="text1"
+                    displayField="givenName"
+                    itemSelected=(action "selectedCollectingEvent")
 
-                removeCreate=true
-            }}
-        </div>
-
-        {{#if createOrSelect}}
+                    removeCreate=true
+                }}
+            </div>
             <div class="col-xs-4">
                 <div class="form-group">
                     <label class="control-label"></label>
@@ -23,40 +22,49 @@
                     </div>
                 </div>
             </div>
-        {{else}}
+        </div>
+        {{#if model.collectingEvent}}
+            {{dwcm-collecting-event-view model=model.collectingEvent}}
+        {{/if}}
+    {{else}}
+        <div class="row">
+            {{
+                dwcm-textfield width=8
+                label='definitions.name'
+                value=model.collectingEvent.givenName
+            }}
             {{
                 dwcm-textfield width=4
                 label='fields.labels.collecting-event.method'
-                disabled=disableFields
                 value=model.collectingEvent.method
             }}
-        {{/if}}
-    </div>
-
-    {{#unless createOrSelect}}
+        </div>
         <div class="row">
             {{
                 dwcm-textfield
                 width=6
                 label='fields.labels.collecting-event.start-date'
-                disabled=disableFields
                 value=model.collectingEvent.startDate
             }}
             <div class="col-xs-6">
                 {{
-                    dwcm-autocomplete-textfield label="fields.labels.collector" disabled=disableFields
+                    dwcm-autocomplete-textfield label="fields.labels.collector"
+                    disabled=true
                 }}
             </div>
         </div>
         <div class="row">
             {{
                 dwcm-textfield
-                width=6 label='definitions.date'
-                disabled=disableFields
+                width=6
 
-                value=model.collectingEvent.startDate
+                placeholder='definitions.date'
+                value=model.collectingEvent.verbatimDate
             }}
-            {{dwcm-field-placeholder width=6 label='Insamlare' disabled=disableFields}}
+            {{
+                dwcm-textfield width=6 disabled=true
+                placeholder="fields.labels.collecting-event.verbatim-collector"
+            }}
         </div>
         <div class="row">
             <div class="col-xs-6">
@@ -75,13 +83,15 @@
             {{dwcm-field-placeholder width=3 label='...eller högre geografi' disabled=true}}
         </div>
         <div class="row">
-            {{dwcm-field-placeholder width=6 label='Lokal' disabled=true}}
-            {{dwcm-field-placeholder width=3 label='Fältrubrik' disabled=true}}
-            {{dwcm-field-placeholder width=3 label='Fältrubrik' disabled=true}}
+            {{
+                dwcm-textfield width=6
+                label=false
+                placeholder='fields.labels.collecting-event.verbatim-locality'
+                value=model.collectingEvent.verbatimLocality
+            }}
+            {{dwcm-field-placeholder width=2 label='Nivå ö hav' disabled=true}}
+            {{dwcm-field-placeholder width=2 label='Nivå u hav' disabled=true}}
+            {{dwcm-field-placeholder width=2 label='Värdväxt/djur' disabled=true}}
         </div>
-    {{else}}
-        {{#if model.collectingEvent}}
-            {{dwcm-collecting-event-view model=model.collectingEvent}}
-        {{/if}}
     {{/unless}}
 {{/dwcm-field-group}}
