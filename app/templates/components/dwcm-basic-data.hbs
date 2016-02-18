@@ -1,0 +1,31 @@
+{{#dwcm-field-group identifier="dwcm-basic-data"}}
+    <div class="row">
+        <div class="col-xs-6">
+            {{
+                dwcm-autocomplete-textfield
+                label="fields.labels.collection"
+                storeName='collection'
+                displayField='collectionName'
+                filterField='collectionName'
+                itemSelected=(action 'collectionSelected')
+                localData=true
+            }}
+        </div>
+        {{
+            dwcm-textfield
+            width=2
+            label='fields.labels.catalogNumber'
+            value=model.catalogNumber
+        }}
+        <div class="col-xs-4">
+            {{
+                dwcm-autocomplete-textfield
+                label="fields.labels.accession"
+                storeName='accession'
+                displayField='accessionNumber'
+                filterField='accessionNumber'
+                itemSelected=(action 'accessionSelected')
+            }}
+        </div>
+   </div>
+{{/dwcm-field-group}}

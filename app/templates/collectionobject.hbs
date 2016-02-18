@@ -1,0 +1,14 @@
+<div class="container">
+    List all collection objects <a {{action "nextPage"}}>Next page</a>
+    <ul>
+        {{#each model as |collectionObject|}}
+            <li>
+                {{#link-to 'collectionobject.view' collectionObject}}
+                    {{collectionObject.id}} -
+                    {{collectionObject.collection.collectionName}} -
+                    {{collectionObject.agent.fullName}}
+                {{/link-to}}
+            </li>
+        {{/each}}
+    </ul>
+</div>

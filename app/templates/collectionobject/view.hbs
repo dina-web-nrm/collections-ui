@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="page-header">
+        <h1>
+            {{model.id}} / {{model.catalogNumber}}
+            <a style="font-size:15px;line-height:39px;" class="pull-right" href="#edit">Ändra / Lägg till i post</a>
+        </h1>
+    </div>
+    Registrerad av {{model.cataloger.fullName}}, {{model.catalogedDate}}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Grunddata
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row">Enhet:</th>
+                        <td>parentOrganizationID || institutionCCID</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Accession:</th>
+                        <td>{{if model.accession model.accession.accessionNumber 'Ingen accession tillgänglig'}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Samling:</th>
+                        <td>{{model.collection.collectionName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <ul>
+        Determinations
+        {{#each model.determinations as |determination|}}
+            <li>
+                <input type="checkbox" checked={{determination.isCurrent}}>
+                {{determination.taxon.fullName}} - {{determination.taxon.author}}
+            </li>
+        {{/each}}
+    </ul>
+
+    <ul>
+        Preparations
+        {{#each model.preparations as |preparation index|}}
+            <li>
+                {{index}}. {{preparation.preparationType.name}} - {{preparation.countAmt}}
+            </li>
+        {{/each}}
+    </ul>
+
+    <ul>
+        Attributes
+            <li>
+                Stage: {{model.objectAttribute.lifeStage}}
+            </li>
+            <li>
+                Sex: {{model.objectAttribute.sex}}
+            </li>
+            <li>
+                Condition: {{model.objectAttribute.condition}}
+            </li>
+            <li>
+                Measurements: {{model.objectAttribute.measurements}}
+            </li>
+    </ul>
+    {{dwcm-collecting-event-view model=model.collectingEvent}}
+</div>

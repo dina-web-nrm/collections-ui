@@ -1,0 +1,13 @@
+{{#dwcm-field-group identifier="dwcm-taxonomy"}}
+    {{#each model.determinations as |determination|}}
+        {{
+            dwcm-single-determination
+            model=determination
+            remove=(action "removeDetermination")
+        }}
+    {{/each}}
+
+    <a class="clickable" {{action "addDetermination"}}>
+        <i class="glyphicon glyphicon-plus"></i> Lägg till bestämning
+    </a>
+{{/dwcm-field-group}}

@@ -1,0 +1,30 @@
+.dwcm-autocomplete-dropdown {
+    position: absolute;
+    z-index: 10;
+    background: @white;
+    width: 100%;
+    left: 0px;
+    top: 35px;
+    list-style-type: none;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: @border-radius-default;
+
+    li {
+        padding: 5px;
+        border-bottom: 1px solid @light-grey;
+
+        &.active {
+            background: @light-grey;
+        }
+
+        &:hover {
+            background: @light-grey;
+            cursor: pointer;
+        }
+
+        &:last-child {
+            border-bottom: nonce;
+        }
+    }
+}

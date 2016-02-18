@@ -1,43 +1,64 @@
 @import "../../bower_components/bootstrap/less/bootstrap.less";
-@import "color.less";
-@import "variables.less";
-@import "components/language-selector.less";
+@import "dina/dina.less";
 
-@import "bootstrap_overrides.less";
+@import "components/dwcm-language-selector.less";
+@import "components/dwcm-spinner.less";
+@import "components/dwcm-highlighted-list.less";
 
-.navbar-default {
+@import "components/dwcm-error.less";
+@import "components/dwcm-autocomplete-textfield.less";
+@import "components/dwcm-single-determination.less";
+@import "components/dwcm-preparation.less";
+@import "components/dwcm-single-preparation.less";
 
-    .navbar-brand {
-        color: @dark-text;
+.transition-properties(...) {
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}
 
-        font-size: 25px;
+.dwcm-collectionobject-new__body {
+    .page-header, h2 {
+        margin-top: 0;
     }
+}
 
-    .dwcm-secondary-navigation {
-        background: @middle-grey;
+.dwcm-collectionobject-new__toolbar {
 
-        li > a {
-            color: @light-text;
-            font-size: 16px;
-        }
+    background: @middle-grey;
 
-        .open > a, li > a:hover, .open > a:hover {
-            color: @light-text;
-            background: darken(@middle-grey, @darken-percentage);
-        }
+    .btn-toolbar {
+        padding: 10px 0;
+    }
+}
 
-        .active > a {
-            color: @light-text;
-            background: @dark-grey;
+.clickable {
+    cursor: pointer;
+}
 
-            &:hover {
-                color: @light-text;
-                background: darken(@dark-grey, @darken-percentage);
-            }
-        }
-
-        .dropdown-menu {
-            background: @middle-grey;
+.panel-heading {
+    .glyphicon {
+        font-size: 20px;
+        color: @middle-grey;
+        &:hover {
+            color: @dark-grey;
         }
     }
+}
+
+.input-group {
+    width: 100%;
+}
+
+.closed {
+    display: none;
+}
+
+
+.leaflet-container {
+    width: 300px;
+    height: 250px;
+    float: left;
+    margin-right: 10px;
 }

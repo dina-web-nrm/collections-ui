@@ -1,0 +1,104 @@
+{{#dwcm-field-group identifier="dwcm-collecting-event"}}
+    {{#unless isCreating}}
+        <div class="row">
+            <div class="col-xs-12">
+                {{
+                    dwcm-autocomplete-textfield
+                    label="fields.labels.collecting_event"
+
+                    storeName="collecting-event"
+                    filterField="text1"
+                    displayField="givenName"
+                    itemSelected=(action "selectedCollectingEvent")
+
+                    removeCreate=true
+
+                    labelAction=(action 'enableCreate')
+                    actionText='definitions.create-new.1'
+                }}
+            </div>
+        </div>
+        {{#if model.collectingEvent}}
+            {{dwcm-collecting-event-view model=model.collectingEvent}}
+        {{/if}}
+    {{else}}
+        <div class="row">
+            {{
+                dwcm-textfield width=8
+                label='definitions.name'
+                value=model.collectingEvent.givenName
+                labelAction=(action 'selectExisting')
+                actionText='fields.labels.collecting-event.select-existing'
+            }}
+            {{
+                dwcm-textfield width=4
+                label='fields.labels.collecting-event.method'
+                value=model.collectingEvent.method
+            }}
+        </div>
+        <div class="row">
+            {{
+                dwcm-textfield
+                width=6
+                label='fields.labels.collecting-event.start-date'
+                value=model.collectingEvent.startDate
+            }}
+            <div class="col-xs-6">
+                {{
+                    dwcm-autocomplete-textfield label="fields.labels.collector"
+                    disabled=true
+                }}
+            </div>
+        </div>
+        <div class="row">
+            {{
+                dwcm-textfield
+                width=6
+
+                placeholder='definitions.date'
+                value=model.collectingEvent.verbatimDate
+            }}
+            {{
+                dwcm-textfield width=6 disabled=true
+                placeholder="fields.labels.collecting-event.verbatim-collector"
+            }}
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                {{
+                    dwcm-autocomplete-textfield
+                    label="fields.labels.collecting_place"
+
+                    storeName='locality'
+                    displayField='localityName'
+                    filterField='localityName'
+
+                    itemSelected=(action 'selectedLocality')
+                    removeCreate=true
+
+                    actionText='definitions.create-new.2'
+                    labelAction=(action 'enableCreate')
+                }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 {{if model.collectingEvent.locality '' 'closed'}}">
+                {{#dwcm-highlighted-list list=localityDisplayAttributes}}
+                    {{#if model.collectingEvent.locality.latitude1}}
+                        {{#leaflet-map
+                            lat=model.collectingEvent.locality.latitude1
+                            lng=model.collectingEvent.locality.longitude1
+                            zoom=5
+                        }}
+                            {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+
+                            {{#circle-marker-layer location=model.collectingEvent.locality.location radius=5 color='#ff0000'}}
+                                <p>{{model.locality.localityName}}</p>
+                            {{/circle-marker-layer}}
+                        {{/leaflet-map}}
+                    {{/if}}
+                {{/dwcm-highlighted-list}}
+            </div>
+        </div>
+    {{/unless}}
+{{/dwcm-field-group}}

@@ -1,0 +1,32 @@
+{{#dwcm-field-group identifier="dwcm-preparation"}}
+    {{index}}
+    <div class="row">
+        {{
+            dwcm-textfield width=3
+            label='fields.labels.life-stage'
+            value=model.objectAttribute.lifeStage
+        }}
+        {{
+            dwcm-select width=2
+            label='fields.labels.sex'
+            value=model.objectAttribute.sex
+            options=sexOptions
+        }}
+        {{
+            dwcm-textfield width=2
+            label='fields.labels.condition'
+            value=model.objectAttribute.condition
+        }}
+        {{
+            dwcm-textfield width=5
+            label='fields.labels.measurements'
+            value=model.objectAttribute.measurements
+        }}
+    </div>
+    {{#each model.preparations as |preparation|}}
+        {{dwcm-single-preparation model=preparation remove=(action 'removePreparation')}}
+    {{/each}}
+    <a class="clickable" {{action "addPreparation"}}>
+        <i class="glyphicon glyphicon-plus"></i> Lägg till del/preparation
+    </a>
+{{/dwcm-field-group}}

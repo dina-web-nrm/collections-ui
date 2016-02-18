@@ -1,0 +1,23 @@
+.dwcm-component-language-selector {
+    margin: 15px 0 0 0;
+    li {
+        list-style-type: none;
+        float: right;
+        text-align: center;
+        cursor: pointer;
+        padding: 0 5px;
+        color: @dark-text;
+
+        &:hover {
+            color: @dark-text-hover;
+        }
+        
+        &:last-child {
+            border-right: 1px solid @dark-text;
+        }
+        
+        &.active {
+            text-decoration: underline;
+        }
+    }
+}
