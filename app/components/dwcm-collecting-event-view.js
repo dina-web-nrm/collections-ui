@@ -3,13 +3,23 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 
     /** Map default zoom level. */
-    zoom: 10,
+    zoom: 5,
 
-    /** Locality location converted to array. */
-    location: Ember.computed('model.locality.latitude1', 'model.locality.longitude1',  function () {
+    /** Attributes to display in list. */
+    displayAttributes: Ember.computed('model.startDate', 'model.method', 'model.locality.localityName', function () {
         return [
-            this.get('model').get('locality').get('latitude1'),
-            this.get('model').get('locality').get('longitude1')
+            {
+                title:' Insamlingsdatum',
+                value: this.get('model').get('startDate')
+            },
+            {
+                title:'Metod',
+                value: this.get('model').get('method')
+            },
+            {
+                title:'Fyndplats',
+                value: this.get('model').get('locality').get('localityName')
+            }
         ];
     })
 });
