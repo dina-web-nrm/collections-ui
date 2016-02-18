@@ -21,6 +21,25 @@ export default Ember.Component.extend({
         return this._newCollectingEvent;
     }.property(),
 
+    localityDisplayAttributes: Ember.computed('model.collectingEvent.locality.localityName', function () {
+        return [{
+            title:'Fyndplats',
+            value: this.get('model').get('collectingEvent').get('locality').get('localityName')
+        }, {
+            title: 'Longitude',
+            value: this.get('model').get('collectingEvent').get('locality').get('longitude1')
+        }, {
+           title: 'Latitude',
+           value: this.get('model').get('collectingEvent').get('locality').get('latitude1')
+        }, {
+           title: 'Höjd ö hav',
+           value: this.get('model').get('collectingEvent').get('locality').get('maxElevation')
+        }, {
+           title: 'höjd u hav',
+           value: this.get('model').get('collectingEvent').get('locality').get('minElevation')
+        }];
+    }),
+
     actions: {
 
         /** Enable create mode. */

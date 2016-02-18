@@ -6,10 +6,15 @@ moduleForComponent('dwcm-collecting-event-view', 'Integration | Component | dwcm
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });"
+  this.set('testList', [{
+      title: 'title1',
+      value: 'value1'
+  }, {
+      title: 'title2',
+      value: 'value2'
+  }]);
+  this.render(hbs`{{dwcm-collecting-event-view displayAttributes=testList}}`);
 
-  this.render(hbs`{{dwcm-collecting-event-view}}`);
-
-  assert.equal(this.$('li').length, 3);
+  assert.equal(this.$('li').length, 2);
 });

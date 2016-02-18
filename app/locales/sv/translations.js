@@ -6,7 +6,11 @@ export default {
         male: 'Hane',
         female: 'Hona',
         unknown: 'Okänt',
-        date: 'Datum'
+        date: 'Datum',
+        'create-new': {
+            1: 'Skapa nytt',
+            2: 'Skapa ny'
+        }
     },
     main: {
         application_name: "DINA Samlingshanteraren",

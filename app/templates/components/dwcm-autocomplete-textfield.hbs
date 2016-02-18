@@ -1,5 +1,14 @@
 <div class="form-group">
-    <label class="control-label">{{t label}}:</label>
+    {{#if label}}
+        <label class="control-label">
+            {{t label}}:
+        </label>
+    {{/if}}
+    {{#if labelAction}}
+        <a class="pull-right clickable" {{action 'runLabelAction'}}>
+            {{t actionText}}
+        </a>
+    {{/if}}
     <div class="input-group">
         {{input
             type="text"

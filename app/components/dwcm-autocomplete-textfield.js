@@ -227,6 +227,11 @@ export default Ember.Component.extend(ClickOutsideComponent, {
             // Should be set from parent.
             this.get('itemSelected')(item);
             this.set('hasSelected', item);
+        },
+
+        /** Run specified label action. */
+        runLabelAction () {
+            this.get('labelAction')();
         }
     }
 });

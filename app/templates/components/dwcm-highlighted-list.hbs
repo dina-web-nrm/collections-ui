@@ -1,0 +1,13 @@
+{{#unless yieldAfter}}
+    {{yield}}
+{{/unless}}
+<ul>
+    {{#each list as |item|}}
+        {{#if item.value}}
+            <li>{{get item 'title'}}: <span>{{get item 'value'}}</span></li>
+        {{/if}}
+    {{/each}}
+</ul>
+{{#if yieldAfter}}
+    {{yield}}
+{{/if}}
