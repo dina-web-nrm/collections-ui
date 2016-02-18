@@ -11,6 +11,8 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{dwcm-single-determination}}`);
 
-  assert.equal(this.$('.dwcm-autocomplete-textfield label').text().trim(), 'Namn:Bestämmare:');
+  assert.equal(
+      this.$('.dwcm-autocomplete-textfield:first label').text().trim(), 'Namn:'
+  );
 
 });
