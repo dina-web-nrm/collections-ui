@@ -25,7 +25,7 @@ module.exports = function(environment) {
   if (environment === 'development') {
 
     // Basic logging, e.g. "Transitioned into 'post'"
-    ENV.LOG_TRANSITIONS = true, 
+    ENV.LOG_TRANSITIONS = true,
 
     // Extremely detailed logging, highlighting every internal
     // step made while transitioning into a route, including
@@ -36,6 +36,9 @@ module.exports = function(environment) {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    // api.dina-web is specified in the backend reposity.
+    ENV.HOST = 'http://api.dina-web';
   }
 
   if (environment === 'test') {
@@ -52,6 +55,9 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
       ENV.SENTRY_LOGGING = true;
+
+      // String to be replaced when running in production.
+      ENV.HOST = 'REPLACEWITHHOST';
   }
 
   return ENV;
