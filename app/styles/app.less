@@ -1,4 +1,7 @@
 @import "../../bower_components/bootstrap/less/bootstrap.less";
+@import "bootswatch/main.less";
+@import "bootswatch/variables.less";
+
 @import "dina/dina.less";
 
 @import "components/dwcm-language-selector.less";
@@ -16,6 +19,26 @@
   -moz-transition: @arguments;
   -o-transition: @arguments;
   transition: @arguments;
+}
+
+.dwcm-application-logo {
+    background: url('/logo-small.png') no-repeat;
+    height: 40px;
+    width: 168px;
+    margin: 0 10px 0 0;
+    float: left;
+}
+
+.dwcm-appliciation-brand {
+    font-size: 25px;
+    color: @dark-text;
+
+    margin: 10px 0 0 5px;
+    line-height: 40px;
+
+    &:hover {
+        color: @dark-text-hover;
+    }
 }
 
 .dwcm-collectionobject-new__body {

@@ -13,7 +13,7 @@ export default {
         }
     },
     main: {
-        application_name: "DINA Samlingshanteraren",
+        application_name: "Samlingshanteraren",
         welcome: "Välkommen till Samlingshanteraren!",
         error: "Ett fel uppstod, försök igen eller gå till startsidan."
     },
