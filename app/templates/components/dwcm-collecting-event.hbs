@@ -44,10 +44,24 @@
                 value=model.collectingEvent.startDate
             }}
             <div class="col-xs-6">
-                {{
-                    dwcm-autocomplete-textfield label="fields.labels.collector"
-                    disabled=true
+                {{#dwcm-autocomplete-textfield
+                    label="fields.labels.collector"
+
+                    multiSelect=true
+
+                    storeName="agent"
+                    filterField="lastName"
+                    displayField="fullName"
+                    itemSelected=(action "createCollector")
                 }}
+                    <div class="label-group {{if model.collectingEvent.collectors.length '' 'closed'}}">
+                        {{#each model.collectingEvent.collectors as |collector|}}
+                            <span class="badge">
+                                {{collector.agent.fullName}} <i class="glyphicon glyphicon-remove" {{action 'removeCollector' collector}}></i>
+                            </span>
+                        {{/each}}
+                    </div>
+                {{/dwcm-autocomplete-textfield}}
             </div>
         </div>
         <div class="row">
@@ -58,10 +72,7 @@
                 placeholder='definitions.date'
                 value=model.collectingEvent.verbatimDate
             }}
-            {{
-                dwcm-textfield width=6 disabled=true
-                placeholder="fields.labels.collecting-event.verbatim-collector"
-            }}
+            {{dwcm-textfield width=6 disabled=true placeholder="fields.labels.collecting-event.verbatim-collector"}}
         </div>
         <div class="row">
             <div class="col-xs-12">

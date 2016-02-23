@@ -64,5 +64,7 @@
                 Measurements: {{model.objectAttribute.measurements}}
             </li>
     </ul>
-    {{dwcm-collecting-event-view model=model.collectingEvent}}
+    {{#if model.collectingEvent}}
+        {{dwcm-collecting-event-view model=model.collectingEvent}}
+    {{/if}}
 </div>
