@@ -1,8 +1,8 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('collecting-event', 'Unit | Model | collecting event', {
+moduleForModel('collector', 'Unit | Model | collector', {
   // Specify the other units that are required for this test.
-  needs: ['model:locality', 'model:collector']
+  needs: ['model:agent']
 });
 
 test('it exists', function(assert) {
