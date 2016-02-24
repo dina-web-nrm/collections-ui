@@ -2,7 +2,7 @@
 @import "bootswatch/main.less";
 @import "bootswatch/variables.less";
 
-@import "dina/dina.less";
+@import "footer.less";
 
 @import "components/dwcm-language-selector.less";
 @import "components/dwcm-spinner.less";
@@ -14,11 +14,13 @@
 @import "components/dwcm-preparation.less";
 @import "components/dwcm-single-preparation.less";
 
-.transition-properties(...) {
-  -webkit-transition: @arguments;
-  -moz-transition: @arguments;
-  -o-transition: @arguments;
-  transition: @arguments;
+
+body {
+    background: @gray-lighter;
+}
+
+.container.logo {
+    margin-top: 10px;
 }
 
 .dwcm-application-logo {
@@ -31,28 +33,19 @@
 
 .dwcm-appliciation-brand {
     font-size: 25px;
-    color: @dark-text;
+    color: @text-color;
 
     margin: 10px 0 0 5px;
     line-height: 40px;
 
     &:hover {
-        color: @dark-text-hover;
+        color: @text-color-hover;
     }
 }
 
 .dwcm-collectionobject-new__body {
     .page-header, h2 {
-        margin-top: 0;
-    }
-}
-
-.dwcm-collectionobject-new__toolbar {
-
-    background: @middle-grey;
-
-    .btn-toolbar {
-        padding: 10px 0;
+        margin-top: 10px;
     }
 }
 
@@ -60,12 +53,16 @@
     cursor: pointer;
 }
 
-.panel-heading {
+.panel-default > .panel-heading {
+    border: none;
+    background-color: @white;
+    font-size: 20px;
+
     .glyphicon {
         font-size: 20px;
-        color: @middle-grey;
+        color: @gray-dark;
         &:hover {
-            color: @dark-grey;
+            color: @gray-darker;
         }
     }
 }
@@ -84,4 +81,93 @@
     height: 250px;
     float: left;
     margin-right: 10px;
+}
+
+label {
+    font-weight: normal;
+}
+
+/* Navigation and bars */
+.navbar-default {
+    background: @white;
+    border-color: @white;
+
+    padding-top: 10px;
+
+    border-top: 4px solid #74C375;
+    border-radius: 0;
+}
+
+/* Buttons */
+
+.btn {
+    border-radius: @border-radius-base;
+}
+
+.navbar-default {
+
+    border-bottom: 1px solid @gray-light;
+
+    .navbar-brand {
+        color: @text-color;
+        font-size: 25px;
+    }
+
+    .dwcm-secondary-navigation {
+
+        .navbar-nav > .open > a,
+        .navbar-nav > .open > a:hover,
+        .navbar-nav > .open > a:focus {
+            background-color: @white;
+            color: @text-color;
+        }
+
+        li {
+            border-right: 1px solid @gray-light;
+            cursor: pointer;
+        }
+
+        li:last-child {
+            border-right: none;
+        }
+
+        li > a {
+            color: @text-color;
+            font-size: 16px;
+        }
+
+        .open > a, li > a:hover, .open > a:hover {
+            background: @white;
+            text-decoration: @link-hover-decoration;
+        }
+
+        .navbar-nav > .active > a {
+            color: @brand-success;
+            font-weight: bold;
+            background: @white;
+
+            &:hover {
+                color: @brand-success;
+                text-decoration: @link-hover-decoration;
+            }
+        }
+
+        .dropdown-menu {
+            background: @white;
+
+            & > .active > a,
+            & > .active > a:hover,
+            & > .active > a:focus {
+                background: @white;
+                color: @brand-success;
+            }
+        }
+    }
+}
+
+/* Forms */
+
+/* Decrease form margin. */
+.form-group {
+    margin-bottom: 5px;
 }

@@ -6,16 +6,17 @@
         text-align: center;
         cursor: pointer;
         padding: 0 5px;
-        color: @dark-text;
+        color: @text-color;
 
         &:hover {
-            color: @dark-text-hover;
+            color: @brand-success;
+            text-decoration: @link-hover-decoration;
         }
-        
+
         &:last-child {
-            border-right: 1px solid @dark-text;
+            border-right: 1px solid @gray-light;
         }
-        
+
         &.active {
             text-decoration: underline;
         }

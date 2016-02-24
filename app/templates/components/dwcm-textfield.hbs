@@ -10,13 +10,11 @@
                 {{t actionText}}
             </a>
         {{/if}}
-        <div class="input-group">
-            {{
-                input value=value
-                type=(if type type 'text')
-                class="form-control" disabled=disabled
-                placeholder=(if placeholder (t placeholder) '')
-            }}
-        </div>
+        {{
+            input value=value
+            type=(if type type 'text')
+            class="form-control" disabled=disabled
+            placeholder=(if placeholder (t placeholder) '')
+        }}
     </div>
 </div>

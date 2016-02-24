@@ -1,30 +1,28 @@
-// Spacelab 3.3.5
+// Flatly 3.3.5
 // Bootswatch
 // -----------------------------------------------------
 
-@web-font-path: "https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700";
+@web-font-path: "https://fonts.googleapis.com/css?family=Lato:400,700,400italic";
 
 .web-font(@path) {
   @import url("@{path}");
 }
 .web-font(@web-font-path);
 
-.btn-shadow(@color) {
-  #gradient > .vertical-three-colors(lighten(@color, 15%), @color, 50%, darken(@color, 4%));
-  filter: none;
-  border: 1px solid darken(@color, 10%);
-}
-
 // Navbar =====================================================================
 
 .navbar {
+  border-width: 0;
 
-  .btn-shadow(@navbar-default-bg);
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  &-default {
+
+    .badge {
+      background-color: #fff;
+      color: @navbar-default-bg;
+    }
+  }
 
   &-inverse {
-    .btn-shadow(@navbar-inverse-bg);
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
 
     .badge {
       background-color: #fff;
@@ -32,115 +30,309 @@
     }
   }
 
-  .badge {
-    text-shadow: none;
-  }
-
-  &-nav > li > a,
-  &-nav > li > a:hover {
-    padding-top: (@navbar-padding-vertical + 2px);
-    padding-bottom: (@navbar-padding-vertical - 2px);
-    .transition(color ease-in-out .2s);
-  }
-
-  &-brand,
-  &-brand:hover {
-    .transition(color ease-in-out .2s);
-  }
-
-  .caret,
-  .caret:hover {
-    .transition(border-color ease-in-out .2s);
-  }
-
-  .dropdown-menu {
-    text-shadow: none;
+  &-brand {
+    line-height: 1;
   }
 }
 
 // Buttons ====================================================================
 
 .btn {
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+  border-width: 2px;
+}
 
-  &-default {
-    .btn-shadow(@btn-default-bg);
+.btn:active {
+  .box-shadow(none);
+}
 
-    &:hover {
-      .btn-shadow(darken(@btn-default-bg, 4%));
-    }
-  }
-
-  &-primary {
-    .btn-shadow(@btn-primary-bg);
-
-    &:hover {
-      .btn-shadow(darken(@btn-primary-bg, 4%));
-    }
-  }
-
-  &-success {
-    .btn-shadow(@btn-success-bg);
-
-    &:hover {
-      .btn-shadow(darken(@btn-success-bg, 4%));
-    }
-  }
-
-  &-info {
-    .btn-shadow(@btn-info-bg);
-
-    &:hover {
-      .btn-shadow(darken(@btn-info-bg, 4%));
-    }
-  }
-
-  &-warning {
-    .btn-shadow(@btn-warning-bg);
-
-    &:hover {
-      .btn-shadow(darken(@btn-warning-bg, 4%));
-    }
-  }
-
-  &-danger {
-    .btn-shadow(@btn-danger-bg);
-
-    &:hover {
-      .btn-shadow(darken(@btn-danger-bg, 4%));
-    }
-  }
-
-  &-link {
-    text-shadow: none;
-  }
-
-  &:active,
-  &.active {
-    background-image: none;
-    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
-  }
+.btn-group.open .dropdown-toggle {
+  .box-shadow(none);
 }
 
 // Typography =================================================================
 
+.text-primary,
+.text-primary:hover {
+  color: @brand-primary;
+}
+
+.text-success,
+.text-success:hover {
+  color: @brand-success;
+}
+
+.text-danger,
+.text-danger:hover {
+  color: @brand-danger;
+}
+
+.text-warning,
+.text-warning:hover {
+  color: @brand-warning;
+}
+
+.text-info,
+.text-info:hover {
+  color: @brand-info;
+}
+
 // Tables =====================================================================
 
-// Forms ======================================================================
+table,
+.table {
 
-// Navs =======================================================================
+  a:not(.btn) {
+    text-decoration: underline;
+  }
 
-// Indicators =================================================================
+  .dropdown-menu a {
+    text-decoration: none;
+  }
 
-// Progress bars ==============================================================
+  .success,
+  .warning,
+  .danger,
+  .info {
+    color: #fff;
 
-// Containers =================================================================
-
-.panel {
-
-  &-primary {
-    .panel-title {
+    > th > a,
+    > td > a,
+    > a {
       color: #fff;
     }
   }
+
+  > thead > tr > th,
+  > tbody > tr > th,
+  > tfoot > tr > th,
+  > thead > tr > td,
+  > tbody > tr > td,
+  > tfoot > tr > td {
+    border: none;
+  }
+
+  &-bordered > thead > tr > th,
+  &-bordered > tbody > tr > th,
+  &-bordered > tfoot > tr > th,
+  &-bordered > thead > tr > td,
+  &-bordered > tbody > tr > td,
+  &-bordered > tfoot > tr > td {
+    border: 1px solid @table-border-color;
+  }
+}
+
+// Forms ======================================================================
+
+.form-control,
+input {
+  border-width: 1px;
+  border-radius: @input-border-radius;
+
+  .box-shadow(none);
+
+  &:focus {
+    .box-shadow(none);
+  }
+}
+
+.input-group
+
+.has-warning {
+  .help-block,
+  .control-label,
+  .radio,
+  .checkbox,
+  .radio-inline,
+  .checkbox-inline,
+  &.radio label,
+  &.checkbox label,
+  &.radio-inline label,
+  &.checkbox-inline label,
+  .form-control-feedback {
+    color: @brand-warning;
+  }
+
+  .form-control,
+  .form-control:focus {
+    border: 2px solid @brand-warning;
+  }
+
+  .input-group-addon {
+    border-color: @brand-warning;
+  }
+}
+
+.has-error {
+  .help-block,
+  .control-label,
+  .radio,
+  .checkbox,
+  .radio-inline,
+  .checkbox-inline,
+  &.radio label,
+  &.checkbox label,
+  &.radio-inline label,
+  &.checkbox-inline label,
+  .form-control-feedback {
+    color: @brand-danger;
+  }
+
+  .form-control,
+  .form-control:focus {
+    border: 2px solid @brand-danger;
+  }
+
+  .input-group-addon {
+    border-color: @brand-danger;
+  }
+}
+
+.has-success {
+  .help-block,
+  .control-label,
+  .radio,
+  .checkbox,
+  .radio-inline,
+  .checkbox-inline,
+  &.radio label,
+  &.checkbox label,
+  &.radio-inline label,
+  &.checkbox-inline label,
+  .form-control-feedback {
+    color: @brand-success;
+  }
+
+  .form-control,
+  .form-control:focus {
+    border: 2px solid @brand-success;
+  }
+
+  .input-group-addon {
+    border-color: @brand-success;
+  }
+}
+
+// Navs =======================================================================
+
+.nav {
+  .open > a,
+  .open > a:hover,
+  .open > a:focus {
+    border-color: transparent;
+  }
+}
+
+.pager {
+  a,
+  a:hover {
+    color: #fff;
+  }
+
+  .disabled {
+    &>a,
+    &>a:hover,
+    &>a:focus,
+    &>span {
+      background-color: @pagination-disabled-bg;
+    }
+  }
+}
+
+// Indicators =================================================================
+
+.close {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.4;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    opacity: 1;
+  }
+}
+
+.alert {
+
+  .alert-link {
+    color: #fff;
+    text-decoration: underline;
+  }
+}
+
+// Progress bars ==============================================================
+
+.progress {
+  height: 10px;
+  .box-shadow(none);
+  .progress-bar {
+    font-size: 10px;
+    line-height: 10px;
+  }
+}
+
+// Containers =================================================================
+
+.well {
+  .box-shadow(none);
+}
+
+a.list-group-item {
+
+  &.active,
+  &.active:hover,
+  &.active:focus {
+    border-color: @list-group-border;
+  }
+
+  &-success {
+    &.active {
+      background-color: @state-success-bg;
+    }
+
+    &.active:hover,
+    &.active:focus {
+      background-color: darken(@state-success-bg, 5%);
+    }
+  }
+
+  &-warning {
+    &.active {
+      background-color: @state-warning-bg;
+    }
+
+    &.active:hover,
+    &.active:focus {
+      background-color: darken(@state-warning-bg, 5%);
+    }
+  }
+
+  &-danger {
+    &.active {
+      background-color: @state-danger-bg;
+    }
+
+    &.active:hover,
+    &.active:focus {
+      background-color: darken(@state-danger-bg, 5%);
+    }
+  }
+}
+
+.panel {
+  &-default {
+    .close {
+      color: @text-color;
+    }
+  }
+}
+
+.modal {
+  .close {
+    color: @text-color;
+  }
+}
+
+.popover {
+  color: @text-color;
 }
