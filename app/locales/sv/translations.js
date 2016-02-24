@@ -51,10 +51,13 @@ export default {
             collecting_event: 'Insamlingstillfälle',
             collection: 'Samling/delsamling',
             catalogNumber: 'Katalognr',
+            determination: {
+                confidence: 'Osäkerhet',
+                method: 'Metod',
+                determiner: 'Bestämmare',
+                'determined-date': 'Datum(åååå-mm-dd)'
+            },
             accession: 'Accession',
-            confidence: 'Osäkerhet',
-            method: 'Metod',
-            determiner: 'Bestämmare',
             'preparation-type': 'Preparationstyp',
             count: 'Antal',
             'life-stage': 'Livsstadie',
