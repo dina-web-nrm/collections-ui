@@ -26,7 +26,7 @@
     {{#each model.preparations as |preparation|}}
         {{dwcm-single-preparation model=preparation remove=(action 'removePreparation')}}
     {{/each}}
-    <a class="clickable" {{action "addPreparation"}}>
+    <a class="btn btn-primary btn-xs" {{action "addPreparation"}}>
         <i class="glyphicon glyphicon-plus"></i> Lägg till del/preparation
     </a>
 {{/dwcm-field-group}}

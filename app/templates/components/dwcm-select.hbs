@@ -1,13 +1,11 @@
 <div class="col-xs-{{if width width 2}}">
     <div class="form-group">
         <label>{{t label}}:</label>
-        <div class="input-group">
-            {{#x-select value=value class="form-control"}}
-                {{#each options as |option|}}
-                {{option}}
-                    {{#x-option value=option.value}}{{t option.displayName}}{{/x-option}}
-                {{/each}}
-            {{/x-select}}
-        </div>
+        {{#x-select value=value class="form-control"}}
+            {{#each options as |option|}}
+            {{option}}
+                {{#x-option value=option.value}}{{t option.displayName}}{{/x-option}}
+            {{/each}}
+        {{/x-select}}
     </div>
 </div>

@@ -2,35 +2,41 @@
     .label-group {
         margin-bottom: 5px;
     }
+
+    .dropdown-group {
+        position: relative;
+    }
 }
 
 .dwcm-autocomplete-dropdown {
     position: absolute;
-    z-index: 10;
+    z-index: 1001;
     background: @white;
     width: 100%;
     left: 0px;
-    top: 35px;
+    top: 46px;
     list-style-type: none;
     padding: 0;
     border: 1px solid #ccc;
-    border-radius: @border-radius-default;
+    border-radius: 0 0 @border-radius-base @border-radius-base;
+
+    .box-shadow(0 6px 12px rgba(0, 0, 0, 0.175));
 
     li {
-        padding: 5px;
-        border-bottom: 1px solid @light-grey;
+        padding: 8px 5px;
+        border-bottom: 1px solid @gray-lighter;
 
         &.active {
-            background: @light-grey;
+            background: @gray-lighter;
         }
 
         &:hover {
-            background: @light-grey;
+            background: @gray-lighter;
             cursor: pointer;
         }
 
         &:last-child {
-            border-bottom: nonce;
+            border-bottom: none;
         }
     }
 }
