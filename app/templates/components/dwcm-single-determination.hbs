@@ -19,14 +19,14 @@
             itemSelected=(action 'setTaxonomy')
         }}
     </div>
-    {{dwcm-textfield width=3 label='fields.labels.confidence' value=model.confidence}}
-    {{dwcm-textfield width=3 label='fields.labels.method' value=model.method}}
+    {{dwcm-textfield width=3 label='fields.labels.determination.confidence' value=model.confidence}}
+    {{dwcm-textfield width=3 label='fields.labels.determination.method' value=model.method}}
 </div>
 <div class="row">
     <div class="col-xs-6">
         {{
             dwcm-autocomplete-textfield
-            label="fields.labels.determiner"
+            label="fields.labels.determination.determiner"
 
             storeName='agent'
 
@@ -35,8 +35,25 @@
             itemSelected=(action 'setDeterminer')
         }}
     </div>
-    {{dwcm-field-placeholder disabled=true width=3 label='Datum(åååå/mm/dd)'}}
-    {{dwcm-field-placeholder disabled=true width=3 label='Typstatus'}}
+    <div class="col-md-4 col-xs-6">
+        <div class="form-group">
+            <label>
+                {{t 'fields.labels.determination.determined-date'}}:
+            </label>
+            {{#bs-datetimepicker
+                date=model.determinedDate
+                updateDate=(action (mut model.determinedDate))
+                format='YYYY-MM-DD'
+                forceDateOutput=true
+            }}
+                {{
+                    input disabled=disabled class="form-control"
+                    name="Date" placeholder=(t 'fields.placeholder.date-format')
+                }}
+            {{/bs-datetimepicker}}
+        </div>
+    </div>
+    {{dwcm-field-placeholder disabled=true width=2 label='Typstatus'}}
 </div>
 <div class="row">
     {{dwcm-field-placeholder disabled=true width=12 label='Taxonomi, bestämmare, datum'}}
