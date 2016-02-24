@@ -25,8 +25,6 @@ export default DS.JSONSerializer.extend({
 
         json.collectorList = collectors;
 
-        console.table([json]);
-
         return json;
     }
 });

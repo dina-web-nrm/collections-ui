@@ -62,7 +62,7 @@ export default {
             measurements: 'Mätningar',
             condition: 'Kondition',
             'collecting-event': {
-                'start-date': 'Insamlingsdatum(åååå/mm/dd)',
+                'start-date': 'Insamlingsdatum(åååå-mm-dd)',
                 method: 'Insamlingsmetod',
                 'verbatim-locality': 'Lokal',
                 'verbatim-collector': 'Insamlare',
@@ -70,6 +70,9 @@ export default {
                 'min-elevation': 'Nivå u hav',
                 'select-existing': 'Välj från sparade insamlingstillfällen'
             }
+        },
+        placeholder: {
+            'date-format': '1985-05-08'
         }
     }
 };
