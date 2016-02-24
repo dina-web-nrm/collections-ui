@@ -9,3 +9,9 @@
         {{/leaflet-map}}
     {{/if}}
 {{/dwcm-highlighted-list}}
+Collectors:
+{{#each model.collectors as |collector|}}
+    <span class="badge">
+        {{collector.agent.fullName}}
+    </span>
+{{/each}}

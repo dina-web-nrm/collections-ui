@@ -24,19 +24,19 @@ export default Ember.Component.extend({
     localityDisplayAttributes: Ember.computed('model.collectingEvent.locality.localityName', function () {
         return [{
             title:'Fyndplats',
-            value: this.get('model').get('collectingEvent').get('locality').get('localityName')
+            value: this.model.get('collectingEvent').get('locality').get('localityName')
         }, {
             title: 'Longitude',
-            value: this.get('model').get('collectingEvent').get('locality').get('longitude1')
+            value: this.model.get('collectingEvent').get('locality').get('longitude1')
         }, {
            title: 'Latitude',
-           value: this.get('model').get('collectingEvent').get('locality').get('latitude1')
+           value: this.model.get('collectingEvent').get('locality').get('latitude1')
         }, {
            title: 'Höjd ö hav',
-           value: this.get('model').get('collectingEvent').get('locality').get('maxElevation')
+           value: this.model.get('collectingEvent').get('locality').get('maxElevation')
         }, {
            title: 'höjd u hav',
-           value: this.get('model').get('collectingEvent').get('locality').get('minElevation')
+           value: this.model.get('collectingEvent').get('locality').get('minElevation')
         }];
     }),
 
@@ -46,7 +46,7 @@ export default Ember.Component.extend({
         enableCreate () {
             this.set('isCreating', true);
 
-            this.get('model').set(
+            this.model.set(
                 'collectingEvent', this.get('newCollectingEvent')
             );
         },
@@ -54,17 +54,43 @@ export default Ember.Component.extend({
         /** Enable selecting existing collectin event. */
         selectExisting () {
             this.set('isCreating', false);
-            this.get('model').set('collectingEvent', undefined);
+            this.model.set('collectingEvent', undefined);
         },
 
         /** Handle collecting event being selected. */
         selectedCollectingEvent (collectingEvent) {
-            this.get('model').set('collectingEvent', collectingEvent);
+            this.model.set('collectingEvent', collectingEvent);
         },
 
         /** Handle locality being selected. */
         selectedLocality (locality) {
-            this.get('model').get('collectingEvent').set('locality', locality);
+            this.model.get('collectingEvent').set('locality', locality);
+        },
+
+        /** Create and add new collector based on *agent*. */
+        createCollector (agent) {
+            let index = this.model.get('collectingEvent.collectors').findBy('agent.id', agent.get('id'));
+
+            if (index !== undefined) {
+                return;
+            }
+
+            let numberOfCollectors = this.model.get('collectingEvent.collectors.length'),
+                isPrimary = numberOfCollectors === 0;
+
+            let collector = this.get('store').createRecord('collector', {
+                agent: agent,
+                isPrimary: isPrimary,
+                orderNumber: numberOfCollectors + 1,
+                timestampCreated: moment().unix()
+            });
+
+            this.model.get('collectingEvent').get('collectors').pushObject(collector);
+        },
+
+        /** Remove collector from collecting event. */
+        removeCollector (collector) {
+            collector.destroyRecord();
         }
     }
 });

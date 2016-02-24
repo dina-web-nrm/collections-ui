@@ -9,6 +9,14 @@ export default Ember.Component.extend(ClickOutsideComponent, {
     /** Setup component css classes. */
     classNames: ['dwcm-autocomplete-textfield'],
 
+    /** Enable multi select.
+     *
+     * When multi select is enabled the textfield will not be
+     * set with the selected value.
+     *
+     */
+    multiSelect: false,
+
     /** Setting to disable create button. */
     disableCreate: true,
 
@@ -55,7 +63,7 @@ export default Ember.Component.extend(ClickOutsideComponent, {
     /** Return if input is invalid. */
     isInvalid: Ember.computed('hasSelected', 'hasFocus', 'value', function () {
         return (
-            (this.get('value') && this.get('value').length > 0) &&
+            (this.get('value') && this.get('value').length > 0 && !this.get('multiSelect')) &&
             !this.get('hasFocus') && !this.get('hasSelected')
         );
     }),
@@ -151,8 +159,10 @@ export default Ember.Component.extend(ClickOutsideComponent, {
         }
 
         // Set item as undefined.
-        this.get('itemSelected')();
-        this.set('hasSelected', false);
+        if (!this.get('multiSelect')) {
+            this.get('itemSelected')();
+            this.set('hasSelected', false);
+        }
 
         this.set('highlightedIndex', -1);
     },
@@ -226,7 +236,10 @@ export default Ember.Component.extend(ClickOutsideComponent, {
         onItemClick (item) {
             // Should be set from parent.
             this.get('itemSelected')(item);
-            this.set('hasSelected', item);
+
+            if (!this.get('multiSelect')) {
+                this.set('hasSelected', item);
+            }
         },
 
         /** Run specified label action. */

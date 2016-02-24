@@ -1,8 +1,9 @@
 <nav class="navbar navbar-default">
-    <div class="container">
-        {{#link-to "index" class="navbar-brand"}}{{t "main.application_name"}}{{/link-to}}
+    <div class="container logo">
+        {{#link-to 'index' class='dwcm-application-logo'}}{{/link-to}}
+        {{#link-to "index" class="dwcm-appliciation-brand"}}{{t "main.application_name"}}{{/link-to}}
+
         {{dwcm-language-selector class="pull-right"}}
-        <p class="pull-right navbar-text">Carl Claesson(Zoologi), <a href="#">{{t "navigation.sign_out"}}</a></p>
     </div>
     <div class="container dwcm-secondary-navigation">
         <ul class="nav navbar-nav">
@@ -28,9 +29,15 @@
       </ul>
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="{{t 'navigation.search.input'}}">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="{{t 'navigation.search.input'}}">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-success">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </div>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">{{t "navigation.search.button"}}</button>
       </form>
     </div>
 </nav>

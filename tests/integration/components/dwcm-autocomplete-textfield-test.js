@@ -16,10 +16,10 @@ test('it renders', function(assert) {
   // Template block usage:"
   this.render(hbs`
     {{#dwcm-autocomplete-textfield label='definitions.name'}}
-      template block text
+        <span>template block text</span>
     {{/dwcm-autocomplete-textfield}}
   `);
 
   // Component should not render block content.
-  assert.equal(this.$().text().trim(), 'Namn:');
+  assert.equal(this.$('span').text().trim(), 'template block text');
 });
