@@ -35,7 +35,7 @@
         {{#each model.determinations as |determination|}}
             <li>
                 <input type="checkbox" checked={{determination.isCurrent}}>
-                {{determination.taxon.fullName}} - {{determination.taxon.author}}
+                {{determination.taxon.fullName}} - {{determination.taxon.author}} - {{determination.determinedDate}}
             </li>
         {{/each}}
     </ul>
@@ -64,5 +64,7 @@
                 Measurements: {{model.objectAttribute.measurements}}
             </li>
     </ul>
-    {{dwcm-collecting-event-view model=model.collectingEvent}}
+    {{#if model.collectingEvent}}
+        {{dwcm-collecting-event-view model=model.collectingEvent}}
+    {{/if}}
 </div>

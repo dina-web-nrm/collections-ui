@@ -10,7 +10,8 @@
     "loader.js": "^3.5.0",
     "qunit": "~1.20.0",
     "moment": "^2.11.2",
-    "leaflet": "~0.7.7"
+    "leaflet": "~0.7.7",
+    "eonasdan-bootstrap-datetimepicker": "~4.14.30"
   },
   "resolutions": {
     "ember": "2.2.0"

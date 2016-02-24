@@ -13,7 +13,7 @@ export default {
         }
     },
     main: {
-        application_name: "DINA Samlingshanteraren",
+        application_name: "Samlingshanteraren",
         welcome: "Välkommen till Samlingshanteraren!",
         error: "Ett fel uppstod, försök igen eller gå till startsidan."
     },
@@ -51,10 +51,13 @@ export default {
             collecting_event: 'Insamlingstillfälle',
             collection: 'Samling/delsamling',
             catalogNumber: 'Katalognr',
+            determination: {
+                confidence: 'Osäkerhet',
+                method: 'Metod',
+                determiner: 'Bestämmare',
+                'determined-date': 'Datum(åååå-mm-dd)'
+            },
             accession: 'Accession',
-            confidence: 'Osäkerhet',
-            method: 'Metod',
-            determiner: 'Bestämmare',
             'preparation-type': 'Preparationstyp',
             count: 'Antal',
             'life-stage': 'Livsstadie',
@@ -62,7 +65,7 @@ export default {
             measurements: 'Mätningar',
             condition: 'Kondition',
             'collecting-event': {
-                'start-date': 'Insamlingsdatum(åååå/mm/dd)',
+                'start-date': 'Insamlingsdatum(åååå-mm-dd)',
                 method: 'Insamlingsmetod',
                 'verbatim-locality': 'Lokal',
                 'verbatim-collector': 'Insamlare',
@@ -70,6 +73,9 @@ export default {
                 'min-elevation': 'Nivå u hav',
                 'select-existing': 'Välj från sparade insamlingstillfällen'
             }
+        },
+        placeholder: {
+            'date-format': '1985-05-08'
         }
     }
 };

@@ -6,6 +6,8 @@ export default DS.Model.extend({
     verbatimDate: DS.attr('string'),
     verbatimLocality: DS.attr('string'),
     timestampCreated: DS.attr('number'),
+    givenName: DS.attr('string'),
+
     locality: DS.belongsTo('locality', {async: true}),
-    givenName: DS.attr('string')
+    collectors: DS.hasMany('collector', {async: true})
 });

@@ -9,7 +9,10 @@
             {{t actionText}}
         </a>
     {{/if}}
-    <div class="input-group">
+
+    {{yield}}
+
+    <div class="dropdown-group {{if removeCreate '' 'input-group'}}">
         {{input
             type="text"
             class="form-control"

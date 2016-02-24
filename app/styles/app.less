@@ -1,5 +1,8 @@
 @import "../../bower_components/bootstrap/less/bootstrap.less";
-@import "dina/dina.less";
+@import "bootswatch/main.less";
+@import "bootswatch/variables.less";
+
+@import "footer.less";
 
 @import "components/dwcm-language-selector.less";
 @import "components/dwcm-spinner.less";
@@ -11,25 +14,44 @@
 @import "components/dwcm-preparation.less";
 @import "components/dwcm-single-preparation.less";
 
-.transition-properties(...) {
-  -webkit-transition: @arguments;
-  -moz-transition: @arguments;
-  -o-transition: @arguments;
-  transition: @arguments;
+
+body {
+    background: @gray-lighter;
 }
 
-.dwcm-collectionobject-new__body {
-    .page-header, h2 {
-        margin-top: 0;
+.container.logo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.dwcm-application-logo {
+    background: url('/logo-small.png') no-repeat;
+    height: 40px;
+    width: 168px;
+    margin: 0 10px 0 0;
+    float: left;
+}
+
+.dwcm-appliciation-brand {
+    font-size: 25px;
+    color: @text-color;
+
+    margin: 10px 0 0 5px;
+    line-height: 40px;
+
+    &:hover {
+        color: @text-color-hover;
     }
 }
 
-.dwcm-collectionobject-new__toolbar {
+.dwcm-collectionobject-new__body {
+    h2 {
+        margin: 0;
+    }
 
-    background: @middle-grey;
-
-    .btn-toolbar {
-        padding: 10px 0;
+    .page-header {
+        border-bottom: 1px solid @gray;
+        margin: 10px 0 0;
     }
 }
 
@@ -37,12 +59,18 @@
     cursor: pointer;
 }
 
-.panel-heading {
+.panel-default > .panel-heading {
+    border: none;
+    border-bottom: 1px solid @gray-lighter;
+
+    background-color: @white;
+    font-size: 20px;
+
     .glyphicon {
         font-size: 20px;
-        color: @middle-grey;
+        color: @gray-dark;
         &:hover {
-            color: @dark-grey;
+            color: @gray-darker;
         }
     }
 }
@@ -61,4 +89,99 @@
     height: 250px;
     float: left;
     margin-right: 10px;
+}
+
+label {
+    font-weight: normal;
+}
+
+
+
+/* Buttons */
+
+.btn {
+    border-radius: @border-radius-base;
+}
+
+/* Navigation and bars */
+.navbar-default {
+    background: @white;
+    border-color: @white;
+
+    padding-top: 10px;
+
+    border-top: 4px solid @brand-success;
+    border-radius: 0;
+}
+
+.navbar-default {
+
+    border-bottom: 1px solid @gray-light;
+
+    .navbar-brand {
+        color: @text-color;
+        font-size: 25px;
+    }
+
+    .dwcm-secondary-navigation {
+
+        .navbar-nav > .open > a,
+        .navbar-nav > .open > a:hover,
+        .navbar-nav > .open > a:focus {
+            background-color: @white;
+            color: @text-color;
+        }
+
+        li {
+            border-right: 1px solid @gray-light;
+            cursor: pointer;
+        }
+
+        li:last-child {
+            border-right: none;
+        }
+
+        li > a {
+            color: @text-color;
+            font-size: 16px;
+        }
+
+        .open > a, li > a:hover, .open > a:hover {
+            background: @white;
+            text-decoration: @link-hover-decoration;
+        }
+
+        .navbar-nav > .active > a {
+            color: @brand-success;
+            font-weight: bold;
+            background: @white;
+
+            &:hover {
+                color: @brand-success;
+                text-decoration: @link-hover-decoration;
+            }
+        }
+
+        .dropdown-menu {
+            background: @white;
+
+            & > .active > a,
+            & > .active > a:hover,
+            & > .active > a:focus {
+                background: @white;
+                color: @brand-success;
+            }
+        }
+    }
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: @link-hover-decoration;
+}
+
+/* Forms */
+
+/* Decrease form margin. */
+.form-group {
+    margin-bottom: 5px;
 }
