@@ -87,6 +87,14 @@ label {
     font-weight: normal;
 }
 
+
+
+/* Buttons */
+
+.btn {
+    border-radius: @border-radius-base;
+}
+
 /* Navigation and bars */
 .navbar-default {
     background: @white;
@@ -96,12 +104,6 @@ label {
 
     border-top: 4px solid #74C375;
     border-radius: 0;
-}
-
-/* Buttons */
-
-.btn {
-    border-radius: @border-radius-base;
 }
 
 .navbar-default {
@@ -163,6 +165,10 @@ label {
             }
         }
     }
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: @link-hover-decoration;
 }
 
 /* Forms */
