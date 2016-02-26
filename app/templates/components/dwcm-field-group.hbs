@@ -1,9 +1,10 @@
 <div class="panel panel-default" id="field-group-{{identifier}}">
     <div class="panel-heading">
         {{t identifier}}
-        <i
-            class="
-                pull-right glyphicon clickable
+        {{#if counter}}
+            ({{counter}})
+        {{/if}}
+        <i class=" pull-right glyphicon clickable
                 {{if collapsed 'glyphicon-plus-sign' 'glyphicon-minus-sign'}}
             "
             {{action "toggleCollapse"}}
