@@ -4,7 +4,6 @@ import DS from 'ember-data';
 import Ember from 'ember';
 
 import {validator, buildValidations} from 'ember-cp-validations';
-import { translationMacro as t } from 'ember-i18n';
 
 import DependentRelationships from '../mixins/dependent-relationships';
 
