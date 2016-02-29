@@ -4,6 +4,15 @@
         {{#link-to "index" class="dwcm-appliciation-brand"}}{{t "main.application_name"}}{{/link-to}}
 
         {{dwcm-language-selector class="pull-right"}}
+        <div class="pull-right user-menu">
+            {{#if session.isAuthenticated}}
+                {{session.data.authenticated.fullName}}(<a class="clickable" {{action 'invalidateSession'}}>{{t 'definitions.sign-out'}}</a>)
+            {{else}}
+                {{#link-to 'login'}}
+                    {{t 'definitions.sign-in'}}
+                {{/link-to}}
+            {{/if}}
+        </div>
     </div>
     <div class="container dwcm-secondary-navigation">
         <ul class="nav navbar-nav">

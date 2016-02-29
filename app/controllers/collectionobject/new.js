@@ -8,6 +8,8 @@ export default Ember.Controller.extend({
 
     i18n: Ember.inject.service(),
 
+    session: Ember.inject.service(),
+
     _displayErrors: false,
 
     validationError: Ember.computed('model.validations.messages', '_displayErrors', function () {
@@ -56,7 +58,9 @@ export default Ember.Controller.extend({
                 if (validations.get('isValid')) {
                     this.model.set('timestampCreated', moment().unix());
 
-                    this.store.findRecord('agent', 3).then((agent) => {
+                    this.store.findRecord(
+                        'agent', this.get('session').get('data.authenticated.id')
+                    ).then((agent) => {
                         this.model.set('agent', agent);
                         this.model.save().then((record) => {
                             controller.transitionToCollectionObject(record);
