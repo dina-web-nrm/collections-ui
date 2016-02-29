@@ -9,16 +9,14 @@
             </li>
         {{/each}}
     </ul>
-    {{#if validationError}}
-        <div class="alert alert-danger" role="alert">
-            <strong>{{t 'main.validation-message.save'}}</strong>
-            <ul>
-                {{#each model.validations.messages as |message|}}
-                    <li>{{message}}</li>
-                {{/each}}
-            </ul>
-        </div>
-    {{/if}}
+    <div id="validation-messages" class="alert alert-danger {{if validationError '' 'hidden'}}">
+        <strong>{{t 'main.validation-message.save'}}</strong>
+        <ul>
+            {{#each model.validations.messages as |message|}}
+                <li>{{message}}</li>
+            {{/each}}
+        </ul>
+    </div>
     {{#each groups as |group|}}
         {{component group model=model}}
     {{/each}}

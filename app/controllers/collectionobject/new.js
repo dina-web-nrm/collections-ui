@@ -23,18 +23,30 @@ export default Ember.Controller.extend({
         'dwcm-collecting-event'
     ],
 
+    /** Transition to Collection object View route. */
     transitionToCollectionObject (collectionObject) {
         this.transitionToRoute(
             'collectionobject.view', collectionObject
         );
     },
 
+    /** Trigger scroll to validation messages. */
+    scrollToValidation () {
+        Ember.$('html, body').animate({
+            scrollTop: Ember.$('#validation-messages').offset().top - 10
+        }, 300);
+    },
+
     actions: {
+
+        /** Handle navigation item click. */
         navigationClick(fieldGroupId) {
             Ember.$('html, body').animate({
                 scrollTop: Ember.$('#field-group-' + fieldGroupId).offset().top - 10
             }, 300);
         },
+
+        /** Handle form submit and validation. */
         submitForm () {
             let controller = this;
 
@@ -50,6 +62,8 @@ export default Ember.Controller.extend({
                             controller.transitionToCollectionObject(record);
                         });
                     });
+                } else {
+                    controller.scrollToValidation();
                 }
             });
         }
