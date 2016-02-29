@@ -11,7 +11,7 @@ import DependentRelationships from '../mixins/dependent-relationships';
 const Validations = buildValidations({
     collection: validator('presence', {
         presence: true,
-        description: 'Collection'
+        description: 'fields.labels.collection'
     }),
 
     preparations: validator('has-many')
