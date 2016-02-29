@@ -1,4 +1,4 @@
-<div class="container dwcm-collectionobject-new__body">
+<div class="container dwcm-collectionobject-new__body {{if validationError 'validation-visible' ''}}">
     <div class="page-header">
         <h2>{{t 'collectionobject.new.title' name=entityType}}:</h2>
     </div>
@@ -9,6 +9,14 @@
             </li>
         {{/each}}
     </ul>
+    <div id="validation-messages" class="alert alert-danger {{if validationError '' 'hidden'}}">
+        <strong>{{t 'main.validation-message.save'}}</strong>
+        <ul>
+            {{#each model.validations.messages as |message|}}
+                <li>{{message}}</li>
+            {{/each}}
+        </ul>
+    </div>
     {{#each groups as |group|}}
         {{component group model=model}}
     {{/each}}
@@ -17,7 +25,12 @@
 <footer class="footer">
     <div class="container">
         <div class="btn-toolbar">
-            <a class="btn btn-success" {{action 'submitForm'}}>{{t 'collectionobject.new.toolbar.save'}}</a>
+            <a
+                class="btn btn-success"
+                {{action 'submitForm'}}
+            >
+                {{t 'collectionobject.new.toolbar.save'}}
+            </a>
             <div class="btn-group">
                 <a class="btn btn-default">{{t 'collectionobject.new.toolbar.duplicate'}}</a>
                 <a class="btn btn-default">{{t 'collectionobject.new.toolbar.print'}}</a>

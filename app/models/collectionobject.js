@@ -2,9 +2,22 @@
 
 import DS from 'ember-data';
 import Ember from 'ember';
+
+import {validator, buildValidations} from 'ember-cp-validations';
+
 import DependentRelationships from '../mixins/dependent-relationships';
 
-export default DS.Model.extend(DependentRelationships, {
+const Validations = buildValidations({
+    collection: validator('presence', {
+        presence: true,
+        description: 'fields.labels.collection'
+    }),
+
+    preparations: validator('has-many')
+});
+
+
+export default DS.Model.extend(Validations, DependentRelationships, {
     guid: DS.attr('string'),
     catalogNumber: DS.attr('string'),
     timestampCreated: DS.attr('number'),
