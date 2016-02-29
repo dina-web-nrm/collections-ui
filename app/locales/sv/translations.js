@@ -15,7 +15,10 @@ export default {
     main: {
         application_name: "Samlingshanteraren",
         welcome: "Välkommen till Samlingshanteraren!",
-        error: "Ett fel uppstod, försök igen eller gå till startsidan."
+        error: "Ett fel uppstod, försök igen eller gå till startsidan.",
+        'validation-message': {
+            save: 'Det gick inte att spara'
+        }
     },
     navigation: {
         start: "Start",

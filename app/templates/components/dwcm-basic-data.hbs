@@ -9,6 +9,10 @@
                 filterField='collectionName'
                 itemSelected=(action 'collectionSelected')
                 localData=true
+
+                displayErrors=displayErrors
+                checkInvalid=(v-get model 'collection' 'isInvalid')
+                invalidMessage=(v-get model 'collection' 'message')
             }}
         </div>
         {{
