@@ -4,6 +4,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
+    classNames: ['dwcm-taxonomy'],
+
     /** Required store. */
     store: Ember.inject.service('store'),
 
