@@ -9,6 +9,7 @@ export default DS.JSONSerializer.extend({
         placement: 'text5',
         rackNumber: 'text6',
         measurements: 'text7',
-        preservationStage: 'text8'
+        preservationStage: 'text8',
+        age: 'text9'
     }
 });

@@ -12,6 +12,6 @@ test('it renders', function(assert) {
   this.render(hbs`{{dwcm-single-preparation}}`);
 
   assert.equal(
-      this.$('.dwcm-autocomplete-textfield label').text().trim(), 'Preparationstyp:'
+      this.$('.dwcm-autocomplete-textfield:first label').text().trim(), 'Preparationstyp:'
   );
 });

@@ -1,9 +1,11 @@
 {{#dwcm-field-group identifier="dwcm-taxonomy" counter=model.determinations.length}}
-    {{#each model.determinations as |determination|}}
+    {{#each model.determinations as |determination index|}}
         {{
             dwcm-single-determination
             model=determination
             remove=(action "removeDetermination")
+
+            index=index
         }}
     {{/each}}
 

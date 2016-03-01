@@ -1,8 +1,8 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('preparation', 'Unit | Model | preparation', {
+moduleForModel('storage', 'Unit | Model | storage', {
   // Specify the other units that are required for this test.
-  needs: ['model:prep-type', 'model:storage']
+  needs: []
 });
 
 test('it exists', function(assert) {

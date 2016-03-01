@@ -11,6 +11,11 @@ const Validations = buildValidations({
 
 export default DS.Model.extend(Validations, {
     'countAmt': DS.attr('number'),
+    'timestampCreated': DS.attr('number'),
+    'description': DS.attr('string'),
+    'status': DS.attr('string'),
+    'sampleNumber': DS.attr('string'),
+
     'preparationType': DS.belongsTo('prep-type'),
-    'timestampCreated': DS.attr('number')
+    'storage':  DS.belongsTo('storage'),
 });
