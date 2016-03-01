@@ -1,25 +1,29 @@
 {{#dwcm-field-group identifier="dwcm-preparation" counter=model.preparations.length}}
-    {{index}}
     <div class="row">
         {{
             dwcm-textfield width=3
-            label='fields.labels.life-stage'
+            label='fields.labels.preparation.life-stage'
             value=model.objectAttribute.lifeStage
         }}
         {{
+            dwcm-textfield width=2
+            label='fields.labels.preparation.age'
+            value=model.objectAttribute.age
+        }}
+        {{
             dwcm-select width=2
-            label='fields.labels.sex'
+            label='fields.labels.preparation.sex'
             value=model.objectAttribute.sex
             options=sexOptions
         }}
         {{
-            dwcm-textfield width=2
-            label='fields.labels.condition'
-            value=model.objectAttribute.condition
+            dwcm-field-placeholder width=2
+            label='Antal ind.tot'
+            disabled=true
         }}
         {{
-            dwcm-textfield width=5
-            label='fields.labels.measurements'
+            dwcm-textfield width=3
+            label='fields.labels.preparation.measurements'
             value=model.objectAttribute.measurements
         }}
     </div>

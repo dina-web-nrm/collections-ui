@@ -7,6 +7,12 @@ export default Ember.Component.extend({
     /** Required determination model. */
     model: null,
 
+    /** Convert index from zero index. */
+    displayIndex: function () {
+        let _index = this.get('index');
+        return ++_index;
+    }.property('index'),
+
     actions: {
 
         /** Set *taxon* for current model. */

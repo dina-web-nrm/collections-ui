@@ -58,6 +58,7 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
             element.collectionMemberID = json.collectionMemberID;
             element.createdByAgentID = parseInt(json.createdByAgentID);
             element.prepTypeID = parseInt(element.prepTypeID);
+            element.storageID = parseInt(element.storageID);
         });
 
         delete json.preparations;

@@ -58,15 +58,23 @@ export default {
                 confidence: 'Osäkerhet',
                 method: 'Metod',
                 determiner: 'Bestämmare',
-                'determined-date': 'Datum(åååå-mm-dd)'
+                'determined-date': 'Datum(åååå-mm-dd)',
+                'type-status': 'Typstatus'
             },
             accession: 'Accession',
-            'preparation-type': 'Preparationstyp',
-            count: 'Antal',
-            'life-stage': 'Livsstadie',
-            sex: 'Kön',
-            measurements: 'Mätningar',
-            condition: 'Kondition',
+            preparation: {
+                'preparation-type': 'Preparationstyp',
+                count: 'Antal',
+                'life-stage': 'Livsstadie/stadium',
+                age: 'Ålder',
+                sex: 'Kön',
+                measurements: 'Mätningar',
+                condition: 'Kondition',
+                part: 'Del',
+                status: 'Status',
+                storage: 'Placering',
+                number: 'Preparationsnr'
+            },
             'collecting-event': {
                 'start-date': 'Insamlingsdatum(åååå-mm-dd)',
                 method: 'Insamlingsmetod',
