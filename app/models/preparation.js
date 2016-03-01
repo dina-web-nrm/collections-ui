@@ -14,6 +14,7 @@ export default DS.Model.extend(Validations, {
     'timestampCreated': DS.attr('number'),
     'description': DS.attr('string'),
     'status': DS.attr('string'),
+    'sampleNumber': DS.attr('string'),
 
     'preparationType': DS.belongsTo('prep-type'),
     'storage':  DS.belongsTo('storage'),

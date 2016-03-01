@@ -72,7 +72,8 @@ export default {
                 condition: 'Kondition',
                 part: 'Del',
                 status: 'Status',
-                storage: 'Placering'
+                storage: 'Placering',
+                number: 'Preparationsnr'
             },
             'collecting-event': {
                 'start-date': 'Insamlingsdatum(åååå-mm-dd)',
