@@ -1,9 +1,12 @@
 <div class="dwcm-single-determination__header">
     <div class="pull-left dwcm-single-determination__current">
         {{input type='checkbox' checked=model.isCurrent}}
+        {{#if displayIndex}}
+            <span class="index">{{displayIndex}}.</span>
+        {{/if}}
     </div>
     <i
-        class="clickable glyphicon glyphicon-remove-sign" {{action "remove"}}
+        class="clickable glyphicon glyphicon-remove-circle" {{action "remove"}}
     ></i>
 </div>
 <div class="row">
