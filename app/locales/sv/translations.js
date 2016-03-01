@@ -58,7 +58,8 @@ export default {
                 confidence: 'Osäkerhet',
                 method: 'Metod',
                 determiner: 'Bestämmare',
-                'determined-date': 'Datum(åååå-mm-dd)'
+                'determined-date': 'Datum(åååå-mm-dd)',
+                'type-status': 'Typstatus'
             },
             accession: 'Accession',
             'preparation-type': 'Preparationstyp',
