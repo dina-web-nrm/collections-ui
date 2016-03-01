@@ -4,7 +4,7 @@
         <div class="col-xs-6">
             {{
                 dwcm-autocomplete-textfield
-                label='fields.labels.preparation-type'
+                label='fields.labels.preparation.preparation-type'
 
                 storeName='prep-type'
 
@@ -20,7 +20,12 @@
     </div>
     <div class="row">
         {{dwcm-field-placeholder disabled=true width=4 label='Del'}}
-        {{dwcm-textfield type='number' width=2 label='fields.labels.count' value=model.countAmt}}
+        {{dwcm-textfield
+            type='number'
+            width=2
+            label='fields.labels.preparation.count'
+            value=model.countAmt
+        }}
         {{dwcm-field-placeholder disabled=true width=3 label='Placering'}}
         {{dwcm-field-placeholder disabled=true width=3 label='Kondition'}}
     </div>

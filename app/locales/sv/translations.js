@@ -62,12 +62,15 @@ export default {
                 'type-status': 'Typstatus'
             },
             accession: 'Accession',
-            'preparation-type': 'Preparationstyp',
-            count: 'Antal',
-            'life-stage': 'Livsstadie',
-            sex: 'Kön',
-            measurements: 'Mätningar',
-            condition: 'Kondition',
+            preparation: {
+                'preparation-type': 'Preparationstyp',
+                count: 'Antal',
+                'life-stage': 'Livsstadie/stadium',
+                age: 'Ålder',
+                sex: 'Kön',
+                measurements: 'Mätningar',
+                condition: 'Kondition',
+            },
             'collecting-event': {
                 'start-date': 'Insamlingsdatum(åååå-mm-dd)',
                 method: 'Insamlingsmetod',
