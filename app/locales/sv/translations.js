@@ -70,6 +70,9 @@ export default {
                 sex: 'Kön',
                 measurements: 'Mätningar',
                 condition: 'Kondition',
+                part: 'Del',
+                status: 'Status',
+                storage: 'Placering'
             },
             'collecting-event': {
                 'start-date': 'Insamlingsdatum(åååå-mm-dd)',

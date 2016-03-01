@@ -44,7 +44,12 @@
         Preparations
         {{#each model.preparations as |preparation index|}}
             <li>
-                {{index}}. {{preparation.preparationType.name}} - {{preparation.countAmt}}
+                {{index}}.<br>
+                Preptype: {{preparation.preparationType.name}} <br>
+                Antal del: {{preparation.countAmt}} <br>
+                Placering: {{preparation.storage.fullName}} <br>
+                Del: {{preparation.description}} <br>
+                Status:  {{preparation.status}} <br>
             </li>
         {{/each}}
     </ul>

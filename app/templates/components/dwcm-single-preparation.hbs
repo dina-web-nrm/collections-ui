@@ -16,17 +16,38 @@
             }}
         </div>
         {{dwcm-field-placeholder disabled=true width=3 label='Förvaringssätt'}}
-        {{dwcm-field-placeholder disabled=true width=3 label='Status'}}
+        {{dwcm-textfield
+            width=3
+            label='fields.labels.preparation.status'
+            value=model.status
+        }}
     </div>
     <div class="row">
-        {{dwcm-field-placeholder disabled=true width=4 label='Del'}}
+        {{dwcm-textfield
+            width=3 label='fields.labels.preparation.part'
+            value=model.description
+        }}
         {{dwcm-textfield
             type='number'
-            width=2
+            width=1
             label='fields.labels.preparation.count'
             value=model.countAmt
         }}
-        {{dwcm-field-placeholder disabled=true width=3 label='Placering'}}
-        {{dwcm-field-placeholder disabled=true width=3 label='Kondition'}}
+        {{dwcm-field-placeholder disabled=true width=2 label='Kondition'}}
+        <div class="col-xs-6">
+            {{dwcm-autocomplete-textfield
+                removeCreate=true
+                label='fields.labels.preparation.storage'
+
+                storeName='storage'
+
+                displayField='fullName'
+                filterField='fullName'
+
+                removeCreate=true
+                itemSelected=(action 'setStorage')
+
+            }}
+        </div>
     </div>
 </div>

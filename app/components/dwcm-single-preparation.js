@@ -9,6 +9,11 @@ export default Ember.Component.extend({
 
     actions: {
 
+        /** Set *storage* for current model. */
+        setStorage (storage) {
+            this.model.set('storage', storage);
+        },
+
         /** Set *preparationType* for current model. */
         setPreparationType (preparationType) {
             this.model.set('preparationType', preparationType);
