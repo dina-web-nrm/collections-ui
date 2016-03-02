@@ -1,7 +1,8 @@
-{{#dwcm-field-group identifier="dwcm-taxonomy" counter=model.determinations.length}}
+{{#dwcm-field-group
+    title=title identifier=title counter=model.determinations.length
+}}
     {{#each model.determinations as |determination index|}}
-        {{
-            dwcm-single-determination
+        {{form-component/single-determination
             model=determination
             remove=(action "removeDetermination")
 

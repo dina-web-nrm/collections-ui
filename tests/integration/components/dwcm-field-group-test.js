@@ -9,13 +9,13 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });"
 
-  this.render(hbs`{{dwcm-field-group identifier="definitions.name"}}`);
+  this.render(hbs`{{dwcm-field-group title="definitions.name"}}`);
 
   assert.equal(this.$().text().trim(), 'Namn');
 
   // Template block usage:"
   this.render(hbs`
-    {{#dwcm-field-group identifier="definitions.name"}}
+    {{#dwcm-field-group title="definitions.name"}}
       template block text
     {{/dwcm-field-group}}
   `);

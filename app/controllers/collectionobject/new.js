@@ -16,12 +16,12 @@ export default Ember.Controller.extend({
 
     entityType: t('definitions.zoological'),
 
-    groups: [
-        'dwcm-basic-data',
-        'dwcm-taxonomy',
-        'dwcm-preparation',
-        'dwcm-collecting-event'
-    ],
+    groups: {
+        'form-component-basic-data': 'form-component/basic-data',
+        'form-component-determination': 'form-component/determination',
+        'form-component-preparation': 'form-component/preparation',
+        'form-component-collecting-event': 'form-component/collecting-event'
+    },
 
     /** Transition to Collection object View route. */
     transitionToCollectionObject (collectionObject) {

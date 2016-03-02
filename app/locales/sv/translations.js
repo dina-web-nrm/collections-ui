@@ -42,11 +42,11 @@ export default {
         }
     },
 
-    "dwcm-basic-data": 'Grunddata',
-    "dwcm-taxonomy": 'Taxonomi/Bestämning',
-    "dwcm-collecting-event": 'Insamling/Fyndplats',
-    "dwcm-preparation": 'Objekt/Preparationer',
-    "dwcm-other": 'Övrigt',
+    "form-component-basic-data": 'Grunddata',
+    "form-component-determination": 'Taxonomi/Bestämning',
+    "form-component-collecting-event": 'Insamling/Fyndplats',
+    "form-component-preparation": 'Objekt/Preparationer',
+    "form-component-other": 'Övrigt',
     fields: {
         labels: {
             collector: 'Insamlare',
