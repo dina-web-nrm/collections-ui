@@ -5,7 +5,7 @@ import {validator, buildValidations} from 'ember-cp-validations';
 const Validations = buildValidations({
     preparationType: validator('presence', {
         presence: true,
-        description: 'fields.labels.preparation-type'
+        descriptionKey: 'fields.labels.preparation.preparation-type'
     })
 });
 

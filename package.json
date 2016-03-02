@@ -1,7 +1,7 @@
 {
-  "name": "dw-collections-manager",
+  "name": "dina-collection-manager",
   "version": "0.1.5",
-  "description": "Small description for dw-collections-manager goes here",
+  "description": "Collection Manager User Interface for managing Museum Collections.",
   "private": true,
   "directories": {
     "doc": "doc",
@@ -12,12 +12,18 @@
     "start": "ember server",
     "test": "ember test"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DINA-Web/collections-ui.git"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
-  "license": "MIT",
+  "author": {
+      "name": "Carl Claesson",
+      "email": "cfclaesson@gmail.com"
+  },
+  "license": "AGPL V3",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
     "ember-ajax": "0.7.1",
@@ -40,7 +46,7 @@
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
     "ember-i18n": "4.2.0",
-    "ember-i18n-cp-validations": "2.2.0",
+    "ember-i18n-cp-validations": "2.3.0",
     "ember-leaflet": "2.1.2",
     "ember-resolver": "^2.0.3",
     "ember-simple-auth": "1.0.1",
