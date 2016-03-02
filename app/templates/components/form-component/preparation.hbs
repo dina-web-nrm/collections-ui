@@ -8,21 +8,23 @@
             value=model.objectAttribute.lifeStage
         }}
         {{
-            dwcm-textfield width=2
+            dwcm-textfield width=3
             label='fields.labels.preparation.age'
             value=model.objectAttribute.age
         }}
         {{
-            dwcm-select width=2
+            dwcm-select width=3
             label='fields.labels.preparation.sex'
             value=model.objectAttribute.sex
             options=sexOptions
         }}
+        {{!--
         {{
             dwcm-field-placeholder width=2
             label='Antal ind.tot'
             disabled=true
         }}
+        --}}
         {{
             dwcm-textfield width=3
             label='fields.labels.preparation.measurements'

@@ -11,7 +11,6 @@
                 displayField='name'
                 filterField='name'
 
-                removeCreate=true
                 itemSelected=(action 'setPreparationType')
             }}
         </div>
@@ -21,17 +20,19 @@
         }}
         {{dwcm-textfield
             type='number'
-            width=2
+            width=3
             label='fields.labels.preparation.count'
             value=model.countAmt
         }}
-        {{dwcm-field-placeholder
-            disabled=true
-            width=2
-            label='Antal ind.'
-        }}
+        {{!--
+            {{dwcm-field-placeholder
+                disabled=true
+                width=2
+                label='Antal ind.'
+            }}
+        --}}
         {{dwcm-textfield
-            width=2
+            width=3
             label='fields.labels.preparation.number'
             value=model.sampleNumber
         }}
@@ -39,7 +40,6 @@
     <div class="row">
         <div class="col-xs-8">
             {{dwcm-autocomplete-textfield
-                removeCreate=true
                 label='fields.labels.preparation.storage'
 
                 storeName='storage'
@@ -47,7 +47,6 @@
                 displayField='fullName'
                 filterField='fullName'
 
-                removeCreate=true
                 itemSelected=(action 'setStorage')
 
             }}
@@ -58,8 +57,10 @@
             value=model.status
         }}
     </div>
-    <div class="row">
-        {{dwcm-field-placeholder disabled=true width=8 label='Förvaringssätt'}}
-        {{dwcm-field-placeholder disabled=true width=4 label='Kondition'}}
-    </div>
+    {{!--
+        <div class="row">
+            {{dwcm-field-placeholder disabled=true width=8 label='Förvaringssätt'}}
+            {{dwcm-field-placeholder disabled=true width=4 label='Kondition'}}
+        </div>
+    --}}
 </div>
