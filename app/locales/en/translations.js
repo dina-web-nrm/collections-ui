@@ -1,20 +1,36 @@
 export default {
     definitions: {
-        zoological: "zoological"
+        zoological: "zoological",
+        name: "Name",
+        accession: "Accession",
+        male: 'Male',
+        female: 'Female',
+        unknown: 'Unknown',
+        date: 'Date',
+        'create-new': {
+            1: 'Create new',
+            2: 'Create new'
+        },
+        user: 'User',
+        'sign-out': 'Sign out',
+        'sign-in': 'Sign in'
     },
     main: {
-        application_name: "DINA Collections manager",
-        welcome: "Welcome to DINA Collections manager!"
+        application_name: "Collection manager",
+        welcome: "Välkommen till Samlingshanteraren!",
+        error: "An error occured. Please try again.",
+        'validation-message': {
+            save: 'Could not save'
+        }
     },
     navigation: {
         start: "Start",
         "collections": "Collections",
-        "collection_object.root": "Collection objects",
+        "collection_object.root": "Collection object",
         "collection_object.add": "Register new",
         "collection_object.list": "List all",
         "search.button": "Search",
-        "search.input": "Search for species/ID",
-        sign_out: "Sign out"
+        "search.input": "Search for ID/Species"
     },
     collectionobject: {
         new: {
@@ -25,6 +41,56 @@ export default {
                 close: "Close",
                 duplicate: "Duplicate"
             }
+        }
+    },
+
+    "form-component-basic-data": 'Basic data',
+    "form-component-determination": 'Taxonomy/Determination',
+    "form-component-collecting-event": 'Collecting event/Locality',
+    "form-component-preparation": 'Object/Preparations',
+    "form-component-other": 'Other',
+    fields: {
+        labels: {
+            collector: 'Collector',
+            collecting_place: 'Locality',
+            collecting_event: 'Collecting event',
+            collection: 'Collection',
+            catalogNumber: 'Catalog number',
+            determination: {
+                confidence: 'Confidence',
+                method: 'Method',
+                determiner: 'Determiner',
+                'determined-date': 'Date(yyy-mm-dd)',
+                'type-status': 'Type status',
+                add: 'Add determination'
+            },
+            accession: 'Accession',
+            preparation: {
+                'preparation-type': 'Preparation type',
+                count: 'Count',
+                'life-stage': 'Life stage',
+                age: 'Age',
+                sex: 'Sex',
+                measurements: 'Measurements',
+                condition: 'Condition',
+                part: 'Part',
+                status: 'Status',
+                storage: 'Storage',
+                number: 'Preparation nr',
+                add: 'Add part/preparation'
+            },
+            'collecting-event': {
+                'start-date': 'Collection date(yyyy-mm-dd)',
+                method: 'Method',
+                'verbatim-locality': 'Locality',
+                'verbatim-collector': 'Collector',
+                'max-elevation': 'Nivå ö hav',
+                'min-elevation': 'Nivå u hav',
+                'select-existing': 'Select existing collecting event'
+            }
+        },
+        placeholder: {
+            'date-format': '1985-05-08'
         }
     },
     errors: {

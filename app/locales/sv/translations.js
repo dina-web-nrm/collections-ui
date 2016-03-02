@@ -61,7 +61,8 @@ export default {
                 method: 'Metod',
                 determiner: 'Bestämmare',
                 'determined-date': 'Datum(åååå-mm-dd)',
-                'type-status': 'Typstatus'
+                'type-status': 'Typstatus',
+                add: 'Lägg till bestämning'
             },
             accession: 'Accession',
             preparation: {
@@ -75,7 +76,8 @@ export default {
                 part: 'Del',
                 status: 'Status',
                 storage: 'Placering',
-                number: 'Preparationsnr'
+                number: 'Preparationsnr',
+                add: 'Lägg till del/preparation'
             },
             'collecting-event': {
                 'start-date': 'Insamlingsdatum(åååå-mm-dd)',
