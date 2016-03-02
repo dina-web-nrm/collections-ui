@@ -10,7 +10,10 @@ export default {
         'create-new': {
             1: 'Skapa nytt',
             2: 'Skapa ny'
-        }
+        },
+        user: 'Användare',
+        'sign-out': 'Logga ut',
+        'sign-in': 'Logga in'
     },
     main: {
         application_name: "Samlingshanteraren",
@@ -27,8 +30,7 @@ export default {
         "collection_object.add": "Registrera föremål",
         "collection_object.list": "Lista",
         "search.button": "Sök",
-        "search.input": "Sök på art/ID",
-        sign_out: "Logga ut"
+        "search.input": "Sök på art/ID"
     },
     collectionobject: {
         new: {
