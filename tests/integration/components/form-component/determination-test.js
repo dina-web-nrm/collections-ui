@@ -9,7 +9,7 @@ test('it renders', function(assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.on('myAction', function(val) { ... });"
 
-    this.render(hbs`{{form-component/determination title='form-component/determination'}}`);
+    this.render(hbs`{{form-component/determination title='form-component-determination'}}`);
 
     assert.equal(this.$('.panel-heading').text().trim(), 'Taxonomi/Bestämning');
 });

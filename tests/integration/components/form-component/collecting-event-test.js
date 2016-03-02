@@ -9,7 +9,7 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });"
 
-  this.render(hbs`{{form-component/collecting-event title='form-component/collecting-event'}}`);
+  this.render(hbs`{{form-component/collecting-event title='form-component-collecting-event'}}`);
 
   assert.equal(this.$('.panel-heading').text().trim(), 'Insamling/Fyndplats');
 });
