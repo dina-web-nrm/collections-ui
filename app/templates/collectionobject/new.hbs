@@ -3,11 +3,11 @@
         <h2>{{t 'collectionobject.new.title' name=entityType}}:</h2>
     </div>
     <ul class="nav nav-pills">
-        {{#each groups as |group|}}
+        {{#each-in groups as |identifier componentName|}}
             <li>
-                <a class="clickable" {{action "navigationClick" group}}>{{t group}}</a>
+                <a class="clickable" {{action "navigationClick" identifier}}>{{t identifier}}</a>
             </li>
-        {{/each}}
+        {{/each-in}}
     </ul>
     <div id="validation-messages" class="alert alert-danger {{if validationError '' 'hidden'}}">
         <strong>{{t 'main.validation-message.save'}}</strong>
@@ -17,9 +17,9 @@
             {{/each}}
         </ul>
     </div>
-    {{#each groups as |group|}}
-        {{component group model=model}}
-    {{/each}}
+    {{#each-in groups as |identifier componentName|}}
+        {{component componentName title=identifier model=model}}
+    {{/each-in}}
 </div>
 
 <footer class="footer">
