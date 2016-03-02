@@ -7,7 +7,9 @@ export default Ember.Component.extend(ClickOutsideComponent, {
     classNameBindings: ['hasSelected:has-success', 'isInvalid:has-error'],
 
     /** Setup component css classes. */
-    classNames: ['dwcm-autocomplete-textfield'],
+    classNames: [
+        'dwcm-autocomplete-textfield', 'form-group', 'form-group-sm'
+    ],
 
     /** Enable multi select.
      *
