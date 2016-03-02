@@ -21,7 +21,7 @@ export default Ember.Component.extend(ClickOutsideComponent, {
     disableCreate: true,
 
     /** Setting to hide the create button. */
-    removeCreate: false,
+    removeCreate: true,
 
     /** Required store. */
     store: Ember.inject.service('store'),
