@@ -2,22 +2,26 @@
     title=title identifier=title counter=model.preparations.length
 }}
     <div class="row">
-        {{
-            dwcm-textfield width=3
-            label='fields.labels.preparation.life-stage'
-            value=model.objectAttribute.lifeStage
-        }}
-        {{
-            dwcm-textfield width=3
-            label='fields.labels.preparation.age'
-            value=model.objectAttribute.age
-        }}
-        {{
-            dwcm-select width=3
-            label='fields.labels.preparation.sex'
-            value=model.objectAttribute.sex
-            options=sexOptions
-        }}
+        <div class="col-xs-3">
+            {{dwcm-textfield
+                label='fields.labels.preparation.life-stage'
+                value=model.objectAttribute.lifeStage
+            }}
+        </div>
+        <div class="col-xs-3">
+            {{dwcm-textfield
+                label='fields.labels.preparation.age'
+                value=model.objectAttribute.age
+            }}
+        </div>
+        <div class="col-xs-3">
+            {{
+                dwcm-select
+                label='fields.labels.preparation.sex'
+                value=model.objectAttribute.sex
+                options=sexOptions
+            }}
+        </div>
         {{!--
         {{
             dwcm-field-placeholder width=2
@@ -25,11 +29,13 @@
             disabled=true
         }}
         --}}
-        {{
-            dwcm-textfield width=3
-            label='fields.labels.preparation.measurements'
-            value=model.objectAttribute.measurements
-        }}
+        <div class="col-xs-3">
+            {{
+                dwcm-textfield
+                label='fields.labels.preparation.measurements'
+                value=model.objectAttribute.measurements
+            }}
+        </div>
     </div>
     {{#each model.preparations as |preparation|}}
         {{form-component/single-preparation
@@ -37,6 +43,6 @@
         }}
     {{/each}}
     <a class="btn btn-primary btn-xs" {{action "addPreparation"}}>
-        <i class="glyphicon glyphicon-plus"></i> Lägg till del/preparation
+        <i class="glyphicon glyphicon-plus"></i> {{t 'fields.labels.preparation.add'}}
     </a>
 {{/dwcm-field-group}}

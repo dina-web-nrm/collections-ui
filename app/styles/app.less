@@ -10,9 +10,8 @@
 
 @import "components/dwcm-error.less";
 @import "components/dwcm-autocomplete-textfield.less";
-@import "components/dwcm-single-determination.less";
-@import "components/dwcm-preparation.less";
-@import "components/dwcm-single-preparation.less";
+@import "components/form-component/single-determination.less";
+@import "components/form-component/single-preparation.less";
 
 
 body {
@@ -90,10 +89,14 @@ body {
 .input-group {
     width: 100%;
 }
+
 label {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    font-weight: normal;
+
+    margin-bottom: -2px;
 }
 
 .closed, .hidden {
@@ -106,11 +109,6 @@ label {
     float: left;
     margin-right: 10px;
 }
-
-label {
-    font-weight: normal;
-}
-
 
 
 /* Buttons */

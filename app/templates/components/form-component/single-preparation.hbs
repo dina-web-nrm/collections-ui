@@ -14,16 +14,19 @@
                 itemSelected=(action 'setPreparationType')
             }}
         </div>
-        {{dwcm-textfield
-            width=3 label='fields.labels.preparation.part'
-            value=model.description
-        }}
-        {{dwcm-textfield
-            type='number'
-            width=3
-            label='fields.labels.preparation.count'
-            value=model.countAmt
-        }}
+        <div class="col-xs-3">
+            {{dwcm-textfield
+                label='fields.labels.preparation.part'
+                value=model.description
+            }}
+        </div>
+        <div class="col-xs-3">
+            {{dwcm-textfield
+                type='number'
+                label='fields.labels.preparation.count'
+                value=model.countAmt
+            }}
+        </div>
         {{!--
             {{dwcm-field-placeholder
                 disabled=true
@@ -31,11 +34,12 @@
                 label='Antal ind.'
             }}
         --}}
-        {{dwcm-textfield
-            width=3
-            label='fields.labels.preparation.number'
-            value=model.sampleNumber
-        }}
+        <div class="col-xs-3">
+            {{dwcm-textfield
+                label='fields.labels.preparation.number'
+                value=model.sampleNumber
+            }}
+        </div>
     </div>
     <div class="row">
         <div class="col-xs-8">
@@ -51,11 +55,12 @@
 
             }}
         </div>
-        {{dwcm-textfield
-            width=4
-            label='fields.labels.preparation.status'
-            value=model.status
-        }}
+        <div class="col-xs-4">
+            {{dwcm-textfield
+                label='fields.labels.preparation.status'
+                value=model.status
+            }}
+        </div>
     </div>
     {{!--
         <div class="row">

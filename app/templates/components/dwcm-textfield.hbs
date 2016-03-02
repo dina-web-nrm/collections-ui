@@ -1,20 +1,16 @@
-<div class="col-xs-{{if width width 2}}">
-    <div class="form-group">
-        {{#if label}}
-            <label>
-                {{t label}}:
-            </label>
-        {{/if}}
-        {{#if labelAction}}
-            <a class="pull-right clickable" {{action 'runLabelAction'}}>
-                {{t actionText}}
-            </a>
-        {{/if}}
-        {{
-            input value=value
-            type=(if type type 'text')
-            class="form-control" disabled=disabled
-            placeholder=(if placeholder (t placeholder) '')
-        }}
-    </div>
-</div>
+{{#if label}}
+    <label>
+        {{t label}}:
+    </label>
+{{/if}}
+{{#if labelAction}}
+    <a class="pull-right clickable" {{action 'runLabelAction'}}>
+        {{t actionText}}
+    </a>
+{{/if}}
+{{
+    input value=value
+    type=(if type type 'text')
+    class="form-control" disabled=disabled
+    placeholder=(if placeholder (t placeholder) '')
+}}

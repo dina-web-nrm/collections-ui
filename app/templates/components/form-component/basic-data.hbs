@@ -15,12 +15,12 @@
                 invalidMessage=(v-get model 'collection' 'message')
             }}
         </div>
-        {{
-            dwcm-textfield
-            width=2
-            label='fields.labels.catalogNumber'
-            value=model.catalogNumber
-        }}
+        <div class="col-xs-2">
+            {{dwcm-textfield
+                label='fields.labels.catalogNumber'
+                value=model.catalogNumber
+            }}
+        </div>
         <div class="col-xs-4">
             {{
                 dwcm-autocomplete-textfield

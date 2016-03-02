@@ -1,45 +1,43 @@
-<div class="form-group">
-    {{#if label}}
-        <label class="control-label">
-            {{t label}}:
-        </label>
+{{#if label}}
+    <label class="control-label">
+        {{t label}}:
+    </label>
+{{/if}}
+{{#if labelAction}}
+    <a class="pull-right clickable" {{action 'runLabelAction'}}>
+        {{t actionText}}
+    </a>
+{{/if}}
+
+{{yield}}
+
+<div class="dropdown-group {{if removeCreate '' 'input-group'}}">
+    {{input
+        type="text"
+        class="form-control"
+        value=value
+
+        key-up="onKeyup"
+        focus-in="onFocus"
+
+        placeholder=(if placeholder placeholder 'Skriv in/välj')
+        disabled=disabled
+    }}
+    {{#unless removeCreate}}
+        <div class="input-group-btn">
+            <button disabled title="Create new(not supported yet)" type="button" class="btn btn-primary" aria-label="Add">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
+    {{/unless}}
+
+    {{#if isDropdownVisible}}
+        <ul class="dwcm-autocomplete-dropdown">
+            {{#each previewData as |preview index|}}
+                <li tabIndex={{index}} {{action "onItemClick" preview}}>{{get preview displayField}}</li>
+            {{else}}
+                <li>Inget resultat</li>
+            {{/each}}
+        </ul>
     {{/if}}
-    {{#if labelAction}}
-        <a class="pull-right clickable" {{action 'runLabelAction'}}>
-            {{t actionText}}
-        </a>
-    {{/if}}
-
-    {{yield}}
-
-    <div class="dropdown-group {{if removeCreate '' 'input-group'}}">
-        {{input
-            type="text"
-            class="form-control"
-            value=value
-
-            key-up="onKeyup"
-            focus-in="onFocus"
-
-            placeholder=(if placeholder placeholder 'Skriv in/välj')
-            disabled=disabled
-        }}
-        {{#unless removeCreate}}
-            <div class="input-group-btn">
-                <button disabled title="Create new(not supported yet)" type="button" class="btn btn-primary" aria-label="Add">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </button>
-            </div>
-        {{/unless}}
-
-        {{#if isDropdownVisible}}
-            <ul class="dwcm-autocomplete-dropdown">
-                {{#each previewData as |preview index|}}
-                    <li tabIndex={{index}} {{action "onItemClick" preview}}>{{get preview displayField}}</li>
-                {{else}}
-                    <li>Inget resultat</li>
-                {{/each}}
-            </ul>
-        {{/if}}
-    </div>
 </div>

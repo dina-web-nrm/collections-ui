@@ -21,22 +21,24 @@
         {{/if}}
     {{else}}
         <div class="row">
-            {{
-                dwcm-textfield width=8
-                label='definitions.name'
-                value=model.collectingEvent.givenName
-                labelAction=(action 'selectExisting')
-                actionText='fields.labels.collecting-event.select-existing'
-            }}
-            {{
-                dwcm-textfield width=4
-                label='fields.labels.collecting-event.method'
-                value=model.collectingEvent.method
-            }}
+            <div class="col-xs-8">
+                {{dwcm-textfield
+                    label='definitions.name'
+                    value=model.collectingEvent.givenName
+                    labelAction=(action 'selectExisting')
+                    actionText='fields.labels.collecting-event.select-existing'
+                }}
+            </div>
+            <div class="col-xs-4">
+                {{dwcm-textfield
+                    label='fields.labels.collecting-event.method'
+                    value=model.collectingEvent.method
+                }}
+            </div>
         </div>
         <div class="row">
             <div class="col-xs-6">
-                <div class="form-group">
+                <div class="form-group form-group-sm">
                     <label>
                         {{t 'fields.labels.collecting-event.start-date'}}:
                     </label>
@@ -75,13 +77,14 @@
             </div>
         </div>
         <div class="row">
-            {{
-                dwcm-textfield
-                width=6
+            <div class="col-xs-6">
+                {{dwcm-textfield
+                    width=6
 
-                placeholder='definitions.date'
-                value=model.collectingEvent.verbatimDate
-            }}
+                    placeholder='definitions.date'
+                    value=model.collectingEvent.verbatimDate
+                }}
+            </div>
             {{!--
                 {{dwcm-textfield
                     width=6 disabled=true placeholder="fields.labels.collecting-event.verbatim-collector"
