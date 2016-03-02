@@ -1,6 +1,6 @@
 {
   "name": "dw-collections-manager",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Collection Manager User Interface for managing Museum Collections.",
   "private": true,
   "directories": {
@@ -20,8 +20,8 @@
     "node": ">= 0.10.0"
   },
   "author": {
-      "name": "Carl Claesson",
-      "email": "cfclaesson@gmail.com"
+    "name": "Carl Claesson",
+    "email": "cfclaesson@gmail.com"
   },
   "license": "AGPL V3",
   "devDependencies": {
