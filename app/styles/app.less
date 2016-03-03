@@ -3,6 +3,8 @@
 @import "bootswatch/variables.less";
 
 @import "overrides.less";
+@import "util.less";
+@import "header.less";
 @import "footer.less";
 
 @import "components/dwcm-language-selector.less";
@@ -19,31 +21,6 @@ body {
     background: @gray-lighter;
 }
 
-.container.logo {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.dwcm-application-logo {
-    background: url('/logo-small.png') no-repeat;
-    height: 40px;
-    width: 168px;
-    margin: 0 10px 0 0;
-    float: left;
-}
-
-.dwcm-appliciation-brand {
-    font-size: 25px;
-    color: @text-color;
-
-    margin: 10px 0 0 5px;
-    line-height: 40px;
-
-    &:hover {
-        color: @text-color-hover;
-    }
-}
-
 .dwcm-collectionobject-new__body {
     h2 {
         margin: 0;
@@ -55,85 +32,9 @@ body {
     }
 }
 
-.user-menu {
-    margin-top: 15px;
-    margin-right: 15px;
-    a {
-        color: @text-color;
-    }
-
-    a:hover {
-        color: @brand-success;
-    }
-}
-
-.clickable {
-    cursor: pointer;
-}
-
-.closed, .hidden {
-    display: none;
-}
-
 .leaflet-container {
     width: 300px;
     height: 250px;
     float: left;
     margin-right: 10px;
-}
-
-/* Navigation and bars */
-
-.navbar-default {
-    .dwcm-secondary-navigation {
-
-        .navbar-nav > .open > a,
-        .navbar-nav > .open > a:hover,
-        .navbar-nav > .open > a:focus {
-            background-color: @white;
-            color: @text-color;
-        }
-
-        li {
-            border-right: 1px solid @gray-light;
-            cursor: pointer;
-        }
-
-        li:last-child {
-            border-right: none;
-        }
-
-        li > a {
-            color: @text-color;
-            font-size: 16px;
-        }
-
-        .open > a, li > a:hover, .open > a:hover {
-            background: @white;
-            text-decoration: @link-hover-decoration;
-        }
-
-        .navbar-nav > .active > a {
-            color: @brand-success;
-            font-weight: bold;
-            background: @white;
-
-            &:hover {
-                color: @brand-success;
-                text-decoration: @link-hover-decoration;
-            }
-        }
-
-        .dropdown-menu {
-            background: @white;
-
-            & > .active > a,
-            & > .active > a:hover,
-            & > .active > a:focus {
-                background: @white;
-                color: @brand-success;
-                font-weight: bold;
-            }
-        }
-    }
 }
