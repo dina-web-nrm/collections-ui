@@ -1,0 +1,62 @@
+.bootstrap-datetimepicker-widget {
+    /* Override to display picker over leaflet map controls. */
+    z-index: 1001;
+}
+
+/* Panel styling */
+.panel-default > .panel-heading {
+    border: none;
+    border-bottom: 1px solid @gray-lighter;
+
+    background-color: @white;
+    font-size: 20px;
+
+    .glyphicon {
+        font-size: 20px;
+        color: @gray-dark;
+        &:hover {
+            color: @gray-darker;
+        }
+    }
+}
+
+label {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: normal;
+
+    margin-bottom: -2px;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: @link-hover-decoration;
+}
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > .active {
+        & > a, & > a:hover {
+            background: @white;
+            color: @brand-success;
+        }
+    }
+
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        background: @white;
+        color: @text-color;
+    }
+}
+
+
+.navbar-default {
+    padding-top: 10px;
+
+    border-radius: 0;
+    border-top: 4px solid @brand-success;
+    border-bottom: 1px solid @gray-light;
+
+    .navbar-brand {
+        color: @text-color;
+        font-size: 25px;
+    }
+}

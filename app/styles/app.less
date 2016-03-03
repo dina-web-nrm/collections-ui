@@ -2,6 +2,7 @@
 @import "bootswatch/main.less";
 @import "bootswatch/variables.less";
 
+@import "overrides.less";
 @import "footer.less";
 
 @import "components/dwcm-language-selector.less";
@@ -70,35 +71,6 @@ body {
     cursor: pointer;
 }
 
-.panel-default > .panel-heading {
-    border: none;
-    border-bottom: 1px solid @gray-lighter;
-
-    background-color: @white;
-    font-size: 20px;
-
-    .glyphicon {
-        font-size: 20px;
-        color: @gray-dark;
-        &:hover {
-            color: @gray-darker;
-        }
-    }
-}
-
-.input-group {
-    width: 100%;
-}
-
-label {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    font-weight: normal;
-
-    margin-bottom: -2px;
-}
-
 .closed, .hidden {
     display: none;
 }
@@ -110,33 +82,9 @@ label {
     margin-right: 10px;
 }
 
-
-/* Buttons */
-
-.btn {
-    border-radius: @border-radius-base;
-}
-
 /* Navigation and bars */
-.navbar-default {
-    background: @white;
-    border-color: @white;
-
-    padding-top: 10px;
-
-    border-top: 4px solid @brand-success;
-    border-radius: 0;
-}
 
 .navbar-default {
-
-    border-bottom: 1px solid @gray-light;
-
-    .navbar-brand {
-        color: @text-color;
-        font-size: 25px;
-    }
-
     .dwcm-secondary-navigation {
 
         .navbar-nav > .open > a,
@@ -184,18 +132,8 @@ label {
             & > .active > a:focus {
                 background: @white;
                 color: @brand-success;
+                font-weight: bold;
             }
         }
     }
-}
-
-.nav > li > a:hover, .nav > li > a:focus {
-    text-decoration: @link-hover-decoration;
-}
-
-/* Forms */
-
-/* Decrease form margin. */
-.form-group {
-    margin-bottom: 5px;
 }
