@@ -13,8 +13,11 @@
 
 @import "components/dwcm-error.less";
 @import "components/dwcm-autocomplete-textfield.less";
+
 @import "components/form-component/single-determination.less";
 @import "components/form-component/single-preparation.less";
+
+@import "collectionobject/view.less";
 
 
 body {
@@ -37,4 +40,12 @@ body {
     height: 250px;
     float: left;
     margin-right: 10px;
+}
+
+.dwcm-collectionobject-view__map {
+    .leaflet-container {
+        width: 100%;
+        height: 300px;
+        float: none;
+    }
 }

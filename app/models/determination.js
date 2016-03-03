@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 export default DS.Model.extend({
     isCurrent: DS.attr('boolean'),
@@ -10,5 +11,8 @@ export default DS.Model.extend({
     collectionMemberID: DS.attr('number'),
 
     taxon: DS.belongsTo('taxon', {async: true}),
-    determiner: DS.belongsTo('agent', {async: true})
+    determiner: DS.belongsTo('agent', {async: true}),
+
+    taxonName: Ember.computed.alias('taxon.fullName'),
+    determinerName: Ember.computed.alias('determiner.fullName')
 });
