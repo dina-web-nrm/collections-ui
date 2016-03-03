@@ -13,7 +13,9 @@ export default {
         },
         user: 'User',
         'sign-out': 'Sign out',
-        'sign-in': 'Sign in'
+        'sign-in': 'Sign in',
+        map: 'Map',
+        count: 'pcs'
     },
     main: {
         application_name: "Collection manager",

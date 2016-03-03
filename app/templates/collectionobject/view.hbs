@@ -1,75 +1,115 @@
-<div class="container">
+<div class="container dwcm-collectionobject-view">
     <div class="page-header">
         <h1>
-            {{model.id}} / {{model.catalogNumber}}
-            <a style="font-size:15px;line-height:39px;" class="pull-right" href="#edit">Ändra / Lägg till i post</a>
+            {{model.id}}{{if model.catalogNumber (concat ' / ' model.catalogNumber) ''}}
         </h1>
+        Registrerad av {{model.cataloger.fullName}}, {{model.catalogedDate}}
     </div>
-    Registrerad av {{model.cataloger.fullName}}, {{model.catalogedDate}}
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            Grunddata
+    <div class="row">
+        <div class="col-xs-6">
+            {{#dwcm-field-group title='form-component-basic-data'}}
+                <ul>
+                    <li>
+                        <span>{{t 'fields.labels.collection'}}:</span> {{model.collection.collectionName}}
+                    </li>
+                    <li>
+                        <span>{{t 'fields.labels.accession'}}:</span> {{model.accession.accessionNumber}}
+                    </li>
+                </ul>
+            {{/dwcm-field-group}}
+            {{#dwcm-field-group title='form-component-determination'}}
+                <ol>
+                    {{#each model.determinations as |determination|}}
+                        <li>
+                            <ul>
+                                <li>
+                                    <span>{{t 'definitions.name'}}:</span> {{determination.taxonName}}
+                                </li>
+                                <li>
+                                    <span>{{t 'fields.labels.determination.determiner'}}:</span> {{determination.determinerName}}
+                                </li>
+                                <li>
+                                    <span>{{t 'fields.labels.determination.type-status'}}:</span> {{determination.typeStatus}}
+                                </li>
+                            </ul>
+                        </li>
+                    {{/each}}
+                </ol>
+            {{/dwcm-field-group}}
+            {{#dwcm-field-group title='form-component-preparation'}}
+                <ul>
+                    <li>
+                        <span>{{t 'fields.labels.preparation.life-stage'}}:</span> {{model.objectAttribute.lifeStage}}
+                    </li>
+                    <li>
+                        <span>{{t 'fields.labels.preparation.age'}}:</span> {{model.objectAttribute.age}}
+                    </li>
+                    <li>
+                        <span>{{t 'fields.labels.preparation.sex'}}:</span> {{t (concat 'definitions.' model.objectAttribute.sex)}}
+                    </li>
+                    <li>
+                        <span>{{t 'fields.labels.preparation.measurements'}}:</span> {{model.objectAttribute.measurements}}
+                    </li>
+                </ul>
+                <ol>
+                    {{#each model.preparations as |preparation index|}}
+                        <li>
+                            <ul>
+                                <li>
+                                    <span>{{t 'fields.labels.preparation.preparation-type'}}:</span> {{preparation.preparationType.name}}
+                                </li>
+                                <li>
+                                    <span>{{t 'fields.labels.preparation.count'}}:</span> {{#if preparation.countAmt}}{{preparation.countAmt}} {{t 'definitions.count'}}{{/if}}
+                                </li>
+                                <li>
+                                    <span>{{t 'fields.labels.preparation.storage'}}:</span> {{preparation.storage.fullName}}
+                                </li>
+                            </ul>
+                        </li>
+                    {{/each}}
+                </ol>
+            {{/dwcm-field-group}}
         </div>
-        <div class="panel-body">
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <th scope="row">Enhet:</th>
-                        <td>parentOrganizationID || institutionCCID</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Accession:</th>
-                        <td>{{if model.accession model.accession.accessionNumber 'Ingen accession tillgänglig'}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Samling:</th>
-                        <td>{{model.collection.collectionName}}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="col-xs-6">
+            {{#dwcm-field-group title='form-component-collecting-event'}}
+                <ul>
+                    <li>
+                        <span>{{t 'fields.labels.collector'}}:</span>
+                        {{#each model.collectingEvent.collectors as |collector|}}
+                            <span class="badge">
+                                {{collector.agent.fullName}}
+                            </span>
+                        {{/each}}
+                    </li>
+                    <li>
+                        <span>{{t 'definitions.date'}}:</span> {{model.collectingEvent.startDate}}
+                    </li>
+                    <li>
+                        <span>{{t 'fields.labels.collecting-event.method'}}:</span> {{model.collectingEvent.method}}
+                    </li>
+                    <li>
+                        <span>{{t 'fields.labels.collecting_place'}}:</span> {{model.collectingEvent.locality.localityName}}
+                    </li>
+                </ul>
+            {{/dwcm-field-group}}
+            {{#if model.collectingEvent.locality.latitude1}}
+                {{#dwcm-field-group title='definitions.map' class='dwcm-collectionobject-view__map'}}
+                    {{#leaflet-map
+                        lat=model.collectingEvent.locality.latitude1
+                        lng=model.collectingEvent.locality.longitude1
+                        zoom=8
+                    }}
+                        {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+
+                        {{#circle-marker-layer
+                            location=model.collectingEvent.locality.location
+                            radius=5 color='#ff0000'
+                        }}
+                            <p>{{model.collectingEvent.locality.localityName}}</p>
+                        {{/circle-marker-layer}}
+                    {{/leaflet-map}}
+                {{/dwcm-field-group}}
+            {{/if}}
         </div>
     </div>
-
-    <ul>
-        Determinations
-        {{#each model.determinations as |determination|}}
-            <li>
-                <input type="checkbox" checked={{determination.isCurrent}}>
-                {{determination.taxon.fullName}} - {{determination.taxon.author}} - {{determination.determinedDate}}
-            </li>
-        {{/each}}
-    </ul>
-
-    <ul>
-        Preparations
-        {{#each model.preparations as |preparation index|}}
-            <li>
-                {{index}}.<br>
-                Preptype: {{preparation.preparationType.name}} <br>
-                Antal del: {{preparation.countAmt}} <br>
-                Placering: {{preparation.storage.fullName}} <br>
-                Del: {{preparation.description}} <br>
-                Status:  {{preparation.status}} <br>
-            </li>
-        {{/each}}
-    </ul>
-
-    <ul>
-        Attributes
-            <li>
-                Stage: {{model.objectAttribute.lifeStage}}
-            </li>
-            <li>
-                Sex: {{model.objectAttribute.sex}}
-            </li>
-            <li>
-                Condition: {{model.objectAttribute.condition}}
-            </li>
-            <li>
-                Measurements: {{model.objectAttribute.measurements}}
-            </li>
-    </ul>
-    {{#if model.collectingEvent}}
-        {{dwcm-collecting-event-view model=model.collectingEvent}}
-    {{/if}}
 </div>

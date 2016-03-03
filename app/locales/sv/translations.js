@@ -13,7 +13,9 @@ export default {
         },
         user: 'Användare',
         'sign-out': 'Logga ut',
-        'sign-in': 'Logga in'
+        'sign-in': 'Logga in',
+        map: 'Karta',
+        count: 'st'
     },
     main: {
         application_name: "Samlingshanteraren",

@@ -2,6 +2,9 @@
 @import "bootswatch/main.less";
 @import "bootswatch/variables.less";
 
+@import "overrides.less";
+@import "util.less";
+@import "header.less";
 @import "footer.less";
 
 @import "components/dwcm-language-selector.less";
@@ -10,37 +13,15 @@
 
 @import "components/dwcm-error.less";
 @import "components/dwcm-autocomplete-textfield.less";
+
 @import "components/form-component/single-determination.less";
 @import "components/form-component/single-preparation.less";
+
+@import "collectionobject/view.less";
 
 
 body {
     background: @gray-lighter;
-}
-
-.container.logo {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.dwcm-application-logo {
-    background: url('/logo-small.png') no-repeat;
-    height: 40px;
-    width: 168px;
-    margin: 0 10px 0 0;
-    float: left;
-}
-
-.dwcm-appliciation-brand {
-    font-size: 25px;
-    color: @text-color;
-
-    margin: 10px 0 0 5px;
-    line-height: 40px;
-
-    &:hover {
-        color: @text-color-hover;
-    }
 }
 
 .dwcm-collectionobject-new__body {
@@ -54,55 +35,6 @@ body {
     }
 }
 
-.user-menu {
-    margin-top: 15px;
-    margin-right: 15px;
-    a {
-        color: @text-color;
-    }
-
-    a:hover {
-        color: @brand-success;
-    }
-}
-
-.clickable {
-    cursor: pointer;
-}
-
-.panel-default > .panel-heading {
-    border: none;
-    border-bottom: 1px solid @gray-lighter;
-
-    background-color: @white;
-    font-size: 20px;
-
-    .glyphicon {
-        font-size: 20px;
-        color: @gray-dark;
-        &:hover {
-            color: @gray-darker;
-        }
-    }
-}
-
-.input-group {
-    width: 100%;
-}
-
-label {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    font-weight: normal;
-
-    margin-bottom: -2px;
-}
-
-.closed, .hidden {
-    display: none;
-}
-
 .leaflet-container {
     width: 300px;
     height: 250px;
@@ -110,92 +42,10 @@ label {
     margin-right: 10px;
 }
 
-
-/* Buttons */
-
-.btn {
-    border-radius: @border-radius-base;
-}
-
-/* Navigation and bars */
-.navbar-default {
-    background: @white;
-    border-color: @white;
-
-    padding-top: 10px;
-
-    border-top: 4px solid @brand-success;
-    border-radius: 0;
-}
-
-.navbar-default {
-
-    border-bottom: 1px solid @gray-light;
-
-    .navbar-brand {
-        color: @text-color;
-        font-size: 25px;
+.dwcm-collectionobject-view__map {
+    .leaflet-container {
+        width: 100%;
+        height: 300px;
+        float: none;
     }
-
-    .dwcm-secondary-navigation {
-
-        .navbar-nav > .open > a,
-        .navbar-nav > .open > a:hover,
-        .navbar-nav > .open > a:focus {
-            background-color: @white;
-            color: @text-color;
-        }
-
-        li {
-            border-right: 1px solid @gray-light;
-            cursor: pointer;
-        }
-
-        li:last-child {
-            border-right: none;
-        }
-
-        li > a {
-            color: @text-color;
-            font-size: 16px;
-        }
-
-        .open > a, li > a:hover, .open > a:hover {
-            background: @white;
-            text-decoration: @link-hover-decoration;
-        }
-
-        .navbar-nav > .active > a {
-            color: @brand-success;
-            font-weight: bold;
-            background: @white;
-
-            &:hover {
-                color: @brand-success;
-                text-decoration: @link-hover-decoration;
-            }
-        }
-
-        .dropdown-menu {
-            background: @white;
-
-            & > .active > a,
-            & > .active > a:hover,
-            & > .active > a:focus {
-                background: @white;
-                color: @brand-success;
-            }
-        }
-    }
-}
-
-.nav > li > a:hover, .nav > li > a:focus {
-    text-decoration: @link-hover-decoration;
-}
-
-/* Forms */
-
-/* Decrease form margin. */
-.form-group {
-    margin-bottom: 5px;
 }
