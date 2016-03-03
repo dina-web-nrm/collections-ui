@@ -60,7 +60,7 @@ export default {
                 confidence: 'Confidence',
                 method: 'Method',
                 determiner: 'Determiner',
-                'determined-date': 'Date(yyy-mm-dd)',
+                'determined-date': 'Date(yyyy-mm-dd)',
                 'type-status': 'Type status',
                 add: 'Add determination'
             },
