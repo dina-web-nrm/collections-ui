@@ -3,7 +3,7 @@
         <h1>
             {{model.id}}{{if model.catalogNumber (concat ' / ' model.catalogNumber) ''}}
         </h1>
-        Registrerad av {{model.cataloger.fullName}}, {{model.catalogedDate}}
+        {{t 'fields.labels.cataloger'}} {{model.cataloger.fullName}}, {{model.catalogedDate}}
     </div>
     <div class="row">
         <div class="col-xs-6">

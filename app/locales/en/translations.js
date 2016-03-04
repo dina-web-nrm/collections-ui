@@ -15,7 +15,9 @@ export default {
         'sign-out': 'Sign out',
         'sign-in': 'Sign in',
         map: 'Map',
-        count: 'pcs'
+        count: 'pcs',
+        next: 'Next',
+        previous: 'Previous'
     },
     main: {
         application_name: "Collection manager",
@@ -35,6 +37,9 @@ export default {
         "search.input": "Search for ID/Species"
     },
     collectionobject: {
+        list: {
+            header: 'List and search for collection objects'
+        },
         new: {
             title: "New {{name}} object",
             toolbar: {
@@ -53,6 +58,7 @@ export default {
     "form-component-other": 'Other',
     fields: {
         labels: {
+            cataloger: 'Registered by',
             collector: 'Collector',
             collecting_place: 'Locality',
             collecting_event: 'Collecting event',

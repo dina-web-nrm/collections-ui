@@ -449,20 +449,21 @@
 //
 //##
 
+@pagination-color-base:                @brand-primary;
 @pagination-color:                     @white;
-@pagination-bg:                        @brand-success;
+@pagination-bg:                        @pagination-color-base;
 @pagination-border:                    transparent;
 
 @pagination-hover-color:               @white;
-@pagination-hover-bg:                  darken(@brand-success, 15%);
+@pagination-hover-bg:                  darken(@pagination-color-base, 15%);
 @pagination-hover-border:              transparent;
 
 @pagination-active-color:              @white;
-@pagination-active-bg:                 darken(@brand-success, 15%);
+@pagination-active-bg:                 darken(@pagination-color-base, 15%);
 @pagination-active-border:             transparent;
 
 @pagination-disabled-color:            @gray-lighter;
-@pagination-disabled-bg:               lighten(@brand-success, 15%);
+@pagination-disabled-bg:               lighten(@pagination-color-base, 15%);
 @pagination-disabled-border:           transparent;
 
 
