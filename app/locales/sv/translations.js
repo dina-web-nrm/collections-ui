@@ -15,7 +15,9 @@ export default {
         'sign-out': 'Logga ut',
         'sign-in': 'Logga in',
         map: 'Karta',
-        count: 'st'
+        count: 'st',
+        next: 'Nästa',
+        previous: 'Föregående'
     },
     main: {
         application_name: "Samlingshanteraren",
@@ -35,6 +37,9 @@ export default {
         "search.input": "Sök på art/ID"
     },
     collectionobject: {
+        list: {
+            header: 'Lista och sök efter samlingsföremål'
+        },
         new: {
             title: "Nytt {{name}} föremål",
             toolbar: {
@@ -53,6 +58,7 @@ export default {
     "form-component-other": 'Övrigt',
     fields: {
         labels: {
+            cataloger: 'Registrerad av',
             collector: 'Insamlare',
             collecting_place: 'Fyndplats(lokal)',
             collecting_event: 'Insamlingstillfälle',

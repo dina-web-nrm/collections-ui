@@ -1,14 +1,61 @@
-<div class="container">
-    List all collection objects <a {{action "nextPage"}}>Next page</a>
-    <ul>
-        {{#each model as |collectionObject|}}
-            <li>
-                {{#link-to 'collectionobject.view' collectionObject}}
-                    {{collectionObject.id}} -
-                    {{collectionObject.collection.collectionName}} -
-                    {{collectionObject.agent.fullName}}
-                {{/link-to}}
+<div class="container dwcm-collectionobject-view">
+    <div class="page-header">
+        <h1>
+            {{t 'collectionobject.list.header'}}
+        </h1>
+    </div>
+    <div class='panel panel-default'>
+        <div class="panel-body">
+            <div class="row">
+                <!--<div class="col-xs-12 col-md-3 col-lg-3">
+                    <div class="list-group">
+                        <span class="list-group-item">
+                            <strong>Samlingar</strong>
+                        </span>
+                        {{#each model.collections as |collection|}}
+                            <a class="list-group-item">{{collection.code}}</a>
+                        {{/each}}
+                    </div>
+                </div>-->
+                <div class="col-xs-12 col-md-12 col-lg-12">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{{t 'fields.labels.collection'}}</th>
+                                <th>{{t 'fields.labels.cataloger'}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each model.collectionObjects as |collectionObject|}}
+                                {{#link-to 'collectionobject.view' collectionObject tagName='tr' class='clickable'}}
+                                    <td>
+                                        {{collectionObject.id}}
+                                    </td>
+                                    <td>
+                                        {{collectionObject.collection.collectionName}}
+                                    </td>
+                                    <td>
+                                        {{collectionObject.cataloger.fullName}}
+                                    </td>
+                                {{/link-to}}
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav>
+        <ul class="pager">
+            {{#if previousVisible}}
+                <li class="previous">
+                    <a href="#"><span aria-hidden="true">&larr;</span> {{t 'definitions.previous'}}</a>
+                </li>
+            {{/if}}
+            <li class="next">
+                <a href="#" {{action "nextPage"}}>{{t 'definitions.next'}} <span aria-hidden="true">&rarr;</span></a>
             </li>
-        {{/each}}
-    </ul>
+        </ul>
+    </nav>
 </div>

@@ -1,22 +1,25 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-    offset: 0,
-    model() {
-        return this.store.query(
-            'collectionobject', {
-                offset: this.offset
-            }
-        );
+
+    /** Configure how to handle query params. */
+    queryParams: {
+        offset: {
+            refreshModel: true,
+            scope: 'controller'
+        }
     },
 
-    actions: {
-        nextPage: function() {
-            this.offset = parseInt(this.store.peekAll('collectionobject').objectAt(
-                this.store.peekAll('collectionobject').get('length') - 1
-            ).get('id')) + 1;
-
-            return this.refresh();
-        }
-    }
+    model(params) {
+        return Ember.RSVP.hash({
+            collectionObjects: this.store.query(
+                'collectionobject', {
+                    offset: params.offset,
+                    orderby: 'collectionObjectID',
+                    limit: 20
+                }
+            ),
+            collections: this.store.findAll('collection')
+        });
+    },
 });
