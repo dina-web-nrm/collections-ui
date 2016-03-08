@@ -59,7 +59,7 @@ export default Ember.Controller.extend({
                     this.model.set('timestampCreated', moment().unix());
 
                     this.store.findRecord(
-                        'agent', this.get('session').get('data.authenticated.id')
+                        'agent', this.get('session').get('data.authenticated.id') || 3
                     ).then((agent) => {
                         this.model.set('agent', agent);
                         this.model.save().then((record) => {

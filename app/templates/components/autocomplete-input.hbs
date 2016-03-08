@@ -1,0 +1,35 @@
+{{input
+    type="text"
+    class="form-control input-sm"
+    value=value
+
+    key-up="onKeyup"
+    focus-in="onFocus"
+
+    placeholder=(if placeholder placeholder 'Skriv in/välj')
+    disabled=disabled
+}}
+
+{{#unless removeCreate}}
+    <div class="input-group-btn">
+        <button disabled title="Create new(not supported yet)" type="button" class="btn btn-primary" aria-label="Add">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </div>
+{{/unless}}
+
+{{#if isDropdownVisible}}
+    <ul class="autocomplete-input__dropdown">
+        {{#each previewData as |preview index|}}
+            <li tabIndex={{index}} {{action "onItemClick" preview}}>
+                {{#if hasBlock}}
+                    {{yield preview}}
+                {{else}}
+                    {{get preview displayField}}
+                {{/if}}
+            </li>
+        {{else}}
+            <li>Inget resultat</li>
+        {{/each}}
+    </ul>
+{{/if}}
