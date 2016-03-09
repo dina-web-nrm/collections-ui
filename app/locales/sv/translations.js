@@ -94,7 +94,9 @@ export default {
                 'verbatim-collector': 'Insamlare',
                 'max-elevation': 'Nivå ö hav',
                 'min-elevation': 'Nivå u hav',
-                'select-existing': 'Välj från sparade insamlingstillfällen'
+                'select-existing': 'Välj från sparade insamlingstillfällen',
+                'show-map': 'Välj på karta',
+                'hide-map': 'Dölj karta'
             }
         },
         placeholder: {

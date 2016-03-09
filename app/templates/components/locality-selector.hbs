@@ -1,0 +1,98 @@
+<div class="col-xs-12">
+    {{
+        dwcm-autocomplete-textfield
+        label="fields.labels.collecting_place"
+
+        storeName='locality'
+        displayField='localityName'
+        filterField='localityName'
+
+        item=selectedLocality
+
+        itemSelected=(action this.attrs.update)
+        labelAction=(action 'toggleMap')
+        actionText=(
+            if displayMap 'fields.labels.collecting-event.hide-map' 'fields.labels.collecting-event.show-map'
+        )
+    }}
+</div>
+{{#if displayMap}}
+    <div class="col-xs-8 col-md-8">
+        {{#map-view
+            center=selectedItem.centroid
+            boundsUpdate=(action 'boundsUpdate') as |map|
+        }}
+            {{#unless maximumReached}}
+                {{#each localities as |locality|}}
+                    {{#if locality.latitude1}}
+                        {{#circle-marker-layer
+                            location=locality.location
+                            radius=7
+                            opacity=1
+
+                            popupOpen=locality.isOpen
+
+                            color=(
+                                if locality.highlighted '#bd0026' (
+                                    if locality.hover '#fd8d3c' '#31a354'
+                                )
+                            )
+                        }}
+                            <p>
+                                <strong>{{locality.localityName}}</strong>
+                                <br>{{locality.geography.fullName}}
+                            </p>
+                            <a
+                                class="btn btn-default btn-xs"
+                                {{action 'select' locality on='click'}}
+                            >
+                                    Använd
+                            </a>
+                        {{/circle-marker-layer}}
+                    {{/if}}
+                {{/each}}
+            {{/unless}}
+        {{/map-view}}
+    </div>
+    <div class="col-xs-4 col-md-4">
+        {{#autocomplete-input
+            storeName='geography'
+            displayField='name'
+            filterField='name'
+            placeholder='Sök på namn, ort, område, land'
+
+            itemSelected=(action (mut selectedItem))
+
+            as |dropdownItem|
+        }}
+            {{dropdownItem.name}}<br>
+            Latitude: {{dropdownItem.centroidLon}}, Longitude: {{dropdownItem.centroidLat}}
+        {{/autocomplete-input}}
+        <h4>
+            Fyndplatser, {{if maximumReached '+' ''}}{{localities.length}}{{t 'definitions.count'}}
+        </h4>
+        {{#if maximumReached}}
+            <p>
+                För många fyndplatser. Välj ett mindre område.
+            </p>
+        {{else}}
+            <div class="list-group">
+                {{#each localities as |locality|}}
+                    <a
+                        class="list-group-item clickable"
+                        {{action 'open' locality on='click'}}
+                        {{action 'hover' locality true on='mouseEnter'}}
+                        {{action 'hover' locality false on='mouseLeave'}}
+                    >
+                        <p class="list-group-item-text list-header">
+                            <strong>{{locality.localityName}}</strong>
+                        </p>
+                        <p class="list-group-item-text">
+                            {{locality.geography.fullName}}
+                        </p>
+                    </a>
+                {{/each}}
+            </div>
+        {{/if}}
+    </div>
+{{/if}}

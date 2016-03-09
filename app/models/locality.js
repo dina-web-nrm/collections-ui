@@ -10,6 +10,8 @@ export default DS.Model.extend({
     maxElevation: DS.attr('number'),
     minElevation: DS.attr('number'),
 
+    geography: DS.belongsTo('geography', {async: true}),
+
     /** Locality location converted to array. */
     location: Ember.computed('latitude1', 'longitude1',  function () {
         return [

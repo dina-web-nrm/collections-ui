@@ -11,6 +11,16 @@ export default Ember.Component.extend(ClickOutsideComponent, {
         'autocomplete-input', 'dropdown-group'
     ],
 
+    /** Update when item being updated from outside. */
+    didUpdateAttrs() {
+        this._super(...arguments);
+        const item = this.get('item');
+
+        if (item && item !== this.get('hasSelected')) {
+            this.set('hasSelected', item);
+        }
+    },
+
     /** Enable multi select.
      *
      * When multi select is enabled the textfield will not be
@@ -64,10 +74,12 @@ export default Ember.Component.extend(ClickOutsideComponent, {
 
     /** Return if input is invalid. */
     isInvalid: Ember.computed('hasSelected', 'hasFocus', 'value', function () {
-        return (
+        const isValid = (
             (this.get('value') && this.get('value').length > 0 && !this.get('multiSelect')) &&
             !this.get('hasFocus') && !this.get('hasSelected')
         );
+
+        return isValid;
     }),
 
     /** Data to display in preview dropdown. */
@@ -85,7 +97,7 @@ export default Ember.Component.extend(ClickOutsideComponent, {
     /** Return if preview dropdown is visible. */
     isDropdownVisible: Ember.computed('previewData', 'hasFocus', function () {
         return this.get('hasFocus') && (
-            this.get('previewData').length || this.get('value').length
+            this.get('previewData').length || this.get('value.length')
         );
     }),
 

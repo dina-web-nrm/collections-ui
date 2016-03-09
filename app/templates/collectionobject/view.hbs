@@ -94,20 +94,14 @@
             {{/dwcm-field-group}}
             {{#if model.collectingEvent.locality.latitude1}}
                 {{#dwcm-field-group title='definitions.map' class='dwcm-collectionobject-view__map'}}
-                    {{#leaflet-map
-                        lat=model.collectingEvent.locality.latitude1
-                        lng=model.collectingEvent.locality.longitude1
-                        zoom=8
-                    }}
-                        {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
-
+                    {{#map-view center=model.collectingEvent.locality.location}}
                         {{#circle-marker-layer
                             location=model.collectingEvent.locality.location
-                            radius=5 color='#ff0000'
+                            radius=5 color='#bd0026'
                         }}
                             <p>{{model.collectingEvent.locality.localityName}}</p>
                         {{/circle-marker-layer}}
-                    {{/leaflet-map}}
+                    {{/map-view}}
                 {{/dwcm-field-group}}
             {{/if}}
         </div>

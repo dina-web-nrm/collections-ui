@@ -1,0 +1,13 @@
+{{#leaflet-map
+    center=_center
+    zoom=_zoom
+    onLoad=(action 'updateBounds')
+    onMoveend=(action 'updateBounds')
+}}
+    {{tile-layer
+        url='https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png'
+        attribution='<a href="https://www.mediawiki.org/wiki/Maps">Wikimedia Maps</a>'
+    }}
+
+    {{yield this}}
+{{/leaflet-map}}
