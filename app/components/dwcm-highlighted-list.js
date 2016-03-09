@@ -1,5 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    classNames: ['dwcm-highlighted-list']
+    classNames: ['dwcm-highlighted-list'],
+
+    title: 'title',
+
+    value: 'value'
 });
