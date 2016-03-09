@@ -24,7 +24,7 @@ export default Ember.Component.extend({
                 this.attrs.boundsUpdate([
                     bounds.getNorth(), bounds.getEast(),
                     bounds.getSouth(), bounds.getWest()
-                ])
+                ]);
             }
         }
     }

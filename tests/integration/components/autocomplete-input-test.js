@@ -20,5 +20,4 @@ test('it renders', function(assert) {
     {{/autocomplete-input}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
 });

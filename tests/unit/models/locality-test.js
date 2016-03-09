@@ -2,7 +2,7 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('locality', 'Unit | Model | locality', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:geography']
 });
 
 test('it exists', function(assert) {

@@ -11,14 +11,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{map-view}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:"
-  this.render(hbs`
-    {{#map-view}}
-      template block text
-    {{/map-view}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$('.leaflet-map-pane'));
 });
