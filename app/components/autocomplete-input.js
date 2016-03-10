@@ -1,7 +1,9 @@
-import ClickOutsideComponent from '../mixins/click-outside-component';
 import Ember from 'ember';
 
-export default Ember.Component.extend(ClickOutsideComponent, {
+import ClickOutsideComponent from '../mixins/click-outside-component';
+import Filterable from '../mixins/filterable';
+
+export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
 
     /** Bind conditional classes. */
     classNameBindings: ['hasSelected:has-success', 'isInvalid:has-error', '!removeCreate:input-group'],
@@ -35,7 +37,7 @@ export default Ember.Component.extend(ClickOutsideComponent, {
     /** Setting to hide the create button. */
     removeCreate: true,
 
-    /** Required store. */
+    /** Injected services. */
     store: Ember.inject.service('store'),
 
     /** Name of the store to fetch data from. */
@@ -136,6 +138,8 @@ export default Ember.Component.extend(ClickOutsideComponent, {
         };
 
         queryParams[filterField] = filterValue;
+
+        Object.assign(queryParams, this.get('filters'));
 
         this.get('store').query(this.storeName, queryParams).then((response) => {
             this.set('previewData', response);

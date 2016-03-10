@@ -19,8 +19,9 @@
 {{#if displayMap}}
     <div class="col-xs-8 col-md-8">
         {{#map-view
-            center=selectedItem.centroid
-            boundsUpdate=(action 'boundsUpdate') as |map|
+            center=geography.centroid
+            zoom=zoom
+            boundsUpdate=(action (mut bounds)) as |map|
         }}
             {{#unless maximumReached}}
                 {{#each localities as |locality|}}
@@ -61,7 +62,7 @@
             filterField='name'
             placeholder='Sök på namn, ort, område, land'
 
-            itemSelected=(action (mut selectedItem))
+            itemSelected=(action 'geographySelected')
 
             as |dropdownItem|
         }}
