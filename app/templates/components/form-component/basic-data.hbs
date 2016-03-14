@@ -1,8 +1,7 @@
 {{#dwcm-field-group title=title identifier="dwcm-basic-data"}}
     <div class="row">
         <div class="col-xs-6">
-            {{
-                dwcm-autocomplete-textfield
+            {{dwcm-autocomplete-textfield
                 label="fields.labels.collection"
                 storeName='collection'
                 displayField='collectionName'
@@ -22,8 +21,7 @@
             }}
         </div>
         <div class="col-xs-4">
-            {{
-                dwcm-autocomplete-textfield
+            {{dwcm-autocomplete-textfield
                 label="fields.labels.accession"
                 storeName='accession'
                 displayField='accessionNumber'

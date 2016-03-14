@@ -17,7 +17,16 @@ export default {
         map: 'Karta',
         count: 'st',
         next: 'Nästa',
-        previous: 'Föregående'
+        previous: 'Föregående',
+        use: 'Använd',
+        'type-to-search': 'Skriv för att söka',
+        'collecting-place': {
+            one: 'Fyndplats',
+            other: 'Fyndplatser'
+        },
+        'no-result': 'Inget resultat',
+        geography: 'Geografi',
+        coordinates: 'Koordinater'
     },
     main: {
         application_name: "Samlingshanteraren",
@@ -35,6 +44,13 @@ export default {
         "collection_object.list": "Lista",
         "search.button": "Sök",
         "search.input": "Sök på art/ID"
+    },
+    component: {
+        'locality-selector': {
+            'to-many-results': 'För många fyndplatser. Välj ett mindre område.',
+            'search-geography': 'Sök på namn, ort, område, land',
+            'created-by': 'Skapad {{date}} av {{name}}'
+        }
     },
     collectionobject: {
         list: {
@@ -76,7 +92,7 @@ export default {
             preparation: {
                 'preparation-type': 'Preparationstyp',
                 count: 'Antal',
-                'life-stage': 'Livsstadie/stadium',
+                'life-stage': 'Livsstadium',
                 age: 'Ålder',
                 sex: 'Kön',
                 measurements: 'Mätningar',
@@ -94,11 +110,13 @@ export default {
                 'verbatim-collector': 'Insamlare',
                 'max-elevation': 'Nivå ö hav',
                 'min-elevation': 'Nivå u hav',
-                'select-existing': 'Välj från sparade insamlingstillfällen'
+                'select-existing': 'Välj från sparade insamlingstillfällen',
+                'show-map': 'Välj på karta',
+                'hide-map': 'Dölj karta'
             }
         },
         placeholder: {
-            'date-format': '1985-05-08'
+            'date-format': 'T.ex. 1985-05-08'
         }
     },
     errors: {

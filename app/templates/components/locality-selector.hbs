@@ -1,0 +1,165 @@
+<div class="col-xs-12 {{if displayMap 'hidden'}}">
+    {{action-label
+        text='fields.labels.collecting-event.show-map'
+        label='fields.labels.collecting_place'
+        action=(action 'toggleMap')
+    }}
+    {{#autocomplete-input
+
+        storeName='locality'
+        displayField='localityName'
+        filterField='localityName'
+
+        multiSelect=multiSelect
+
+        itemSelected=(action this.attrs.update)
+        isInvalid=isInvalid
+        filterKeys=filterKeys
+
+        item=selectedLocality
+
+        as |dropdownItem|
+    }}
+        <i class='glyphicon glyphicon-map-marker {{unless dropdownItem.latitude1 'inactive'}}'></i>
+        <p class='geography'>{{dropdownItem.geography.name}}</p>
+        <p class='locality {{if dropdownItem.latitude1 'shrink'}}'>{{dropdownItem.localityName}}</p>
+        {{#if dropdownItem.latitude1}}
+            <p class='coordinates hidden-xs'>
+                <i class="glyphicon glyphicon-map-marker"></i>{{dropdownItem.location}}
+            </p>
+        {{/if}}
+        <p class='timestamp hidden-xs'>
+            {{t
+                'component.locality-selector.created-by'
+                date=(moment-format dropdownItem.timestampCreated 'LL')
+                name=dropdownItem.agent.fullName
+            }}
+        </p>
+    {{/autocomplete-input}}
+</div>
+{{#if item}}
+    <div class='col-xs-12 preview {{if displayMap 'hidden'}}'>
+        <div class='row'>
+            {{#if item.latitude1}}
+                <div class='col-xs-5'>
+                    {{#map-view
+                        center=item.location
+                        zoom=zoom
+                    }}
+                        {{#marker-layer
+                            location=item.location
+                            popupOpen=(readonly true)
+                            clickable=false
+                        }}
+                            <p>
+                                <strong>{{item.localityName}}</strong>
+                                <br>{{locality.geography.fullName}}
+                            </p>
+                        {{/marker-layer}}
+                    {{/map-view}}
+                </div>
+            {{/if}}
+            <div class='col-xs-6'>
+                <ul>
+                    <li>
+                        <span>{{t 'definitions.collecting-place' count=1}}:</span> {{item.localityName}}
+                    </li>
+                    <li>
+                        <span>{{t 'definitions.geography'}}:</span> {{item.geography.name}}
+                    </li>
+                    <li>
+                        <span>{{t 'definitions.coordinates'}}:</span> {{item.location}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{{/if}}
+{{#if displayMap}}
+    <div class='col-xs-12'>
+        {{action-label
+            text='fields.labels.collecting-event.hide-map'
+            label='fields.labels.collecting_place'
+            action=(action 'toggleMap')
+        }}
+    </div>
+    <div class="col-xs-8 col-md-8">
+        {{#map-view
+            center=geography.centroid
+            zoom=zoom
+            boundsUpdate=(action (mut bounds)) as |map|
+        }}
+            {{#unless maximumReached}}
+                {{#marker-cluster-layer}}
+                    {{#each localities as |locality|}}
+                        {{#if locality.latitude1}}
+                            {{#circle-marker-layer
+                                location=locality.location
+                                radius=7
+                                opacity=1
+
+                                popupOpen=locality.isOpen
+
+                                color=(
+                                    if locality.highlighted '#bd0026' (
+                                        if locality.hover '#fd8d3c' '#31a354'
+                                    )
+                                )
+                            }}
+                                <p>
+                                    <strong>{{locality.localityName}}</strong>
+                                    <br>{{locality.geography.fullName}}
+                                </p>
+                                <a
+                                    class="btn btn-default btn-xs"
+                                    {{action 'select' locality on='click'}}
+                                >
+                                        {{t 'definitions.use'}}
+                                </a>
+                            {{/circle-marker-layer}}
+                        {{/if}}
+                    {{/each}}
+                {{/marker-cluster-layer}}
+            {{/unless}}
+        {{/map-view}}
+    </div>
+    <div class="col-xs-4 col-md-4">
+        {{#autocomplete-input
+            storeName='geography'
+            displayField='name'
+            filterField='name'
+            placeholder='component.locality-selector.search-geography'
+
+            itemSelected=(action 'geographySelected')
+
+            as |dropdownItem|
+        }}
+            {{dropdownItem.name}}<br>
+            Latitude: {{dropdownItem.centroidLon}}, Longitude: {{dropdownItem.centroidLat}}
+        {{/autocomplete-input}}
+        <h4>
+            {{t 'definitions.collecting-place' count=2}}, {{if maximumReached '+' ''}}{{localities.length}}{{t 'definitions.count'}}
+        </h4>
+        {{#if maximumReached}}
+            <p>{{t 'component.locality-selector.to-many-results'}}</p>
+        {{else}}
+            <div class="list-group">
+                {{#each localities as |locality|}}
+                    <a
+                        class="list-group-item clickable"
+                        {{action 'open' locality on='click'}}
+                        {{action 'hover' locality true on='mouseEnter'}}
+                        {{action 'hover' locality false on='mouseLeave'}}
+                    >
+                        <p class="list-group-item-text list-header">
+                            <strong>{{locality.localityName}}</strong>
+                        </p>
+                        <p class="list-group-item-text">
+                            {{locality.geography.fullName}}
+                        </p>
+                    </a>
+                {{/each}}
+            </div>
+        {{/if}}
+    </div>
+{{/if}}

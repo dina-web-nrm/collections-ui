@@ -2,13 +2,13 @@
     .label-group {
         margin-bottom: 5px;
     }
-
-    .dropdown-group {
-        position: relative;
-    }
 }
 
-.dwcm-autocomplete-dropdown {
+.dropdown-group {
+    position: relative;
+}
+
+.dwcm-autocomplete-dropdown, .autocomplete-input__dropdown {
     position: absolute;
     z-index: 1001;
     background: @white;
@@ -20,6 +20,8 @@
     border: 1px solid @input-border;
     border-radius: 0 0 @border-radius-base @border-radius-base;
     font-size: 13px;
+
+    margin-bottom: calc(@footer-height + 10px);
 
     .box-shadow(0 6px 12px rgba(0, 0, 0, 0.175));
 

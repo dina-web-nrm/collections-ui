@@ -9,13 +9,13 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });"
 
-  this.render(hbs`{{dwcm-autocomplete-textfield label='definitions.name'}}`);
+  this.render(hbs`{{dwcm-autocomplete-textfield label='definitions.name' itemSelected=(action (mut test))}}`);
 
   assert.equal(this.$().text().trim(), 'Namn:');
 
   // Template block usage:"
   this.render(hbs`
-    {{#dwcm-autocomplete-textfield label='definitions.name'}}
+    {{#dwcm-autocomplete-textfield label='definitions.name' itemSelected=(action (mut test))}}
         <span>template block text</span>
     {{/dwcm-autocomplete-textfield}}
   `);

@@ -1,0 +1,101 @@
+.locality-selector {
+    .list-header {
+        font-weight: bold;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .list-group-item {
+        padding: 5px 5px;
+    }
+
+    .autocomplete-input {
+        margin-bottom: 10px;
+    }
+
+    .list-group {
+        max-height: 324px;
+        overflow-y: scroll;
+        border-bottom: 1px solid @gray-light;
+        border-top: 1px solid @gray-light;
+    }
+    .preview {
+        .leaflet-container {
+            height: 200px;
+        }
+
+        ol, ul {
+            span {
+                font-weight: bold;
+            }
+        }
+        ul {
+            padding-left: 0;
+
+            li {
+                list-style-type: none;
+            }
+        }
+    }
+    .autocomplete-input__dropdown {
+
+        li {
+            position: relative;
+            overflow: hidden;
+        }
+
+        p {
+            padding: 0px;
+            margin: 0px;
+            width: 100%;
+            height: 18px;
+
+            white-space: nowrap;
+            text-overflow: ellipsis;
+
+            &.geography {
+                color: @gray-dark;
+            }
+
+            &.locality {
+                width: 80%;
+                &.shrink {
+                    width: 60%;
+                }
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                float: left;
+            }
+
+            &.coordinates {
+                float: right;
+                width: auto;
+                text-align: right;
+                .glyphicon {
+                    padding: 3px 0 3px 0;
+                    font-size: 12px;
+                }
+            }
+
+            &.timestamp {
+                color: @gray-dark;
+                position: absolute;
+                right: 5px;
+                top: 8px;
+                text-align: right;
+            }
+        }
+        .glyphicon {
+            font-size: 30px;
+            padding: 3px;
+            float: left;
+            margin-right: 5px;
+            position: static;
+            &.inactive {
+                color: @gray-light;
+            }
+        }
+    }
+}
