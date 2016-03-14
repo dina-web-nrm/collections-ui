@@ -21,9 +21,6 @@ export default Ember.Component.extend({
             this.get('moment').changeLocale(
                 this.get('i18n.locale')
             );
-            console.log(
-                'Moment: ', this.get('moment.locale')
-            );
         }
     }
 });
