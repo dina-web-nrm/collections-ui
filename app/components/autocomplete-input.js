@@ -155,9 +155,9 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
      */
     fetchData () {
         if (this.localData) {
-            this._fetchLocalData(this.get('filterField'), this.get('value'), 27);
+            this._fetchLocalData(this.get('filterField'), this.get('value'), 7);
         } else {
-            this._fetchRemoteData(this.get('filterField'), this.get('value'), 27);
+            this._fetchRemoteData(this.get('filterField'), this.get('value'), 7);
         }
     },
 
