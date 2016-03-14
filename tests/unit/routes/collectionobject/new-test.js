@@ -1,8 +1,10 @@
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('route:collectionobject/new', 'Unit | Route | collectionobject/new', {
-  // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
+    needs: [
+        'service:metrics',
+        'ember-metrics@metrics-adapter:piwik'
+    ]
 });
 
 test('it exists', function(assert) {
