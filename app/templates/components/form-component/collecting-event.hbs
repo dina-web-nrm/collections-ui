@@ -68,7 +68,7 @@
                     <div class="label-group {{if model.collectingEvent.collectors.length '' 'closed'}}">
                         {{#each model.collectingEvent.collectors as |collector|}}
                             <span class="badge">
-                                {{collector.agent.fullName}} <i class="glyphicon glyphicon-remove" {{action 'removeCollector' collector}}></i>
+                                {{collector.agent.fullName}} <i class="glyphicon glyphicon-remove clickable" {{action 'removeCollector' collector}}></i>
                             </span>
                         {{/each}}
                     </div>

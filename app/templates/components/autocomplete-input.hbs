@@ -3,8 +3,9 @@
     class="form-control input-sm"
     value=value
 
-    key-up="onKeyup"
+    key-down="onKeyDown"
     focus-in="onFocus"
+    focus-out="onBlur"
 
     placeholder=(t (if placeholder placeholder 'definitions.type-to-search'))
     disabled=disabled
@@ -21,7 +22,7 @@
 {{#if isDropdownVisible}}
     <ul class="autocomplete-input__dropdown">
         {{#each previewData as |preview index|}}
-            <li tabIndex={{index}} {{action "onItemClick" preview}}>
+            <li data-index={{index}} {{action "onItemClick" preview}}>
                 {{#if hasBlock}}
                     {{yield preview}}
                 {{else}}
