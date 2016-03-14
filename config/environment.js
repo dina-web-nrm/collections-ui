@@ -19,7 +19,24 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+    metricsAdapters: [
+        {
+            name: 'Piwik',
+            environments: ['production'],
+            config: {
+                piwikUrl: 'http://monitor.dina-web.net',
+                siteId: 4
+            }
+        }, {
+            name: 'Piwik',
+            environments: ['development'],
+            config: {
+                piwikUrl: 'http://monitor.dina-web.net',
+                siteId: 2
+            }
+        }
+    ]
   };
 
   if (environment === 'development') {
