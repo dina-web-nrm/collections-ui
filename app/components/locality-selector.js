@@ -50,6 +50,10 @@ export default Ember.Component.extend(Filterable, {
 
         geographySelected (geography) {
             this.set('geography', geography);
+
+            if (geography) {
+                this.set('zoom', 12);
+            }
         },
 
         open (location) {
