@@ -22,7 +22,12 @@
     }}
         <i class='glyphicon glyphicon-map-marker {{unless dropdownItem.latitude1 'inactive'}}'></i>
         <p class='geography'>{{dropdownItem.geography.name}}</p>
-        <p class='locality'>{{dropdownItem.localityName}}</p>
+        <p class='locality {{if dropdownItem.latitude1 'shrink'}}'>{{dropdownItem.localityName}}</p>
+        {{#if dropdownItem.latitude1}}
+            <p class='coordinates hidden-xs'>
+                <i class="glyphicon glyphicon-map-marker"></i>{{dropdownItem.location}}
+            </p>
+        {{/if}}
         <p class='timestamp hidden-xs'>
             {{t
                 'component.locality-selector.created-by'

@@ -58,6 +58,27 @@
                 color: @gray-dark;
             }
 
+            &.locality {
+                width: 80%;
+                &.shrink {
+                    width: 60%;
+                }
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                float: left;
+            }
+
+            &.coordinates {
+                float: right;
+                width: 210px;
+
+                .glyphicon {
+                    padding: 3px 0 3px 0;
+                    font-size: 12px;
+                }
+            }
+
             &.timestamp {
                 color: @gray-dark;
                 position: absolute;
