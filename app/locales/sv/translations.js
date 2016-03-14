@@ -24,7 +24,9 @@ export default {
             one: 'Fyndplats',
             other: 'Fyndplatser'
         },
-        'no-result': 'Inget resultat'
+        'no-result': 'Inget resultat',
+        geography: 'Geografi',
+        coordinates: 'Koordinater'
     },
     main: {
         application_name: "Samlingshanteraren",
@@ -46,7 +48,8 @@ export default {
     component: {
         'locality-selector': {
             'to-many-results': 'För många fyndplatser. Välj ett mindre område.',
-            'search-geography': 'Sök på namn, ort, område, land'
+            'search-geography': 'Sök på namn, ort, område, land',
+            'created-by': 'Skapad {{date}} av {{name}}'
         }
     },
     collectionobject: {

@@ -24,7 +24,9 @@ export default {
             one: 'Locality',
             other: 'Localities'
         },
-        'no-result': 'No result'
+        'no-result': 'No result',
+        geography: 'Geography',
+        coordinates: 'Coordinates'
     },
     main: {
         application_name: "Collection manager",
@@ -46,7 +48,8 @@ export default {
     component: {
         'locality-selector': {
             'to-many-results': 'Too many localities. Please select a smaller area.',
-            'search-geography': 'Search on name, city, area or country'
+            'search-geography': 'Search on name, city, area or country',
+            'created-by': 'Created {{date}} by {{name}}'
         }
     },
     collectionobject: {
