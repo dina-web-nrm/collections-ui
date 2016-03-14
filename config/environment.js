@@ -10,21 +10,36 @@ module.exports = function(environment) {
         defaultLocale: 'sv'
     },
     EmberENV: {
-      FEATURES: {
+    FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
-      }
+    }
     },
 
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
+    // Here you can pass flags/options to your application instance
+    // when it is created
     },
     moment: {
         // To cherry-pick specific locale support into your application.
         // Full list of locales: https://github.com/moment/moment/tree/2.10.3/locale
         includeLocales: ['sv', 'en']
-    }
+    },
+    metricsAdapters: [{
+            name: 'Piwik',
+            environments: ['production'],
+            config: {
+                piwikUrl: 'http://monitor.dina-web.net',
+                siteId: 4
+            }
+        }, {
+            name: 'Piwik',
+            environments: ['development'],
+            config: {
+                piwikUrl: 'http://monitor.dina-web.net',
+                siteId: 2
+            }
+    }]
   };
 
   if (environment === 'development') {
