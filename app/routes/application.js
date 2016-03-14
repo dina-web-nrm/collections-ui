@@ -4,9 +4,10 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 
 export default Ember.Route.extend(ApplicationRouteMixin, {
 
+    /** Inject services. */
     session: Ember.inject.service(),
-
     i18n: Ember.inject.service(),
+    moment: Ember.inject.service(),
 
     model () {
         this.store.findAll('collection');
@@ -20,6 +21,10 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
         if (language) {
             this.set('i18n.locale', language);
         }
+
+        this.get('moment').changeLocale(
+            this.get('i18n.locale')
+        );
 
         return result;
     }

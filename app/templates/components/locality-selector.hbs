@@ -24,7 +24,7 @@
         <p class='geography'>{{dropdownItem.geography.name}}</p>
         <p class='locality'>{{dropdownItem.localityName}}</p>
         <p class='timestamp hidden-xs'>
-            Skapad <strong>{{dropdownItem.timestampCreated}}</strong> av <strong>{{dropdownItem.agent.fullName}}</strong>
+            Skapad <i>{{moment-format dropdownItem.timestampCreated 'LL'}}</i> av <i>{{dropdownItem.agent.fullName}}</i>
         </p>
     {{/autocomplete-input}}
 </div>

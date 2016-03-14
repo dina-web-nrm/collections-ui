@@ -1,9 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    i18n: Ember.inject.service(),
 
+    /** Inject services. */
+    i18n: Ember.inject.service(),
     session: Ember.inject.service(),
+    moment: Ember.inject.service(),
 
     tagName: 'ul',
 
@@ -15,6 +17,13 @@ export default Ember.Component.extend({
         changeLanguage: function (language) {
             this.set('i18n.locale', language);
             this.get('session').set('data.locale', language);
+
+            this.get('moment').changeLocale(
+                this.get('i18n.locale')
+            );
+            console.log(
+                'Moment: ', this.get('moment.locale')
+            );
         }
     }
 });
