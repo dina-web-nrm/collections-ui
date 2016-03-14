@@ -1,12 +1,11 @@
-<div class="panel-heading">
+<div class="panel-heading clickable" {{action "toggleCollapse"}}>
     {{t title}}
     {{#if counter}}
         ({{counter}})
     {{/if}}
-    <i class=" pull-right glyphicon clickable
+    <i class=" pull-right glyphicon
             {{if collapsed 'glyphicon-plus-sign' 'glyphicon-minus-sign'}}
         "
-        {{action "toggleCollapse"}}
     ></i>
 </div>
 <div class="panel-body {{if collapsed 'closed' ''}}">
