@@ -17,7 +17,14 @@ export default {
         map: 'Karta',
         count: 'st',
         next: 'Nästa',
-        previous: 'Föregående'
+        previous: 'Föregående',
+        use: 'Använd',
+        'type-to-search': 'Skriv för att söka',
+        'collecting-place': {
+            one: 'Fyndplats',
+            other: 'Fyndplatser'
+        },
+        'no-result': 'Inget resultat'
     },
     main: {
         application_name: "Samlingshanteraren",
@@ -35,6 +42,12 @@ export default {
         "collection_object.list": "Lista",
         "search.button": "Sök",
         "search.input": "Sök på art/ID"
+    },
+    component: {
+        'locality-selector': {
+            'to-many-results': 'För många fyndplatser. Välj ett mindre område.',
+            'search-geography': 'Sök på namn, ort, område, land'
+        }
     },
     collectionobject: {
         list: {
@@ -76,7 +89,7 @@ export default {
             preparation: {
                 'preparation-type': 'Preparationstyp',
                 count: 'Antal',
-                'life-stage': 'Livsstadie/stadium',
+                'life-stage': 'Livsstadium',
                 age: 'Ålder',
                 sex: 'Kön',
                 measurements: 'Mätningar',
@@ -100,7 +113,7 @@ export default {
             }
         },
         placeholder: {
-            'date-format': '1985-05-08'
+            'date-format': 'T.ex. 1985-05-08'
         }
     },
     errors: {

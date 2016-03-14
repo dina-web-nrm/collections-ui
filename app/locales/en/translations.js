@@ -17,7 +17,14 @@ export default {
         map: 'Map',
         count: 'pcs',
         next: 'Next',
-        previous: 'Previous'
+        previous: 'Previous',
+        use: 'Use',
+        'type-to-search': 'Type to search',
+        'collecting-place': {
+            one: 'Locality',
+            other: 'Localities'
+        },
+        'no-result': 'No result'
     },
     main: {
         application_name: "Collection manager",
@@ -35,6 +42,12 @@ export default {
         "collection_object.list": "List all",
         "search.button": "Search",
         "search.input": "Search for ID/Species"
+    },
+    component: {
+        'locality-selector': {
+            'to-many-results': 'Too many localities. Please select a smaller area.',
+            'search-geography': 'Search on name, city, area or country'
+        }
     },
     collectionobject: {
         list: {
@@ -68,7 +81,7 @@ export default {
                 confidence: 'Confidence',
                 method: 'Method',
                 determiner: 'Determiner',
-                'determined-date': 'Date(yyyy-mm-dd)',
+                'determined-date': 'Date (yyyy-mm-dd)',
                 'type-status': 'Type status',
                 add: 'Add determination'
             },
@@ -88,17 +101,19 @@ export default {
                 add: 'Add part/preparation'
             },
             'collecting-event': {
-                'start-date': 'Collection date(yyyy-mm-dd)',
+                'start-date': 'Collection date (yyyy-mm-dd)',
                 method: 'Method',
                 'verbatim-locality': 'Locality',
                 'verbatim-collector': 'Collector',
                 'max-elevation': 'Nivå ö hav',
                 'min-elevation': 'Nivå u hav',
-                'select-existing': 'Select existing collecting event'
+                'select-existing': 'Select existing collecting event',
+                'show-map': 'Pick on map',
+                'hide-map': 'Hide map'
             }
         },
         placeholder: {
-            'date-format': '1985-05-08'
+            'date-format': 'Eg. 1985-05-08'
         }
     },
     errors: {

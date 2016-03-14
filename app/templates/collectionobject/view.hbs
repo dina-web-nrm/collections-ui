@@ -45,7 +45,9 @@
                         <span>{{t 'fields.labels.preparation.age'}}:</span> {{model.objectAttribute.age}}
                     </li>
                     <li>
-                        <span>{{t 'fields.labels.preparation.sex'}}:</span> {{t (concat 'definitions.' model.objectAttribute.sex)}}
+                        <span>{{t 'fields.labels.preparation.sex'}}:</span> {{t
+                            (concat 'definitions.' (if model.objectAttribute.sex model.objectAttribute.sex 'unknown'))
+                        }}
                     </li>
                     <li>
                         <span>{{t 'fields.labels.preparation.measurements'}}:</span> {{model.objectAttribute.measurements}}

@@ -6,7 +6,7 @@
     key-up="onKeyup"
     focus-in="onFocus"
 
-    placeholder=(if placeholder placeholder 'Skriv in/välj')
+    placeholder=(t (if placeholder placeholder 'definitions.type-to-search'))
     disabled=disabled
 }}
 
@@ -29,7 +29,7 @@
                 {{/if}}
             </li>
         {{else}}
-            <li>Inget resultat</li>
+            <li>{{t 'definitions.no-result'}}</li>
         {{/each}}
     </ul>
 {{/if}}
