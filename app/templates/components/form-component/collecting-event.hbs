@@ -90,6 +90,6 @@
                 }}
             --}}
         </div>
-        {{locality-selector update=(action (mut model.collectingEvent.locality))}}
+        {{locality-selector update=(action (mut model.collectingEvent.locality)) item=model.collectingEvent.locality}}
     {{/unless}}
 {{/dwcm-field-group}}

@@ -1,22 +1,79 @@
-<div class="col-xs-12">
-    {{
-        dwcm-autocomplete-textfield
-        label="fields.labels.collecting_place"
+<div class="col-xs-12 {{if displayMap 'hidden'}}">
+    {{action-label
+        text='fields.labels.collecting-event.show-map'
+        label='fields.labels.collecting_place'
+        action=(action 'toggleMap')
+    }}
+    {{#autocomplete-input
 
         storeName='locality'
         displayField='localityName'
         filterField='localityName'
 
-        item=selectedLocality
+        multiSelect=multiSelect
 
         itemSelected=(action this.attrs.update)
-        labelAction=(action 'toggleMap')
-        actionText=(
-            if displayMap 'fields.labels.collecting-event.hide-map' 'fields.labels.collecting-event.show-map'
-        )
+        isInvalid=isInvalid
+        filterKeys=filterKeys
+
+        item=selectedLocality
+
+        as |dropdownItem|
     }}
+        <i class='glyphicon glyphicon-map-marker {{unless dropdownItem.latitude1 'inactive'}}'></i>
+        <p class='geography'>{{dropdownItem.geography.name}}</p>
+        <p class='locality'>{{dropdownItem.localityName}}</p>
+        <p class='timestamp hidden-xs'>
+            Skapad <strong>{{dropdownItem.timestampCreated}}</strong> av <strong>{{dropdownItem.agent.fullName}}</strong>
+        </p>
+    {{/autocomplete-input}}
 </div>
+{{#if item}}
+    <div class='col-xs-12 preview {{if displayMap 'hidden'}}'>
+        <div class='row'>
+            {{#if item.latitude1}}
+                <div class='col-xs-5'>
+                    {{#map-view
+                        center=item.location
+                        zoom=zoom
+                    }}
+                        {{#marker-layer
+                            location=item.location
+                            popupOpen=(readonly true)
+                            clickable=false
+                        }}
+                            <p>
+                                <strong>{{item.localityName}}</strong>
+                                <br>{{locality.geography.fullName}}
+                            </p>
+                        {{/marker-layer}}
+                    {{/map-view}}
+                </div>
+            {{/if}}
+            <div class='col-xs-6'>
+                <ul>
+                    <li>
+                        <span>Fyndplats:</span> {{item.localityName}}
+                    </li>
+                    <li>
+                        <span>Geografi:</span> {{item.geography.name}}
+                    </li>
+                    <li>
+                        <span>Koordinater:</span> {{item.location}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{{/if}}
 {{#if displayMap}}
+    <div class='col-xs-12'>
+        {{action-label
+            text='fields.labels.collecting-event.hide-map'
+            label='fields.labels.collecting_place'
+            action=(action 'toggleMap')
+        }}
+    </div>
     <div class="col-xs-8 col-md-8">
         {{#map-view
             center=geography.centroid
@@ -24,34 +81,36 @@
             boundsUpdate=(action (mut bounds)) as |map|
         }}
             {{#unless maximumReached}}
-                {{#each localities as |locality|}}
-                    {{#if locality.latitude1}}
-                        {{#circle-marker-layer
-                            location=locality.location
-                            radius=7
-                            opacity=1
+                {{#marker-cluster-layer}}
+                    {{#each localities as |locality|}}
+                        {{#if locality.latitude1}}
+                            {{#circle-marker-layer
+                                location=locality.location
+                                radius=7
+                                opacity=1
 
-                            popupOpen=locality.isOpen
+                                popupOpen=locality.isOpen
 
-                            color=(
-                                if locality.highlighted '#bd0026' (
-                                    if locality.hover '#fd8d3c' '#31a354'
+                                color=(
+                                    if locality.highlighted '#bd0026' (
+                                        if locality.hover '#fd8d3c' '#31a354'
+                                    )
                                 )
-                            )
-                        }}
-                            <p>
-                                <strong>{{locality.localityName}}</strong>
-                                <br>{{locality.geography.fullName}}
-                            </p>
-                            <a
-                                class="btn btn-default btn-xs"
-                                {{action 'select' locality on='click'}}
-                            >
-                                    Använd
-                            </a>
-                        {{/circle-marker-layer}}
-                    {{/if}}
-                {{/each}}
+                            }}
+                                <p>
+                                    <strong>{{locality.localityName}}</strong>
+                                    <br>{{locality.geography.fullName}}
+                                </p>
+                                <a
+                                    class="btn btn-default btn-xs"
+                                    {{action 'select' locality on='click'}}
+                                >
+                                        Använd
+                                </a>
+                            {{/circle-marker-layer}}
+                        {{/if}}
+                    {{/each}}
+                {{/marker-cluster-layer}}
             {{/unless}}
         {{/map-view}}
     </div>

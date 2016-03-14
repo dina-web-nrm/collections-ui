@@ -62,6 +62,8 @@ export default Ember.Component.extend(Filterable, {
             locality.set('highlighted', true);
 
             this.set('selectedLocality', locality);
+            this.toggleProperty('displayMap');
+
             this.attrs.update(locality);
         },
 

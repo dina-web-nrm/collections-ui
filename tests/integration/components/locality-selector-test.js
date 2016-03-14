@@ -11,5 +11,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{locality-selector update=(action (mut test))}}`);
 
-  assert.equal(this.$('.control-label').text().trim(), 'Fyndplats(lokal):');
+  assert.ok(this.$('.control-label').text().trim().indexOf('Fyndplats(lokal):') !== -1);
 });

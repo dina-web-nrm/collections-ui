@@ -1,5 +1,5 @@
 body {
-    margin-bottom: 100px;
+    margin-bottom: calc(@footer-height);
 }
 
 footer {
@@ -9,7 +9,7 @@ footer {
     z-index: 1001;
 
     /* Set the fixed height of the footer here */
-    height: 45px;
+    height: @footer-height;
     padding: 5px 0;
     background-color: @white;
     border-top: 1px solid @gray-light;
