@@ -152,5 +152,50 @@ export default {
         email: "{{description}} måste vara en giltig e-postadress",
         phone: "{{description}} måste vara ett giltigt telefonnummer",
         url: "{{description}} måste vara en giltig url"
+    },
+    beta: {
+        header: 'Samlingshanteraren beta',
+        intro: ' är en testsida för att utvärdera nya samlingshanteraren. Sidan kommer löpande att uppdateras med nya funktioner och buggfixar baserat på den interna prioriteringen och feedback.',
+        information: {
+            header: 'Information',
+            body: {
+                1: 'Sidan kommer alltid att vara uppdaterad med den senast tillgängliga versionen och en lista över förändingar.',
+                2: 'För att komma till formuläret klicka på <i>Samlingsföremål</i> och välj <i>Registrera föremål</i>'
+            }
+        },
+        feedback: {
+            body: 'Har du förslag på förbättringar eller hittar något som inte fungerar? Fyll då gärna i feedback-formuläret.',
+            header: 'Feedback',
+            button: 'Lämna feedback'
+        },
+        sprint: {
+            header: 'Nuvarande sprint',
+            body: 'Sprinten som pågår just nu kommer att fokusera på Insamlingstillfälle, Fyndplatser, Inloggning med riktiga användare och riktig testdata.'
+        },
+        changes: {
+            header: 'Förändringar',
+            1: {
+                body: `
+                    <li>Uppdaterad visningssida för sparade föremål.</li>
+                    <li>Språkval sparas och aktiveras automatiskt när man kommer till sidan.</li>
+                    <li>Möjligt att logga in som olika användare(klicka logga in och sök på efternamn).</li>
+                    <li>Uppdaterad startsida med information om testsidan.</li>
+                    <li>Grundformulär med basfunktioner för att registrera ett nytt förmål.</li>
+                `,
+                date: '2016-03-07'
+            },
+            2: {
+                body: `
+                    <span class="label label-success">Ny funktionalitet</span>
+                    <li>Sök efter fyndplats visar nu mer information.</li>
+                    <li>Möjlig att hitta fyndplats genom att välja på en karta.</li>
+                    <li>Öppna och stäng box genom att klicka på rubrikraden.</li>
+                    <span class="label label-danger">Buggfixar</span>
+                    <li>"Sök och välj"-fält hänger kvar och ligger över annat innehåll.</li>
+                    <li>Insamlare ska stängas och rensas efter att en insamlare är vald.</li>
+                `,
+                date: '2016-03-22'
+            }
+        }
     }
 };

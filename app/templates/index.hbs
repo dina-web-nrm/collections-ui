@@ -1,36 +1,44 @@
 <div style="padding-top: 0px; padding-bottom:0px;" class="jumbotron container">
-    <h1 style="font-size: 39px;">Samlingshanteraren beta</h1>
-    <p><i>Samlingshanteraren beta</i> är en testsida för att utvärdera nya samlingshanteraren. Sidan kommer löpande att uppdateras med nya funktioner och buggfixar baserat på den interna prioriteringen och feedback.</p>
+    <h1 style="font-size: 39px;">{{t 'beta.header'}}</h1>
+    <p><i>{{t 'beta.header'}}</i> {{t 'beta.intro'}}</p>
 </div>
 
 <div class="panel panel-default container">
     <div class="panel-body">
         <div class="row">
             <div class="col-xs-6 col-md-4">
-                <h2>Information</h2>
-                <p>Sidan kommer alltid att vara uppdaterad med den senast tillgängliga versionen och en lista över förändingar.</p>
-                <p>För att komma till formuläret klicka på <i>Samlingsföremål</i> och välj <i>Registrera föremål</i></p>
+                <h2>{{t 'beta.information.header'}}</h2>
+                <p>{{t 'beta.information.body.1'}}</p>
+                <p>{{t 'beta.information.body.2'}}</p>
                 <div class="thumbnail" style="display:inline-block;">
                     <img src="/get-started.png">
                 </div>
             </div>
             <div class="col-xs-6 col-md-4">
-                <h2>Feedback</h2>
-                <p>Har du förslag på förbättringar eller hittar något som inte fungerar? Fyll då gärna i feedback-formuläret.</p>
-                <p>
-                    <a class="btn btn-warning" href="http://goo.gl/forms/kzsPiFfLmJ" target="blank" role="button">Lämna feedback &raquo;</a>
-                </p>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2>{{t 'beta.sprint.header'}}</h2>
+                        <p>{{t 'beta.sprint.body'}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2>{{t 'beta.feedback.header'}}</h2>
+                        <p>{{t 'beta.feedback.body'}}</p>
+                        <p>
+                            <a class="btn btn-warning" href="http://goo.gl/forms/kzsPiFfLmJ" target="blank" role="button">{{t 'beta.feedback.button'}} &raquo;</a>
+                        </p>
+                    </div>
+                </div>
             </div>
             <div class="col-xs-12 col-md-4">
-                <h2>Förändringar</h2>
-                <h4>2016-03-07</h4>
-                <ul>
-                    <li>Uppdaterad visningssida för sparade föremål.</li>
-                    <li>Språkval sparas och aktiveras automatiskt när man kommer till sidan.</li>
-                    <li>Möjligt att logga in som olika användare(klicka logga in och sök på efternamn).</li>
-                    <li>Uppdaterad startsida med information om testsidan.</li>
-                    <li>Grundformulär med basfunktioner för att registrera ett nytt förmål.</li>
-                </ul>
+                <h2>{{t 'beta.changes.header'}}</h2>
+                {{#each sprints as |sprint|}}
+                    <h4>{{t (concat 'beta.changes.' sprint '.date')}}</h4>
+                    <ul>
+                        {{t (concat 'beta.changes.' sprint '.body')}}
+                    </ul>
+                {{/each}}
             </div>
         </div>
     </div>
