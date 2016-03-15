@@ -191,7 +191,8 @@ export default {
                     <li>Möjlig att hitta fyndplats genom att välja på en karta.</li>
                     <li>Öppna och stäng box genom att klicka på rubrikraden.</li>
                     <li>Startsidan översatt till engelska.</li>
-                    <span class="label label-danger">Buggfixar</span>
+                    <li>Preparationstyp filtereras på vald samling.</li>
+                    <br><span class="label label-danger">Buggfixar</span>
                     <li>"Sök och välj"-fält hänger kvar och ligger över annat innehåll.</li>
                     <li>Insamlare ska stängas och rensas efter att en insamlare är vald.</li>
                 `,

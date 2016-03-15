@@ -160,7 +160,7 @@ export default {
             header: 'Information',
             body: {
                 1: 'The site will be updated with the latest available release and you can find a release log in the "Release log" column.',
-                2: 'to get started click on <i>Collection object</i> and choose <i>Register new</i>'
+                2: 'To get started click on <i>Collection object</i> and choose <i>Register new</i>'
             }
         },
         feedback: {
@@ -191,7 +191,8 @@ export default {
                     <li>Find and select Locality on map.</li>
                     <li>Expand and collapse form boxes by click on header.</li>
                     <li>Translated start page to English.</li>
-                    <span class="label label-danger">Fixes</span>
+                    <li>Preparation type is filtered by selected Collection.</li>
+                    <br><span class="label label-danger">Fixes</span>
                     <li>Autocomplete fields always focused and covers other content on page.</li>
                     <li>Selecting a new collector shuold clear and close autocomplete field.</li>
                 `,
