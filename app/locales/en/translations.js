@@ -152,5 +152,52 @@ export default {
         email: "{{description}} must be a valid email address",
         phone: "{{description}} must be a valid phone number",
         url: "{{description}} must be a valid url"
+    },
+    beta: {
+        header: 'Collection manager beta',
+        intro: ' is a test site to evaluate the new collection manager. the site will be continuesly updated with new features and fixes based on the internal priority and feedback from user testing.',
+        information: {
+            header: 'Information',
+            body: {
+                1: 'The site will be updated with the latest available release and you can find a release log in the "Release log" column.',
+                2: 'To get started click on <i>Collection object</i> and choose <i>Register new</i>'
+            }
+        },
+        feedback: {
+            body: 'Use the feedback form if you find anything that is not working correctly or if you have suggestions on improvements.',
+            header: 'Feedback',
+            button: 'Send feedback'
+        },
+        sprint: {
+            header: 'Current sprint',
+            body: 'The current sprint is focusing on Collecting events, Localities, User authentication and being able to test with real data.'
+        },
+        changes: {
+            header: 'Release log',
+            1: {
+                body: `
+                    <li>Updated list and view page for collection objects.</li>
+                    <li>language selection is persisted between.</li>
+                    <li>Possible to "login" as different users (click "Sign in" and search by lastname).</li>
+                    <li>Updated start page with information about beta site.</li>
+                    <li>Register collection object form with basic funtionality in place.</li>
+                `,
+                date: '2016-03-07'
+            },
+            2: {
+                body: `
+                    <span class="label label-success">New features</span>
+                    <li>Search for Locality now displays more information.</li>
+                    <li>Find and select Locality on map.</li>
+                    <li>Expand and collapse form boxes by click on header.</li>
+                    <li>Translated start page to English.</li>
+                    <li>Preparation type is filtered by selected Collection.</li>
+                    <br><span class="label label-danger">Fixes</span>
+                    <li>Autocomplete fields always focused and covers other content on page.</li>
+                    <li>Selecting a new collector shuold clear and close autocomplete field.</li>
+                `,
+                date: '2016-03-22'
+            }
+        }
     }
 };
