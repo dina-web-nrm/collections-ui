@@ -190,6 +190,7 @@ export default {
                     <li>Search for Locality now displays more information.</li>
                     <li>Find and select Locality on map.</li>
                     <li>Expand and collapse form boxes by click on header.</li>
+                    <li>Translated start page to English.</li>
                     <span class="label label-danger">Fixes</span>
                     <li>Autocomplete fields always focused and covers other content on page.</li>
                     <li>Selecting a new collector shuold clear and close autocomplete field.</li>
