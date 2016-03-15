@@ -55,7 +55,7 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
     /** Update dropdown list when index change. */
     onHighlightedIndexChange: function () {
         if (this.get('hasFocus')) {
-            let listItem = this.$('li[tabindex='+ this.get('highlightedIndex') +']');
+            let listItem = this.$('li[data-index='+ this.get('highlightedIndex') +']');
 
             if (listItem) {
                 listItem.addClass('active').siblings().removeClass('active');
@@ -76,12 +76,12 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
 
     /** Return if input is invalid. */
     isInvalid: Ember.computed('hasSelected', 'hasFocus', 'value', function () {
-        const isValid = (
+        const isInvalid = (
             (this.get('value') && this.get('value').length > 0 && !this.get('multiSelect')) &&
             !this.get('hasFocus') && !this.get('hasSelected')
         );
 
-        return isValid;
+        return isInvalid;
     }),
 
     /** Data to display in preview dropdown. */
@@ -186,16 +186,17 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
     },
 
     actions: {
+
         /**
-        * Handle keyup events in input field.
+        * Handle Keydown events in input field.
         *
         * Triggers private method to be able to delay execution.
         *
         */
-        onKeyup (value, event) {
+        onKeyDown (value, event) {
             this.set('hasFocus', true);
 
-            if ([38, 40, 13, 27].indexOf(event.keyCode) !== -1) {
+            if ([38, 40, 13, 27, 9].indexOf(event.keyCode) !== -1) {
                 let index = this.get('highlightedIndex');
 
                 // Arrow key up.
@@ -213,8 +214,8 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
 
                     return;
 
-                // ESC key
-                } else if (event.keyCode === 27) {
+                // ESC and TAB key should remove focus.
+                } else if ([27, 9].indexOf(event.keyCode) !== -1) {
                     this.set('hasFocus', false);
                 }
 
@@ -241,14 +242,6 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
         },
 
         /**
-         * Handle blur events from input field.
-         */
-        onBlur () {
-            // Don't close when blurred.
-            // this.set('hasFocus', false);
-        },
-
-        /**
          * Handle click event in dropdown list.
          */
         onItemClick (item) {
@@ -257,6 +250,13 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
 
             if (!this.get('multiSelect')) {
                 this.set('hasSelected', item);
+
+            // If multi select clear the value, close the dropdown and give focus to
+            // input field.
+            } else {
+                this.set('value', '');
+                this.set('previewData', []);
+                this.$('input').focus();
             }
         }
     }
