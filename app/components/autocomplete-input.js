@@ -76,12 +76,12 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
 
     /** Return if input is invalid. */
     isInvalid: Ember.computed('hasSelected', 'hasFocus', 'value', function () {
-        const isValid = (
+        const isInvalid = (
             (this.get('value') && this.get('value').length > 0 && !this.get('multiSelect')) &&
             !this.get('hasFocus') && !this.get('hasSelected')
         );
 
-        return isValid;
+        return isInvalid;
     }),
 
     /** Data to display in preview dropdown. */
@@ -239,13 +239,6 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
          */
         onFocus () {
             this.set('hasFocus', true);
-        },
-
-        /**
-         * Handle blur events from input field.
-         */
-        onBlur () {
-
         },
 
         /**
