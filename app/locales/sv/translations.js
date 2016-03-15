@@ -110,9 +110,10 @@ export default {
                 'verbatim-collector': 'Insamlare',
                 'max-elevation': 'Nivå ö hav',
                 'min-elevation': 'Nivå u hav',
-                'select-existing': 'Välj från sparade insamlingstillfällen',
+                'select-existing': 'Sök/välj sparat insamlingstillfällen',
                 'show-map': 'Välj på karta',
-                'hide-map': 'Dölj karta'
+                'hide-map': 'Dölj karta',
+                name: 'Namnge tillfälle'
             }
         },
         placeholder: {

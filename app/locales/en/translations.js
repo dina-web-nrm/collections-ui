@@ -1,4 +1,5 @@
 export default {
+    blank: '',
     definitions: {
         zoological: "zoological",
         name: "Name",
@@ -106,13 +107,14 @@ export default {
             'collecting-event': {
                 'start-date': 'Collection date (yyyy-mm-dd)',
                 method: 'Method',
-                'verbatim-locality': 'Locality',
+                'verbatim-locality': 'Verbatim locality',
                 'verbatim-collector': 'Collector',
                 'max-elevation': 'Nivå ö hav',
                 'min-elevation': 'Nivå u hav',
                 'select-existing': 'Select existing collecting event',
                 'show-map': 'Pick on map',
-                'hide-map': 'Hide map'
+                'hide-map': 'Hide map',
+                name: 'Name event'
             }
         },
         placeholder: {
