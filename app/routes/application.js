@@ -9,10 +9,6 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     i18n: Ember.inject.service(),
     moment: Ember.inject.service(),
 
-    model () {
-        this.store.findAll('collection');
-    },
-
     /** Override before model and setup localization. */
     beforeModel () {
         const result = this._super(...arguments);
