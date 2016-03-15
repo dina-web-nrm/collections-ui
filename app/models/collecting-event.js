@@ -3,6 +3,7 @@ import DS from 'ember-data';
 export default DS.Model.extend({
     method: DS.attr('string'),
     startDate: DS.attr('date'),
+    endDate: DS.attr('date'),
     verbatimDate: DS.attr('string'),
     verbatimLocality: DS.attr('string'),
     timestampCreated: DS.attr('number'),

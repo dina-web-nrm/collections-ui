@@ -20,16 +20,31 @@
         {{/if}}
     {{else}}
         <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-sm-6">
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-xs-6">
                         <div class="form-group form-group-sm">
                             <label>
                                 {{t 'fields.labels.collecting-event.start-date'}}:
                             </label>
                             {{#bs-datetimepicker
-                                date=model.collectingEvent.startDate
                                 updateDate=(action (mut model.collectingEvent.startDate))
+                                format='YYYY-MM-DD'
+                                forceDateOutput=true
+                                maxDate=(readonly model.collectingEvent.endDate)
+                            }}
+                                {{
+                                    input disabled=disabled class="form-control"
+                                    name="Date" placeholder=(t 'fields.placeholder.date-format')
+                                }}
+                            {{/bs-datetimepicker}}
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group form-group-sm">
+                            <label>&nbsp;</label>
+                            {{#bs-datetimepicker
+                                updateDate=(action (mut model.collectingEvent.endDate))
                                 format='YYYY-MM-DD'
                                 forceDateOutput=true
                             }}
@@ -56,7 +71,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-sm-6">
                 <div class="row">
                     <div class="col-xs-12">
                         {{dwcm-textfield
@@ -88,13 +103,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            {{!--
-                {{dwcm-textfield
-                    width=6 disabled=true placeholder="fields.labels.collecting-event.verbatim-collector"
-                }}
-            --}}
         </div>
         <div class="row">
             <div class="col-xs-12 col-md-8">
