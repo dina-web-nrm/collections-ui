@@ -94,15 +94,14 @@
                     </li>
                 </ul>
             {{/dwcm-field-group}}
-            {{#if model.collectingEvent.locality.latitude1}}
+            {{#if model.collectingEvent.locality.latitude}}
                 {{#dwcm-field-group title='definitions.map' class='dwcm-collectionobject-view__map'}}
                     {{#map-view center=model.collectingEvent.locality.location}}
-                        {{#circle-marker-layer
+                        {{#marker-layer
                             location=model.collectingEvent.locality.location
-                            radius=5 color='#bd0026'
                         }}
                             <p>{{model.collectingEvent.locality.localityName}}</p>
-                        {{/circle-marker-layer}}
+                        {{/marker-layer}}
                     {{/map-view}}
                 {{/dwcm-field-group}}
             {{/if}}

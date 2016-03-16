@@ -26,7 +26,9 @@ export default {
         },
         'no-result': 'Inget resultat',
         geography: 'Geografi',
-        coordinates: 'Koordinater'
+        coordinates: 'Koordinater',
+        longitude: 'Longitude',
+        latitude: 'Latitude'
     },
     main: {
         application_name: "Samlingshanteraren",

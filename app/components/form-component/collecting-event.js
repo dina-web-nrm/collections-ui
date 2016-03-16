@@ -27,10 +27,10 @@ export default Ember.Component.extend({
             value: this.model.get('collectingEvent').get('locality').get('localityName')
         }, {
             title: 'Longitude',
-            value: this.model.get('collectingEvent').get('locality').get('longitude1')
+            value: this.model.get('collectingEvent').get('locality').get('longitude')
         }, {
            title: 'Latitude',
-           value: this.model.get('collectingEvent').get('locality').get('latitude1')
+           value: this.model.get('collectingEvent').get('locality').get('latitude')
         }, {
            title: 'Höjd ö hav',
            value: this.model.get('collectingEvent').get('locality').get('maxElevation')

@@ -107,10 +107,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 col-md-8">
-                {{locality-selector update=(action (mut model.collectingEvent.locality)) item=model.collectingEvent.locality}}
+            <div class="col-xs-12 col-md-12">
+                {{locality-selector
+                    update=(action 'selectedLocality')
+                    item=model.collectingEvent.locality
+                }}
             </div>
-            <div class="col-xs-12 col-md-4">
+            <div class="col-xs-12 col-md-12">
                 {{dwcm-textfield
                     label='fields.labels.collecting-event.verbatim-locality'
                     placeholder='fields.labels.collecting-event.verbatim-locality'

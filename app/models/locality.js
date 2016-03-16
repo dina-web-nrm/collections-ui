@@ -1,11 +1,23 @@
 import DS from 'ember-data';
 import Ember from 'ember';
 
-export default DS.Model.extend({
+import {validator, buildValidations} from 'ember-cp-validations';
+
+const Validations = buildValidations({
+    localityName: validator('presence', {
+        presence: true,
+        descriptionKey: 'fields.labels.collecting_place'
+    })
+});
+
+export default DS.Model.extend(Validations, {
+
+    session: Ember.inject.service('session'),
+
     localityName: DS.attr('string'),
 
-    latitude1: DS.attr('number'),
-    longitude1: DS.attr('number'),
+    latitude: DS.attr('number'),
+    longitude: DS.attr('number'),
 
     maxElevation: DS.attr('number'),
     minElevation: DS.attr('number'),
@@ -13,12 +25,31 @@ export default DS.Model.extend({
 
     geography: DS.belongsTo('geography', {async: true}),
     agent: DS.belongsTo('agent', {async: true}),
-
-    /** Locality location converted to array. */
-    location: Ember.computed('latitude1', 'longitude1',  function () {
-        return [
-            this.get('latitude1'),
-            this.get('longitude1')
-        ];
+    srcLatLongUnit: DS.attr('number', {
+        defaultValue() { return 0; }
     }),
+    createdByAgentID: DS.attr('number', {
+        defaultValue() {
+            return this.get('session.data.authenticated.id');
+        }
+    }),
+    /** Locality location converted to array. */
+    location: Ember.computed('latitude', 'longitude',  {
+        get () {
+            return [
+                this.get('latitude'),
+                this.get('longitude')
+            ];
+        },
+        set (key, coordinates) {
+            this.set('latitude', coordinates[0]);
+            this.set('longitude', coordinates[1]);
+
+            return coordinates;
+        }
+    }),
+
+    validLocation: Ember.computed('latitude', 'longitude', function () {
+        return !Ember.isBlank(this.get('latitude')) && !Ember.isBlank(this.get('longitude'));
+    })
 });

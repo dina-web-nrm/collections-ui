@@ -1,9 +1,13 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 export default DS.JSONSerializer.extend({
     primaryKey: 'collectingEventID',
     attrs: {
-        locality: 'localityID',
+        locality: {
+            key: 'localityID',
+            serialize: 'records'
+        },
         givenName: 'text1',
         collectors: {
             key: 'collectorList',
@@ -24,6 +28,15 @@ export default DS.JSONSerializer.extend({
         });
 
         json.collectorList = collectors;
+
+        return json;
+    },
+    serializeBelongsTo (snapshot, json, relationship) {
+        let key = relationship.key;
+        let belongsTo = snapshot.belongsTo(key);
+
+        key = this.keyForRelationship ? this.keyForRelationship(key, "belongsTo", "serialize") : key;
+        json[key] = Ember.isNone(belongsTo) ? belongsTo : belongsTo.record.serialize();
 
         return json;
     }
