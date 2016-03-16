@@ -1,6 +1,9 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 export default DS.JSONSerializer.extend({
+    session: Ember.inject.service('session'),
+
     primaryKey: 'localityID',
     attrs: {
         'geography': 'geographyID',
@@ -12,6 +15,7 @@ export default DS.JSONSerializer.extend({
         var json = this._super(...arguments);
         json.disciplineID = 3;
         json.geographyID = parseInt(json.geographyID);
+        json.createdByAgentID = parseInt(this.get('session').get('data.authenticated.id'));
 
         return json;
     }

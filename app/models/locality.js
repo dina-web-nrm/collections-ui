@@ -10,10 +10,7 @@ const Validations = buildValidations({
     })
 });
 
-export default DS.Model.extend(Validations, {
-
-    session: Ember.inject.service('session'),
-
+export default DS.Model.extend({
     localityName: DS.attr('string'),
 
     latitude: DS.attr('number'),
@@ -22,17 +19,14 @@ export default DS.Model.extend(Validations, {
     maxElevation: DS.attr('number'),
     minElevation: DS.attr('number'),
     timestampCreated: DS.attr('number'),
-
-    geography: DS.belongsTo('geography', {async: true}),
-    agent: DS.belongsTo('agent', {async: true}),
     srcLatLongUnit: DS.attr('number', {
         defaultValue() { return 0; }
     }),
-    createdByAgentID: DS.attr('number', {
-        defaultValue() {
-            return this.get('session.data.authenticated.id');
-        }
-    }),
+    createdByAgentID: DS.attr('number'),
+
+    geography: DS.belongsTo('geography', {async: true}),
+    agent: DS.belongsTo('agent', {async: true}),
+
     /** Locality location converted to array. */
     location: Ember.computed('latitude', 'longitude',  {
         get () {
