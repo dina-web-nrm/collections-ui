@@ -194,6 +194,8 @@ export default {
                     <li>Expand and collapse form boxes by click on header.</li>
                     <li>Translated start page to English.</li>
                     <li>Preparation type is filtered by selected Collection.</li>
+                    <li>Styling for verbatim fields.</li>
+                    <li>Restrict future dates on determination and collecting event.</li>
                     <br><span class="label label-danger">Fixes</span>
                     <li>Autocomplete fields always focused and covers other content on page.</li>
                     <li>Selecting a new collector shuold clear and close autocomplete field.</li>
