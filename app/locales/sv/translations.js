@@ -106,7 +106,7 @@ export default {
             'collecting-event': {
                 'start-date': 'Insamlingsdatum(åååå-mm-dd)',
                 method: 'Insamlingsmetod',
-                'verbatim-locality': 'Lokal',
+                'verbatim-locality': 'Verbatim lokal',
                 'verbatim-collector': 'Insamlare',
                 'max-elevation': 'Nivå ö hav',
                 'min-elevation': 'Nivå u hav',
@@ -193,6 +193,8 @@ export default {
                     <li>Öppna och stäng box genom att klicka på rubrikraden.</li>
                     <li>Startsidan översatt till engelska.</li>
                     <li>Preparationstyp filtereras på vald samling.</li>
+                    <li>Uppdaterat utseende för verbatimfält.</li>
+                    <li>Förhindra val av datum i framtiden för bestämningar och insamlingstillfällen.</li>
                     <br><span class="label label-danger">Buggfixar</span>
                     <li>"Sök och välj"-fält hänger kvar och ligger över annat innehåll.</li>
                     <li>Insamlare ska stängas och rensas efter att en insamlare är vald.</li>

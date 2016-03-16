@@ -49,3 +49,43 @@ body {
     height: 400px;
     float: none;
 }
+
+input.verbatim, .verbatim input{
+
+    @angle: 45deg;
+    @color: @gray-lighter;
+
+    &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color:    @gray-dark;
+    }
+    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color:    @gray-dark;
+        opacity:  1;
+    }
+    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color:    @gray-dark;
+        opacity:  1;
+    }
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color:    @gray-dark;
+    }
+    &:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
+        color:    @gray-dark;
+    }
+
+    background-image: -webkit-linear-gradient(
+        @angle,
+        @color, @color 5px,
+        transparent 5px, transparent 10px
+    );
+    background-image: -o-linear-gradient(
+        @angle,
+        @color, @color 5px,
+        transparent 5px, transparent 10px
+    );
+    background-image: repeating-linear-gradient(
+        @angle,
+        @color, @color 5px,
+        transparent 5px, transparent 10px
+    );
+}
