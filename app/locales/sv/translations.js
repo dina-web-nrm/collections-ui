@@ -106,7 +106,7 @@ export default {
             'collecting-event': {
                 'start-date': 'Insamlingsdatum(åååå-mm-dd)',
                 method: 'Insamlingsmetod',
-                'verbatim-locality': 'Lokal',
+                'verbatim-locality': 'Verbatim lokal',
                 'verbatim-collector': 'Insamlare',
                 'max-elevation': 'Nivå ö hav',
                 'min-elevation': 'Nivå u hav',
