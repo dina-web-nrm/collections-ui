@@ -52,10 +52,10 @@
                 {{t 'fields.labels.determination.determined-date'}}:
             </label>
             {{#bs-datetimepicker
-                date=model.determinedDate
                 updateDate=(action (mut model.determinedDate))
                 format='YYYY-MM-DD'
                 forceDateOutput=true
+                maxDate=(now)
             }}
                 {{
                     input disabled=disabled class="form-control"
