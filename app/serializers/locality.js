@@ -16,7 +16,7 @@ export default DS.JSONSerializer.extend({
         json.disciplineID = 3;
         json.geographyID = parseInt(json.geographyID);
         json.createdByAgentID = parseInt(this.get('session').get('data.authenticated.id'));
-
+        json.localityID = parseInt(json.localityID);
         return json;
     }
 });

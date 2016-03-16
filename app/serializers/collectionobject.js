@@ -81,6 +81,9 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
 
             json.collectingEventID.localityID = json.collectingEventID.locality;
             delete json.collectingEventID.locality;
+
+            json.collectingEventID.collectorList = json.collectingEventID.collectors;
+            delete json.collectingEventID.collectors;
         }
 
         delete json.collectingEvent;
