@@ -10,7 +10,7 @@ const Validations = buildValidations({
     })
 });
 
-export default DS.Model.extend({
+export default DS.Model.extend(Validations, {
     localityName: DS.attr('string'),
 
     latitude: DS.attr('number'),
