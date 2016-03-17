@@ -29,14 +29,14 @@ module.exports = function(environment) {
             name: 'Piwik',
             environments: ['production'],
             config: {
-                piwikUrl: 'http://monitor.dina-web.net',
+                piwikUrl: 'https://monitor.dina-web.net',
                 siteId: 4
             }
         }, {
             name: 'Piwik',
             environments: ['development'],
             config: {
-                piwikUrl: 'http://monitor.dina-web.net',
+                piwikUrl: 'https://monitor.dina-web.net',
                 siteId: 2
             }
     }]
