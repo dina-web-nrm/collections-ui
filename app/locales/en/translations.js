@@ -27,7 +27,9 @@ export default {
         },
         'no-result': 'No result',
         geography: 'Geography',
-        coordinates: 'Coordinates'
+        coordinates: 'Coordinates',
+        longitude: 'Longitude',
+        latitude: 'Latitude'
     },
     main: {
         application_name: "Collection manager",
@@ -50,7 +52,12 @@ export default {
         'locality-selector': {
             'to-many-results': 'Too many localities. Please select a smaller area.',
             'search-geography': 'Search on name, city, area or country',
-            'created-by': 'Created {{date}} by {{name}}'
+            'created-by': 'Created {{date}} by {{name}}',
+            'select-existing': 'Select existing locality',
+            'new-locality': 'New locality',
+            'locality-name': 'Locality name',
+            'show-map': 'Pick on map',
+            'hide-map': 'Hide map'
         }
     },
     collectionobject: {
@@ -112,8 +119,6 @@ export default {
                 'max-elevation': 'Nivå ö hav',
                 'min-elevation': 'Nivå u hav',
                 'select-existing': 'Select existing collecting event',
-                'show-map': 'Pick on map',
-                'hide-map': 'Hide map',
                 name: 'Name event'
             }
         },

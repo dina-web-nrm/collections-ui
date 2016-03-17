@@ -27,8 +27,8 @@ export default {
         'no-result': 'Inget resultat',
         geography: 'Geografi',
         coordinates: 'Koordinater',
-        longitude: 'Longitude',
-        latitude: 'Latitude'
+        longitude: 'Longitud',
+        latitude: 'Latitud'
     },
     main: {
         application_name: "Samlingshanteraren",
@@ -51,7 +51,12 @@ export default {
         'locality-selector': {
             'to-many-results': 'För många fyndplatser. Välj ett mindre område.',
             'search-geography': 'Sök på namn, ort, område, land',
-            'created-by': 'Skapad {{date}} av {{name}}'
+            'created-by': 'Skapad {{date}} av {{name}}',
+            'select-existing': 'Sök/välj sparad fyndplats',
+            'new-locality': 'Ny fyndplats',
+            'locality-name': 'Fyndplats/lokalnamn',
+            'show-map': 'Välj från karta',
+            'hide-map': 'Dölj karta'
         }
     },
     collectionobject: {
@@ -113,8 +118,6 @@ export default {
                 'max-elevation': 'Nivå ö hav',
                 'min-elevation': 'Nivå u hav',
                 'select-existing': 'Sök/välj sparat insamlingstillfällen',
-                'show-map': 'Välj på karta',
-                'hide-map': 'Dölj karta',
                 name: 'Namnge tillfälle'
             }
         },

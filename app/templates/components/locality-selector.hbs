@@ -1,7 +1,7 @@
 {{#unless isCreating}}
     <div class="col-xs-12 {{if displayMap 'hidden'}}">
         {{action-label
-            text='fields.labels.collecting-event.show-map'
+            text='definitions.create-new.2'
             label='fields.labels.collecting_place'
             action=(action 'enableCreate')
         }}
@@ -36,6 +36,9 @@
                 }}
             </p>
         {{/autocomplete-input}}
+        <a class="btn btn-primary btn-inside-form btn-xs clickable" {{action 'toggleMap'}}>
+            {{t 'component.locality-selector.show-map'}}
+        </a>
     </div>
     {{#if item}}
         <div class='col-xs-12 preview {{if displayMap 'hidden'}}'>
@@ -78,7 +81,7 @@
     {{#if displayMap}}
         <div class='col-xs-12'>
             {{action-label
-                text='fields.labels.collecting-event.hide-map'
+                text='component.locality-selector.hide-map'
                 label='fields.labels.collecting_place'
                 action=(action 'toggleMap')
             }}
@@ -93,7 +96,7 @@
                     {{#marker-cluster-layer}}
                         {{#each localities as |locality|}}
                             {{#if locality.latitude}}
-                                {{#circle-marker-layer
+                                {{#marker-layer
                                     location=locality.location
                                     radius=7
                                     opacity=1
@@ -116,7 +119,7 @@
                                     >
                                             {{t 'definitions.use'}}
                                     </a>
-                                {{/circle-marker-layer}}
+                                {{/marker-layer}}
                             {{/if}}
                         {{/each}}
                     {{/marker-cluster-layer}}
@@ -165,18 +168,23 @@
     {{/if}}
 {{else}}
     <div class='col-xs-12 create'>
+        <div class="header">
+            <h4 class="pull-left">{{t 'component.locality-selector.new-locality'}}</h4>
+            <a class="pull-right clickable" {{action 'disableCreate'}}>{{t 'component.locality-selector.select-existing'}}</a>
+            <div class="clearfix"></div>
+        </div>
         <div class='row'>
             <div class='col-xs-12 col-sm-6'>
                 {{dwcm-textfield
-                    label='fields.labels.collecting_place'
+                    label='component.locality-selector.locality-name'
                     value=newLocality.localityName
                 }}
             </div>
             <div class='col-xs-12 col-sm-6'>
                 {{dwcm-autocomplete-textfield
                     storeName='geography'
-                    displayField='name'
-                    filterField='name'
+                    displayField='fullName'
+                    filterField='fullName'
                     placeholder='component.locality-selector.search-geography'
 
                     label='definitions.geography'
@@ -186,7 +194,7 @@
         </div>
         <div class='row'>
             <div class='col-xs-6'>
-                {{#map-view center=newLocality.location onClick=(action 'onLocationUpdate')}}
+                {{#map-view zoom=zoom center=newLocality.geography.centroid onClick=(action 'onLocationUpdate')}}
                     {{#if newLocality.validLocation}}
                         {{#marker-layer
                             location=newLocality.location
