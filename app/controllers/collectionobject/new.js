@@ -1,8 +1,7 @@
-/* global moment */
-
 import Ember from 'ember';
 
 import { translationMacro as t } from 'ember-i18n';
+import moment from 'moment';
 
 export default Ember.Controller.extend({
 

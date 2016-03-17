@@ -1,6 +1,6 @@
 {{#dwcm-highlighted-list list=displayAttributes}}
-    {{#if model.locality.latitude1}}
-        {{#leaflet-map lat=model.locality.latitude1 lng=model.locality.longitude1 zoom=zoom}}
+    {{#if model.locality.latitude}}
+        {{#leaflet-map lat=model.locality.latitude lng=model.locality.longitude zoom=zoom}}
             {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
 
             {{#circle-marker-layer location=model.locality.location radius=5 color='#ff0000'}}

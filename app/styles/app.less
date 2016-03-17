@@ -18,6 +18,7 @@
 @import "components/locality-selector.less";
 @import "components/form-component/single-determination.less";
 @import "components/form-component/single-preparation.less";
+@import "components/form-component/collecting-event.less";
 
 @import "collectionobject/view.less";
 
@@ -88,4 +89,30 @@ input.verbatim, .verbatim input{
         @color, @color 5px,
         transparent 5px, transparent 10px
     );
+}
+
+.btn-inside-form {
+    position: absolute;
+    top: 29px;
+    right: 20px;
+    border-radius: @border-radius-large;
+}
+
+.preview {
+    .leaflet-container {
+        height: 200px;
+    }
+
+    ol, ul {
+        span {
+            font-weight: bold;
+        }
+    }
+    ul {
+        padding-left: 0;
+
+        li {
+            list-style-type: none;
+        }
+    }
 }

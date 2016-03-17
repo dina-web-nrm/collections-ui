@@ -43,3 +43,82 @@
         }
     }
 }
+
+.rich .autocomplete-input__dropdown {
+
+    li {
+        position: relative;
+        overflow: hidden;
+    }
+
+    p {
+        padding: 0px;
+        margin: 0px;
+        height: 18px;
+
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        &.regular-row {
+            width: 80%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            float: left;
+
+            &.light {
+                color: @gray-dark;
+            }
+
+            &.shrink {
+                width: 60%;
+            }
+        }
+
+        &.right {
+            float: right;
+            width: auto;
+            text-align: right;
+            .glyphicon {
+                padding: 3px 0 3px 0;
+                margin-right: 5px;
+                font-size: 12px;
+            }
+        }
+
+        &.timestamp {
+            color: @gray-dark;
+            position: absolute;
+            right: 5px;
+            top: 8px;
+            text-align: right;
+        }
+    }
+
+    .row-icon {
+        font-size: 30px;
+        padding: 3px;
+        margin-right: 5px;
+        position: absolute;
+
+        top: calc(50% - 27px);
+        left: 5px;
+
+        &.inactive {
+            color: @gray-light;
+        }
+
+        ~ p:not(.right) {
+            margin-left: 40px;
+        }
+
+        &.small{
+            ~ p:not(.right) {
+                margin-left: 25px;
+            }
+
+            font-size: 20px;
+            padding: 0;
+        }
+    }
+}

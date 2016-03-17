@@ -26,7 +26,9 @@ export default {
         },
         'no-result': 'Inget resultat',
         geography: 'Geografi',
-        coordinates: 'Koordinater'
+        coordinates: 'Koordinater',
+        longitude: 'Longitud',
+        latitude: 'Latitud'
     },
     main: {
         application_name: "Samlingshanteraren",
@@ -49,7 +51,12 @@ export default {
         'locality-selector': {
             'to-many-results': 'För många fyndplatser. Välj ett mindre område.',
             'search-geography': 'Sök på namn, ort, område, land',
-            'created-by': 'Skapad {{date}} av {{name}}'
+            'created-by': 'Skapad {{date}} av {{name}}',
+            'select-existing': 'Sök/välj sparad fyndplats',
+            'new-locality': 'Ny fyndplats',
+            'locality-name': 'Fyndplats/lokalnamn',
+            'show-map': 'Välj från karta',
+            'hide-map': 'Dölj karta'
         }
     },
     collectionobject: {
@@ -111,8 +118,6 @@ export default {
                 'max-elevation': 'Nivå ö hav',
                 'min-elevation': 'Nivå u hav',
                 'select-existing': 'Sök/välj sparat insamlingstillfällen',
-                'show-map': 'Välj på karta',
-                'hide-map': 'Dölj karta',
                 name: 'Namnge tillfälle'
             }
         },
@@ -188,8 +193,9 @@ export default {
             2: {
                 body: `
                     <span class="label label-success">Ny funktionalitet</span>
-                    <li>Sök efter fyndplats visar nu mer information.</li>
-                    <li>Möjlig att hitta fyndplats genom att välja på en karta.</li>
+                    <li>Sök efter fyndplats, insamlingstillfälle och geografi visar nu mer information.</li>
+                    <li>Hitta och välj fyndplats på karta.</li>
+                    <li>Möjligt att skapa ny fyndplats.</li>
                     <li>Öppna och stäng box genom att klicka på rubrikraden.</li>
                     <li>Startsidan översatt till engelska.</li>
                     <li>Preparationstyp filtereras på vald samling.</li>

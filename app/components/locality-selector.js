@@ -19,6 +19,15 @@ export default Ember.Component.extend(Filterable, {
 
     maximumReached: Ember.computed.gt('localities.length', 199),
 
+    /** Return new locality. */
+    newLocality: function () {
+        if(!this._newLocality) {
+            this._newLocality = this.get('store').createRecord('locality');
+        }
+
+        return this._newLocality;
+    }.property(),
+
     fetchLocalities () {
         const bounds = this.get('bounds');
 
@@ -77,6 +86,23 @@ export default Ember.Component.extend(Filterable, {
 
         toggleMap () {
             this.toggleProperty('displayMap');
+        },
+
+        enableCreate () {
+            this.attrs.update(this.get('newLocality'));
+            this.set('isCreating', true);
+        },
+
+        disableCreate () {
+            this.attrs.update();
+            this.set('isCreating', false);
+        },
+
+        onLocationUpdate (event) {
+            const latlng = event.latlng || event.target && event.target.getLatLng();
+            const coordinates = [latlng.lat, latlng.lng];
+
+            this.set('newLocality.location', coordinates);
         }
     }
 });

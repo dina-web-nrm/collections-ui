@@ -14,5 +14,9 @@ export default DS.Model.extend({
             this.get('centroidLat'),
             this.get('centroidLon')
         ];
+    }),
+
+    validCentroid: Ember.computed('centroidLat', 'centroidLon', function () {
+        return !Ember.isBlank(this.get('centroidLat')) && !Ember.isBlank(this.get('centroidLon'));
     })
 });
