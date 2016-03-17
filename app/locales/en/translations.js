@@ -194,8 +194,9 @@ export default {
             2: {
                 body: `
                     <span class="label label-success">New features</span>
-                    <li>Search for Locality now displays more information.</li>
+                    <li>Search for Locality, Collecting event and Geography now displays more information.</li>
                     <li>Find and select Locality on map.</li>
+                    <li>Create new locality.</li>
                     <li>Expand and collapse form boxes by click on header.</li>
                     <li>Translated start page to English.</li>
                     <li>Preparation type is filtered by selected Collection.</li>
@@ -203,7 +204,7 @@ export default {
                     <li>Restrict future dates on determination and collecting event.</li>
                     <br><span class="label label-danger">Fixes</span>
                     <li>Autocomplete fields always focused and covers other content on page.</li>
-                    <li>Selecting a new collector shuold clear and close autocomplete field.</li>
+                    <li>Selecting a new collector should clear and close autocomplete field.</li>
                 `,
                 date: '2016-03-22'
             }

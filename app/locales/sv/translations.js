@@ -193,8 +193,9 @@ export default {
             2: {
                 body: `
                     <span class="label label-success">Ny funktionalitet</span>
-                    <li>Sök efter fyndplats visar nu mer information.</li>
-                    <li>Möjlig att hitta fyndplats genom att välja på en karta.</li>
+                    <li>Sök efter fyndplats, insamlingstillfälle och geografi visar nu mer information.</li>
+                    <li>Hitta och välj fyndplats på karta.</li>
+                    <li>Möjligt att skapa ny fyndplats.</li>
                     <li>Öppna och stäng box genom att klicka på rubrikraden.</li>
                     <li>Startsidan översatt till engelska.</li>
                     <li>Preparationstyp filtereras på vald samling.</li>
