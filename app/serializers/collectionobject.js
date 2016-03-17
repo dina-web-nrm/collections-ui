@@ -29,8 +29,10 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
      * Override serialize to set attributes required by the
      * database that are not used in UI.
      */
-    serialize() {
+    serialize(snapshot) {
         var json = this._super(...arguments);
+        const disciplineID = snapshot.record.get('collection.disciplineID');
+
 
         // Copy CollectionMemberID to CollectionID.
         json.collectionID = parseInt(json.collectionMemberID);
@@ -73,13 +75,15 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         if (json.collectingEvent) {
             json.collectingEventID = json.collectingEvent;
             json.collectingEventID.collectingEventID = parseInt(json.collectingEventID.collectingEventID);
-            json.collectingEventID.disciplineID = 3;
+            json.collectingEventID.disciplineID = disciplineID;
 
             if(!json.collectingEventID.collectingEventID) {
                 delete json.collectingEventID.collectingEventID;
             }
 
             json.collectingEventID.localityID = json.collectingEventID.locality;
+            json.collectingEventID.localityID.disciplineID = disciplineID;
+
             delete json.collectingEventID.locality;
 
             json.collectingEventID.collectorList = json.collectingEventID.collectors;
