@@ -112,7 +112,7 @@
                                 updateDate=(action (mut model.collectingEvent.startDate))
                                 format='YYYY-MM-DD'
                                 forceDateOutput=true
-                                maxDate=(readonly model.collectingEvent.endDate)
+                                maxDate=(now)
                             }}
                                 {{
                                     input disabled=disabled class="form-control"
