@@ -38,66 +38,6 @@
             }
         }
     }
-    .autocomplete-input__dropdown {
-
-        li {
-            position: relative;
-            overflow: hidden;
-        }
-
-        p {
-            padding: 0px;
-            margin: 0px;
-            width: 100%;
-            height: 18px;
-
-            white-space: nowrap;
-            text-overflow: ellipsis;
-
-            &.geography {
-                color: @gray-dark;
-            }
-
-            &.locality {
-                width: 80%;
-                &.shrink {
-                    width: 60%;
-                }
-                overflow: hidden;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                float: left;
-            }
-
-            &.coordinates {
-                float: right;
-                width: auto;
-                text-align: right;
-                .glyphicon {
-                    padding: 3px 0 3px 0;
-                    font-size: 12px;
-                }
-            }
-
-            &.timestamp {
-                color: @gray-dark;
-                position: absolute;
-                right: 5px;
-                top: 8px;
-                text-align: right;
-            }
-        }
-        .glyphicon {
-            font-size: 30px;
-            padding: 3px;
-            float: left;
-            margin-right: 5px;
-            position: static;
-            &.inactive {
-                color: @gray-light;
-            }
-        }
-    }
 
     .create {
         .leaflet-container {

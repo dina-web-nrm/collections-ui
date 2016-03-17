@@ -10,5 +10,6 @@ export default DS.Model.extend({
     givenName: DS.attr('string'),
 
     locality: DS.belongsTo('locality', {async: true}),
-    collectors: DS.hasMany('collector', {async: true})
+    collectors: DS.hasMany('collector', {async: true}),
+    agent: DS.belongsTo('agent', {async: true})
 });

@@ -17,14 +17,15 @@
             filterKeys=filterKeys
 
             item=selectedLocality
+            class='rich'
 
             as |dropdownItem|
         }}
             <i class='glyphicon glyphicon-map-marker {{unless dropdownItem.latitude 'inactive'}}'></i>
-            <p class='geography'>{{dropdownItem.geography.name}}</p>
-            <p class='locality {{if dropdownItem.latitude 'shrink'}}'>{{dropdownItem.localityName}}</p>
+            <p class='regular-row light'>{{dropdownItem.geography.name}}</p>
+            <p class='regular-row {{if dropdownItem.latitude 'shrink'}}'>{{dropdownItem.localityName}}</p>
             {{#if dropdownItem.latitude}}
-                <p class='coordinates hidden-xs'>
+                <p class='regular-row right hidden-xs'>
                     <i class="glyphicon glyphicon-map-marker"></i>{{dropdownItem.location}}
                 </p>
             {{/if}}
