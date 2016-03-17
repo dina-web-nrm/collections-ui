@@ -4,6 +4,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
+    classNames: ['form-component-collecting-event'],
+
     /** Required store. */
     store: Ember.inject.service('store'),
 
@@ -20,25 +22,6 @@ export default Ember.Component.extend({
 
         return this._newCollectingEvent;
     }.property(),
-
-    localityDisplayAttributes: Ember.computed('model.collectingEvent.locality.localityName', function () {
-        return [{
-            title:'Fyndplats',
-            value: this.model.get('collectingEvent').get('locality').get('localityName')
-        }, {
-            title: 'Longitude',
-            value: this.model.get('collectingEvent').get('locality').get('longitude')
-        }, {
-           title: 'Latitude',
-           value: this.model.get('collectingEvent').get('locality').get('latitude')
-        }, {
-           title: 'Höjd ö hav',
-           value: this.model.get('collectingEvent').get('locality').get('maxElevation')
-        }, {
-           title: 'höjd u hav',
-           value: this.model.get('collectingEvent').get('locality').get('minElevation')
-        }];
-    }),
 
     actions: {
 

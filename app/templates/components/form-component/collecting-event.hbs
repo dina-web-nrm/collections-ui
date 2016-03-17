@@ -50,7 +50,54 @@
             </div>
         </div>
         {{#if model.collectingEvent}}
-            {{dwcm-collecting-event-view model=model.collectingEvent}}
+            <div class='row preview'>
+                {{#if model.collectingEvent.locality.validLocation}}
+                    <div class='col-xs-5'>
+                        {{#map-view
+                            center=model.collectingEvent.locality.location
+                            zoom=10
+                        }}
+                            {{#marker-layer
+                                location=model.collectingEvent.locality.location
+                                popupOpen=(readonly true)
+                                clickable=false
+                            }}
+                                <p>
+                                    <strong>{{model.collectingEvent.locality.localityName}}</strong>
+                                    <br>{{model.collectingEvent.locality.geography.fullName}}
+                                </p>
+                            {{/marker-layer}}
+                        {{/map-view}}
+                    </div>
+                {{/if}}
+                <div class='col-xs-6'>
+                    <ul>
+                        <li>
+                            <span>{{t 'definitions.date'}}:</span> {{moment-format model.collectingEvent.startDate 'LL'}}
+                        </li>
+                        <li>
+                            <span>{{t 'fields.labels.collecting-event.method'}}:</span> {{model.collectingEvent.method}}
+                        </li>
+                        <li>
+                            <span>{{t 'definitions.collecting-place' count=1}}:</span> {{model.collectingEvent.locality.localityName}}
+                        </li>
+                        <li>
+                            <span>{{t 'definitions.geography'}}:</span> {{model.collectingEvent.locality.geography.name}}
+                        </li>
+                        <li>
+                            <span>{{t 'definitions.coordinates'}}:</span> {{model.collectingEvent.locality.location}}
+                        </li>
+                        <li>
+                            <span>{{t 'fields.labels.collector'}}</span>:
+                            {{#each model.collectingEvent.collectors as |collector|}}
+                                <span class="label label-default">
+                                    {{collector.agent.fullName}}
+                                </span>
+                            {{/each}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
         {{/if}}
     {{else}}
         <div class="row">
@@ -130,7 +177,7 @@
                         }}
                             <div class="label-group {{if model.collectingEvent.collectors.length '' 'closed'}}">
                                 {{#each model.collectingEvent.collectors as |collector|}}
-                                    <span class="badge">
+                                    <span class="label label-default">
                                         {{collector.agent.fullName}} <i class="glyphicon glyphicon-remove clickable" {{action 'removeCollector' collector}}></i>
                                     </span>
                                 {{/each}}
