@@ -7,7 +7,7 @@
     </div>
     <div class="row">
         <div class="col-xs-6">
-            {{#dwcm-field-group title='form-component-basic-data'}}
+            {{#dwcm-field-group title='form-component-basic-data' collapsable=false}}
                 <ul>
                     <li>
                         <span>{{t 'fields.labels.collection'}}:</span> {{model.collection.collectionName}}
@@ -17,7 +17,7 @@
                     </li>
                 </ul>
             {{/dwcm-field-group}}
-            {{#dwcm-field-group title='form-component-determination'}}
+            {{#dwcm-field-group title='form-component-determination' collapsable=false}}
                 <ol>
                     {{#each model.determinations as |determination|}}
                         <li>
@@ -36,7 +36,7 @@
                     {{/each}}
                 </ol>
             {{/dwcm-field-group}}
-            {{#dwcm-field-group title='form-component-preparation'}}
+            {{#dwcm-field-group title='form-component-preparation' collapsable=false}}
                 <ul>
                     <li>
                         <span>{{t 'fields.labels.preparation.life-stage'}}:</span> {{model.objectAttribute.lifeStage}}
@@ -73,7 +73,7 @@
             {{/dwcm-field-group}}
         </div>
         <div class="col-xs-6">
-            {{#dwcm-field-group title='form-component-collecting-event'}}
+            {{#dwcm-field-group title='form-component-collecting-event' collapsable=false}}
                 <ul>
                     <li>
                         <span>{{t 'fields.labels.collector'}}:</span>
@@ -95,7 +95,7 @@
                 </ul>
             {{/dwcm-field-group}}
             {{#if model.collectingEvent.locality.latitude}}
-                {{#dwcm-field-group title='definitions.map' class='dwcm-collectionobject-view__map'}}
+                {{#dwcm-field-group title='definitions.map' class='dwcm-collectionobject-view__map' collapsable=false}}
                     {{#map-view center=model.collectingEvent.locality.location}}
                         {{#marker-layer
                             location=model.collectingEvent.locality.location
