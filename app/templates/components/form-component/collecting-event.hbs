@@ -22,18 +22,22 @@
                 }}
                     <i class='row-icon glyphicon glyphicon-map-marker {{unless dropdownItem.locality.validLocation 'inactive'}}'></i>
                     <p class='regular-row light'>
-                        {{dropdownItem.givenName}}: {{dropdownItem.locality.geography.name}}
+                        {{if dropdownItem.givenName (concat dropdownItem.givenName ': ')}}
+                        {{dropdownItem.locality.geography.name}}
                     </p>
                     <p class='regular-row {{if dropdownItem.locality.validLocation 'shrink'}}'>
+                        {{if dropdownItem.startDate (concat (moment-format dropdownItem.startDate 'LL') ', ')}}
                         {{dropdownItem.locality.localityName}}
                     </p>
-                    <p class='regular-row shrink'>
-                        {{#each dropdownItem.collectors as |collector|}}
-                            <span class="label label-default">
-                                {{collector.agent.fullName}}
-                            </span>
-                        {{/each}}
-                    </p>
+                    {{#if dropdownItem.collectors.length}}
+                        <p class='regular-row shrink'>
+                            {{#each dropdownItem.collectors as |collector|}}
+                                <span class="label label-default">
+                                    {{collector.agent.fullName}}
+                                </span>
+                            {{/each}}
+                        </p>
+                    {{/if}}
                     <p class='timestamp hidden-xs'>
                         {{t
                             'component.locality-selector.created-by'
