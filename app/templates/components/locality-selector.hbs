@@ -21,7 +21,7 @@
 
             as |dropdownItem|
         }}
-            <i class='glyphicon glyphicon-map-marker {{unless dropdownItem.latitude 'inactive'}}'></i>
+            <i class='row-icon glyphicon glyphicon-map-marker {{unless dropdownItem.latitude 'inactive'}}'></i>
             <p class='regular-row light'>{{dropdownItem.geography.name}}</p>
             <p class='regular-row {{if dropdownItem.latitude 'shrink'}}'>{{dropdownItem.localityName}}</p>
             {{#if dropdownItem.latitude}}

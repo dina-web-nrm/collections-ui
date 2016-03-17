@@ -20,18 +20,20 @@
 
                     as |dropdownItem|
                 }}
-                    <i class='glyphicon glyphicon-map-marker {{unless dropdownItem.locality.validLocation 'inactive'}}'></i>
+                    <i class='row-icon glyphicon glyphicon-map-marker {{unless dropdownItem.locality.validLocation 'inactive'}}'></i>
                     <p class='regular-row light'>
                         {{dropdownItem.givenName}}: {{dropdownItem.locality.geography.name}}
                     </p>
                     <p class='regular-row {{if dropdownItem.locality.validLocation 'shrink'}}'>
                         {{dropdownItem.locality.localityName}}
                     </p>
-                    {{#if dropdownItem.locality.validLocation}}
-                        <p class='regular-row right hidden-xs'>
-                            <i class="glyphicon glyphicon-map-marker"></i>{{dropdownItem.locality.location}}
-                        </p>
-                    {{/if}}
+                    <p class='regular-row shrink'>
+                        {{#each dropdownItem.collectors as |collector|}}
+                            <span class="label label-default">
+                                {{collector.agent.fullName}}
+                            </span>
+                        {{/each}}
+                    </p>
                     <p class='timestamp hidden-xs'>
                         {{t
                             'component.locality-selector.created-by'
@@ -39,6 +41,11 @@
                             name=dropdownItem.agent.fullName
                         }}
                     </p>
+                    {{#if dropdownItem.locality.validLocation}}
+                        <p class='regular-row right hidden-xs'>
+                            <i class="glyphicon glyphicon-map-marker"></i>{{dropdownItem.locality.location}}
+                        </p>
+                    {{/if}}
                 {{/autocomplete-input}}
             </div>
         </div>

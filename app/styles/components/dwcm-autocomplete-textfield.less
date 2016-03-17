@@ -54,7 +54,6 @@
     p {
         padding: 0px;
         margin: 0px;
-        width: 100%;
         height: 18px;
 
         white-space: nowrap;
@@ -82,6 +81,7 @@
             text-align: right;
             .glyphicon {
                 padding: 3px 0 3px 0;
+                margin-right: 5px;
                 font-size: 12px;
             }
         }
@@ -95,14 +95,21 @@
         }
     }
 
-    .glyphicon {
+    .row-icon {
         font-size: 30px;
         padding: 3px;
-        float: left;
         margin-right: 5px;
-        position: static;
+        position: absolute;
+
+        top: calc(50% - 27px);
+        left: 5px;
+
         &.inactive {
             color: @gray-light;
+        }
+
+        ~ p:not(.right) {
+            margin-left: 40px;
         }
     }
 }
