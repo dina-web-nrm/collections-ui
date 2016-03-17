@@ -136,10 +136,14 @@
 
                 itemSelected=(action 'geographySelected')
 
+                class='rich'
+
                 as |dropdownItem|
             }}
-                {{dropdownItem.name}}<br>
-                Latitude: {{dropdownItem.centroidLon}}, Longitude: {{dropdownItem.centroidLat}}
+                <i class='row-icon small glyphicon glyphicon-map-marker {{unless dropdownItem.validCentroid 'inactive'}}'></i>
+                <p class='regular-row'>
+                    {{make-bold dropdownItem.fullName match=dropdownItem.name}}
+                </p>
             {{/autocomplete-input}}
             <h4>
                 {{t 'definitions.collecting-place' count=2}}, {{if maximumReached '+' ''}}{{localities.length}}{{t 'definitions.count'}}
@@ -182,15 +186,26 @@
                 }}
             </div>
             <div class='col-xs-12 col-sm-6'>
-                {{dwcm-autocomplete-textfield
+                <label class="control-label">
+                    {{t 'definitions.geography'}}:
+                </label>
+                {{#autocomplete-input
                     storeName='geography'
-                    displayField='fullName'
-                    filterField='fullName'
+                    displayField='name'
+                    filterField='name'
                     placeholder='component.locality-selector.search-geography'
 
-                    label='definitions.geography'
                     itemSelected=(action (mut newLocality.geography))
+
+                    class='rich'
+
+                    as |dropdownItem|
                 }}
+                    <i class='row-icon small glyphicon glyphicon-map-marker {{unless dropdownItem.validCentroid 'inactive'}}'></i>
+                    <p class='regular-row'>
+                        {{make-bold dropdownItem.fullName match=dropdownItem.name}}
+                    </p>
+                {{/autocomplete-input}}
             </div>
         </div>
         <div class='row'>
