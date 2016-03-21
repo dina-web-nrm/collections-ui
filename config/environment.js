@@ -58,7 +58,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     // api.dina-web is specified in the backend reposity.
-    ENV.HOST = 'http://api.dina-web';
+    ENV.HOST = 'https://beta-api.dina-web.net';
   }
 
   if (environment === 'test') {
