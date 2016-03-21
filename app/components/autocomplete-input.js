@@ -139,7 +139,7 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
 
         queryParams[filterField] = filterValue;
 
-        Object.assign(queryParams, this.get('filters'));
+        Ember.$.extend(queryParams, this.get('filters'));
 
         this.get('store').query(this.storeName, queryParams).then((response) => {
             this.set('previewData', response);
