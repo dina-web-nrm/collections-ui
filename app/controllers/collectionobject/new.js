@@ -4,9 +4,9 @@ import { translationMacro as t } from 'ember-i18n';
 import moment from 'moment';
 
 export default Ember.Controller.extend({
-
+    
+    solr: Ember.inject.service(),
     i18n: Ember.inject.service(),
-
     session: Ember.inject.service(),
 
     _displayErrors: false,
@@ -62,6 +62,7 @@ export default Ember.Controller.extend({
                     ).then((agent) => {
                         this.model.set('agent', agent);
                         this.model.save().then((record) => {
+                            controller.get('solr').updateIndex();
                             controller.transitionToCollectionObject(record);
                         });
                     });
