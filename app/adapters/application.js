@@ -27,6 +27,11 @@ export default DS.JSONAPIAdapter.extend({
         if (query && query.search) {
             url = url + '/search';
             delete query.search;
+            
+            if (query && query.ids) {
+                url = `${url}/(${query.ids.join()})`;
+                delete query.ids;
+            }
         }
 
         return url;
