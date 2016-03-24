@@ -11,7 +11,8 @@ export default AutocompleteInput.extend({
 
         this.get('solr').select(filterValue, {
             entityType: this.get('entityType'),
-            fq: filterQuery
+            fq: filterQuery,
+            rows: limit
         }).then((data)=>{
             if (data.length) {
                 this.get('store').query(this.storeName, {

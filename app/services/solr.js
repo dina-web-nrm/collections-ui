@@ -8,7 +8,7 @@ export default Ember.Service.extend({
         return data.response.docs.mapBy('primary_id');
     },
     
-    select (query, {entityType, fq}) {
+    select (query, {entityType, fq, rows}) {
         const service = this;
         let url = `${this.baseUrl}/${this.core}/select?q=${query}&fl=primary_id&wt=json&indent=true`;
 
@@ -23,6 +23,10 @@ export default Ember.Service.extend({
         
         url += fqString;
         
+        if (rows) {
+            url += `&rows=${rows}`;
+        }
+
         return new Ember.RSVP.Promise(function (resolve, reject) {
             Ember.$.getJSON(url).success((data)=>{
                 resolve(service.parseResponse(data));
