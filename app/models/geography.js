@@ -9,6 +9,13 @@ export default DS.Model.extend({
     centroidLat: DS.attr('number'),
     centroidLon: DS.attr('number'),
 
+    displayName: Ember.computed('fullName', function () {
+        let fullName = this.get('fullName') || '';
+        let displayName = fullName.split(',').invoke('trim').reverse().join(', ');
+        
+        return displayName;
+    }),
+    
     centroid: Ember.computed('centroidLat', 'centroidLon', function () {
         return [
             this.get('centroidLat'),
