@@ -4,7 +4,7 @@ import config from '../config/environment';
 
 export default DS.JSONAPIAdapter.extend({
     host: config.HOST,
-    namespace: 'dina-service/dina/v0',
+    namespace: 'collections/v0',
     headers: {
         "Accept": "application/json",
         "Content-type": "application/json"
