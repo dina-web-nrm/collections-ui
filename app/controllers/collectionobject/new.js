@@ -1,13 +1,14 @@
 import Ember from 'ember';
 
-import { translationMacro as t } from 'ember-i18n';
 import moment from 'moment';
 
 export default Ember.Controller.extend({
     
-    solr: Ember.inject.service(),
+    /** Inject services. */
     i18n: Ember.inject.service(),
     session: Ember.inject.service(),
+    configuration: Ember.inject.service('form-configuration'),
+    solr: Ember.inject.service(),
 
     _displayErrors: false,
 
@@ -15,14 +16,14 @@ export default Ember.Controller.extend({
         return this.get('_displayErrors') && this.model.get('validations.messages.length');
     }),
 
-    entityType: t('definitions.zoological'),
-
-    groups: {
-        'form-component-basic-data': 'form-component/basic-data',
-        'form-component-determination': 'form-component/determination',
-        'form-component-preparation': 'form-component/preparation',
-        'form-component-collecting-event': 'form-component/collecting-event'
-    },
+    type: Ember.computed('configuration.type', function () {
+        if (this.get('configuration.type')) {
+            return `collectionobject.new.type.${this.get('configuration.type')}`;   
+        } else {
+            return 'blank';
+        }
+    }),
+    groups: Ember.computed.alias('configuration.components'),
 
     /** Transition to Collection object View route. */
     transitionToCollectionObject (collectionObject) {
@@ -50,7 +51,11 @@ export default Ember.Controller.extend({
         /** Handle form submit and validation. */
         submitForm () {
             let controller = this;
-
+            
+            if (controller.get('isSaving')) {
+                return;
+            }
+            
             this.model.validate({}, true).then(({model, validations}) => {
                 controller.set('_displayErrors', !validations.get('isValid'));
 
@@ -60,16 +65,24 @@ export default Ember.Controller.extend({
                     this.store.findRecord(
                         'agent', this.get('session').get('data.authenticated.id') || 3
                     ).then((agent) => {
+                        controller.set('isSaving', true);
                         this.model.set('agent', agent);
                         this.model.save().then((record) => {
                             controller.get('solr').updateIndex();
                             controller.transitionToCollectionObject(record);
+                        }).finally(()=>{
+                            controller.set('isSaving', false);
                         });
                     });
                 } else {
                     controller.scrollToValidation();
                 }
             });
+        },
+        
+        /** Change form configuration. */
+        updateDivision(value) {            
+            this.get('session').set('data.division', value);
         }
     }
 });

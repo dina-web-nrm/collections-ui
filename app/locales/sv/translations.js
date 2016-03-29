@@ -1,6 +1,6 @@
 export default {
+    blank: '',
     definitions: {
-        zoological: "zoologiskt",
         name: "Namn",
         accession: "Accession",
         male: 'Hane',
@@ -28,7 +28,17 @@ export default {
         geography: 'Geografi',
         coordinates: 'Koordinater',
         longitude: 'Longitud',
-        latitude: 'Latitud'
+        latitude: 'Latitud',
+        type: {
+            geology: "Geologi",
+            zoology: {
+                mammals: "Zoologi, Däggdjur",
+                invertebrate: "Zoologi, Ev/Fisk/Herp",
+                entomology: "Zoologi, Entomologi"
+            },
+            paleontology: "Paleontologi",
+            botany: "Botanik"
+        }
     },
     main: {
         application_name: "Samlingshanteraren",
@@ -65,8 +75,19 @@ export default {
         },
         new: {
             title: "Nytt {{name}} föremål",
+            type: {
+                geology: "geologiskt",
+                zoology: {
+                    mammals: "zoologiskt",
+                    invertebrate: "zoologiskt",
+                    entomology: "zoologiskt"
+                },
+                paleontology: "paleontologiskt",
+                botany: "botaniskt"
+            },
             toolbar: {
                 save: "Spara",
+                saving: "Sparar",
                 print: "Skriv ut etikett",
                 close: "Stäng",
                 duplicate: "Duplicera"
