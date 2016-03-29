@@ -1,7 +1,6 @@
 export default {
     blank: '',
     definitions: {
-        zoological: "zoological",
         name: "Name",
         accession: "Accession",
         male: 'Male',
@@ -29,7 +28,17 @@ export default {
         geography: 'Geography',
         coordinates: 'Coordinates',
         longitude: 'Longitude',
-        latitude: 'Latitude'
+        latitude: 'Latitude',
+        type: {
+            geology: "geology",
+            zoology: {
+                mammals: "zoology, Mammals",
+                invertebrate: "zoology, Inv/Fish/Herp",
+                entomology: "zoology, Entomology"
+            },
+            paleontology: "paleontology",
+            botany: "botany"
+        }
     },
     main: {
         application_name: "Collection manager",
@@ -66,6 +75,16 @@ export default {
         },
         new: {
             title: "New {{name}} object",
+            type: {
+                geology: "geological",
+                zoology: {
+                    mammals: "zoological",
+                    invertebrate: "zoological",
+                    entomology: "zoological"
+                },
+                paleontology: "paleontological",
+                botany: "botanical"
+            },
             toolbar: {
                 save: "Save",
                 print: "Print label",

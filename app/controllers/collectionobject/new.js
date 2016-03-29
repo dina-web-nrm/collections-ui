@@ -4,10 +4,11 @@ import { translationMacro as t } from 'ember-i18n';
 import moment from 'moment';
 
 export default Ember.Controller.extend({
-
+    
+    /** Inject services. */
     i18n: Ember.inject.service(),
-
     session: Ember.inject.service(),
+    configuration: Ember.inject.service('form-configuration'),
 
     _displayErrors: false,
 
@@ -15,14 +16,14 @@ export default Ember.Controller.extend({
         return this.get('_displayErrors') && this.model.get('validations.messages.length');
     }),
 
-    entityType: t('definitions.zoological'),
-
-    groups: {
-        'form-component-basic-data': 'form-component/basic-data',
-        'form-component-determination': 'form-component/determination',
-        'form-component-preparation': 'form-component/preparation',
-        'form-component-collecting-event': 'form-component/collecting-event'
-    },
+    type: Ember.computed('configuration.type', function () {
+        if (this.get('configuration.type')) {
+            return `collectionobject.new.type.${this.get('configuration.type')}`;   
+        } else {
+            return 'blank';
+        }
+    }),
+    groups: Ember.computed.alias('configuration.components'),
 
     /** Transition to Collection object View route. */
     transitionToCollectionObject (collectionObject) {
@@ -69,6 +70,11 @@ export default Ember.Controller.extend({
                     controller.scrollToValidation();
                 }
             });
+        },
+        
+        /** Change form configuration. */
+        updateDivision(value) {            
+            this.get('session').set('data.division', value);
         }
     }
 });
