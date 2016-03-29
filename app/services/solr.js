@@ -1,7 +1,10 @@
 import Ember from 'ember';
 
+import config from '../config/environment';
+
 export default Ember.Service.extend({
-    baseUrl: 'http://localhost/solr',
+    host: config.HOST,
+    namespace: 'solr',
     core: 'dina',
     
     parseResponse (data) {
@@ -10,7 +13,7 @@ export default Ember.Service.extend({
     
     select (query, {entityType, fq, rows}) {
         const service = this;
-        let url = `${this.baseUrl}/${this.core}/select?q=${query}&fl=primary_id&wt=json&indent=true`;
+        let url = `${this.host}/${this.namespace}/${this.core}/select?q=${query}&fl=primary_id&wt=json&indent=true`;
 
         if (entityType) {
             fq['entity_type'] = entityType;
@@ -36,7 +39,7 @@ export default Ember.Service.extend({
         });
     },
     updateIndex () {
-        const url = `${this.baseUrl}/${this.core}/dataimport?command=delta-import&commit=1&wt=json`;
+        const url = `${this.host}/${this.namespace}/${this.core}/dataimport?command=delta-import&commit=1&wt=json`;
         Ember.$.getJSON(url);
     }
 });
