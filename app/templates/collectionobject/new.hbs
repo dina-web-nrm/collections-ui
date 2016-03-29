@@ -1,6 +1,19 @@
 <div class="container dwcm-collectionobject-new__body {{if validationError 'validation-visible' ''}}">
     <div class="page-header">
-        <h2>{{t 'collectionobject.new.title' name=entityType}}:</h2>
+        <h2>
+            {{t 'collectionobject.new.title' name=(t type)}}:
+            {{#x-select
+                value=(readonly session.data.division)
+                class="division-select pull-right form-control input-sm"
+                action=(action 'updateDivision')
+            }}
+                {{#each-in configuration.configurations as |key value|}}
+                    {{#x-option value=key}}
+                        {{capitalize-string (t (concat 'definitions.type.' value.type))}}
+                    {{/x-option}}
+                {{/each-in}}
+            {{/x-select}}
+        </h2>
     </div>
     <ul class="nav nav-pills">
         {{#each-in groups as |identifier componentName|}}
@@ -25,12 +38,18 @@
 <footer class="footer">
     <div class="container">
         <div class="btn-toolbar">
-            <a
+            <button
                 class="btn btn-success btn-sm"
+                disabled={{isSaving}}
                 {{action 'submitForm'}}
-            >
-                {{t 'collectionobject.new.toolbar.save'}}
-            </a>
+            >                
+                {{#if isSaving}}
+                    {{t 'collectionobject.new.toolbar.saving'}}
+                    <div class="spinner button-spinner"></div>
+                {{else}}
+                    {{t 'collectionobject.new.toolbar.save'}}
+                {{/if}}
+            </button>
             <!--
             <div class="btn-group">
                 <a class="btn btn-default btn-sm">
