@@ -5,11 +5,10 @@
             label='fields.labels.collecting_place'
             action=(action 'enableCreate')
         }}
-        {{#autocomplete-input
-
+        {{#solr-autocomplete-input
             storeName='locality'
             displayField='localityName'
-            filterField='localityName'
+            entityType='locality'
 
             multiSelect=multiSelect
 
@@ -22,7 +21,7 @@
             as |dropdownItem|
         }}
             <i class='row-icon glyphicon glyphicon-map-marker {{unless dropdownItem.latitude 'inactive'}}'></i>
-            <p class='regular-row light'>{{dropdownItem.geography.name}}</p>
+            <p class='regular-row light'>{{dropdownItem.geography.displayName}}</p>
             <p class='regular-row {{if dropdownItem.latitude 'shrink'}}'>{{dropdownItem.localityName}}</p>
             {{#if dropdownItem.latitude}}
                 <p class='regular-row right hidden-xs'>
@@ -36,7 +35,7 @@
                     name=dropdownItem.agent.fullName
                 }}
             </p>
-        {{/autocomplete-input}}
+        {{/solr-autocomplete-input}}
         <a class="btn btn-primary btn-inside-form btn-xs clickable" {{action 'toggleMap'}}>
             {{t 'component.locality-selector.show-map'}}
         </a>
@@ -57,7 +56,7 @@
                             }}
                                 <p>
                                     <strong>{{item.localityName}}</strong>
-                                    <br>{{locality.geography.fullName}}
+                                    <br>{{locality.geography.displayName}}
                                 </p>
                             {{/marker-layer}}
                         {{/map-view}}
@@ -69,7 +68,7 @@
                             <span>{{t 'definitions.collecting-place' count=1}}:</span> {{item.localityName}}
                         </li>
                         <li>
-                            <span>{{t 'definitions.geography'}}:</span> {{item.geography.name}}
+                            <span>{{t 'definitions.geography'}}:</span> {{item.geography.displayName}}
                         </li>
                         <li>
                             <span>{{t 'definitions.coordinates'}}:</span> {{item.location}}
@@ -112,7 +111,7 @@
                                 }}
                                     <p>
                                         <strong>{{locality.localityName}}</strong>
-                                        <br>{{locality.geography.fullName}}
+                                        <br>{{locality.geography.displayName}}
                                     </p>
                                     <a
                                         class="btn btn-default btn-xs"
@@ -128,10 +127,13 @@
             {{/map-view}}
         </div>
         <div class="col-xs-4 col-md-4">
-            {{#autocomplete-input
+            {{#solr-autocomplete-input
                 storeName='geography'
-                displayField='name'
-                filterField='name'
+                displayField='displayName'
+                entityType='geography'
+                sortBy='rankID'
+                filterKeys='disciplineID'
+
                 placeholder='component.locality-selector.search-geography'
 
                 itemSelected=(action 'geographySelected')
@@ -142,9 +144,9 @@
             }}
                 <i class='row-icon small glyphicon glyphicon-map-marker {{unless dropdownItem.validCentroid 'inactive'}}'></i>
                 <p class='regular-row'>
-                    {{make-bold dropdownItem.fullName match=dropdownItem.name}}
+                    {{make-bold dropdownItem.displayName match=dropdownItem.name}}
                 </p>
-            {{/autocomplete-input}}
+            {{/solr-autocomplete-input}}
             <h4>
                 {{t 'definitions.collecting-place' count=2}}, {{if maximumReached '+' ''}}{{localities.length}}{{t 'definitions.count'}}
             </h4>
@@ -189,10 +191,12 @@
                 <label class="control-label">
                     {{t 'definitions.geography'}}:
                 </label>
-                {{#autocomplete-input
+                {{#solr-autocomplete-input
                     storeName='geography'
-                    displayField='name'
-                    filterField='name'
+                    entityType='geography'
+                    sortBy='rankID'
+                    displayField='displayName'
+                    filterKeys='disciplineID'
                     placeholder='component.locality-selector.search-geography'
 
                     itemSelected=(action (mut newLocality.geography))
@@ -203,9 +207,9 @@
                 }}
                     <i class='row-icon small glyphicon glyphicon-map-marker {{unless dropdownItem.validCentroid 'inactive'}}'></i>
                     <p class='regular-row'>
-                        {{make-bold dropdownItem.fullName match=dropdownItem.name}}
+                        {{make-bold dropdownItem.displayName match=dropdownItem.name}}
                     </p>
-                {{/autocomplete-input}}
+                {{/solr-autocomplete-input}}
             </div>
         </div>
         <div class='row'>

@@ -4,7 +4,7 @@ import config from '../config/environment';
 
 export default DS.JSONAPIAdapter.extend({
     host: config.HOST,
-    namespace: 'dina-service/dina/v0',
+    namespace: 'collections/v0',
     headers: {
         "Accept": "application/json",
         "Content-type": "application/json"
@@ -27,6 +27,11 @@ export default DS.JSONAPIAdapter.extend({
         if (query && query.search) {
             url = url + '/search';
             delete query.search;
+            
+            if (query && query.ids) {
+                url = `${url}/(${query.ids.join()})`;
+                delete query.ids;
+            }
         }
 
         return url;

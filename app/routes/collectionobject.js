@@ -16,7 +16,8 @@ export default Ember.Route.extend({
                 'collectionobject', {
                     offset: params.offset,
                     orderby: 'collectionObjectID',
-                    limit: 20
+                    limit: 20,
+                    sort: 'desc'
                 }
             ),
             collections: this.store.findAll('collection')

@@ -7,8 +7,8 @@
                     text='definitions.create-new.1'
                     action=(action 'enableCreate')
                 }}
-                {{#autocomplete-input
-                    filterField="text1"
+                {{#solr-autocomplete-input
+                    entityType='collectingevent'
                     filterKeys='disciplineID'
 
                     storeName="collecting-event"
@@ -23,7 +23,7 @@
                     <i class='row-icon glyphicon glyphicon-map-marker {{unless dropdownItem.locality.validLocation 'inactive'}}'></i>
                     <p class='regular-row light'>
                         {{if dropdownItem.givenName (concat dropdownItem.givenName ': ')}}
-                        {{dropdownItem.locality.geography.name}}
+                        {{dropdownItem.locality.geography.displayName}}
                     </p>
                     <p class='regular-row {{if dropdownItem.locality.validLocation 'shrink'}}'>
                         {{if dropdownItem.startDate (concat (moment-format dropdownItem.startDate 'LL') ', ')}}
@@ -50,7 +50,7 @@
                             <i class="glyphicon glyphicon-map-marker"></i>{{dropdownItem.locality.location}}
                         </p>
                     {{/if}}
-                {{/autocomplete-input}}
+                {{/solr-autocomplete-input}}
             </div>
         </div>
         {{#if model.collectingEvent}}

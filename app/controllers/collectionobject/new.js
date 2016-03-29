@@ -8,6 +8,7 @@ export default Ember.Controller.extend({
     i18n: Ember.inject.service(),
     session: Ember.inject.service(),
     configuration: Ember.inject.service('form-configuration'),
+    solr: Ember.inject.service(),
 
     _displayErrors: false,
 
@@ -67,6 +68,7 @@ export default Ember.Controller.extend({
                         controller.set('isSaving', true);
                         this.model.set('agent', agent);
                         this.model.save().then((record) => {
+                            controller.get('solr').updateIndex();
                             controller.transitionToCollectionObject(record);
                         }).finally(()=>{
                             controller.set('isSaving', false);
