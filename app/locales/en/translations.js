@@ -87,6 +87,7 @@ export default {
             },
             toolbar: {
                 save: "Save",
+                saving: "Saving",
                 print: "Print label",
                 close: "Close",
                 duplicate: "Duplicate"

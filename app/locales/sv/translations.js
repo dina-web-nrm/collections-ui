@@ -87,6 +87,7 @@ export default {
             },
             toolbar: {
                 save: "Spara",
+                saving: "Sparar",
                 print: "Skriv ut etikett",
                 close: "Stäng",
                 duplicate: "Duplicera"

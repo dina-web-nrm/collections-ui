@@ -50,7 +50,11 @@ export default Ember.Controller.extend({
         /** Handle form submit and validation. */
         submitForm () {
             let controller = this;
-
+            
+            if (controller.get('isSaving')) {
+                return;
+            }
+            
             this.model.validate({}, true).then(({model, validations}) => {
                 controller.set('_displayErrors', !validations.get('isValid'));
 
@@ -60,9 +64,12 @@ export default Ember.Controller.extend({
                     this.store.findRecord(
                         'agent', this.get('session').get('data.authenticated.id') || 3
                     ).then((agent) => {
+                        controller.set('isSaving', true);
                         this.model.set('agent', agent);
                         this.model.save().then((record) => {
                             controller.transitionToCollectionObject(record);
+                        }).finally(()=>{
+                            controller.set('isSaving', false);
                         });
                     });
                 } else {
