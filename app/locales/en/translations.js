@@ -121,7 +121,7 @@ export default {
             accession: 'Accession',
             preparation: {
                 'preparation-type': 'Preparation type',
-                count: 'Count',
+                count: 'Count parts',
                 'life-stage': 'Life stage',
                 age: 'Age',
                 sex: 'Sex',

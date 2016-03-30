@@ -3,9 +3,14 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 
     classNames: ['dwcm-single-preparation', 'row'],
-
+    
+    configuration: Ember.inject.service('form-configuration'),
+    
     /** Required preparation model. */
     model: null,
+    
+    hidePreparationNumber: Ember.computed.alias('configuration.component.single-preparation.hide.preparation-number'),
+    hideIndividualsCount: Ember.computed.alias('configuration.component.single-preparation.hide.preparation-number'),
 
     actions: {
 

@@ -121,7 +121,7 @@ export default {
             accession: 'Accession',
             preparation: {
                 'preparation-type': 'Preparationstyp',
-                count: 'Antal',
+                count: 'Antal del',
                 'life-stage': 'Livsstadium',
                 age: 'Ålder',
                 sex: 'Kön',

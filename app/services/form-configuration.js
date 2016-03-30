@@ -44,6 +44,14 @@ const CONFIGURATIONS = {
             'form-component-collecting-event': 'form-component/collecting-event',
             'form-component-preparation': 'form-component/preparation',
             'form-component-determination': 'form-component/determination'
+        },
+        component: {
+            'single-preparation': {
+                'hide': {
+                    'individuals-count': true,
+                    'preparation-number': true
+                }
+            }
         }
     },
     6: {
@@ -53,6 +61,14 @@ const CONFIGURATIONS = {
             'form-component-collecting-event': 'form-component/collecting-event',
             'form-component-determination': 'form-component/determination',
             'form-component-preparation': 'form-component/preparation'
+        },
+        component: {
+            'single-preparation': {
+                'hide': {
+                    'individuals-count': true,
+                    'preparation-number': true
+                }
+            }
         }
     }
 };
@@ -80,5 +96,9 @@ export default Ember.Service.extend({
     type: Ember.computed.alias('configuration.type'),
     
     /** Return components based on division. */
-    components: Ember.computed.alias('configuration.components')
+    components: Ember.computed.alias('configuration.components'),
+    
+    /** Return component specific configurations based on division. */
+    component: Ember.computed.alias('configuration.component')
+
 });
