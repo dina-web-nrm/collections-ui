@@ -28,7 +28,7 @@
                 value=model.countAmt
             }}
         </div>
-        {{#unless hideIndividualsCount}}
+        {{#unless configuration.hide.individualsCount}}
             <div class="col-xs-2">
                 {{dwcm-textfield
                     type='number'
@@ -37,7 +37,7 @@
                 }}
             </div>
         {{/unless}}
-        {{#unless hidePreparationNumber}}
+        {{#unless configuration.hide.preparationNumber}}
             <div class="col-xs-2">
                 {{dwcm-textfield
                     label='fields.labels.preparation.number'

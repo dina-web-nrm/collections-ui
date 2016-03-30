@@ -8,12 +8,9 @@ export default Ember.Component.extend({
     model: null,
     
     /** Inject services. */
-    configuration: Ember.inject.service('form-configuration'),
-    
-    hideMethod: Ember.computed.alias('configuration.component.determination.hide.method'),
-    hideConfidence: Ember.computed.alias('configuration.component.determination.hide.confidence'),
-    hideTypeStatus: Ember.computed.alias('configuration.component.determination.hide.type-status'),
-    
+    formConfiguration: Ember.inject.service('form-configuration'),
+    configuration: Ember.computed.alias('formConfiguration.component.determination'),
+
     /** Convert index from zero index. */
     displayIndex: function () {
         let _index = this.get('index');

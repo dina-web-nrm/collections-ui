@@ -56,7 +56,7 @@ const CONFIGURATIONS = {
                 hide: {
                     method: true,
                     confidence: true,
-                    'type-status': true
+                    typeStatus: true
                 }
             }
         }
@@ -70,10 +70,10 @@ const CONFIGURATIONS = {
             'form-component-determination': 'form-component/determination'
         },
         component: {
-            'single-preparation': {
-                'hide': {
-                    'individuals-count': true,
-                    'preparation-number': true
+            singlePreparation: {
+                hide: {
+                    individualsCount: true,
+                    preparationNumber: true
                 }
             }
         }
@@ -87,10 +87,10 @@ const CONFIGURATIONS = {
             'form-component-preparation': 'form-component/preparation'
         },
         component: {
-            'single-preparation': {
-                'hide': {
-                    'individuals-count': true,
-                    'preparation-number': true
+            singlePreparation: {
+                hide: {
+                    individualsCount: true,
+                    preparationNumber: true
                 }
             },
             determination: {

@@ -22,14 +22,14 @@
             itemSelected=(action 'setTaxonomy')
         }}
     </div>
-    {{#unless hideConfidence}}
+    {{#unless configuration.hide.confidence}}
         <div class="col-xs-3">
             {{dwcm-textfield
                 label='fields.labels.determination.confidence' value=model.confidence
             }}
         </div>
     {{/unless}}
-    {{#unless hideMethod}}
+    {{#unless configuration.hide.method}}
         <div class="col-xs-3">
             {{dwcm-textfield
                 label='fields.labels.determination.method' value=model.method
@@ -68,7 +68,7 @@
             {{/bs-datetimepicker}}
         </div>
     </div>
-    {{#unless hideTypeStatus}}
+    {{#unless configuration.hide.typeStatus}}
         <div class="col-md-2 col-xs-6">
             {{dwcm-textfield
                 label='fields.labels.determination.type-status'
