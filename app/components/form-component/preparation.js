@@ -15,7 +15,9 @@ export default Ember.Component.extend({
     
     init() {
         this._super(...arguments);
-        this.send('addPreparation');
+        Ember.run.schedule('actions', this, function() {
+            this.send('addPreparation');
+        });
     },
     
     /** Default options for sex field. */
