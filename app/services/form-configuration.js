@@ -48,6 +48,7 @@ const CONFIGURATIONS = {
             'form-component-basic-data': 'form-component/basic-data',
             'form-component-preparation': 'form-component/preparation',
             'form-component-collecting-event': 'form-component/collecting-event',
+            'form-component-type-status': 'form-component/type-status',
             'form-component-determination': 'form-component/determination'
         },
         component: {

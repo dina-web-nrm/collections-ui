@@ -101,6 +101,7 @@ export default {
     "form-component-determination": 'Taxonomy/Determination',
     "form-component-collecting-event": 'Collecting event/Locality',
     "form-component-preparation": 'Object/Preparations',
+    "form-component-type-status": 'Type status',
     "form-component-other": 'Other',
     fields: {
         labels: {

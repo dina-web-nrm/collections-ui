@@ -101,6 +101,7 @@ export default {
     "form-component-determination": 'Taxonomi/Bestämning',
     "form-component-collecting-event": 'Insamling/Fyndplats',
     "form-component-preparation": 'Objekt/Preparationer',
+    "form-component-type-status": 'Typstatus',
     "form-component-other": 'Övrigt',
     fields: {
         labels: {
