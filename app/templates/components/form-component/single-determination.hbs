@@ -22,16 +22,20 @@
             itemSelected=(action 'setTaxonomy')
         }}
     </div>
-    <div class="col-xs-3">
-        {{dwcm-textfield
-            label='fields.labels.determination.confidence' value=model.confidence
-        }}
-    </div>
-    <div class="col-xs-3">
-        {{dwcm-textfield
-            label='fields.labels.determination.method' value=model.method
-        }}
-    </div>
+    {{#unless hideConfidence}}
+        <div class="col-xs-3">
+            {{dwcm-textfield
+                label='fields.labels.determination.confidence' value=model.confidence
+            }}
+        </div>
+    {{/unless}}
+    {{#unless hideMethod}}
+        <div class="col-xs-3">
+            {{dwcm-textfield
+                label='fields.labels.determination.method' value=model.method
+            }}
+        </div>
+    {{/unless}}
 </div>
 <div class="row">
     <div class="col-xs-6">
@@ -64,12 +68,14 @@
             {{/bs-datetimepicker}}
         </div>
     </div>
-    <div class="col-md-2 col-xs-6">
-        {{dwcm-textfield
-            label='fields.labels.determination.type-status'
-            value=model.typeStatus
-        }}
-    </div>
+    {{#unless hideTypeStatus}}
+        <div class="col-md-2 col-xs-6">
+            {{dwcm-textfield
+                label='fields.labels.determination.type-status'
+                value=model.typeStatus
+            }}
+        </div>
+    {{/unless}}
 </div>
 {{!--
 <div class="row">

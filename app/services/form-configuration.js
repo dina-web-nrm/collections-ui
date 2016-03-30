@@ -17,6 +17,13 @@ const CONFIGURATIONS = {
             'form-component-determination': 'form-component/determination',
             'form-component-collecting-event': 'form-component/collecting-event',
             'form-component-preparation': 'form-component/preparation'
+        },
+        component: {
+            determination: {
+                hide: {
+                    confidence: true
+                }
+            }
         }
     },
     3: {
@@ -26,6 +33,13 @@ const CONFIGURATIONS = {
             'form-component-determination': 'form-component/determination',
             'form-component-preparation': 'form-component/preparation',
             'form-component-collecting-event': 'form-component/collecting-event'   
+        },
+        component: {
+            determination: {
+                hide: {
+                    method: true
+                }
+            }
         }
     },
     4: {
@@ -35,6 +49,15 @@ const CONFIGURATIONS = {
             'form-component-preparation': 'form-component/preparation',
             'form-component-collecting-event': 'form-component/collecting-event',
             'form-component-determination': 'form-component/determination'
+        },
+        component: {
+            determination: {
+                hide: {
+                    method: true,
+                    confidence: true,
+                    'type-status': true
+                }
+            }
         }
     },
     5: {
@@ -67,6 +90,11 @@ const CONFIGURATIONS = {
                 'hide': {
                     'individuals-count': true,
                     'preparation-number': true
+                }
+            },
+            determination: {
+                hide: {
+                    confidence: true
                 }
             }
         }
