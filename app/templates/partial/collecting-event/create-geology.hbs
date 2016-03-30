@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group form-group-sm">
+                    <label>
+                        {{t 'fields.labels.collecting-event.start-date'}}:
+                    </label>
+                    {{#bs-datetimepicker
+                        updateDate=(action (mut model.collectingEvent.startDate))
+                        format='YYYY-MM-DD'
+                        forceDateOutput=true
+                        maxDate=(now)
+                    }}
+                        {{
+                            input disabled=disabled class="form-control"
+                            name="Date" placeholder=(t 'fields.placeholder.date-format')
+                        }}
+                    {{/bs-datetimepicker}}
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group form-group-sm">
+                    <label>&nbsp;</label>
+                    {{#bs-datetimepicker
+                        updateDate=(action (mut model.collectingEvent.endDate))
+                        format='YYYY-MM-DD'
+                        forceDateOutput=true
+                        maxDate=(now)
+                    }}
+                        {{
+                            input disabled=disabled class="form-control"
+                            name="Date" placeholder=(t 'fields.placeholder.date-format')
+                        }}
+                    {{/bs-datetimepicker}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        {{#dwcm-autocomplete-textfield
+            label="fields.labels.collector"
+
+            multiSelect=true
+
+            storeName="agent"
+            filterField="lastName"
+            displayField="fullName"
+            itemSelected=(action "createCollector")
+        }}
+            <div class="label-group {{if model.collectingEvent.collectors.length '' 'closed'}}">
+                {{#each model.collectingEvent.collectors as |collector|}}
+                    <span class="label label-default">
+                        {{collector.agent.fullName}} <i class="glyphicon glyphicon-remove clickable" {{action 'removeCollector' collector}}></i>
+                    </span>
+                {{/each}}
+            </div>
+        {{/dwcm-autocomplete-textfield}}
+    </div>
+</div>
