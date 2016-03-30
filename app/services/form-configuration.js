@@ -1,22 +1,5 @@
 import Ember from 'ember';
 
-const DIVISIONS = {
-    PAL: 1,
-    ZOO: 2,
-    BOT: 3,
-    GEO: 4
-};
-
-const DEFAULT_CONFIGURATION = {
-    type: 'blank',
-    components: {
-        'form-component-basic-data': 'form-component/basic-data',
-        'form-component-determination': 'form-component/determination',
-        'form-component-preparation': 'form-component/preparation',
-        'form-component-collecting-event': 'form-component/collecting-event'   
-    }
-};
-
 const CONFIGURATIONS = {
     1: {
         type: 'zoology.mammals',
@@ -75,25 +58,27 @@ const CONFIGURATIONS = {
 };
 
 export default Ember.Service.extend({
+
     /** Inject services. */
     session: Ember.inject.service('session'),
     
-    /** Constants */
-    constants: DIVISIONS,    
+    /** All available configurations. */
     configurations: CONFIGURATIONS,
-
-    type: Ember.computed('session.data.division', 'session.data.locale', function () {
+    
+    /** Return active configuration. */
+    configuration: Ember.computed('session.data.division', 'session.data.locale', function () {
         const DIVISION = this.get('session.data.division');
-        return (
-            CONFIGURATIONS[DIVISION].type || DEFAULT_CONFIGURATION.type
+        const configuration = (
+            this.get('configurations')[DIVISION] ||
+            this.get('configurations')[1]
         );
+        
+        return configuration;
     }),
     
-    /** Return components based on logged in user. */
-    components: Ember.computed('session.data.division', function () {
-        const DIVISION = this.get('session.data.division');
-        return (
-            CONFIGURATIONS[DIVISION].components || DEFAULT_CONFIGURATION.components
-        );
-    })
+    /** Return type based on division. */
+    type: Ember.computed.alias('configuration.type'),
+    
+    /** Return components based on division. */
+    components: Ember.computed.alias('configuration.components')
 });
