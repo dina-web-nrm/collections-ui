@@ -30,14 +30,12 @@ export default {
         longitude: 'Longitude',
         latitude: 'Latitude',
         type: {
-            geology: "geology",
-            zoology: {
-                mammals: "zoology, Mammals",
-                invertebrate: "zoology, Inv/Fish/Herp",
-                entomology: "zoology, Entomology"
-            },
-            paleontology: "paleontology",
-            botany: "botany"
+            "geology": "geology",
+            "zoology-mammals": "zoology, Mammals",
+            "zoology-invertebrate": "zoology, Inv/Fish/Herp",
+            "zoology-entomology": "zoology, Entomology",
+            "paleontology": "paleontology",
+            "botany": "botany"
         }
     },
     main: {
@@ -67,6 +65,12 @@ export default {
             'locality-name': 'Locality name',
             'show-map': 'Pick on map',
             'hide-map': 'Hide map'
+        },
+        'preparation': {
+            'object-type': 'Object category',
+            'preservation-stage': 'Fossil preservation stage',
+            'individuals-count': 'Nr. individuals',
+            'object-description': 'Object description'
         }
     },
     collectionobject: {
@@ -76,14 +80,12 @@ export default {
         new: {
             title: "New {{name}} object",
             type: {
-                geology: "geological",
-                zoology: {
-                    mammals: "zoological",
-                    invertebrate: "zoological",
-                    entomology: "zoological"
-                },
-                paleontology: "paleontological",
-                botany: "botanical"
+                "geology": "geological",
+                "zoology-mammals": "zoological",
+                "zoology-invertebrate": "zoological",
+                "zoology-entomology": "zoological",
+                "paleontology": "paleontological",
+                "botany": "botanical"
             },
             toolbar: {
                 save: "Save",

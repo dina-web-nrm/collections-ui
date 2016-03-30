@@ -30,14 +30,12 @@ export default {
         longitude: 'Longitud',
         latitude: 'Latitud',
         type: {
-            geology: "Geologi",
-            zoology: {
-                mammals: "Zoologi, Däggdjur",
-                invertebrate: "Zoologi, Ev/Fisk/Herp",
-                entomology: "Zoologi, Entomologi"
-            },
-            paleontology: "Paleontologi",
-            botany: "Botanik"
+            "geology": "Geologi",
+            "zoology-mammals": "Zoologi, Däggdjur",
+            "zoology-invertebrate": "Zoologi, Ev/Fisk/Herp",
+            "zoology-entomology": "Zoologi, Entomologi",
+            "paleontology": "Paleontologi",
+            "botany": "Botanik"
         }
     },
     main: {
@@ -67,6 +65,12 @@ export default {
             'locality-name': 'Fyndplats/lokalnamn',
             'show-map': 'Välj från karta',
             'hide-map': 'Dölj karta'
+        },
+        'preparation': {
+            'object-type': 'Objektskategori',
+            'preservation-stage': 'Fossilt bevaringstillstånd',
+            'individuals-count': 'Antal individer',
+            'object-description': 'Beskrivning av objekt'
         }
     },
     collectionobject: {
@@ -76,14 +80,12 @@ export default {
         new: {
             title: "Nytt {{name}} föremål",
             type: {
-                geology: "geologiskt",
-                zoology: {
-                    mammals: "zoologiskt",
-                    invertebrate: "zoologiskt",
-                    entomology: "zoologiskt"
-                },
-                paleontology: "paleontologiskt",
-                botany: "botaniskt"
+                "geology": "geologiskt",
+                "zoology-mammals": "zoologiskt",
+                "zoology-invertebrate": "zoologiskt",
+                "zoology-entomology": "zoologiskt",
+                "paleontology": "paleontologiskt",
+                "botany": "botaniskt"
             },
             toolbar: {
                 save: "Spara",

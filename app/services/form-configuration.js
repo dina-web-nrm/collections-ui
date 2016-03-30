@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 const CONFIGURATIONS = {
     1: {
-        type: 'zoology.mammals',
+        type: 'zoology-mammals',
         components: {
             'form-component-basic-data': 'form-component/basic-data',
             'form-component-determination': 'form-component/determination',
@@ -11,7 +11,7 @@ const CONFIGURATIONS = {
         }
     },
     2: {
-        type: 'zoology.entomology',
+        type: 'zoology-entomology',
         components: {
             'form-component-basic-data': 'form-component/basic-data',
             'form-component-determination': 'form-component/determination',
@@ -20,7 +20,7 @@ const CONFIGURATIONS = {
         }
     },
     3: {
-        type: 'zoology.invertebrate',
+        type: 'zoology-invertebrate',
         components: {
             'form-component-basic-data': 'form-component/basic-data',
             'form-component-determination': 'form-component/determination',

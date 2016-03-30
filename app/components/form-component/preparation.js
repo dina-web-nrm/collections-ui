@@ -1,14 +1,23 @@
-/* global moment */
-
 import Ember from 'ember';
+import moment from 'moment';
 
 export default Ember.Component.extend({
 
     classNames: ['dwcm-preparation'],
 
-    /** Required store. */
+    /** Inject services. */
     store: Ember.inject.service('store'),
-
+    configuration: Ember.inject.service('form-configuration'),
+    
+    partialType: Ember.computed('configuration.type', function () {
+        return `partial/preparation/${this.get('configuration.type')}`;
+    }),
+    
+    init() {
+        this._super(...arguments);
+        this.send('addPreparation');
+    },
+    
     /** Default options for sex field. */
     sexOptions: [{
             value: 'unknown',
