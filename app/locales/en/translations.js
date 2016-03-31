@@ -142,7 +142,8 @@ export default {
                 'max-elevation': 'Nivå ö hav',
                 'min-elevation': 'Nivå u hav',
                 'select-existing': 'Select existing collecting event',
-                name: 'Name event'
+                name: 'Name event',
+                number: 'Collecting number'
             }
         },
         placeholder: {

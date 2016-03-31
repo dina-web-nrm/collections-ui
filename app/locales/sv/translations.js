@@ -142,7 +142,8 @@ export default {
                 'max-elevation': 'Nivå ö hav',
                 'min-elevation': 'Nivå u hav',
                 'select-existing': 'Sök/välj sparat insamlingstillfällen',
-                name: 'Namnge tillfälle'
+                name: 'Namnge tillfälle',
+                number: 'Insamlingsnummer'
             }
         },
         placeholder: {
