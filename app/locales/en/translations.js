@@ -231,6 +231,22 @@ export default {
                     <li>Selecting a new collector should clear and close autocomplete field.</li>
                 `,
                 date: '2016-03-22'
+            },
+            3: {
+                body: `
+                    <span class="label label-success">New features</span>
+                    <li>Better searching for collecting event, locality and geography.<br>Possible to search for date, collector, locality, geography and given name.</li>
+                    <li>Initial customization of form based on unit.<br>Order of boxes and content for determination, object/preparation and collecting event are now based on unit. To change unit use the menu in the top right corner in the form.</li>
+                    <li>Updated test data for beta site.</li>
+                    <li>Reversed ordering on list page.</li>
+                    
+                    <br><span class="label label-danger">Fixes</span>
+                    <li>Autocomplete dropdowns hidden by bottom menu.</li>
+                    <li>Display entire geography in searches and after selection.</li>
+                    <li>Geography search contains duplicates.</li>
+                    <li>Possible to click several times on the save button.</li>
+                `,
+                date: '2016-04-01'
             }
         }
     }

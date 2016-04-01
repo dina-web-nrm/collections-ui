@@ -231,6 +231,22 @@ export default {
                     <li>Insamlare ska stängas och rensas efter att en insamlare är vald.</li>
                 `,
                 date: '2016-03-22'
+            },
+            3: {
+                body: `
+                    <span class="label label-success">Ny funktionalitet</span>
+                    <li>Mer avancerad sökning för insamlingstillfälle, fyndplats och geografi.<br>Möjligt att söka på datum, insamlare, fyndplats, geografi och angivet namn.</li>
+                    <li>Påbörjad anpassning av formulär baserat på enhet.<br>Ordning på boxar samt innehåll i bestämning, objekt/preparation och insamlingstillfälle är nu baserat på enhet. Använd menyn upp till höger i formuläret för att ändra enhet.</li>
+                    <li>Uppdaterad testdata på testsidan.</li>
+                    <li>Omvänd ordning på listsidan.</li>
+                    
+                    <br><span class="label label-danger">Buggfixar</span>
+                    <li>"Sök och välj"-listor hamnar under bottenmenyn.</li>
+                    <li>Visa hela geografin i söknigar och efter val.</li>
+                    <li>Geografisök innehåller många dubletter.</li>
+                    <li>Möjligt att klicka flera gånger på spara-knappen.</li>
+                `,
+                date: '2016-04-01'
             }
         }
     }
