@@ -9,7 +9,7 @@
                 displayField='name'
                 filterField='name'
 
-                itemSelected=(action (mut model.preparationType))
+                itemSelected=(action 'setPreparationType')
                 filterKeys='collectionID'
             }}
         </div>
@@ -22,7 +22,7 @@
                 displayField='fullName'
                 filterField='fullName'
 
-                itemSelected=(action (mut model.storage))
+                itemSelected=(action 'setStorage')
             }}
         </div>
     </div>

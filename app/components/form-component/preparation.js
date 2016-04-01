@@ -46,6 +46,20 @@ export default Ember.Component.extend({
         /** Remove single *preparation*. */
         removePreparation (preparation) {
             this.model.get('preparations').removeObject(preparation);
-        }
+        },
+
+        /** Set *preparationType* for first preparation on model. */
+        setPreparationType (preparationType) {
+            this.model.get('preparations.firstObject').set(
+                'preparationType', preparationType
+            );
+        },
+        
+        /** Set *preparationType* for first preparation on model. */
+        setStorage (storage) {
+            this.model.get('preparations.firstObject').set(
+                'storage', storage
+            );
+        },
     }
 });
