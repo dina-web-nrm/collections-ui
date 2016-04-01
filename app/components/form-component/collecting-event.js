@@ -30,6 +30,7 @@ export default Ember.Component.extend({
         return `partial/collecting-event/create-${this.get('formConfiguration.type')}`;
     }),
 
+    /** Enable or disable create mode when changing configuration. */
     onConfigurationChange: function() {
         if (this.get('configuration.enableCreate')) {
             this.send('enableCreate');
