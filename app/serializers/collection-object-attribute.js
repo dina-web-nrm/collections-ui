@@ -11,8 +11,7 @@ export default DS.JSONSerializer.extend({
         measurements: 'text7',
         preservationStage: 'text8',
         age: 'text9',
-        objectCategory: 'text10',
-        description: 'text11',
+        description: 'text10',
 
         totalCount: 'number1'
     }

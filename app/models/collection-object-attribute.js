@@ -12,6 +12,6 @@ export default DS.Model.extend({
     age: DS.attr('string'),
     totalCount: DS.attr('number'),
     description: DS.attr('string'),
-    
+
     timestampCreated: DS.attr('number')
 });
