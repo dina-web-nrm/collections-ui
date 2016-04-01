@@ -4,6 +4,6 @@ export default DS.JSONSerializer.extend({
     attrs: {
         'preparationType': 'prepTypeID',
         'storage': 'storageID',
-        'individualsCount': 'Integer1'
+        'individualsCount': 'integer1'
     }
 });
