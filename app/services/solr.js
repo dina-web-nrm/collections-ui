@@ -21,7 +21,7 @@ export default Ember.Service.extend({
 
         let fqString = '';
         for(let key in fq) {
-            fqString += `&fq=${key}%3D${fq[key]}`;
+            fqString += `&fq=${key}%3A${fq[key]}`;
         }
         
         url += fqString;
