@@ -9,7 +9,8 @@ export default Ember.Component.extend({
     /** Required store. */
     store: Ember.inject.service('store'),
     formConfiguration: Ember.inject.service('form-configuration'),
-    
+    configuration: Ember.computed.alias('formConfiguration.component.collectingEvent'),
+
     /** Is creating new collection event. */
     isCreating: false,
 
@@ -23,19 +24,20 @@ export default Ember.Component.extend({
 
         return this._newCollectingEvent;
     }.property(),
-
+    
+    /** Return partial type based on division configuration. */
     partialType: Ember.computed('formConfiguration.type', function () {
         return `partial/collecting-event/create-${this.get('formConfiguration.type')}`;
     }),
 
-    init() {
-        this._super(...arguments);
-        
-        Ember.run.schedule('actions', this, function () {
+    onConfigurationChange: function() {
+        if (this.get('configuration.enableCreate')) {
             this.send('enableCreate');
-        });
-    },
-    
+        } else {
+            this.send('selectExisting');
+        }
+    }.observes('configuration').on('init'),
+
     actions: {
 
         /** Enable create mode. */

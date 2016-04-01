@@ -8,6 +8,11 @@ const CONFIGURATIONS = {
             'form-component-determination': 'form-component/determination',
             'form-component-collecting-event': 'form-component/collecting-event',
             'form-component-preparation': 'form-component/preparation'
+        },
+        component: {
+            collectingEvent: {
+                enableCreate: true
+            }
         }
     },
     2: {
@@ -58,6 +63,9 @@ const CONFIGURATIONS = {
                     confidence: true,
                     typeStatus: true
                 }
+            },
+            collectingEvent: {
+                enableCreate: true
             }
         }
     },
@@ -75,6 +83,9 @@ const CONFIGURATIONS = {
                     individualsCount: true,
                     preparationNumber: true
                 }
+            },
+            collectingEvent: {
+                enableCreate: true
             }
         }
     },
@@ -97,6 +108,9 @@ const CONFIGURATIONS = {
                 hide: {
                     confidence: true
                 }
+            },
+            collectingEvent: {
+                enableCreate: true
             }
         }
     }
