@@ -43,7 +43,7 @@ export default Ember.Component.extend(Filterable, {
             orderby: 'localityName'
         };
 
-        Object.assign(query, this.get('filters'));
+        Ember.$.extend(query, this.get('filters'));
 
         this.get('store').query('locality', query).then(result => {
             this.set('localities', result);
