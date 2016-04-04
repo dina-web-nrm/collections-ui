@@ -214,15 +214,17 @@
         </div>
         <div class='row'>
             <div class='col-xs-6'>
-                {{#map-view zoom=mapZoom center=mapLocation onClick=(action 'onLocationUpdate')}}
+                {{#map-view
+                    zoom=mapZoom center=mapLocation
+                    onClick=(action 'onLocationUpdate')
+                    onZoom=(action (mut mapZoom))
+                }}
                     {{#if newLocality.validLocation}}
-                        {{#marker-layer
+                        {{circle-marker-layer
                             location=newLocality.location
-                            draggable=true
-
-                            onDragend=(action 'onLocationUpdate')
+                            radius=uncertaintyRadiusPixels
+                            color="#FF0000"
                         }}
-                        {{/marker-layer}}
                     {{/if}}
                 {{/map-view}}
             </div>
@@ -246,6 +248,26 @@
                             class="btn btn-primary btn-sm glyphicon glyphicon-record"
                             {{action this.centerMap}}
                         ></button>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-xs-12 col-md-7'>
+                        <label>Osäkerhetsradie(m):</label>
+                        {{x-slider class='form-control input-sm'
+                            min=15 step=5 max=5000 value=newLocality.uncertaintyRadius
+                        }}
+                    </div>
+                    <div class='col-xs-12 col-md-3'>
+                        <div class="form-group">
+                            <label>&nbsp;</label>
+                            <div class="input-group input-group-sm">
+                                {{input type="number"
+                                    min=5 max=5000 class="form-control"
+                                    value=newLocality.uncertaintyRadius
+                                }}
+                                <div class="input-group-addon">m</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
