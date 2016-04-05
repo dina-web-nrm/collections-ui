@@ -64,7 +64,8 @@ export default {
             'new-locality': 'Ny fyndplats',
             'locality-name': 'Fyndplats/lokalnamn',
             'show-map': 'Välj från karta',
-            'hide-map': 'Dölj karta'
+            'hide-map': 'Dölj karta',
+            'uncertainty-radius': 'Osäkerhetsradie'
         },
         'preparation': {
             'object-type': 'Objektskategori',

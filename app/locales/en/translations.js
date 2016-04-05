@@ -64,7 +64,8 @@ export default {
             'new-locality': 'New locality',
             'locality-name': 'Locality name',
             'show-map': 'Pick on map',
-            'hide-map': 'Hide map'
+            'hide-map': 'Hide map',
+            'uncertainty-radius': 'Uncertainty radius'
         },
         'preparation': {
             'object-type': 'Object category',
