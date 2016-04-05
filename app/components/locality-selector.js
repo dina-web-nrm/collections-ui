@@ -15,15 +15,12 @@ export default Ember.Component.extend(Filterable, {
     localities: [],
 
     bounds: null,
-
+    
+    zoom: 13,
+    
     selectedLocality: null,
 
     maximumReached: Ember.computed.gt('localities.length', 199),
-    
-    /** Meters converted to pixels to display on map. */
-    uncertaintyRadiusPixels: Ember.computed('mapZoom', 'newLocality.uncertaintyRadius', function () {
-        return metersToPixels(this.get('newLocality.uncertaintyRadius'), this.get('mapZoom')) * 2;
-    }),
     
     /** Return new locality. */
     newLocality: function () {

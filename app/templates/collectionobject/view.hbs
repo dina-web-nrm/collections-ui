@@ -103,8 +103,9 @@
                     }}
                         {{#circle-marker-layer
                             location=model.collectingEvent.locality.location
+                            radius=(metersToPixels model.collectingEvent.locality.uncertaintyRadius mapZoom)
+
                             color='#FF0000'
-                            radius=uncertaintyRadius
                         }}
                             <p>{{model.collectingEvent.locality.localityName}}</p>
                         {{/circle-marker-layer}}

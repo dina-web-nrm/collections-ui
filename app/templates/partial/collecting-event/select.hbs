@@ -58,18 +58,19 @@
             <div class='col-xs-5'>
                 {{#map-view
                     center=model.collectingEvent.locality.location
-                    zoom=10
+                    zoom=mapZoom
                 }}
-                    {{#marker-layer
+                    {{#circle-marker-layer
                         location=model.collectingEvent.locality.location
                         popupOpen=(readonly true)
-                        clickable=false
+                        color='#FF0000'                        
+                        radius=(metersToPixels model.collectingEvent.locality.uncertaintyRadius mapZoom)
                     }}
                         <p>
                             <strong>{{model.collectingEvent.locality.localityName}}</strong>
                             <br>{{model.collectingEvent.locality.geography.fullName}}
                         </p>
-                    {{/marker-layer}}
+                    {{/circle-marker-layer}}
                 {{/map-view}}
             </div>
         {{/if}}

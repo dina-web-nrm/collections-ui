@@ -48,17 +48,20 @@
                         {{#map-view
                             center=item.location
                             zoom=zoom
+                            onZoom=(action (mut zoom))
                         }}
-                            {{#marker-layer
+                            {{#circle-marker-layer
                                 location=item.location
                                 popupOpen=(readonly true)
 
+                                color="#FF0000"
+                                radius=(metersToPixels item.uncertaintyRadius zoom)
                             }}
                                 <p>
                                     <strong>{{item.localityName}}</strong>
                                     <br>{{locality.geography.displayName}}
                                 </p>
-                            {{/marker-layer}}
+                            {{/circle-marker-layer}}
                         {{/map-view}}
                     </div>
                 {{/if}}
@@ -214,15 +217,16 @@
         </div>
         <div class='row'>
             <div class='col-xs-6'>
+                {{log (metersToPixels newLocality.uncertaintyRadius zoom)}}
                 {{#map-view
-                    zoom=mapZoom center=mapLocation
+                    zoom=zoom center=mapLocation
                     onClick=(action 'onLocationUpdate')
-                    onZoom=(action (mut mapZoom))
+                    onZoom=(action (mut zoom))
                 }}
                     {{#if newLocality.validLocation}}
                         {{circle-marker-layer
                             location=newLocality.location
-                            radius=uncertaintyRadiusPixels
+                            radius=(metersToPixels newLocality.uncertaintyRadius zoom)
                             color="#FF0000"
                         }}
                     {{/if}}
