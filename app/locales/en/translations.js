@@ -187,7 +187,7 @@ export default {
     },
     beta: {
         header: 'Collection manager beta',
-        intro: ' is a test site to evaluate the new collection manager. the site will be continuesly updated with new features and fixes based on the internal priority and feedback from user testing.',
+        intro: ' is a test site to evaluate the new collection manager. The site will be continuously updated with new features and fixes based on the internal priority and feedback from user testing.',
         information: {
             header: 'Information',
             body: {
