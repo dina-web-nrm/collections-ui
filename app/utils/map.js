@@ -33,4 +33,4 @@ function metersToPixels(meters, zoomLevel) {
     return meters / zoomConversion[zoomLevel];
 }
 
-export { metersToPixels }
+export { metersToPixels };

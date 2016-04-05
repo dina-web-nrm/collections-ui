@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 import Filterable from '../mixins/filterable';
-import { metersToPixels } from 'dw-collections-manager/utils/map';
 
 export default Ember.Component.extend(Filterable, {
 
