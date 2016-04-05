@@ -48,14 +48,14 @@
                         {{#map-view
                             center=item.location
                             zoom=zoom
-                            onZoom=(action (mut zoom))
+                            onZoom=(action (mut mapZoom))
                         }}
                             {{#circle-marker-layer
                                 location=item.location
                                 popupOpen=(readonly true)
 
                                 color="#FF0000"
-                                radius=(metersToPixels item.uncertaintyRadius zoom)
+                                radius=(metersToPixels item.uncertaintyRadius mapZoom)
                             }}
                                 <p>
                                     <strong>{{item.localityName}}</strong>
@@ -93,22 +93,23 @@
             {{#map-view
                 center=geography.centroid
                 zoom=zoom
+                onZoom=(action (mut pickMapZoom))
                 boundsUpdate=(action (mut bounds)) as |map|
             }}
                 {{#unless maximumReached}}
                     {{#marker-cluster-layer}}
                         {{#each localities as |locality|}}
                             {{#if locality.latitude}}
-                                {{#marker-layer
+                                {{#circle-marker-layer
                                     location=locality.location
-                                    radius=7
+                                    radius=(metersToPixels locality.uncertaintyRadius pickMapZoom)
                                     opacity=1
 
                                     popupOpen=locality.isOpen
 
                                     color=(
                                         if locality.highlighted '#bd0026' (
-                                            if locality.hover '#fd8d3c' '#31a354'
+                                            if locality.hover '#fd8d3c' '#FF0000'
                                         )
                                     )
                                 }}
@@ -122,7 +123,7 @@
                                     >
                                             {{t 'definitions.use'}}
                                     </a>
-                                {{/marker-layer}}
+                                {{/circle-marker-layer}}
                             {{/if}}
                         {{/each}}
                     {{/marker-cluster-layer}}
@@ -217,16 +218,15 @@
         </div>
         <div class='row'>
             <div class='col-xs-6'>
-                {{log (metersToPixels newLocality.uncertaintyRadius zoom)}}
                 {{#map-view
                     zoom=zoom center=mapLocation
                     onClick=(action 'onLocationUpdate')
-                    onZoom=(action (mut zoom))
+                    onZoom=(action (mut newMapZoom))
                 }}
                     {{#if newLocality.validLocation}}
                         {{circle-marker-layer
                             location=newLocality.location
-                            radius=(metersToPixels newLocality.uncertaintyRadius zoom)
+                            radius=(metersToPixels newLocality.uncertaintyRadius newMapZoom)
                             color="#FF0000"
                         }}
                     {{/if}}
