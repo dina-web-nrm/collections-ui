@@ -15,11 +15,11 @@ export default Ember.Service.extend({
         const service = this;
         let url = `${this.host}/${this.namespace}/${this.core}/select?q=${query}&fl=primary_id&wt=json&indent=true`;
 
+        let fqString = '';
         if (entityType) {
-            fq['entity_type'] = entityType;
+            fqString += `&fq=entity_type%3A${entityType}`;
         }
 
-        let fqString = '';
         for(let key in fq) {
             fqString += `&fq=${key}%3D${fq[key]}`;
         }

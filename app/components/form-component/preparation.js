@@ -1,14 +1,25 @@
-/* global moment */
-
 import Ember from 'ember';
+import moment from 'moment';
 
 export default Ember.Component.extend({
 
     classNames: ['dwcm-preparation'],
 
-    /** Required store. */
+    /** Inject services. */
     store: Ember.inject.service('store'),
-
+    configuration: Ember.inject.service('form-configuration'),
+    
+    partialType: Ember.computed('configuration.type', function () {
+        return `partial/preparation/${this.get('configuration.type')}`;
+    }),
+    
+    init() {
+        this._super(...arguments);
+        Ember.run.schedule('actions', this, function() {
+            this.send('addPreparation');
+        });
+    },
+    
     /** Default options for sex field. */
     sexOptions: [{
             value: 'unknown',
@@ -35,6 +46,20 @@ export default Ember.Component.extend({
         /** Remove single *preparation*. */
         removePreparation (preparation) {
             this.model.get('preparations').removeObject(preparation);
-        }
+        },
+
+        /** Set *preparationType* for first preparation on model. */
+        setPreparationType (preparationType) {
+            this.model.get('preparations.firstObject').set(
+                'preparationType', preparationType
+            );
+        },
+        
+        /** Set *preparationType* for first preparation on model. */
+        setStorage (storage) {
+            this.model.get('preparations.firstObject').set(
+                'storage', storage
+            );
+        },
     }
 });

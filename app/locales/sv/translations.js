@@ -30,14 +30,12 @@ export default {
         longitude: 'Longitud',
         latitude: 'Latitud',
         type: {
-            geology: "Geologi",
-            zoology: {
-                mammals: "Zoologi, Däggdjur",
-                invertebrate: "Zoologi, Ev/Fisk/Herp",
-                entomology: "Zoologi, Entomologi"
-            },
-            paleontology: "Paleontologi",
-            botany: "Botanik"
+            "geology": "Geologi",
+            "zoology-mammals": "Zoologi, Däggdjur",
+            "zoology-invertebrate": "Zoologi, Ev/Fisk/Herp",
+            "zoology-entomology": "Zoologi, Entomologi",
+            "paleontology": "Paleontologi",
+            "botany": "Botanik"
         }
     },
     main: {
@@ -67,6 +65,12 @@ export default {
             'locality-name': 'Fyndplats/lokalnamn',
             'show-map': 'Välj från karta',
             'hide-map': 'Dölj karta'
+        },
+        'preparation': {
+            'object-type': 'Objektskategori',
+            'preservation-stage': 'Fossilt bevaringstillstånd',
+            'individuals-count': 'Antal individer',
+            'object-description': 'Beskrivning av objekt'
         }
     },
     collectionobject: {
@@ -76,14 +80,12 @@ export default {
         new: {
             title: "Nytt {{name}} föremål",
             type: {
-                geology: "geologiskt",
-                zoology: {
-                    mammals: "zoologiskt",
-                    invertebrate: "zoologiskt",
-                    entomology: "zoologiskt"
-                },
-                paleontology: "paleontologiskt",
-                botany: "botaniskt"
+                "geology": "geologiskt",
+                "zoology-mammals": "zoologiskt",
+                "zoology-invertebrate": "zoologiskt",
+                "zoology-entomology": "zoologiskt",
+                "paleontology": "paleontologiskt",
+                "botany": "botaniskt"
             },
             toolbar: {
                 save: "Spara",
@@ -99,6 +101,7 @@ export default {
     "form-component-determination": 'Taxonomi/Bestämning',
     "form-component-collecting-event": 'Insamling/Fyndplats',
     "form-component-preparation": 'Objekt/Preparationer',
+    "form-component-type-status": 'Typstatus',
     "form-component-other": 'Övrigt',
     fields: {
         labels: {
@@ -119,7 +122,7 @@ export default {
             accession: 'Accession',
             preparation: {
                 'preparation-type': 'Preparationstyp',
-                count: 'Antal',
+                count: 'Antal del',
                 'life-stage': 'Livsstadium',
                 age: 'Ålder',
                 sex: 'Kön',
@@ -139,7 +142,8 @@ export default {
                 'max-elevation': 'Nivå ö hav',
                 'min-elevation': 'Nivå u hav',
                 'select-existing': 'Sök/välj sparat insamlingstillfällen',
-                name: 'Namnge tillfälle'
+                name: 'Namnge tillfälle',
+                number: 'Insamlingsnummer'
             }
         },
         placeholder: {
@@ -227,6 +231,22 @@ export default {
                     <li>Insamlare ska stängas och rensas efter att en insamlare är vald.</li>
                 `,
                 date: '2016-03-22'
+            },
+            3: {
+                body: `
+                    <span class="label label-success">Ny funktionalitet</span>
+                    <li>Mer avancerad sökning för insamlingstillfälle, fyndplats och geografi.<br>Möjligt att söka på datum, insamlare, fyndplats, geografi och angivet namn.</li>
+                    <li>Påbörjad anpassning av formulär baserat på enhet.<br>Ordning på boxar samt innehåll i bestämning, objekt/preparation och insamlingstillfälle är nu baserat på enhet. Använd menyn upp till höger i formuläret för att ändra enhet.</li>
+                    <li>Uppdaterad testdata på testsidan.</li>
+                    <li>Omvänd ordning på listsidan.</li>
+                    
+                    <br><span class="label label-danger">Buggfixar</span>
+                    <li>"Sök och välj"-listor hamnar under bottenmenyn.</li>
+                    <li>Visa hela geografin i söknigar och efter val.</li>
+                    <li>Geografisök innehåller många dubletter.</li>
+                    <li>Möjligt att klicka flera gånger på spara-knappen.</li>
+                `,
+                date: '2016-04-01'
             }
         }
     }

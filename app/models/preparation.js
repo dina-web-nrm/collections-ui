@@ -18,4 +18,5 @@ export default DS.Model.extend(Validations, {
 
     'preparationType': DS.belongsTo('prep-type'),
     'storage':  DS.belongsTo('storage'),
+    'individualsCount': DS.attr('number'),
 });

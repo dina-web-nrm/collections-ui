@@ -30,14 +30,12 @@ export default {
         longitude: 'Longitude',
         latitude: 'Latitude',
         type: {
-            geology: "geology",
-            zoology: {
-                mammals: "zoology, Mammals",
-                invertebrate: "zoology, Inv/Fish/Herp",
-                entomology: "zoology, Entomology"
-            },
-            paleontology: "paleontology",
-            botany: "botany"
+            "geology": "geology",
+            "zoology-mammals": "zoology, Mammals",
+            "zoology-invertebrate": "zoology, Inv/Fish/Herp",
+            "zoology-entomology": "zoology, Entomology",
+            "paleontology": "paleontology",
+            "botany": "botany"
         }
     },
     main: {
@@ -67,6 +65,12 @@ export default {
             'locality-name': 'Locality name',
             'show-map': 'Pick on map',
             'hide-map': 'Hide map'
+        },
+        'preparation': {
+            'object-type': 'Object category',
+            'preservation-stage': 'Fossil preservation stage',
+            'individuals-count': 'Nr. individuals',
+            'object-description': 'Object description'
         }
     },
     collectionobject: {
@@ -76,14 +80,12 @@ export default {
         new: {
             title: "New {{name}} object",
             type: {
-                geology: "geological",
-                zoology: {
-                    mammals: "zoological",
-                    invertebrate: "zoological",
-                    entomology: "zoological"
-                },
-                paleontology: "paleontological",
-                botany: "botanical"
+                "geology": "geological",
+                "zoology-mammals": "zoological",
+                "zoology-invertebrate": "zoological",
+                "zoology-entomology": "zoological",
+                "paleontology": "paleontological",
+                "botany": "botanical"
             },
             toolbar: {
                 save: "Save",
@@ -99,6 +101,7 @@ export default {
     "form-component-determination": 'Taxonomy/Determination',
     "form-component-collecting-event": 'Collecting event/Locality',
     "form-component-preparation": 'Object/Preparations',
+    "form-component-type-status": 'Type status',
     "form-component-other": 'Other',
     fields: {
         labels: {
@@ -119,7 +122,7 @@ export default {
             accession: 'Accession',
             preparation: {
                 'preparation-type': 'Preparation type',
-                count: 'Count',
+                count: 'Count parts',
                 'life-stage': 'Life stage',
                 age: 'Age',
                 sex: 'Sex',
@@ -139,7 +142,8 @@ export default {
                 'max-elevation': 'Nivå ö hav',
                 'min-elevation': 'Nivå u hav',
                 'select-existing': 'Select existing collecting event',
-                name: 'Name event'
+                name: 'Name event',
+                number: 'Collecting number'
             }
         },
         placeholder: {
@@ -227,6 +231,22 @@ export default {
                     <li>Selecting a new collector should clear and close autocomplete field.</li>
                 `,
                 date: '2016-03-22'
+            },
+            3: {
+                body: `
+                    <span class="label label-success">New features</span>
+                    <li>Better searching for collecting event, locality and geography.<br>Possible to search for date, collector, locality, geography and given name.</li>
+                    <li>Initial customization of form based on unit.<br>Order of boxes and content for determination, object/preparation and collecting event are now based on unit. To change unit use the menu in the top right corner in the form.</li>
+                    <li>Updated test data for beta site.</li>
+                    <li>Reversed ordering on list page.</li>
+                    
+                    <br><span class="label label-danger">Fixes</span>
+                    <li>Autocomplete dropdowns hidden by bottom menu.</li>
+                    <li>Display entire geography in searches and after selection.</li>
+                    <li>Geography search contains duplicates.</li>
+                    <li>Possible to click several times on the save button.</li>
+                `,
+                date: '2016-04-01'
             }
         }
     }

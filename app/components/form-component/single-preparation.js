@@ -3,6 +3,9 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 
     classNames: ['dwcm-single-preparation', 'row'],
+    
+    formConfiguration: Ember.inject.service('form-configuration'),
+    configuration: Ember.computed.alias('formConfiguration.component.singlePreparation'),
 
     /** Required preparation model. */
     model: null,

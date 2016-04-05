@@ -9,6 +9,9 @@ export default DS.Model.extend({
     rackNumber: DS.attr('string'),
     measurements: DS.attr('string'),
     preservationStage: DS.attr('string'),
-    timestampCreated: DS.attr('number'),
-    age: DS.attr('string')
+    age: DS.attr('string'),
+    totalCount: DS.attr('number'),
+    description: DS.attr('string'),
+
+    timestampCreated: DS.attr('number')
 });

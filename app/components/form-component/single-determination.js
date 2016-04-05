@@ -6,6 +6,10 @@ export default Ember.Component.extend({
 
     /** Required determination model. */
     model: null,
+    
+    /** Inject services. */
+    formConfiguration: Ember.inject.service('form-configuration'),
+    configuration: Ember.computed.alias('formConfiguration.component.determination'),
 
     /** Convert index from zero index. */
     displayIndex: function () {

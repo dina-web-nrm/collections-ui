@@ -6,7 +6,7 @@ export default Ember.Component.extend({
 
     classNames: ['dwcm-taxonomy'],
 
-    /** Required store. */
+    /** Inject services. */
     store: Ember.inject.service('store'),
 
     /** Initialise component. */
@@ -14,7 +14,9 @@ export default Ember.Component.extend({
         let result = this._super(...arguments);
 
         // Add a single determination as start value.
-        // this.send('addDetermination');
+        Ember.run.schedule('actions', this, function () {
+            this.send('addDetermination');  
+        });
 
         return result;
     },
