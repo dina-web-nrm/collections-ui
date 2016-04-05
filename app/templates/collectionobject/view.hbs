@@ -94,14 +94,20 @@
                     </li>
                 </ul>
             {{/dwcm-field-group}}
-            {{#if model.collectingEvent.locality.latitude}}
+            {{#if model.collectingEvent.locality.validLocation}}
                 {{#dwcm-field-group title='definitions.map' class='dwcm-collectionobject-view__map' collapsable=false}}
-                    {{#map-view center=model.collectingEvent.locality.location}}
-                        {{#marker-layer
+                    {{#map-view
+                        zoom=mapZoom
+                        center=model.collectingEvent.locality.location
+                        onZoom=(action (mut mapZoom))
+                    }}
+                        {{#circle-marker-layer
                             location=model.collectingEvent.locality.location
+                            color='#FF0000'
+                            radius=uncertaintyRadius
                         }}
                             <p>{{model.collectingEvent.locality.localityName}}</p>
-                        {{/marker-layer}}
+                        {{/circle-marker-layer}}
                     {{/map-view}}
                 {{/dwcm-field-group}}
             {{/if}}
