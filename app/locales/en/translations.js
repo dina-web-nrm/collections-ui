@@ -71,6 +71,9 @@ export default {
             'preservation-stage': 'Fossil preservation stage',
             'individuals-count': 'Nr. individuals',
             'object-description': 'Object description'
+        },
+        'autocomplete-input': {
+            'subset': 'Displaying the top <strong>{{count}}</strong> of <strong>{{max}}</strong> possible matches - Refine your search for a more complete list.'   
         }
     },
     collectionobject: {
