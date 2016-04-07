@@ -72,6 +72,10 @@ export default {
             'preservation-stage': 'Fossil preservation stage',
             'individuals-count': 'Nr. individuals',
             'object-description': 'Object description'
+        },
+        'pick-list': {
+            'no-values': 'No values for collection',
+            'pick': 'Pick a value'
         }
     },
     collectionobject: {

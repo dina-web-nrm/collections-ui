@@ -72,6 +72,10 @@ export default {
             'preservation-stage': 'Fossilt bevaringstillstånd',
             'individuals-count': 'Antal individer',
             'object-description': 'Beskrivning av objekt'
+        },
+        'pick-list': {
+            'no-values': 'Inga värden för vald samling',
+            'pick': 'Välj ett värde'
         }
     },
     collectionobject: {
