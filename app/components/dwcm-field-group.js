@@ -13,6 +13,9 @@ export default Ember.Component.extend({
         return `field-group-${this.get('identifier')}`;
     }.property('identifier'),
 
+    /** Set if the group is collapseable. */
+    collapsable: true,
+
     /** Set if field group is collapsed. */
     collapsed: false,
 
@@ -23,7 +26,9 @@ export default Ember.Component.extend({
 
         /** Toggle if group is collapsed. */
         toggleCollapse() {
-            this.toggleProperty('collapsed');
+            if (this.get('collapsable')) {
+                this.toggleProperty('collapsed');
+            }
         }
     }
 });

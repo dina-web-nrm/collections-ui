@@ -16,6 +16,12 @@ export default Ember.Component.extend({
         /** Run specified label action. */
         runLabelAction () {
             this.get('labelAction')();
+        },
+
+        update () {
+            if (this.attrs.update) {
+                this.attrs.update(this.get('value'));
+            }
         }
     }
 });

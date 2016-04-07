@@ -1,5 +1,5 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-    sprints: [2, 1]
+    sprints: [3, 2, 1]
 });

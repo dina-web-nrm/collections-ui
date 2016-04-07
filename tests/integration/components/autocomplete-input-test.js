@@ -12,12 +12,4 @@ test('it renders', function(assert) {
   this.render(hbs`{{autocomplete-input}}`);
 
   assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:"
-  this.render(hbs`
-    {{#autocomplete-input}}
-      template block text
-    {{/autocomplete-input}}
-  `);
-
 });

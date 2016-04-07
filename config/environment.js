@@ -29,14 +29,14 @@ module.exports = function(environment) {
             name: 'Piwik',
             environments: ['production'],
             config: {
-                piwikUrl: 'http://monitor.dina-web.net',
+                piwikUrl: 'https://monitor.dina-web.net',
                 siteId: 4
             }
         }, {
             name: 'Piwik',
             environments: ['development'],
             config: {
-                piwikUrl: 'http://monitor.dina-web.net',
+                piwikUrl: 'https://monitor.dina-web.net',
                 siteId: 2
             }
     }]
@@ -58,7 +58,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     // api.dina-web is specified in the backend reposity.
-    ENV.HOST = 'http://api.dina-web';
+    ENV.HOST = 'http://localhost';
   }
 
   if (environment === 'test') {

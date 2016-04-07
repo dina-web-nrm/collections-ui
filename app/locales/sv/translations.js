@@ -1,6 +1,6 @@
 export default {
+    blank: '',
     definitions: {
-        zoological: "zoologiskt",
         name: "Namn",
         accession: "Accession",
         male: 'Hane',
@@ -26,7 +26,17 @@ export default {
         },
         'no-result': 'Inget resultat',
         geography: 'Geografi',
-        coordinates: 'Koordinater'
+        coordinates: 'Koordinater',
+        longitude: 'Longitud',
+        latitude: 'Latitud',
+        type: {
+            "geology": "Geologi",
+            "zoology-mammals": "Zoologi, Däggdjur",
+            "zoology-invertebrate": "Zoologi, Ev/Fisk/Herp",
+            "zoology-entomology": "Zoologi, Entomologi",
+            "paleontology": "Paleontologi",
+            "botany": "Botanik"
+        }
     },
     main: {
         application_name: "Samlingshanteraren",
@@ -49,7 +59,18 @@ export default {
         'locality-selector': {
             'to-many-results': 'För många fyndplatser. Välj ett mindre område.',
             'search-geography': 'Sök på namn, ort, område, land',
-            'created-by': 'Skapad {{date}} av {{name}}'
+            'created-by': 'Skapad {{date}} av {{name}}',
+            'select-existing': 'Sök/välj sparad fyndplats',
+            'new-locality': 'Ny fyndplats',
+            'locality-name': 'Fyndplats/lokalnamn',
+            'show-map': 'Välj från karta',
+            'hide-map': 'Dölj karta'
+        },
+        'preparation': {
+            'object-type': 'Objektskategori',
+            'preservation-stage': 'Fossilt bevaringstillstånd',
+            'individuals-count': 'Antal individer',
+            'object-description': 'Beskrivning av objekt'
         }
     },
     collectionobject: {
@@ -58,8 +79,17 @@ export default {
         },
         new: {
             title: "Nytt {{name}} föremål",
+            type: {
+                "geology": "geologiskt",
+                "zoology-mammals": "zoologiskt",
+                "zoology-invertebrate": "zoologiskt",
+                "zoology-entomology": "zoologiskt",
+                "paleontology": "paleontologiskt",
+                "botany": "botaniskt"
+            },
             toolbar: {
                 save: "Spara",
+                saving: "Sparar",
                 print: "Skriv ut etikett",
                 close: "Stäng",
                 duplicate: "Duplicera"
@@ -71,6 +101,7 @@ export default {
     "form-component-determination": 'Taxonomi/Bestämning',
     "form-component-collecting-event": 'Insamling/Fyndplats',
     "form-component-preparation": 'Objekt/Preparationer',
+    "form-component-type-status": 'Typstatus',
     "form-component-other": 'Övrigt',
     fields: {
         labels: {
@@ -91,7 +122,7 @@ export default {
             accession: 'Accession',
             preparation: {
                 'preparation-type': 'Preparationstyp',
-                count: 'Antal',
+                count: 'Antal del',
                 'life-stage': 'Livsstadium',
                 age: 'Ålder',
                 sex: 'Kön',
@@ -111,9 +142,8 @@ export default {
                 'max-elevation': 'Nivå ö hav',
                 'min-elevation': 'Nivå u hav',
                 'select-existing': 'Sök/välj sparat insamlingstillfällen',
-                'show-map': 'Välj på karta',
-                'hide-map': 'Dölj karta',
-                name: 'Namnge tillfälle'
+                name: 'Namnge tillfälle',
+                number: 'Insamlingsnummer'
             }
         },
         placeholder: {
@@ -188,8 +218,9 @@ export default {
             2: {
                 body: `
                     <span class="label label-success">Ny funktionalitet</span>
-                    <li>Sök efter fyndplats visar nu mer information.</li>
-                    <li>Möjlig att hitta fyndplats genom att välja på en karta.</li>
+                    <li>Sök efter fyndplats, insamlingstillfälle och geografi visar nu mer information.</li>
+                    <li>Hitta och välj fyndplats på karta.</li>
+                    <li>Möjligt att skapa ny fyndplats.</li>
                     <li>Öppna och stäng box genom att klicka på rubrikraden.</li>
                     <li>Startsidan översatt till engelska.</li>
                     <li>Preparationstyp filtereras på vald samling.</li>
@@ -200,6 +231,22 @@ export default {
                     <li>Insamlare ska stängas och rensas efter att en insamlare är vald.</li>
                 `,
                 date: '2016-03-22'
+            },
+            3: {
+                body: `
+                    <span class="label label-success">Ny funktionalitet</span>
+                    <li>Mer avancerad sökning för insamlingstillfälle, fyndplats och geografi.<br>Möjligt att söka på datum, insamlare, fyndplats, geografi och angivet namn.</li>
+                    <li>Påbörjad anpassning av formulär baserat på enhet.<br>Ordning på boxar samt innehåll i bestämning, objekt/preparation och insamlingstillfälle är nu baserat på enhet. Använd menyn upp till höger i formuläret för att ändra enhet.</li>
+                    <li>Uppdaterad testdata på testsidan.</li>
+                    <li>Omvänd ordning på listsidan.</li>
+                    
+                    <br><span class="label label-danger">Buggfixar</span>
+                    <li>"Sök och välj"-listor hamnar under bottenmenyn.</li>
+                    <li>Visa hela geografin i söknigar och efter val.</li>
+                    <li>Geografisök innehåller många dubletter.</li>
+                    <li>Möjligt att klicka flera gånger på spara-knappen.</li>
+                `,
+                date: '2016-04-01'
             }
         }
     }

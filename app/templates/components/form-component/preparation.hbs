@@ -1,48 +1,5 @@
 {{#dwcm-field-group
     title=title identifier=title counter=model.preparations.length
 }}
-    <div class="row">
-        <div class="col-xs-3">
-            {{dwcm-textfield
-                label='fields.labels.preparation.life-stage'
-                value=model.objectAttribute.lifeStage
-            }}
-        </div>
-        <div class="col-xs-3">
-            {{dwcm-textfield
-                label='fields.labels.preparation.age'
-                value=model.objectAttribute.age
-            }}
-        </div>
-        <div class="col-xs-3">
-            {{
-                dwcm-select
-                label='fields.labels.preparation.sex'
-                value=model.objectAttribute.sex
-                options=sexOptions
-            }}
-        </div>
-        {{!--
-        {{
-            dwcm-field-placeholder width=2
-            label='Antal ind.tot'
-            disabled=true
-        }}
-        --}}
-        <div class="col-xs-3">
-            {{
-                dwcm-textfield
-                label='fields.labels.preparation.measurements'
-                value=model.objectAttribute.measurements
-            }}
-        </div>
-    </div>
-    {{#each model.preparations as |preparation|}}
-        {{form-component/single-preparation
-            model=preparation remove=(action 'removePreparation')
-        }}
-    {{/each}}
-    <a class="btn btn-primary btn-xs" {{action "addPreparation"}}>
-        <i class="glyphicon glyphicon-plus"></i> {{t 'fields.labels.preparation.add'}}
-    </a>
+    {{partial partialType}}
 {{/dwcm-field-group}}

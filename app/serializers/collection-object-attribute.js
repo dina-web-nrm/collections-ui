@@ -10,6 +10,9 @@ export default DS.JSONSerializer.extend({
         rackNumber: 'text6',
         measurements: 'text7',
         preservationStage: 'text8',
-        age: 'text9'
+        age: 'text9',
+        description: 'text10',
+
+        totalCount: 'number1'
     }
 });

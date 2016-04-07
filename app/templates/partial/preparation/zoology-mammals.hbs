@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-xs-4">
+        {{dwcm-textfield
+            label='fields.labels.preparation.life-stage'
+            value=model.objectAttribute.lifeStage
+        }}
+    </div>
+    <div class="col-xs-3">
+        {{dwcm-textfield
+            label='fields.labels.preparation.age'
+            value=model.objectAttribute.age
+        }}
+    </div>
+    <div class="col-xs-3">
+        {{
+            dwcm-select
+            label='fields.labels.preparation.sex'
+            value=model.objectAttribute.sex
+            options=sexOptions
+        }}
+    </div>
+</div>
+{{partial 'partial/preparation/list'}}

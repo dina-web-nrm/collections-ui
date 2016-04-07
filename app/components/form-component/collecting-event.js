@@ -4,8 +4,12 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
+    classNames: ['form-component-collecting-event'],
+
     /** Required store. */
     store: Ember.inject.service('store'),
+    formConfiguration: Ember.inject.service('form-configuration'),
+    configuration: Ember.computed.alias('formConfiguration.component.collectingEvent'),
 
     /** Is creating new collection event. */
     isCreating: false,
@@ -20,32 +24,26 @@ export default Ember.Component.extend({
 
         return this._newCollectingEvent;
     }.property(),
-
-    localityDisplayAttributes: Ember.computed('model.collectingEvent.locality.localityName', function () {
-        return [{
-            title:'Fyndplats',
-            value: this.model.get('collectingEvent').get('locality').get('localityName')
-        }, {
-            title: 'Longitude',
-            value: this.model.get('collectingEvent').get('locality').get('longitude1')
-        }, {
-           title: 'Latitude',
-           value: this.model.get('collectingEvent').get('locality').get('latitude1')
-        }, {
-           title: 'Höjd ö hav',
-           value: this.model.get('collectingEvent').get('locality').get('maxElevation')
-        }, {
-           title: 'höjd u hav',
-           value: this.model.get('collectingEvent').get('locality').get('minElevation')
-        }];
+    
+    /** Return partial type based on division configuration. */
+    partialType: Ember.computed('formConfiguration.type', function () {
+        return `partial/collecting-event/create-${this.get('formConfiguration.type')}`;
     }),
+
+    /** Enable or disable create mode when changing configuration. */
+    onConfigurationChange: function() {
+        if (this.get('configuration.enableCreate')) {
+            this.send('enableCreate');
+        } else {
+            this.send('selectExisting');
+        }
+    }.observes('configuration').on('init'),
 
     actions: {
 
         /** Enable create mode. */
         enableCreate () {
             this.set('isCreating', true);
-
             this.model.set(
                 'collectingEvent', this.get('newCollectingEvent')
             );

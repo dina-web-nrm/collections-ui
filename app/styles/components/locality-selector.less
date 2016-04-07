@@ -20,81 +20,23 @@
         border-bottom: 1px solid @gray-light;
         border-top: 1px solid @gray-light;
     }
-    .preview {
+    .create {
         .leaflet-container {
-            height: 200px;
+            height: 250px;
         }
 
-        ol, ul {
-            span {
-                font-weight: bold;
-            }
-        }
-        ul {
-            padding-left: 0;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
 
-            li {
-                list-style-type: none;
-            }
-        }
-    }
-    .autocomplete-input__dropdown {
+        .header {
+            border-bottom: #ddd 1px solid;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
 
-        li {
-            position: relative;
-            overflow: hidden;
-        }
-
-        p {
-            padding: 0px;
-            margin: 0px;
-            width: 100%;
-            height: 18px;
-
-            white-space: nowrap;
-            text-overflow: ellipsis;
-
-            &.geography {
-                color: @gray-dark;
-            }
-
-            &.locality {
-                width: 80%;
-                &.shrink {
-                    width: 60%;
-                }
-                overflow: hidden;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                float: left;
-            }
-
-            &.coordinates {
-                float: right;
-                width: auto;
-                text-align: right;
-                .glyphicon {
-                    padding: 3px 0 3px 0;
-                    font-size: 12px;
-                }
-            }
-
-            &.timestamp {
-                color: @gray-dark;
-                position: absolute;
-                right: 5px;
-                top: 8px;
-                text-align: right;
-            }
-        }
-        .glyphicon {
-            font-size: 30px;
-            padding: 3px;
-            float: left;
-            margin-right: 5px;
-            position: static;
-            &.inactive {
-                color: @gray-light;
+            h4 {
+                font-size: 18px;
+                margin: 0;
             }
         }
     }

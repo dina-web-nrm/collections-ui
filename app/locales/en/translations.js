@@ -1,7 +1,6 @@
 export default {
     blank: '',
     definitions: {
-        zoological: "zoological",
         name: "Name",
         accession: "Accession",
         male: 'Male',
@@ -27,7 +26,17 @@ export default {
         },
         'no-result': 'No result',
         geography: 'Geography',
-        coordinates: 'Coordinates'
+        coordinates: 'Coordinates',
+        longitude: 'Longitude',
+        latitude: 'Latitude',
+        type: {
+            "geology": "geology",
+            "zoology-mammals": "zoology, Mammals",
+            "zoology-invertebrate": "zoology, Inv/Fish/Herp",
+            "zoology-entomology": "zoology, Entomology",
+            "paleontology": "paleontology",
+            "botany": "botany"
+        }
     },
     main: {
         application_name: "Collection manager",
@@ -50,7 +59,18 @@ export default {
         'locality-selector': {
             'to-many-results': 'Too many localities. Please select a smaller area.',
             'search-geography': 'Search on name, city, area or country',
-            'created-by': 'Created {{date}} by {{name}}'
+            'created-by': 'Created {{date}} by {{name}}',
+            'select-existing': 'Select existing locality',
+            'new-locality': 'New locality',
+            'locality-name': 'Locality name',
+            'show-map': 'Pick on map',
+            'hide-map': 'Hide map'
+        },
+        'preparation': {
+            'object-type': 'Object category',
+            'preservation-stage': 'Fossil preservation stage',
+            'individuals-count': 'Nr. individuals',
+            'object-description': 'Object description'
         }
     },
     collectionobject: {
@@ -59,8 +79,17 @@ export default {
         },
         new: {
             title: "New {{name}} object",
+            type: {
+                "geology": "geological",
+                "zoology-mammals": "zoological",
+                "zoology-invertebrate": "zoological",
+                "zoology-entomology": "zoological",
+                "paleontology": "paleontological",
+                "botany": "botanical"
+            },
             toolbar: {
                 save: "Save",
+                saving: "Saving",
                 print: "Print label",
                 close: "Close",
                 duplicate: "Duplicate"
@@ -72,6 +101,7 @@ export default {
     "form-component-determination": 'Taxonomy/Determination',
     "form-component-collecting-event": 'Collecting event/Locality',
     "form-component-preparation": 'Object/Preparations',
+    "form-component-type-status": 'Type status',
     "form-component-other": 'Other',
     fields: {
         labels: {
@@ -92,7 +122,7 @@ export default {
             accession: 'Accession',
             preparation: {
                 'preparation-type': 'Preparation type',
-                count: 'Count',
+                count: 'Count parts',
                 'life-stage': 'Life stage',
                 age: 'Age',
                 sex: 'Sex',
@@ -112,9 +142,8 @@ export default {
                 'max-elevation': 'Nivå ö hav',
                 'min-elevation': 'Nivå u hav',
                 'select-existing': 'Select existing collecting event',
-                'show-map': 'Pick on map',
-                'hide-map': 'Hide map',
-                name: 'Name event'
+                name: 'Name event',
+                number: 'Collecting number'
             }
         },
         placeholder: {
@@ -189,8 +218,9 @@ export default {
             2: {
                 body: `
                     <span class="label label-success">New features</span>
-                    <li>Search for Locality now displays more information.</li>
+                    <li>Search for Locality, Collecting event and Geography now displays more information.</li>
                     <li>Find and select Locality on map.</li>
+                    <li>Create new locality.</li>
                     <li>Expand and collapse form boxes by click on header.</li>
                     <li>Translated start page to English.</li>
                     <li>Preparation type is filtered by selected Collection.</li>
@@ -198,9 +228,25 @@ export default {
                     <li>Restrict future dates on determination and collecting event.</li>
                     <br><span class="label label-danger">Fixes</span>
                     <li>Autocomplete fields always focused and covers other content on page.</li>
-                    <li>Selecting a new collector shuold clear and close autocomplete field.</li>
+                    <li>Selecting a new collector should clear and close autocomplete field.</li>
                 `,
                 date: '2016-03-22'
+            },
+            3: {
+                body: `
+                    <span class="label label-success">New features</span>
+                    <li>Better searching for collecting event, locality and geography.<br>Possible to search for date, collector, locality, geography and given name.</li>
+                    <li>Initial customization of form based on unit.<br>Order of boxes and content for determination, object/preparation and collecting event are now based on unit. To change unit use the menu in the top right corner in the form.</li>
+                    <li>Updated test data for beta site.</li>
+                    <li>Reversed ordering on list page.</li>
+                    
+                    <br><span class="label label-danger">Fixes</span>
+                    <li>Autocomplete dropdowns hidden by bottom menu.</li>
+                    <li>Display entire geography in searches and after selection.</li>
+                    <li>Geography search contains duplicates.</li>
+                    <li>Possible to click several times on the save button.</li>
+                `,
+                date: '2016-04-01'
             }
         }
     }

@@ -1,0 +1,29 @@
+{{#each model.preparations as |preparation|}}
+    <div class="row">
+        <div class="col-xs-4">
+            {{dwcm-autocomplete-textfield
+                label='fields.labels.preparation.preparation-type'
+
+                storeName='prep-type'
+
+                displayField='name'
+                filterField='name'
+
+                itemSelected=(action 'setPreparationType')
+                filterKeys='collectionID'
+            }}
+        </div>
+        <div class="col-xs-8">
+            {{dwcm-autocomplete-textfield
+                label='fields.labels.preparation.storage'
+
+                storeName='storage'
+
+                displayField='fullName'
+                filterField='fullName'
+
+                itemSelected=(action 'setStorage')
+            }}
+        </div>
+    </div>
+{{/each}}
