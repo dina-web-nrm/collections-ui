@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
         /** Authenticate and sign in with currently selected agent. */
         authenticate () {
             this.get('session').authenticate(
-                'authenticator:dummy', this.get('agent')
+                'authenticator:oauth', 'reporter', 'reporter'
             ).catch(reason => {
                 console.log(reason);
             });
