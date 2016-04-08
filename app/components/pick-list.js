@@ -45,7 +45,6 @@ export default Ember.Component.extend(Filterable, {
      * 
     */
     loadOptions: function () {
-        console.log('PickList: ', this.get('model') || this.get('name'), this.get('filters'));
         if (!this.get('model')) {
             this._loadOptions();    
         } else {
