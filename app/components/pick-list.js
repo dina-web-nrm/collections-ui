@@ -104,6 +104,6 @@ export default Ember.Component.extend(Filterable, {
             this.attrs.update(undefined);
         }
         
-        this.set('initLoadDone', true)
+        this.set('initLoadDone', true);
     }
 });
