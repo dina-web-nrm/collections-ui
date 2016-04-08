@@ -9,22 +9,22 @@ export default Ember.Service.extend({
         this.set('items', []);
     },
 
-    add(key, value) {
+    add(...filters) {
         const items = this.get('items');
-
-        this.remove(key);
-
-        items.pushObject({
-            key: key,
-            value: value
-        });
+        
+        this.remove(filters.mapBy('key'));
+        items.pushObjects(filters);
     },
 
-    remove(key) {
+    remove(...keys) {
         const items = this.get('items');
-        let item = items.findBy('key', key);
-        if (item) {
-            items.removeObject(item);
+        
+        let toBeRemoved = items.filter(function (item) {
+            return keys.indexOf(item.key) !== -1;
+        });
+
+        if (toBeRemoved.length) {
+            items.removeObjects(toBeRemoved);
         }
     },
 
