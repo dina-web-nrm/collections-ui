@@ -19,17 +19,24 @@
 {{/unless}}
 
 {{#if isDropdownVisible}}
-    <ul class="autocomplete-input__dropdown">
-        {{#each previewData as |preview index|}}
-            <li data-index={{index}} {{action "onItemClick" preview}}>
-                {{#if hasBlock}}
-                    {{yield preview}}
-                {{else}}
-                    {{get preview displayField}}
-                {{/if}}
-            </li>
-        {{else}}
-            <li>{{t 'definitions.no-result'}}</li>
-        {{/each}}
-    </ul>
+    <div class="autocomplete-input__dropdown">
+        {{#if isResponseSubset}}
+            <div class="autocomplete-input__dropdown-subset">
+                {{t 'component.autocomplete-input.subset' count=limit max=totalRows}}
+            </div>
+        {{/if}}
+        <ul class="autocomplete-input__dropdown-list">
+            {{#each previewData as |preview index|}}
+                <li data-index={{index}} {{action "onItemClick" preview}}>
+                    {{#if hasBlock}}
+                        {{yield preview}}
+                    {{else}}
+                        {{get preview displayField}}
+                    {{/if}}
+                </li>
+            {{else}}
+                <li>{{t 'definitions.no-result'}}</li>
+            {{/each}}
+        </ul>
+    </div>
 {{/if}}

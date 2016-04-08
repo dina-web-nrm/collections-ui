@@ -76,6 +76,9 @@ export default {
         'pick-list': {
             'no-values': 'Inga värden för vald samling',
             'pick': 'Välj ett värde'
+        },
+        'autocomplete-input': {
+            'subset': 'Visar de <strong>{{count}}</strong> bästa av <strong>{{max}}</strong> möjliga träffar - Förfina din sökning för att se en mer komplett lista.'
         }
     },
     collectionobject: {

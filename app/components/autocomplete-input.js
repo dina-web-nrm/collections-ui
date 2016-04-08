@@ -45,6 +45,9 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
 
     /** Value of the input field */
     value: '',
+    
+    /** Limit number of responses. */
+    limit: 40,
 
     /** Has valid selection. */
     hasSelected: false,
@@ -155,9 +158,13 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
      */
     fetchData () {
         if (this.localData) {
-            this._fetchLocalData(this.get('filterField'), this.get('value'), 7);
+            this._fetchLocalData(
+                this.get('filterField'), this.get('value'), this.get('limit')
+            );
         } else {
-            this._fetchRemoteData(this.get('filterField'), this.get('value'), 7);
+            this._fetchRemoteData(
+                this.get('filterField'), this.get('value'), this.get('limit')
+            );
         }
     },
 

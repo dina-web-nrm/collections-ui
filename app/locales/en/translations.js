@@ -76,6 +76,9 @@ export default {
         'pick-list': {
             'no-values': 'No values for collection',
             'pick': 'Pick a value'
+        },
+        'autocomplete-input': {
+            'subset': 'Displaying the top <strong>{{count}}</strong> of <strong>{{max}}</strong> possible matches - Refine your search for a more complete list.'
         }
     },
     collectionobject: {
