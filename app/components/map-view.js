@@ -33,6 +33,11 @@ export default Ember.Component.extend({
             if (this.attrs.onClick) {
                 this.attrs.onClick(event);
             }
+        },
+        updateZoom (event) {            
+            if (this.attrs.onZoom) {
+                this.attrs.onZoom(event.target.getZoom(), event);
+            }
         }
     }
 });

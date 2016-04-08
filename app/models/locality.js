@@ -23,10 +23,13 @@ export default DS.Model.extend(Validations, {
         defaultValue() { return 0; }
     }),
     createdByAgentID: DS.attr('number'),
-
+    uncertaintyRadius: DS.attr('number', {
+        defaultValue() { return 200; }
+    }),
+    
     geography: DS.belongsTo('geography', {async: true}),
     agent: DS.belongsTo('agent', {async: true}),
-
+    
     /** Locality location converted to array. */
     location: Ember.computed('latitude', 'longitude',  {
         get () {

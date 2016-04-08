@@ -14,11 +14,13 @@ export default Ember.Component.extend(Filterable, {
     localities: [],
 
     bounds: null,
-
+    
+    zoom: 13,
+    
     selectedLocality: null,
 
     maximumReached: Ember.computed.gt('localities.length', 199),
-
+    
     /** Return new locality. */
     newLocality: function () {
         if(!this._newLocality) {
@@ -54,6 +56,20 @@ export default Ember.Component.extend(Filterable, {
     delayFetchLocalites: function () {
         Ember.run.debounce(this, this.fetchLocalities, 75);
     }.observes('filters', 'bounds.[]', 'geography'),
+    
+    centerMap: function () {
+        if (this.get('newLocality.validLocation')) {
+            this.set('mapLocation', [
+                this.get('newLocality.location.firstObject'),
+                this.get('newLocality.location.lastObject')
+            ]);   
+        } else if (this.get('newLocality.geography.validCentroid')) {
+            this.set('mapLocation', [
+                this.get('newLocality.geography.centroid.firstObject'),
+                this.get('newLocality.geography.centroid.lastObject')
+            ]);    
+        }
+    }.observes('newLocality.geography'),
 
     actions: {
 
