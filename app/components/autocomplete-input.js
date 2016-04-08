@@ -47,7 +47,7 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
     value: '',
     
     /** Limit number of responses. */
-    limit: 7,
+    limit: 40,
 
     /** Has valid selection. */
     hasSelected: false,
