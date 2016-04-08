@@ -45,6 +45,7 @@ export default Ember.Component.extend(Filterable, {
      * 
     */
     loadOptions: function () {
+        console.log('PickList: ', this.get('model') || this.get('name'), this.get('filters'));
         if (!this.get('model')) {
             this._loadOptions();    
         } else {
@@ -99,10 +100,11 @@ export default Ember.Component.extend(Filterable, {
     /** Reset component to inital state. */
     reset() {
         this.set('options', []);
-        this.set('value', []);
-        
-        if (this.attrs.update) {
+        if (this.attrs.update && this.get('initLoadDone')) {
+            this.set('value', undefined);
             this.attrs.update(undefined);
         }
+        
+        this.set('initLoadDone', true)
     }
 });
