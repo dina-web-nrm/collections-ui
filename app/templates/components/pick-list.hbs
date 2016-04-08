@@ -4,8 +4,8 @@
     {{else}}
         <option>{{t 'component.pick-list.pick'}}</option>
         {{#each options as |option|}}
-            {{#x-option value=option.title}}
-                {{option.title}}
+            {{#x-option value=(if model option (get option valueField))}}
+                {{get option displayField}}
             {{/x-option}}
         {{/each}}
     {{/unless}}
