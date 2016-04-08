@@ -71,6 +71,9 @@ export default {
             'preservation-stage': 'Fossilt bevaringstillstånd',
             'individuals-count': 'Antal individer',
             'object-description': 'Beskrivning av objekt'
+        },
+        'autocomplete-input': {
+            'subset': 'Visar de <strong>{{count}}</strong> bästa av <strong>{{max}}</strong> möjliga träffar - Förfina din sökning för att se en mer komplett lista.'
         }
     },
     collectionobject: {
