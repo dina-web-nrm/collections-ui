@@ -105,7 +105,7 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
         
         Ember.run.scheduleOnce('afterRender', this, ()=>{
             if (visible) {
-                let element = this.$('.autocomplete-input__dropdown-list')[0];
+                let element = this.$('')[0];
                 if (element && element.scrollIntoView) {
                     element.scrollIntoView({block: "end", behavior: "smooth"});
                 }
