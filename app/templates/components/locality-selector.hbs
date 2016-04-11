@@ -97,36 +97,44 @@
                 boundsUpdate=(action (mut bounds)) as |map|
             }}
                 {{#unless maximumReached}}
-                    {{#marker-cluster-layer}}
-                        {{#each localities as |locality|}}
-                            {{#if locality.latitude}}
-                                {{#circle-marker-layer
-                                    location=locality.location
-                                    radius=(metersToPixels locality.uncertaintyRadius pickMapZoom)
-                                    opacity=1
-
-                                    popupOpen=locality.isOpen
-
-                                    color=(
-                                        if locality.highlighted '#bd0026' (
-                                            if locality.hover '#fd8d3c' '#FF0000'
-                                        )
+                    {{#each localities as |locality|}}
+                        {{#if locality.latitude}}
+                            {{#circle-marker-layer
+                                location=locality.location
+                                radius=(
+                                    if locality.hover (
+                                            metersToPixels locality.uncertaintyRadius pickMapZoom
+                                        ) (if locality.isOpen (
+                                            metersToPixels locality.uncertaintyRadius pickMapZoom
+                                        ) 5)
+                                )
+                                opacity=(
+                                    if locality.isOpen 1 (
+                                        if locality.hover 1 0.6
                                     )
-                                }}
-                                    <p>
-                                        <strong>{{locality.localityName}}</strong>
-                                        <br>{{locality.geography.displayName}}
-                                    </p>
-                                    <a
-                                        class="btn btn-default btn-xs"
-                                        {{action 'select' locality on='click'}}
-                                    >
-                                            {{t 'definitions.use'}}
-                                    </a>
-                                {{/circle-marker-layer}}
-                            {{/if}}
-                        {{/each}}
-                    {{/marker-cluster-layer}}
+                                )
+
+                                popupOpen=locality.isOpen
+
+                                color=(
+                                    if locality.isOpen '#bd0026' (
+                                        if locality.hover '#bd0026' '#027cb1'
+                                    )
+                                )
+                            }}
+                                <p>
+                                    <strong>{{locality.localityName}}</strong>
+                                    <br>{{locality.geography.displayName}}
+                                </p>
+                                <a
+                                    class="btn btn-default btn-xs"
+                                    {{action 'select' locality on='click'}}
+                                >
+                                        {{t 'definitions.use'}}
+                                </a>
+                            {{/circle-marker-layer}}
+                        {{/if}}
+                    {{/each}}
                 {{/unless}}
             {{/map-view}}
         </div>
@@ -260,7 +268,7 @@
                     <div class='col-xs-12 col-md-7'>
                         <label>{{t 'component.locality-selector.uncertainty-radius'}}:</label>
                         {{x-slider class='form-control input-sm'
-                            min=15 step=5 max=5000 value=newLocality.uncertaintyRadius
+                            min=15 step=2 max=2000 value=newLocality.uncertaintyRadius
                         }}
                     </div>
                     <div class='col-xs-12 col-md-3'>
