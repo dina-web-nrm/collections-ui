@@ -1,0 +1,22 @@
+{{#if isDropdownVisible}}
+    <div class="autocomplete-input__dropdown">
+        {{#if isResponseSubset}}
+            <div class="autocomplete-input__dropdown-subset">
+                {{t 'component.autocomplete-input.dropdown.subset'}}
+            </div>
+        {{/if}}
+        <ul class="autocomplete-input__dropdown-list">
+            {{#each data as |preview index|}}
+                <li data-index={{index}} {{action this.attrs.itemClick preview}}>
+                    {{#if hasBlock}}
+                        {{yield preview}}
+                    {{else}}
+                        {{get preview displayField}}
+                    {{/if}}
+                </li>
+            {{else}}
+                <li>{{t 'definitions.no-result'}}</li>
+            {{/each}}
+        </ul>
+    </div>
+{{/if}}
