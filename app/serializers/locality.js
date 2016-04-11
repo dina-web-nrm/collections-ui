@@ -10,6 +10,8 @@ export default DS.JSONSerializer.extend({
         'agent': 'createdByAgentID',
         'longitude': 'longitude1',
         'latitude': 'latitude1',
+        'verbatimLongitude': 'long1Text',
+        'verbatimLatitude': 'lat1Text',
         'uncertaintyRadius': 'latLongAccuracy'
     },
     serialize(){

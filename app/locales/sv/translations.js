@@ -7,10 +7,6 @@ export default {
         female: 'Hona',
         unknown: 'Okänt',
         date: 'Datum',
-        'create-new': {
-            1: 'Skapa nytt',
-            2: 'Skapa ny'
-        },
         user: 'Användare',
         'sign-out': 'Logga ut',
         'sign-in': 'Logga in',
@@ -58,14 +54,18 @@ export default {
     component: {
         'locality-selector': {
             'to-many-results': 'För många fyndplatser. Välj ett mindre område.',
-            'search-geography': 'Sök på namn, ort, område, land',
+            'search-geography': 'Sök på ort, område, land',
             'created-by': 'Skapad {{date}} av {{name}}',
             'select-existing': 'Sök/välj sparad fyndplats',
             'new-locality': 'Ny fyndplats',
             'locality-name': 'Fyndplats/lokalnamn',
             'show-map': 'Välj från karta',
             'hide-map': 'Dölj karta',
-            'uncertainty-radius': 'Osäkerhetsradie'
+            'uncertainty-radius': 'Osäkerhetsradie',
+            'verbatim-longitude': 'Verbatim longitud',
+            'verbatim-latitude': 'Verbatim latitud',
+            'create-new': 'Skapa ny fyndplats',
+            'center-map': 'Centrera på karta'
         },
         'preparation': {
             'object-type': 'Objektskategori',
@@ -84,6 +84,9 @@ export default {
             'inline': {
                 'subset-danger': 'Visar {{max}} av <span class="subset-danger">{{count}}</span>'
             }
+        },
+        'collecting-event': {
+            'create-new': 'Skapa nytt insamlingstillfälle'
         }
     },
     collectionobject: {

@@ -7,10 +7,6 @@ export default {
         female: 'Female',
         unknown: 'Unknown',
         date: 'Date',
-        'create-new': {
-            1: 'Create new',
-            2: 'Create new'
-        },
         user: 'User',
         'sign-out': 'Sign out',
         'sign-in': 'Sign in',
@@ -58,14 +54,19 @@ export default {
     component: {
         'locality-selector': {
             'to-many-results': 'Too many localities. Please select a smaller area.',
-            'search-geography': 'Search on name, city, area or country',
+            'search-geography': 'Search for city, area or country',
             'created-by': 'Created {{date}} by {{name}}',
             'select-existing': 'Select existing locality',
             'new-locality': 'New locality',
             'locality-name': 'Locality name',
             'show-map': 'Pick on map',
             'hide-map': 'Hide map',
-            'uncertainty-radius': 'Uncertainty radius'
+            'uncertainty-radius': 'Uncertainty radius',
+            'verbatim-longitude': 'Verbatim longitude',
+            'verbatim-latitude': 'Verbatim latitude',
+            'create-new': 'Create new locality',
+            'center-map': 'Center on map'
+
         },
         'preparation': {
             'object-type': 'Object category',
@@ -84,6 +85,9 @@ export default {
             'inline': {
                 'subset-danger': 'Displaying {{max}} of <span class="subset-danger">{{count}}</span>'
             }
+        },
+        'collecting-event': {
+            'create-new': 'Create new collecting event'
         }
     },
     collectionobject: {
