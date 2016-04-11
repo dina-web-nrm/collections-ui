@@ -7,10 +7,6 @@ export default {
         female: 'Female',
         unknown: 'Unknown',
         date: 'Date',
-        'create-new': {
-            1: 'Create new',
-            2: 'Create new'
-        },
         user: 'User',
         'sign-out': 'Sign out',
         'sign-in': 'Sign in',
@@ -67,7 +63,8 @@ export default {
             'hide-map': 'Hide map',
             'uncertainty-radius': 'Uncertainty radius',
             'verbatim-longitude': 'Verbatim longitude',
-            'verbatim-latitude': 'Verbatim latitude'
+            'verbatim-latitude': 'Verbatim latitude',
+            'create-new': 'Create new locality'
         },
         'preparation': {
             'object-type': 'Object category',
@@ -81,6 +78,9 @@ export default {
         },
         'autocomplete-input': {
             'subset': 'Displaying the top <strong>{{count}}</strong> of <strong>{{max}}</strong> possible matches - Refine your search for a more complete list.'
+        },
+        'collecting-event': {
+            'create-new': 'Create new collecting event'
         }
     },
     collectionobject: {

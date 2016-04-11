@@ -7,10 +7,6 @@ export default {
         female: 'Hona',
         unknown: 'Okänt',
         date: 'Datum',
-        'create-new': {
-            1: 'Skapa nytt',
-            2: 'Skapa ny'
-        },
         user: 'Användare',
         'sign-out': 'Logga ut',
         'sign-in': 'Logga in',
@@ -67,7 +63,8 @@ export default {
             'hide-map': 'Dölj karta',
             'uncertainty-radius': 'Osäkerhetsradie',
             'verbatim-longitude': 'Verbatim longitud',
-            'verbatim-latitude': 'Verbatim latitud'
+            'verbatim-latitude': 'Verbatim latitud',
+            'create-new': 'Skapa ny fyndplats'
         },
         'preparation': {
             'object-type': 'Objektskategori',
@@ -81,6 +78,9 @@ export default {
         },
         'autocomplete-input': {
             'subset': 'Visar de <strong>{{count}}</strong> bästa av <strong>{{max}}</strong> möjliga träffar - Förfina din sökning för att se en mer komplett lista.'
+        },
+        'collecting-event': {
+            'create-new': 'Skapa nytt insamlingstillfälle'
         }
     },
     collectionobject: {
