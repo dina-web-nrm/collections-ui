@@ -1,0 +1,12 @@
+{{#x-select value=value action=this.attrs.update class="form-control"}}
+    {{#unless options.length}}
+        <option>{{t 'component.pick-list.no-values'}}</option>
+    {{else}}
+        <option>{{t 'component.pick-list.pick'}}</option>
+        {{#each options as |option|}}
+            {{#x-option value=(if model option (get option valueField))}}
+                {{get option displayField}}
+            {{/x-option}}
+        {{/each}}
+    {{/unless}}
+{{/x-select}}

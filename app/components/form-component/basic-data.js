@@ -12,14 +12,16 @@ export default Ember.Component.extend({
 
             if (collection) {
                 this.get('filters').add(
-                    'disciplineID', collection.get('disciplineID')
-                );
-
-                this.get('filters').add(
-                    'collectionID', collection.get('id')
+                    {
+                        key: 'disciplineID',
+                        value: collection.get('disciplineID')
+                    }, {
+                        key: 'collectionID',
+                        value: collection.get('id')
+                    }
                 );
             } else {
-                this.get('filters').remove('collectionID');
+                this.get('filters').remove('collectionID', 'disciplineID');
             }
         },
 

@@ -45,9 +45,11 @@
                 }}
             </div>
             <div class="col-xs-12">
-                {{dwcm-textfield
-                    label='fields.labels.collecting-event.method'
-                    value=model.collectingEvent.method
+                <label>{{t 'fields.labels.collecting-event.method'}}:</label>
+                {{pick-list
+                    name='Method'
+                    filterKeys='collectionID'
+                    update=(action (mut model.collectingEvent.method))
                 }}
             </div>
         </div>

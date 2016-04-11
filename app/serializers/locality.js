@@ -9,7 +9,8 @@ export default DS.JSONSerializer.extend({
         'geography': 'geographyID',
         'agent': 'createdByAgentID',
         'longitude': 'longitude1',
-        'latitude': 'latitude1'
+        'latitude': 'latitude1',
+        'uncertaintyRadius': 'latLongAccuracy'
     },
     serialize(){
         var json = this._super(...arguments);

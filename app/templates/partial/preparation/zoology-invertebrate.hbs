@@ -1,16 +1,18 @@
 <div class="row">
     <div class="col-xs-3">
-        {{dwcm-textfield
-            label='fields.labels.preparation.life-stage'
-            value=model.objectAttribute.lifeStage
+        <label>{{t 'fields.labels.preparation.life-stage'}}:</label>
+        {{pick-list
+            name='Stage'
+            filterKeys='collectionID'
+            update=(action (mut model.objectAttribute.lifeStage))
         }}
     </div>
     <div class="col-xs-3">
-        {{
-            dwcm-select
-            label='fields.labels.preparation.sex'
-            value=model.objectAttribute.sex
-            options=sexOptions
+        <label>{{t 'fields.labels.preparation.sex'}}:</label>
+        {{pick-list
+            name='Sex'
+            filterKeys='collectionID'
+            update=(action (mut model.objectAttribute.sex))
         }}
     </div>
     <div class="col-xs-3">
