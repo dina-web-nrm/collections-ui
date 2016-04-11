@@ -7,10 +7,6 @@ export default {
         female: 'Female',
         unknown: 'Unknown',
         date: 'Date',
-        'create-new': {
-            1: 'Create new',
-            2: 'Create new'
-        },
         user: 'User',
         'sign-out': 'Sign out',
         'sign-in': 'Sign in',
@@ -66,7 +62,11 @@ export default {
             'show-map': 'Pick on map',
             'hide-map': 'Hide map',
             'uncertainty-radius': 'Uncertainty radius',
+            'verbatim-longitude': 'Verbatim longitude',
+            'verbatim-latitude': 'Verbatim latitude',
+            'create-new': 'Create new locality',
             'center-map': 'Center on map'
+
         },
         'preparation': {
             'object-type': 'Object category',
@@ -85,6 +85,9 @@ export default {
             'inline': {
                 'subset-danger': 'Displaying {{max}} of <span class="subset-danger">{{count}}</span>'
             }
+        },
+        'collecting-event': {
+            'create-new': 'Create new collecting event'
         }
     },
     collectionobject: {
