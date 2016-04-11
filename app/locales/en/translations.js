@@ -78,7 +78,12 @@ export default {
             'pick': 'Pick a value'
         },
         'autocomplete-input': {
-            'subset': 'Displaying the top <strong>{{count}}</strong> of <strong>{{max}}</strong> possible matches - Refine your search for a more complete list.'
+            'dropdown': {
+                'subset': 'Refine your search for a more complete list.'
+            },
+            'inline': {
+                'subset-danger': 'Displaying {{max}} of <span class="subset-danger">{{count}}</span>'
+            }
         }
     },
     collectionobject: {

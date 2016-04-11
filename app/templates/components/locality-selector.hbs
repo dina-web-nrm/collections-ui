@@ -18,27 +18,31 @@
             item=selectedLocality
             class='rich'
 
-            as |dropdownItem|
+            as |autocompleteInput|
         }}
-            <i class='row-icon glyphicon glyphicon-map-marker {{unless dropdownItem.latitude 'inactive'}}'></i>
-            <p class='regular-row light'>{{dropdownItem.geography.displayName}}</p>
-            <p class='regular-row {{if dropdownItem.latitude 'shrink'}}'>{{dropdownItem.localityName}}</p>
-            {{#if dropdownItem.latitude}}
-                <p class='regular-row right hidden-xs'>
-                    <i class="glyphicon glyphicon-map-marker"></i>{{dropdownItem.location}}
+            {{#autocompleteInput.inline}}
+                <a class="btn btn-primary btn-xs clickable" {{action 'toggleMap'}}>
+                    {{t 'component.locality-selector.show-map'}}
+                </a>
+            {{/autocompleteInput.inline}}
+            {{#autocompleteInput.dropdown as |dropdownItem|}}
+                <i class='row-icon glyphicon glyphicon-map-marker {{unless dropdownItem.latitude 'inactive'}}'></i>
+                <p class='regular-row light'>{{dropdownItem.geography.displayName}}</p>
+                <p class='regular-row {{if dropdownItem.latitude 'shrink'}}'>{{dropdownItem.localityName}}</p>
+                {{#if dropdownItem.latitude}}
+                    <p class='regular-row right hidden-xs'>
+                        <i class="glyphicon glyphicon-map-marker"></i>{{dropdownItem.location}}
+                    </p>
+                {{/if}}
+                <p class='timestamp hidden-xs'>
+                    {{t
+                        'component.locality-selector.created-by'
+                        date=(moment-format dropdownItem.timestampCreated 'LL')
+                        name=dropdownItem.agent.fullName
+                    }}
                 </p>
-            {{/if}}
-            <p class='timestamp hidden-xs'>
-                {{t
-                    'component.locality-selector.created-by'
-                    date=(moment-format dropdownItem.timestampCreated 'LL')
-                    name=dropdownItem.agent.fullName
-                }}
-            </p>
+            {{/autocompleteInput.dropdown}}
         {{/solr-autocomplete-input}}
-        <a class="btn btn-primary btn-inside-form btn-xs clickable" {{action 'toggleMap'}}>
-            {{t 'component.locality-selector.show-map'}}
-        </a>
     </div>
     {{#if item}}
         <div class='col-xs-12 preview {{if displayMap 'hidden'}}'>
@@ -144,12 +148,15 @@
 
                 class='rich'
 
-                as |dropdownItem|
+                as |autocompleteInput|
             }}
-                <i class='row-icon small glyphicon glyphicon-map-marker {{unless dropdownItem.validCentroid 'inactive'}}'></i>
-                <p class='regular-row'>
-                    {{make-bold dropdownItem.displayName match=dropdownItem.name}}
-                </p>
+                {{autocompleteInput.inline class='hidden-xs hidden-sm hidden-md'}}
+                {{#autocompleteInput.dropdown as |dropdownItem|}}
+                    <i class='row-icon small glyphicon glyphicon-map-marker {{unless dropdownItem.validCentroid 'inactive'}}'></i>
+                    <p class='regular-row'>
+                        {{make-bold dropdownItem.displayName match=dropdownItem.name}}
+                    </p>
+                {{/autocompleteInput.dropdown}}
             {{/solr-autocomplete-input}}
             <h4>
                 {{t 'definitions.collecting-place' count=2}}, {{if maximumReached '+' ''}}{{localities.length}}{{t 'definitions.count'}}
@@ -207,12 +214,15 @@
 
                     class='rich'
 
-                    as |dropdownItem|
+                    as |autocompleteInput|
                 }}
-                    <i class='row-icon small glyphicon glyphicon-map-marker {{unless dropdownItem.validCentroid 'inactive'}}'></i>
-                    <p class='regular-row'>
-                        {{make-bold dropdownItem.displayName match=dropdownItem.name}}
-                    </p>
+                    {{autocompleteInput.inline}}
+                    {{#autocompleteInput.dropdown as |dropdownItem|}}
+                        <i class='row-icon small glyphicon glyphicon-map-marker {{unless dropdownItem.validCentroid 'inactive'}}'></i>
+                        <p class='regular-row'>
+                            {{make-bold dropdownItem.displayName match=dropdownItem.name}}
+                        </p>
+                    {{/autocompleteInput.dropdown}}
                 {{/solr-autocomplete-input}}
             </div>
         </div>

@@ -101,9 +101,7 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
 
     /** Return if preview dropdown is visible. */
     isDropdownVisible: Ember.computed('previewData', 'hasFocus', function () {
-        return this.get('hasFocus') && (
-            this.get('previewData').length || this.get('value.length')
-        );
+        return (this.get('previewData').length || this.get('value.length')) && this.get('hasFocus');
     }),
 
     /** Override init. */

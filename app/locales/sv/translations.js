@@ -78,7 +78,12 @@ export default {
             'pick': 'Välj ett värde'
         },
         'autocomplete-input': {
-            'subset': 'Visar de <strong>{{count}}</strong> bästa av <strong>{{max}}</strong> möjliga träffar - Förfina din sökning för att se en mer komplett lista.'
+            'dropdown': {
+                'subset': 'Förfina din sökning för att se en mer komplett lista.'
+            },
+            'inline': {
+                'subset-danger': 'Visar {{max}} av <span class="subset-danger">{{count}}</span>'
+            }
         }
     },
     collectionobject: {
