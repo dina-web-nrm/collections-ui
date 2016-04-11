@@ -58,7 +58,7 @@ export default {
     component: {
         'locality-selector': {
             'to-many-results': 'Too many localities. Please select a smaller area.',
-            'search-geography': 'Search on name, city, area or country',
+            'search-geography': 'Search for city, area or country',
             'created-by': 'Created {{date}} by {{name}}',
             'select-existing': 'Select existing locality',
             'new-locality': 'New locality',

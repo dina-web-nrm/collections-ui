@@ -58,7 +58,7 @@ export default {
     component: {
         'locality-selector': {
             'to-many-results': 'För många fyndplatser. Välj ett mindre område.',
-            'search-geography': 'Sök på namn, ort, område, land',
+            'search-geography': 'Sök på ort, område, land',
             'created-by': 'Skapad {{date}} av {{name}}',
             'select-existing': 'Sök/välj sparad fyndplats',
             'new-locality': 'Ny fyndplats',
