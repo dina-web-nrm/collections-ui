@@ -65,7 +65,9 @@ export default {
             'locality-name': 'Fyndplats/lokalnamn',
             'show-map': 'Välj från karta',
             'hide-map': 'Dölj karta',
-            'uncertainty-radius': 'Osäkerhetsradie'
+            'uncertainty-radius': 'Osäkerhetsradie',
+            'verbatim-longitude': 'Verbatim longitud',
+            'verbatim-latitude': 'Verbatim latitud'
         },
         'preparation': {
             'object-type': 'Objektskategori',

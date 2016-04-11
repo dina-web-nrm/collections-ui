@@ -255,6 +255,22 @@
                     </div>
                 </div>
                 <div class='row'>
+                    <div class='col-xs-12 col-md-5'>
+                        {{input
+                            placeholder=(t 'component.locality-selector.verbatim-latitude')
+                            value=newLocality.verbatimLatitude
+                            class='form-control input-sm verbatim'
+                        }}
+                    </div>
+                    <div class='col-xs-12 col-md-5'>
+                        {{input
+                            placeholder=(t 'component.locality-selector.verbatim-longitude')
+                            value=newLocality.verbatimLongitude
+                            class='form-control input-sm verbatim'
+                        }}
+                    </div>
+                </div>
+                <div class='row'>
                     <div class='col-xs-12 col-md-7'>
                         <label>{{t 'component.locality-selector.uncertainty-radius'}}:</label>
                         {{x-slider class='form-control input-sm'

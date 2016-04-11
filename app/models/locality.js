@@ -16,6 +16,9 @@ export default DS.Model.extend(Validations, {
     latitude: DS.attr('number'),
     longitude: DS.attr('number'),
 
+    verbatimLongitude: DS.attr('string'),
+    verbatimLatitude: DS.attr('string'),
+
     maxElevation: DS.attr('number'),
     minElevation: DS.attr('number'),
     timestampCreated: DS.attr('number'),
