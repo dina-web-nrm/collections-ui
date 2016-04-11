@@ -101,7 +101,18 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
 
     /** Return if preview dropdown is visible. */
     isDropdownVisible: Ember.computed('previewData', 'hasFocus', function () {
-        return (this.get('previewData').length || this.get('value.length')) && this.get('hasFocus');
+        const visible = (this.get('previewData').length || this.get('value.length')) && this.get('hasFocus');
+        
+        Ember.run.scheduleOnce('afterRender', this, ()=>{
+            if (visible) {
+                let element = this.$('.autocomplete-input__dropdown-list')[0];
+                if (element && element.scrollIntoView) {
+                    element.scrollIntoView({block: "end", behavior: "smooth"});
+                }
+            }
+        });
+                
+        return visible;
     }),
 
     /** Override init. */
@@ -243,7 +254,7 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
          * Handle focus events from input field.
          */
         onFocus () {
-            this.set('hasFocus', true);
+            this.set('hasFocus', true);            
         },
 
         /**
