@@ -6,6 +6,17 @@ export default AutocompleteInput.extend({
     /** Inject services. */
     solr:  Ember.inject.service('solr'),
     
+    /** Override response count limit. */    
+    limit: 40,
+    
+    /** Total number of matches in last query */
+    totalRows: null,
+    
+    /** Is all matching records in result. */
+    isResponseSubset: Ember.computed('totalRows', 'limit', function () {
+        return this.get('totalRows') > this.get('limit');
+    }),
+
     _fetchRemoteData(filterField, filterValue, limit) {
         let filterQuery = Ember.$.extend({}, this.get('filters'));
 
@@ -13,10 +24,10 @@ export default AutocompleteInput.extend({
             entityType: this.get('entityType'),
             fq: filterQuery,
             rows: limit
-        }).then((data)=>{
-            if (data.length) {
+        }).then(({records, totalRows})=>{
+            if (records.length) {
                 this.get('store').query(this.storeName, {
-                    ids: data,
+                    ids: records,
                     search: true
                 }).then((response) => {
                     
@@ -24,7 +35,6 @@ export default AutocompleteInput.extend({
                     if (sortBy) {
                         response = response.sortBy(sortBy);                        
                     }
-
                     this.set('previewData', response);
                 }).catch((reason) => {
                     this.set('previewData', []);
@@ -33,6 +43,8 @@ export default AutocompleteInput.extend({
             } else {
                 this.set('previewData', []);
             }
+
+            this.set('totalRows', totalRows);
         });   
     }
 });

@@ -10,7 +10,10 @@ export default Ember.Component.extend({
     store: Ember.inject.service('store'),
     formConfiguration: Ember.inject.service('form-configuration'),
     configuration: Ember.computed.alias('formConfiguration.component.collectingEvent'),
-
+    
+    /** Default zoom level. */
+    mapZoom: 13,
+    
     /** Is creating new collection event. */
     isCreating: false,
 

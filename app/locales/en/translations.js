@@ -64,13 +64,21 @@ export default {
             'new-locality': 'New locality',
             'locality-name': 'Locality name',
             'show-map': 'Pick on map',
-            'hide-map': 'Hide map'
+            'hide-map': 'Hide map',
+            'uncertainty-radius': 'Uncertainty radius'
         },
         'preparation': {
             'object-type': 'Object category',
             'preservation-stage': 'Fossil preservation stage',
             'individuals-count': 'Nr. individuals',
             'object-description': 'Object description'
+        },
+        'pick-list': {
+            'no-values': 'No values for collection',
+            'pick': 'Pick a value'
+        },
+        'autocomplete-input': {
+            'subset': 'Displaying the top <strong>{{count}}</strong> of <strong>{{max}}</strong> possible matches - Refine your search for a more complete list.'
         }
     },
     collectionobject: {
@@ -186,7 +194,7 @@ export default {
     },
     beta: {
         header: 'Collection manager beta',
-        intro: ' is a test site to evaluate the new collection manager. the site will be continuesly updated with new features and fixes based on the internal priority and feedback from user testing.',
+        intro: ' is a test site to evaluate the new collection manager. The site will be continuously updated with new features and fixes based on the internal priority and feedback from user testing.',
         information: {
             header: 'Information',
             body: {

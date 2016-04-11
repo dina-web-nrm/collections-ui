@@ -64,13 +64,21 @@ export default {
             'new-locality': 'Ny fyndplats',
             'locality-name': 'Fyndplats/lokalnamn',
             'show-map': 'Välj från karta',
-            'hide-map': 'Dölj karta'
+            'hide-map': 'Dölj karta',
+            'uncertainty-radius': 'Osäkerhetsradie'
         },
         'preparation': {
             'object-type': 'Objektskategori',
             'preservation-stage': 'Fossilt bevaringstillstånd',
             'individuals-count': 'Antal individer',
             'object-description': 'Beskrivning av objekt'
+        },
+        'pick-list': {
+            'no-values': 'Inga värden för vald samling',
+            'pick': 'Välj ett värde'
+        },
+        'autocomplete-input': {
+            'subset': 'Visar de <strong>{{count}}</strong> bästa av <strong>{{max}}</strong> möjliga träffar - Förfina din sökning för att se en mer komplett lista.'
         }
     },
     collectionobject: {
