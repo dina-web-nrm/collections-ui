@@ -54,7 +54,7 @@ export default {
     component: {
         'locality-selector': {
             'to-many-results': 'Too many localities. Please select a smaller area.',
-            'search-geography': 'Search on name, city, area or country',
+            'search-geography': 'Search for city, area or country',
             'created-by': 'Created {{date}} by {{name}}',
             'select-existing': 'Select existing locality',
             'new-locality': 'New locality',
@@ -64,7 +64,9 @@ export default {
             'uncertainty-radius': 'Uncertainty radius',
             'verbatim-longitude': 'Verbatim longitude',
             'verbatim-latitude': 'Verbatim latitude',
-            'create-new': 'Create new locality'
+            'create-new': 'Create new locality',
+            'center-map': 'Center on map'
+
         },
         'preparation': {
             'object-type': 'Object category',
@@ -77,7 +79,12 @@ export default {
             'pick': 'Pick a value'
         },
         'autocomplete-input': {
-            'subset': 'Displaying the top <strong>{{count}}</strong> of <strong>{{max}}</strong> possible matches - Refine your search for a more complete list.'
+            'dropdown': {
+                'subset': 'Refine your search for a more complete list.'
+            },
+            'inline': {
+                'subset-danger': 'Displaying {{max}} of <span class="subset-danger">{{count}}</span>'
+            }
         },
         'collecting-event': {
             'create-new': 'Create new collecting event'

@@ -54,7 +54,7 @@ export default {
     component: {
         'locality-selector': {
             'to-many-results': 'För många fyndplatser. Välj ett mindre område.',
-            'search-geography': 'Sök på namn, ort, område, land',
+            'search-geography': 'Sök på ort, område, land',
             'created-by': 'Skapad {{date}} av {{name}}',
             'select-existing': 'Sök/välj sparad fyndplats',
             'new-locality': 'Ny fyndplats',
@@ -64,7 +64,8 @@ export default {
             'uncertainty-radius': 'Osäkerhetsradie',
             'verbatim-longitude': 'Verbatim longitud',
             'verbatim-latitude': 'Verbatim latitud',
-            'create-new': 'Skapa ny fyndplats'
+            'create-new': 'Skapa ny fyndplats',
+            'center-map': 'Centrera på karta'
         },
         'preparation': {
             'object-type': 'Objektskategori',
@@ -77,7 +78,12 @@ export default {
             'pick': 'Välj ett värde'
         },
         'autocomplete-input': {
-            'subset': 'Visar de <strong>{{count}}</strong> bästa av <strong>{{max}}</strong> möjliga träffar - Förfina din sökning för att se en mer komplett lista.'
+            'dropdown': {
+                'subset': 'Förfina din sökning för att se en mer komplett lista.'
+            },
+            'inline': {
+                'subset-danger': 'Visar {{max}} av <span class="subset-danger">{{count}}</span>'
+            }
         },
         'collecting-event': {
             'create-new': 'Skapa nytt insamlingstillfälle'

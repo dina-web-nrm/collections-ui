@@ -52,7 +52,7 @@
     "ember-metrics": "0.6.0",
     "ember-moment": "6.1.0",
     "ember-resolver": "^2.0.3",
-    "ember-simple-auth": "1.0.1",
+    "ember-simple-auth": "1.1.0-beta.4",
     "emberx-select": "2.0.2",
     "emberx-slider": "1.0.5",
     "moment": "2.11.2",

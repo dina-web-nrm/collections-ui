@@ -11,7 +11,7 @@
 
 {{yield}}
 
-{{autocomplete-input
+{{#autocomplete-input
     value=value
     disabled=disabled
     storeName=storeName
@@ -22,4 +22,8 @@
     itemSelected=(action this.attrs.itemSelected)
     filterKeys=filterKeys
     placeholder=placeholder
+    
+    as |ai|
 }}
+    {{ai.dropdown}}
+{{/autocomplete-input}}

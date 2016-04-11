@@ -1,0 +1,13 @@
+{{#if visibleSubset}}
+    <div class="result-subset">
+        {{#if isResponseSubset}}
+            {{t
+                'component.autocomplete-input.inline.subset-danger'
+                max=limit count=totalRows
+            }}
+        {{else}}
+            <span class="subset-success">{{totalRows}}</span>
+        {{/if}}
+    </div>
+{{/if}}
+{{yield}}
