@@ -18,6 +18,7 @@
 
             as |autocompleteInput|
         }}
+            {{autocompleteInput.inline}}
             {{#autocompleteInput.dropdown as |dropdownItem|}}
                 <i class='row-icon glyphicon glyphicon-map-marker {{unless dropdownItem.locality.validLocation 'inactive'}}'></i>
                 <p class='regular-row light'>
