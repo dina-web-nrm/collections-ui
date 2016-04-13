@@ -6,7 +6,7 @@ import {validator, buildValidations} from 'ember-cp-validations';
 const Validations = buildValidations({
     localityName: validator('presence', {
         presence: true,
-        descriptionKey: 'fields.labels.collecting_place'
+        descriptionKey: 'component.locality-selector.locality-name'
     })
 });
 

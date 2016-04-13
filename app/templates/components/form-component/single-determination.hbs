@@ -53,19 +53,14 @@
     <div class="col-md-4 col-xs-6">
         <div class="form-group form-group-sm">
             <label>
-                {{t 'fields.labels.determination.determined-date'}}:
+                {{t 'definitions.date-descriptive'}}:
             </label>
-            {{#bs-datetimepicker
-                updateDate=(action (mut model.determinedDate))
-                format='YYYY-MM-DD'
-                forceDateOutput=true
+            {{date-picker
+                update=(action (mut model.determinedDate))
                 maxDate=(now)
+                isValid=(v-get model 'determinedDate' 'isValid')
+                validationMessage=(v-get model 'determinedDate' 'message')
             }}
-                {{
-                    input disabled=disabled class="form-control"
-                    name="Date" placeholder=(t 'fields.placeholder.date-format')
-                }}
-            {{/bs-datetimepicker}}
         </div>
     </div>
     {{#unless configuration.hide.typeStatus}}

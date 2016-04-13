@@ -204,6 +204,8 @@
                 {{dwcm-textfield
                     label='component.locality-selector.locality-name'
                     value=newLocality.localityName
+                    isValid=(v-get newLocality 'localityName' 'isValid')
+                    validationMessage=(v-get newLocality 'localityName' 'message')
                 }}
             </div>
             <div class='col-xs-12 col-sm-6'>

@@ -24,7 +24,6 @@ export default Ember.Component.extend({
                 timestampCreated: moment().unix()
             });
         }
-
         return this._newCollectingEvent;
     }.property(),
     
@@ -35,11 +34,13 @@ export default Ember.Component.extend({
 
     /** Enable or disable create mode when changing configuration. */
     onConfigurationChange: function() {
-        if (this.get('configuration.enableCreate')) {
-            this.send('enableCreate');
-        } else {
-            this.send('selectExisting');
-        }
+        Ember.run.scheduleOnce('actions', this, ()=>{
+           if (this.get('configuration.enableCreate')) {
+                this.send('enableCreate');
+            } else {
+                this.send('selectExisting');
+            } 
+        });
     }.observes('configuration').on('init'),
 
     actions: {

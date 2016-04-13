@@ -13,7 +13,18 @@ const Validations = buildValidations({
         descriptionKey: 'fields.labels.collection'
     }),
 
-    preparations: validator('has-many')
+    preparations: validator('has-many'),
+    determinations: validator('has-many'),
+    collectingEvent: validator('belongs-to', {
+        disabled() {
+            // Disable if Collecting event is not present.
+            // Using timestampCreated due to that is the only
+            // attr set on a newly created collecting event.
+            return Ember.isNone(
+                this.get('model.collectingEvent.timestampCreated')
+            );
+        }
+    })
 });
 
 

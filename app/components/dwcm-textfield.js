@@ -4,13 +4,22 @@ export default Ember.Component.extend({
 
     /** Default element classes. */
     classNames: ['form-group', 'form-group-sm'],
-
+    
+    /** Class name bindings */
+    classNameBindings: ['hasError:has-error:'],
+    
     /** Action to display right of field label. */
     labelAction: null,
 
     /** Text for label action. */
     actionText: '',
-
+    
+    hasError: Ember.computed('isValid', 'validationMessage', function () {
+        return !this.get('isValid') && !Ember.isBlank(
+            this.get('validationMessage')
+        );
+    }),
+    
     actions: {
 
         /** Run specified label action. */
