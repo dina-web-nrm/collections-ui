@@ -208,7 +208,8 @@ export default {
         date: "{{description}} must be a valid date",
         email: "{{description}} must be a valid email address",
         phone: "{{description}} must be a valid phone number",
-        url: "{{description}} must be a valid url"
+        url: "{{description}} must be a valid url",
+        unique: "{{description}} must be unique"
     },
     beta: {
         header: 'Collection manager beta',

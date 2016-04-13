@@ -12,7 +12,16 @@ const Validations = buildValidations({
         presence: true,
         descriptionKey: 'fields.labels.collection'
     }),
-
+    
+    catalogNumber: validator('unique-catalog-number', {
+        debounce: 300,
+        descriptionKey: 'fields.labels.catalogNumber',
+        dependentKeys: ['collection'],
+        disabled() {
+            return Ember.isBlank(this.get('model.catalogNumber'));
+        }
+    }),
+    
     preparations: validator('has-many'),
     determinations: validator('has-many'),
     collectingEvent: validator('belongs-to', {

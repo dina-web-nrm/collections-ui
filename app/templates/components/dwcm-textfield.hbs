@@ -16,8 +16,8 @@
 
     input=(action 'update')
 }}
-{{#unless isValid}}
+{{#if isInvalid}}
     <span class="help-block">
         {{validationMessage}}
     </span>
-{{/unless}}
+{{/if}}

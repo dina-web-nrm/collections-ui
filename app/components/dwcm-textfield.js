@@ -14,8 +14,8 @@ export default Ember.Component.extend({
     /** Text for label action. */
     actionText: '',
     
-    hasError: Ember.computed('isValid', 'validationMessage', function () {
-        return !this.get('isValid') && !Ember.isBlank(
+    hasError: Ember.computed('isInvalid', 'validationMessage', function () {
+        return this.get('isInvalid') && !Ember.isBlank(
             this.get('validationMessage')
         );
     }),
