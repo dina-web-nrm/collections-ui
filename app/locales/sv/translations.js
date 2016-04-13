@@ -91,7 +91,8 @@ export default {
             'start-date': 'Startdatum(åååå-mm-dd)',
             'end-date': 'Slutdatum(åååå-mm-dd)',
             'habitat-substrate': 'Habitat/Substrat',
-            'botany-description': 'Beskrivning av föremål vid insamling'
+            'botany-description': 'Beskrivning av föremål vid insamling',
+            'collecting-circumstance': 'Fyndomständighet'
         }
     },
     collectionobject: {

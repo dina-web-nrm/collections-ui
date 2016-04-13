@@ -92,7 +92,8 @@ export default {
             'start-date': 'Start date (YYYY-MM-DD)',
             'end-date': 'End date (YYYY-MM-DD)',
             'habitat-substrate': 'Habitat/Substrate',
-            'botany-description': 'Object description at collection'
+            'botany-description': 'Object description at collection',
+            'collecting-circumstance': 'Collecting circumstance'
         }
     },
     collectionobject: {
