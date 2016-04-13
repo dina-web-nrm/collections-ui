@@ -90,7 +90,9 @@ export default {
         'collecting-event': {
             'create-new': 'Create new collecting event',
             'start-date': 'Start date (YYYY-MM-DD)',
-            'end-date': 'End date (YYYY-MM-DD)'
+            'end-date': 'End date (YYYY-MM-DD)',
+            'habitat-substrate': 'Habitat/Substrate',
+            'botany-description': 'Object description at collection'
         }
     },
     collectionobject: {

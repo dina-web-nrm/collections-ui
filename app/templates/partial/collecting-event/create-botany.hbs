@@ -63,3 +63,29 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        {{dwcm-textfield
+            label='fields.labels.collecting-event.verbatim-locality'
+            placeholder='fields.labels.collecting-event.verbatim-locality'
+            value=model.collectingEvent.verbatimLocality
+
+            class='verbatim'
+        }}
+    </div>
+</div>
+{{partial 'partial/collecting-event/locality'}}
+<div class="row">
+    <div class="col-xs-12 col-md-6">
+        {{dwcm-textfield
+            label='component.collecting-event.habitat-substrate'
+            value=model.collectingEvent.remarks
+        }}
+    </div>
+    <div class="col-xs-12 col-md-6">
+        {{dwcm-textfield
+            label='component.collecting-event.botany-description'
+            value=model.collectingEvent.description
+        }}
+    </div>
+</div>

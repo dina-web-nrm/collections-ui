@@ -89,7 +89,9 @@ export default {
         'collecting-event': {
             'create-new': 'Skapa nytt insamlingstillfälle',
             'start-date': 'Startdatum(åååå-mm-dd)',
-            'end-date': 'Slutdatum(åååå-mm-dd)'
+            'end-date': 'Slutdatum(åååå-mm-dd)',
+            'habitat-substrate': 'Habitat/Substrat',
+            'botany-description': 'Beskrivning av föremål vid insamling'
         }
     },
     collectionobject: {
