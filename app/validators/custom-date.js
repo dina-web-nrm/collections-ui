@@ -31,7 +31,8 @@ export default BaseValidator.extend({
         }
     
         if (before) {
-            before = this._parseDate(model.get(before), format);
+            before = model.get(before);
+            before = before && this._parseDate(before, format);
             if (before && before < date) {
                 options.before = before.format(errorFormat);
                 return this.createErrorMessage('before', value, options);
@@ -39,7 +40,10 @@ export default BaseValidator.extend({
         }
     
         if (after) {
-            after = this._parseDate(model.get(after), format);
+            after = model.get(after);
+            after = after && this._parseDate(after, format);
+
+            console.log('After: ', after);
             if (after && after > date) {
                 options.after = after.format(errorFormat);
                 return this.createErrorMessage('after', value, options);
