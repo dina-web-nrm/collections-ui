@@ -84,7 +84,7 @@
                         {{/each}}
                     </li>
                     <li>
-                        <span>{{t 'definitions.date'}}:</span> {{moment-format model.collectingEvent.startDate 'LL'}}
+                        <span>{{t 'definitions.date'}}:</span> {{moment-format model.collectingEvent.startDate (date-precision model.collectingEvent.startDatePrecision)}}
                     </li>
                     <li>
                         <span>{{t 'fields.labels.collecting-event.method'}}:</span> {{model.collectingEvent.method}}
