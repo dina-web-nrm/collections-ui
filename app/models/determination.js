@@ -14,6 +14,7 @@ const Validations = buildValidations({
 export default DS.Model.extend(Validations, {
     isCurrent: DS.attr('boolean'),
     determinedDate: DS.attr('date'),
+    determinedDatePrecision: DS.attr('number'),
     method: DS.attr('string'),
     confidence: DS.attr('string'),
     typeStatus: DS.attr('string'),

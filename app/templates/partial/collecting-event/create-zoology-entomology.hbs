@@ -7,7 +7,7 @@
                         {{t 'component.collecting-event.start-date'}}:
                     </label>
                     {{date-picker
-                        update=(action (mut model.collectingEvent.startDate))
+                        update=(action 'setDateWithPrecision' 'startDate')
                         maxDate=(readonly model.collectingEvent.endDate)
                         validationMessage=(v-get model.collectingEvent 'startDate' 'message')
                         isValid=(v-get model.collectingEvent 'startDate' 'isValid')
@@ -20,7 +20,7 @@
                         {{t 'component.collecting-event.end-date'}}:                        
                     </label>
                     {{date-picker
-                        update=(action (mut model.collectingEvent.endDate))
+                        update=(action 'setDateWithPrecision' 'endDate')
                         minDate=(readonly model.collectingEvent.startDate)
                         validationMessage=(v-get model.collectingEvent 'endDate' 'message')
                         isValid=(v-get model.collectingEvent 'endDate' 'isValid')

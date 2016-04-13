@@ -31,7 +31,9 @@ const Validations = buildValidations({
 export default DS.Model.extend(Validations, {
     method: DS.attr('string'),
     startDate: DS.attr('date'),
+    startDatePrecision: DS.attr('number'),
     endDate: DS.attr('date'),
+    endDatePrecision: DS.attr('number'),
     verbatimDate: DS.attr('string'),
     verbatimLocality: DS.attr('string'),
     timestampCreated: DS.attr('number'),

@@ -93,6 +93,12 @@ export default Ember.Component.extend({
         /** Remove collector from collecting event. */
         removeCollector (collector) {
             collector.destroyRecord();
+        },
+        
+        /** Set date and precision based on *field*, *date* and *precision*. */
+        setDateWithPrecision(field, date, precision) {
+            this.set(`model.collectingEvent.${field}`, date);
+            this.set(`model.collectingEvent.${field}Precision`, precision);
         }
     }
 });

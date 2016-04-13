@@ -56,7 +56,7 @@
                 {{t 'definitions.date-descriptive'}}:
             </label>
             {{date-picker
-                update=(action (mut model.determinedDate))
+                update=(action 'setDateWithPrecision' 'determinedDate')
                 maxDate=(now)
                 isValid=(v-get model 'determinedDate' 'isValid')
                 validationMessage=(v-get model 'determinedDate' 'message')
