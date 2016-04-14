@@ -21,6 +21,7 @@ export default DS.Model.extend(Validations, {
 
     maxElevation: DS.attr('number'),
     minElevation: DS.attr('number'),
+
     timestampCreated: DS.attr('number'),
     srcLatLongUnit: DS.attr('number', {
         defaultValue() { return 0; }

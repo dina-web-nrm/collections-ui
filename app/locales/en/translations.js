@@ -66,7 +66,9 @@ export default {
             'verbatim-longitude': 'Verbatim longitude',
             'verbatim-latitude': 'Verbatim latitude',
             'create-new': 'Create new locality',
-            'center-map': 'Center on map'
+            'center-map': 'Center on map',
+            'max-elevation': 'Alt. over sea',
+            'min-elevation': 'Alt. under sea'
 
         },
         'preparation': {

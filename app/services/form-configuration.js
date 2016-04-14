@@ -12,6 +12,11 @@ const CONFIGURATIONS = {
         component: {
             collectingEvent: {
                 enableCreate: true
+            },
+            locality: {
+                hide: {
+                    elevation: true
+                }
             }
         }
     },
@@ -44,6 +49,11 @@ const CONFIGURATIONS = {
                 hide: {
                     method: true
                 }
+            },
+            locality: {
+                hide: {
+                    elevation: true
+                }
             }
         }
     },
@@ -66,6 +76,11 @@ const CONFIGURATIONS = {
             },
             collectingEvent: {
                 enableCreate: true
+            },
+            locality: {
+                hide: {
+                    elevation: true
+                }
             }
         }
     },
@@ -86,6 +101,11 @@ const CONFIGURATIONS = {
             },
             collectingEvent: {
                 enableCreate: true
+            },
+            locality: {
+                hide: {
+                    elevation: true
+                }
             }
         }
     },
@@ -111,6 +131,11 @@ const CONFIGURATIONS = {
             },
             collectingEvent: {
                 enableCreate: true
+            },
+            locality: {
+                hide: {
+                    elevation: true
+                }
             }
         }
     }
@@ -125,7 +150,7 @@ export default Ember.Service.extend({
     configurations: CONFIGURATIONS,
     
     /** Return active configuration. */
-    configuration: Ember.computed('session.data.division', 'session.data.locale', function () {
+    configuration: Ember.computed('session.data.division', function () {
         const DIVISION = this.get('session.data.division');
         const configuration = (
             this.get('configurations')[DIVISION] ||
