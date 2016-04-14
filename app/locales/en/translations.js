@@ -282,6 +282,39 @@ export default {
                     <li>Possible to click several times on the save button.</li>
                 `,
                 date: '2016-04-01'
+            },
+            4: {
+                body: `
+                    <span class="label label-success">New features</span>
+                    <li>Display information about number of results in autocomplete dropdowns.</li>
+                    <li>Display more results in autocomplete dropdowns.</li>
+                    <li>Automatically center dropdown list.</li>
+                    <li>New date picker with validation.<br>Possible to add Year, year+Month or year+Month+Day.</li>
+                    <li>Validate uniqueness of catalog number.</li>
+                    <li>Updated style for verbatim fields.</li>
+                    <li>Verbatim fields for coordinates.</li>
+                    <li>Validate locality name and display warning if missing.</li>
+                    <li>Specify uncertainty when creating new locality.</li>
+                    <li>Center map over current coordinate with button.</li>
+                    <li>Started to add collection specific value lists.</li>
+
+                    <li>
+                        <strong>Botany:</strong> Added "Habitat/Substrate" and "Object description at collection".
+                    </li>
+                    <li>
+                        <strong>Entomology:</strong> Added "Altitude over/under sea".
+                    </li>
+                    <li>
+                        <strong>Mammals:</strong> Added "Collecting circumstance".
+                    </li>
+
+                    <br><span class="label label-danger">Fixes</span>
+                    <li>Toggling with box header occurs unintentionally.</li>
+                    <li>"Pick on map" misplaced in certain browsers.</li>
+                    <li>Unified "Create new" and "Search for" labels.</li>
+                    
+                `,
+                date: '2016-04-15'
             }
         }
     }
