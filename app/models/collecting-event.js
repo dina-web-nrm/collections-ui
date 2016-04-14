@@ -1,10 +1,39 @@
 import DS from 'ember-data';
 import Ember from 'ember';
 
-export default DS.Model.extend({
+import {validator, buildValidations} from 'ember-cp-validations';
+
+const Validations = buildValidations({
+    startDate: validator('custom-date', {
+        errorFormat: 'YYYY-MM-DD',
+        descriptionKey: 'fields.labels.collecting-event.start-date.name',
+        allowBlank: true,
+        before: 'endDate',
+        dependentKeys: ['endDate']
+    }),
+    endDate: validator('custom-date', {
+        errorFormat: 'YYYY-MM-DD',
+        descriptionKey: 'fields.labels.collecting-event.end-date.name',
+        allowBlank: true,
+        after: 'startDate',
+        dependentKeys: ['startDate']
+    }),
+    locality: validator('belongs-to', {
+        disabled() {
+            // Disable if locality is not present.
+            // Using uncertaintyRadius due to that is the only
+            // attr set on a newly created locality.
+            return Ember.isNone(this.get('model.locality.uncertaintyRadius'));
+        }
+    })
+});
+
+export default DS.Model.extend(Validations, {
     method: DS.attr('string'),
     startDate: DS.attr('date'),
+    startDatePrecision: DS.attr('number'),
     endDate: DS.attr('date'),
+    endDatePrecision: DS.attr('number'),
     verbatimDate: DS.attr('string'),
     verbatimLocality: DS.attr('string'),
     timestampCreated: DS.attr('number'),

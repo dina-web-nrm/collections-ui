@@ -7,6 +7,7 @@ export default {
         female: 'Female',
         unknown: 'Unknown',
         date: 'Date',
+        'date-descriptive': 'Date (YYYY-MM-DD)',
         user: 'User',
         'sign-out': 'Sign out',
         'sign-in': 'Sign in',
@@ -87,7 +88,9 @@ export default {
             }
         },
         'collecting-event': {
-            'create-new': 'Create new collecting event'
+            'create-new': 'Create new collecting event',
+            'start-date': 'Start date (YYYY-MM-DD)',
+            'end-date': 'End date (YYYY-MM-DD)'
         }
     },
     collectionobject: {
@@ -132,7 +135,7 @@ export default {
                 confidence: 'Confidence',
                 method: 'Method',
                 determiner: 'Determiner',
-                'determined-date': 'Date (yyyy-mm-dd)',
+                'determined-date': 'Determination date',
                 'type-status': 'Type status',
                 add: 'Add determination'
             },
@@ -152,7 +155,13 @@ export default {
                 add: 'Add part/preparation'
             },
             'collecting-event': {
-                'start-date': 'Collection date (yyyy-mm-dd)',
+                'start-date': {
+                    label: 'Collection date (yyyy-mm-dd)',
+                    name: 'Start date'
+                },
+                'end-date': {
+                    name: 'End date'
+                },
                 method: 'Method',
                 'verbatim-locality': 'Verbatim locality',
                 'verbatim-collector': 'Collector',
@@ -199,7 +208,8 @@ export default {
         date: "{{description}} must be a valid date",
         email: "{{description}} must be a valid email address",
         phone: "{{description}} must be a valid phone number",
-        url: "{{description}} must be a valid url"
+        url: "{{description}} must be a valid url",
+        unique: "{{description}} must be unique"
     },
     beta: {
         header: 'Collection manager beta',

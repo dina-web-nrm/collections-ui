@@ -16,3 +16,8 @@
 
     input=(action 'update')
 }}
+{{#if isInvalid}}
+    <span class="help-block">
+        {{validationMessage}}
+    </span>
+{{/if}}

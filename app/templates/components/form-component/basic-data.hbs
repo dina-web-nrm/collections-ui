@@ -17,6 +17,8 @@
             {{dwcm-textfield
                 label='fields.labels.catalogNumber'
                 value=model.catalogNumber
+                isInvalid=(v-get model 'catalogNumber' 'isInvalid')
+                validationMessage=(v-get model 'catalogNumber' 'message')
             }}
         </div>
         <div class="col-xs-4">

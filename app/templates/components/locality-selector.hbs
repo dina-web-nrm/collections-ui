@@ -204,6 +204,8 @@
                 {{dwcm-textfield
                     label='component.locality-selector.locality-name'
                     value=newLocality.localityName
+                    isInvalid=(v-get newLocality 'localityName' 'isInvalid')
+                    validationMessage=(v-get newLocality 'localityName' 'message')
                 }}
             </div>
             <div class='col-xs-12 col-sm-6'>
@@ -275,14 +277,14 @@
                     </div>
                 </div>
                 <div class='row'>
-                    <div class='col-xs-12 col-md-5'>
+                    <div class='col-xs-5 col-md-5'>
                         {{input
                             placeholder=(t 'component.locality-selector.verbatim-latitude')
                             value=newLocality.verbatimLatitude
                             class='form-control input-sm verbatim'
                         }}
                     </div>
-                    <div class='col-xs-12 col-md-5'>
+                    <div class='col-xs-5 col-md-5'>
                         {{input
                             placeholder=(t 'component.locality-selector.verbatim-longitude')
                             value=newLocality.verbatimLongitude

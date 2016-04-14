@@ -7,6 +7,7 @@ export default {
         female: 'Hona',
         unknown: 'Okänt',
         date: 'Datum',
+        'date-descriptive': 'Datum(åååå-mm-dd)',
         user: 'Användare',
         'sign-out': 'Logga ut',
         'sign-in': 'Logga in',
@@ -86,7 +87,9 @@ export default {
             }
         },
         'collecting-event': {
-            'create-new': 'Skapa nytt insamlingstillfälle'
+            'create-new': 'Skapa nytt insamlingstillfälle',
+            'start-date': 'Startdatum(åååå-mm-dd)',
+            'end-date': 'Slutdatum(åååå-mm-dd)'
         }
     },
     collectionobject: {
@@ -131,7 +134,7 @@ export default {
                 confidence: 'Osäkerhet',
                 method: 'Metod',
                 determiner: 'Bestämmare',
-                'determined-date': 'Datum(åååå-mm-dd)',
+                'determined-date': 'Bestämningsdatum',
                 'type-status': 'Typstatus',
                 add: 'Lägg till bestämning'
             },
@@ -151,7 +154,13 @@ export default {
                 add: 'Lägg till del/preparation'
             },
             'collecting-event': {
-                'start-date': 'Insamlingsdatum(åååå-mm-dd)',
+                'start-date': {
+                    label: 'Insamlingsdatum(åååå-mm-dd)',
+                    name: 'Insamlingsstart'
+                },
+                'end-date': {
+                    name: 'Insamlingsslut'
+                },
                 method: 'Insamlingsmetod',
                 'verbatim-locality': 'Verbatim lokal',
                 'verbatim-collector': 'Insamlare',
@@ -181,8 +190,8 @@ export default {
         tooLong: "{{description}} är för långt (max är {{max}} tecken)",
         tooShort: "{{description}} är för kort (minimum är {{min}} tecken)",
         before: "{{description}} måste vara före {{before}}",
-        after: "{{description}} måstae komma efter {{after}}",
-        wrongDateFormat: "{{description}} måste ha format {{format}}",
+        after: "{{description}} måste vara efter {{after}}",
+        wrongDateFormat: "{{description}} måste ha formatet {{format}}",
         wrongLength: "{{description}} har fel längd (ska ha {{is}} tecken)",
         notANumber: "{{description}} måste vara ett nummer",
         notAnInteger: "{{description}} måste vara ett heltal",
