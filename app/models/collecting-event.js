@@ -25,6 +25,11 @@ const Validations = buildValidations({
             // attr set on a newly created locality.
             return Ember.isNone(this.get('model.locality.uncertaintyRadius'));
         }
+    }),
+    verbatimDate: validator('length', {
+        min: 0,
+        max: 50,
+        descriptionKey: 'component.collecting-event.verbatim-date',
     })
 });
 
@@ -39,6 +44,12 @@ export default DS.Model.extend(Validations, {
     timestampCreated: DS.attr('number'),
     givenName: DS.attr('string'),
 
+    // Locality and habitat/substrat notes.
+    remarks: DS.attr('string'),
+    
+    // Description of object when collecting.
+    description: DS.attr('string'),
+    
     locality: DS.belongsTo('locality', {async: true}),
     collectors: DS.hasMany('collector', {async: true}),
     agent: DS.belongsTo('agent', {async: true}),

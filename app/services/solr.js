@@ -20,11 +20,11 @@ export default Ember.Service.extend({
 
         let fqString = '';
         if (entityType) {
-            fqString += `&fq=entity_type%3A${entityType}`;
+            fq['entity_type'] = entityType;
         }
 
         for(let key in fq) {
-            fqString += `&fq=${key}%3D${fq[key]}`;
+            fqString += `&fq=${key}%3A${fq[key]}`;
         }
         
         url += fqString;

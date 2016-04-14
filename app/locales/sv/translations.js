@@ -66,7 +66,9 @@ export default {
             'verbatim-longitude': 'Verbatim longitud',
             'verbatim-latitude': 'Verbatim latitud',
             'create-new': 'Skapa ny fyndplats',
-            'center-map': 'Centrera på karta'
+            'center-map': 'Centrera på karta',
+            'max-elevation': 'Höjd över hav',
+            'min-elevation': 'Höjd under hav'
         },
         'preparation': {
             'object-type': 'Objektskategori',
@@ -89,7 +91,14 @@ export default {
         'collecting-event': {
             'create-new': 'Skapa nytt insamlingstillfälle',
             'start-date': 'Startdatum(åååå-mm-dd)',
-            'end-date': 'Slutdatum(åååå-mm-dd)'
+            'end-date': 'Slutdatum(åååå-mm-dd)',
+            'habitat-substrate': 'Habitat/Substrat',
+            'botany-description': 'Beskrivning av föremål vid insamling',
+            'collecting-circumstance': 'Fyndomständighet',
+            'verbatim-date': 'Verbatimdatum'
+        },
+        'single-determination': {
+            'verbatim-taxon': 'Taxonomi, bestämmare, datum'
         }
     },
     collectionobject: {
@@ -207,7 +216,8 @@ export default {
         date: "{{description}} måste vara ett giltigt datum",
         email: "{{description}} måste vara en giltig e-postadress",
         phone: "{{description}} måste vara ett giltigt telefonnummer",
-        url: "{{description}} måste vara en giltig url"
+        url: "{{description}} måste vara en giltig url",
+        unique: "{{description}} måste vara unik"
     },
     beta: {
         header: 'Samlingshanteraren beta',
@@ -220,7 +230,10 @@ export default {
             }
         },
         feedback: {
-            body: 'Har du förslag på förbättringar eller hittar något som inte fungerar? Fyll då gärna i feedback-formuläret.',
+            body: `
+                Har du förslag på förbättringar eller hittar något som inte fungerar?
+                Fyll då gärna i feedback-formuläret. Feedback som lämnas finns <a target="_blank" href="https://trello.com/b/GCfLYqt1/cm-feedback">tillgänglig att se på Trello</a>. 
+            `,
             header: 'Feedback',
             button: 'Lämna feedback'
         },
@@ -272,6 +285,38 @@ export default {
                     <li>Möjligt att klicka flera gånger på spara-knappen.</li>
                 `,
                 date: '2016-04-01'
+            },
+            4: {
+                body: `
+                    <span class="label label-success">Ny funktionalitet</span>
+                    <li>Visa att det finns fler resultat i "Sök och välj"-listor.</li>
+                    <li>Visa fler resultat som standard i "Sök och välj"-listor.</li>
+                    <li>Centrera resultat automatiskt i "Sök och välj"-listor.</li>
+                    <li>Nya datumfält med validering.<br>Möjligt att ange bara År, År+Månad eller År+Månad+Dag.</li>
+                    <li>Validera att katalognummer inte redan finns.</li>
+                    <li>Uppdaterat utseende på verbatimfält.</li>
+                    <li>Verbatimfält för koordinater.</li>
+                    <li>Validera fyndplatsnamn och visa varning om det saknas.</li>
+                    <li>Möjligt att specificera osäkerhet för nya fyndplatser.</li>
+                    <li>Knapp för att centrera kartan över angiven koordinat.</li>
+                    <li>Börjat lägga till samlingsspecifika värdelistor.</li>
+
+                    <li>
+                        <strong>Botanik:</strong> Lagt till "Habitat/Substrat" och "Beskrivning av föremål vid insamling".
+                    </li>
+                    <li>
+                        <strong>Entomologi:</strong> Lagt till "Höjd över/under hav".
+                    </li>
+                    <li>
+                        <strong>Däggdjur:</strong> Lagt till "Fyndomständighet".
+                    </li>
+
+                    <br><span class="label label-danger">Buggfixar</span>
+                    <li>Öppna och stäng box genom att klicka på rubrikraden sker oavsiktligt.</li>
+                    <li>"Välj på karta" felplacerad i vissa webbläsare.</li>
+                    <li>Uppdaterat "Skapa ny/nytt" och "Sök"-texter.</li>
+                `,
+                date: '2016-04-15'
             }
         }
     }
