@@ -66,7 +66,9 @@ export default {
             'verbatim-longitude': 'Verbatim longitude',
             'verbatim-latitude': 'Verbatim latitude',
             'create-new': 'Create new locality',
-            'center-map': 'Center on map'
+            'center-map': 'Center on map',
+            'max-elevation': 'Alt. over sea',
+            'min-elevation': 'Alt. under sea'
 
         },
         'preparation': {
@@ -90,7 +92,13 @@ export default {
         'collecting-event': {
             'create-new': 'Create new collecting event',
             'start-date': 'Start date (YYYY-MM-DD)',
-            'end-date': 'End date (YYYY-MM-DD)'
+            'end-date': 'End date (YYYY-MM-DD)',
+            'habitat-substrate': 'Habitat/Substrate',
+            'botany-description': 'Object description at collection',
+            'collecting-circumstance': 'Collecting circumstance'
+        },
+        'single-determination': {
+            'verbatim-taxon': 'Taxonomy, determined, date'
         }
     },
     collectionobject: {

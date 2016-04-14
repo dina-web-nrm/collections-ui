@@ -312,6 +312,34 @@
                         </div>
                     </div>
                 </div>
+                {{#unless configuration.hide.elevation}}
+                    <div class='row'>
+                        <div class='col-xs-4'>
+                            <div class="form-group">
+                                <label>{{t 'component.locality-selector.max-elevation'}}:</label>
+                                <div class="input-group input-group-sm">
+                                    {{input type="number"
+                                        min=1 max=5000 class="form-control"
+                                        value=newLocality.maxElevation
+                                    }}
+                                    <div class="input-group-addon">m</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-xs-4'>
+                            <div class="form-group">
+                                <label>{{t 'component.locality-selector.min-elevation'}}:</label>
+                                <div class="input-group input-group-sm">
+                                    {{input type="number"
+                                        min=1 max=5000 class="form-control"
+                                        value=newLocality.minElevation
+                                    }}
+                                    <div class="input-group-addon">m</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {{/unless}}
             </div>
         </div>
     </div>

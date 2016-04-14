@@ -48,3 +48,12 @@
         {{/dwcm-autocomplete-textfield}}
     </div>
 </div>
+{{partial 'partial/collecting-event/locality'}}
+<div class="row">
+    <div class="col-xs-12">
+        {{dwcm-textfield
+            label='component.collecting-event.collecting-circumstance'
+            value=model.collectingEvent.remarks
+        }}
+    </div>
+</div>

@@ -20,6 +20,7 @@ export default DS.Model.extend(Validations, {
     typeStatus: DS.attr('string'),
     timestampCreated: DS.attr('number'),
     collectionMemberID: DS.attr('number'),
+    verbatimTaxon: DS.attr('string'),
 
     taxon: DS.belongsTo('taxon', {async: true}),
     determiner: DS.belongsTo('agent', {async: true}),

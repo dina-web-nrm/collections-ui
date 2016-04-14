@@ -66,7 +66,9 @@ export default {
             'verbatim-longitude': 'Verbatim longitud',
             'verbatim-latitude': 'Verbatim latitud',
             'create-new': 'Skapa ny fyndplats',
-            'center-map': 'Centrera på karta'
+            'center-map': 'Centrera på karta',
+            'max-elevation': 'Höjd över hav',
+            'min-elevation': 'Höjd under hav'
         },
         'preparation': {
             'object-type': 'Objektskategori',
@@ -89,7 +91,13 @@ export default {
         'collecting-event': {
             'create-new': 'Skapa nytt insamlingstillfälle',
             'start-date': 'Startdatum(åååå-mm-dd)',
-            'end-date': 'Slutdatum(åååå-mm-dd)'
+            'end-date': 'Slutdatum(åååå-mm-dd)',
+            'habitat-substrate': 'Habitat/Substrat',
+            'botany-description': 'Beskrivning av föremål vid insamling',
+            'collecting-circumstance': 'Fyndomständighet'
+        },
+        'single-determination': {
+            'verbatim-taxon': 'Taxonomi, bestämmare, datum'
         }
     },
     collectionobject: {

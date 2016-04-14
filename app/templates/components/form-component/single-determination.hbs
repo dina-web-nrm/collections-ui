@@ -9,6 +9,18 @@
         class="clickable glyphicon glyphicon-remove-circle" {{action "remove"}}
     ></i>
 </div>
+{{#if configuration.top.verbatimTaxon}}
+    <div class="row">
+        <div class="col-xs-12">
+            {{input
+                placeholder=(t 'component.single-determination.verbatim-taxon')
+                value=model.verbatimTaxon
+
+                class='verbatim form-control input-sm'
+            }}
+        </div>
+    </div>
+{{/if}}
 <div class="row">
     <div class="col-xs-6">
         {{
@@ -72,8 +84,15 @@
         </div>
     {{/unless}}
 </div>
-{{!--
-<div class="row">
-    {{dwcm-field-placeholder disabled=true width=12 label='Taxonomi, bestämmare, datum'}}
-</div>
---}}
+{{#unless configuration.top.verbatimTaxon}}
+    <div class="row">
+        <div class="col-xs-12">
+            {{input
+                placeholder=(t 'component.single-determination.verbatim-taxon')
+                value=model.verbatimTaxon
+
+                class='verbatim form-control input-sm'
+            }}
+        </div>
+    </div>
+{{/unless}}
