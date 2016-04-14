@@ -72,6 +72,9 @@ const CONFIGURATIONS = {
                     method: true,
                     confidence: true,
                     typeStatus: true
+                },
+                top: {
+                    verbatimTaxon: true
                 }
             },
             collectingEvent: {
