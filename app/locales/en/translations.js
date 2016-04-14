@@ -95,7 +95,8 @@ export default {
             'end-date': 'End date (YYYY-MM-DD)',
             'habitat-substrate': 'Habitat/Substrate',
             'botany-description': 'Object description at collection',
-            'collecting-circumstance': 'Collecting circumstance'
+            'collecting-circumstance': 'Collecting circumstance',
+            'verbatim-date': 'Verbatim date'
         },
         'single-determination': {
             'verbatim-taxon': 'Taxonomy, determined, date'

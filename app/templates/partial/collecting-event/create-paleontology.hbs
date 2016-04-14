@@ -32,6 +32,10 @@
                     placeholder='definitions.date'
                     value=model.collectingEvent.verbatimDate
                     class='verbatim'
+                    
+                                        
+                    validationMessage=(v-get model.collectingEvent 'verbatimDate' 'message')
+                    isInvalid=(v-get model.collectingEvent 'verbatimDate' 'isInvalid')
                 }}
             </div>
         </div>

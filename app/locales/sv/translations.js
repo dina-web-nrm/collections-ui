@@ -94,7 +94,8 @@ export default {
             'end-date': 'Slutdatum(åååå-mm-dd)',
             'habitat-substrate': 'Habitat/Substrat',
             'botany-description': 'Beskrivning av föremål vid insamling',
-            'collecting-circumstance': 'Fyndomständighet'
+            'collecting-circumstance': 'Fyndomständighet',
+            'verbatim-date': 'Verbatimdatum'
         },
         'single-determination': {
             'verbatim-taxon': 'Taxonomi, bestämmare, datum'
@@ -215,7 +216,8 @@ export default {
         date: "{{description}} måste vara ett giltigt datum",
         email: "{{description}} måste vara en giltig e-postadress",
         phone: "{{description}} måste vara ett giltigt telefonnummer",
-        url: "{{description}} måste vara en giltig url"
+        url: "{{description}} måste vara en giltig url",
+        unique: "{{description}} måste vara unik"
     },
     beta: {
         header: 'Samlingshanteraren beta',

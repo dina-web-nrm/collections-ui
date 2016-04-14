@@ -25,6 +25,11 @@ const Validations = buildValidations({
             // attr set on a newly created locality.
             return Ember.isNone(this.get('model.locality.uncertaintyRadius'));
         }
+    }),
+    verbatimDate: validator('length', {
+        min: 0,
+        max: 50,
+        descriptionKey: 'component.collecting-event.verbatim-date',
     })
 });
 

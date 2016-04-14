@@ -1,17 +1,14 @@
 {{#each model.preparations as |preparation|}}
     <div class="row">
         <div class="col-xs-4">
-            {{dwcm-autocomplete-textfield
-                label='fields.labels.preparation.preparation-type'
-
-                storeName='prep-type'
-
-                displayField='name'
-                filterField='name'
-
-                itemSelected=(action 'setPreparationType')
-                filterKeys='collectionID'
-            }}
+            <div class="form-group form-group-sm">
+                <label>{{t 'fields.labels.preparation.preparation-type'}}:</label>
+                {{pick-list
+                    model='prep-type' filterKeys='collectionID'
+                    displayField='name' valueField='id'
+                    update=(action 'setPreparationType')
+                }}
+            </div>
         </div>
         <div class="col-xs-8">
             {{dwcm-autocomplete-textfield
