@@ -95,6 +95,9 @@ export default {
             'habitat-substrate': 'Habitat/Substrat',
             'botany-description': 'Beskrivning av föremål vid insamling',
             'collecting-circumstance': 'Fyndomständighet'
+        },
+        'single-determination': {
+            'verbatim-taxon': 'Taxonomi, bestämmare, datum'
         }
     },
     collectionobject: {

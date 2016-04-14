@@ -96,6 +96,9 @@ export default {
             'habitat-substrate': 'Habitat/Substrate',
             'botany-description': 'Object description at collection',
             'collecting-circumstance': 'Collecting circumstance'
+        },
+        'single-determination': {
+            'verbatim-taxon': 'Taxonomy, determined, date'
         }
     },
     collectionobject: {
