@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 export default Ember.Component.extend({
     
@@ -23,7 +24,9 @@ export default Ember.Component.extend({
     newLocality: function () {
         if(!this._newLocality) {
             this._newLocality = this.get('store').createRecord('locality', {
-                paleoContext: this.get('store').createRecord('paleo-context', {})
+                /*paleoContext: this.get('store').createRecord('paleo-context', {
+                    timestampCreated: moment().unix()
+                })*/
             });
         }
 
