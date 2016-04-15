@@ -70,6 +70,10 @@ export default {
             'max-elevation': 'Höjd över hav',
             'min-elevation': 'Höjd under hav'
         },
+        'locality': {
+            'lithostrat': 'Litostratigrafi',
+            'chronostrat': 'Kronostratigrafi' 
+        },
         'preparation': {
             'object-type': 'Objektskategori',
             'preservation-stage': 'Fossilt bevaringstillstånd',

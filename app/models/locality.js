@@ -33,6 +33,7 @@ export default DS.Model.extend(Validations, {
     
     geography: DS.belongsTo('geography', {async: true}),
     agent: DS.belongsTo('agent', {async: true}),
+    paleoContext: DS.belongsTo('paleo-context', {async: true}),
     
     /** Locality location converted to array. */
     location: Ember.computed('latitude', 'longitude',  {

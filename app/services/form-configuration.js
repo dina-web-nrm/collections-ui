@@ -15,7 +15,8 @@ const CONFIGURATIONS = {
             },
             locality: {
                 hide: {
-                    elevation: true
+                    elevation: true,
+                    paleoContext: true
                 }
             }
         }
@@ -32,6 +33,11 @@ const CONFIGURATIONS = {
             determination: {
                 hide: {
                     confidence: true
+                }
+            },
+            locality: {
+                hide: {
+                    paleoContext: true
                 }
             }
         }
@@ -52,7 +58,8 @@ const CONFIGURATIONS = {
             },
             locality: {
                 hide: {
-                    elevation: true
+                    elevation: true,
+                    paleoContext: true
                 }
             }
         }
@@ -82,7 +89,8 @@ const CONFIGURATIONS = {
             },
             locality: {
                 hide: {
-                    elevation: true
+                    elevation: true,
+                    paleoContext: true
                 }
             }
         }
@@ -107,7 +115,8 @@ const CONFIGURATIONS = {
             },
             locality: {
                 hide: {
-                    elevation: true
+                    elevation: true,
+                    paleoContext: true
                 }
             }
         }

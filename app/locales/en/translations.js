@@ -71,6 +71,10 @@ export default {
             'min-elevation': 'Alt. under sea'
 
         },
+        'locality': {
+            'lithostrat': 'Lithostratigraphy',
+            'chronostrat': 'Chronostratigraphy' 
+        },
         'preparation': {
             'object-type': 'Object category',
             'preservation-stage': 'Fossil preservation stage',

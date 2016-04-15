@@ -1,0 +1,177 @@
+<div class="header">
+    <h4 class="pull-left">{{t 'component.locality-selector.new-locality'}}</h4>
+    <a
+        class="pull-right clickable"
+        {{action this.attrs.enableSearch}}
+    >
+        {{t 'component.locality-selector.select-existing'}}
+    </a>
+    <div class="clearfix"></div>
+</div>
+<div class='row'>
+    <div class='col-xs-12 col-sm-6'>
+        {{dwcm-textfield
+            label='component.locality-selector.locality-name'
+            value=newLocality.localityName
+            isInvalid=(v-get newLocality 'localityName' 'isInvalid')
+            validationMessage=(v-get newLocality 'localityName' 'message')
+        }}
+    </div>
+    <div class='col-xs-12 col-sm-6'>
+        <label class="control-label">
+            {{t 'definitions.geography'}}:
+        </label>
+        {{#solr-autocomplete-input
+            storeName='geography'
+            entityType='geography'
+            sortBy='rankID'
+            displayField='displayName'
+            filterKeys='disciplineID'
+            placeholder='component.locality-selector.search-geography'
+
+            itemSelected=(action (mut newLocality.geography))
+
+            class='rich'
+
+            as |autocompleteInput|
+        }}
+            {{autocompleteInput.inline}}
+            {{#autocompleteInput.dropdown as |dropdownItem|}}
+                <i class='row-icon small glyphicon glyphicon-map-marker {{unless dropdownItem.validCentroid 'inactive'}}'></i>
+                <p class='regular-row'>
+                    {{make-bold dropdownItem.displayName match=dropdownItem.name}}
+                </p>
+            {{/autocompleteInput.dropdown}}
+        {{/solr-autocomplete-input}}
+    </div>
+</div>
+<div class='row'>
+    
+    <div class='col-xs-6'>
+        {{#map-view
+            zoom=zoom center=mapLocation
+            onClick=(action 'onLocationUpdate')
+            onZoom=(action (mut newMapZoom))
+        }}
+            {{#if newLocality.validLocation}}
+                {{circle-marker-layer
+                    location=newLocality.location
+                    radius=(metersToPixels newLocality.uncertaintyRadius newMapZoom)
+                    color="#FF0000"
+                }}
+            {{/if}}
+        {{/map-view}}
+    </div>
+    <div class='col-xs-6'>
+        <div class='row'>
+            <div class='col-xs-5'>
+                {{dwcm-textfield
+                    label='definitions.latitude'
+                    value=newLocality.latitude
+                }}
+            </div>
+            <div class='col-xs-5'>
+                {{dwcm-textfield
+                    label='definitions.longitude'
+                    value=newLocality.longitude
+                }}
+            </div>
+            <div class='col-xs-1'>
+                <label>&nbsp;</label>
+                <button
+                    class="btn btn-primary btn-sm glyphicon glyphicon-record"
+                    disabled={{if newLocality.validLocation false true}}
+                    title={{t 'component.locality-selector.center-map'}}
+                    {{action this.centerMap}}
+                ></button>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-xs-5 col-md-5'>
+                {{input
+                    placeholder=(t 'component.locality-selector.verbatim-latitude')
+                    value=newLocality.verbatimLatitude
+                    class='form-control input-sm verbatim'
+                }}
+            </div>
+            <div class='col-xs-5 col-md-5'>
+                {{input
+                    placeholder=(t 'component.locality-selector.verbatim-longitude')
+                    value=newLocality.verbatimLongitude
+                    class='form-control input-sm verbatim'
+                }}
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-xs-12 col-md-7'>
+                <label>{{t 'component.locality-selector.uncertainty-radius'}}:</label>
+                {{x-slider class='form-control input-sm'
+                    min=15 step=2 max=2000 value=newLocality.uncertaintyRadius
+                }}
+            </div>
+            <div class='col-xs-12 col-md-3'>
+                <div class="form-group">
+                    <label>&nbsp;</label>
+                    <div class="input-group input-group-sm">
+                        {{input type="number"
+                            min=5 max=5000 class="form-control"
+                            value=newLocality.uncertaintyRadius
+                        }}
+                        <div class="input-group-addon">m</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{#unless configuration.hide.elevation}}
+            <div class='row'>
+                <div class='col-xs-4'>
+                    <div class="form-group">
+                        <label>{{t 'component.locality-selector.max-elevation'}}:</label>
+                        <div class="input-group input-group-sm">
+                            {{input type="number"
+                                min=1 max=5000 class="form-control"
+                                value=newLocality.maxElevation
+                            }}
+                            <div class="input-group-addon">m</div>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-xs-4'>
+                    <div class="form-group">
+                        <label>{{t 'component.locality-selector.min-elevation'}}:</label>
+                        <div class="input-group input-group-sm">
+                            {{input type="number"
+                                min=1 max=5000 class="form-control"
+                                value=newLocality.minElevation
+                            }}
+                            <div class="input-group-addon">m</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/unless}}
+    </div>
+
+</div>
+{{#unless configuration.hide.paleoContext}}
+    <div class="row">
+        <div class="col-xs-6">
+            {{dwcm-autocomplete-textfield
+                label="component.locality.lithostrat"
+                storeName='lithostrat'
+                displayField='fullName'
+                filterField='fullName'
+                itemSelected=(action 'setStratigraphy' 'lithoStrat')
+            }}
+        </div>
+        <div class="col-xs-6">
+            {{dwcm-autocomplete-textfield
+                label="component.locality.chronostrat"
+                storeName='geologictimeperiod'
+                displayField='fullName'
+                filterField='fullName'
+                itemSelected=(action 'setStratigraphy' 'chronosStrat')
+            }}
+        </div>
+    </div>
+{{/unless}}
