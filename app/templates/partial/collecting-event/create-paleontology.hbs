@@ -26,17 +26,16 @@
                 </div>
             </div>
             <div class="col-xs-12">
-                {{dwcm-textfield
-                    width=6
-
-                    placeholder='definitions.date'
-                    value=model.collectingEvent.verbatimDate
-                    class='verbatim'
-                    
-                                        
-                    validationMessage=(v-get model.collectingEvent 'verbatimDate' 'message')
-                    isInvalid=(v-get model.collectingEvent 'verbatimDate' 'isInvalid')
+                {{#validation/form-group
+                    message=(v-get model.collectingEvent 'verbatimDate' 'message')
+                    isValid=(v-get model.collectingEvent 'verbatimDate' 'isValid')
                 }}
+                    {{input
+                        value=model.collectingEvent.verbatimDate
+                        placeholder=(t 'definitions.date')
+                        class='form-control verbatim'
+                    }}
+                {{/validation/form-group}}
             </div>
         </div>
     </div>

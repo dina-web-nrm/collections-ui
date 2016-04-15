@@ -4,9 +4,26 @@ import Ember from 'ember';
 import {validator, buildValidations} from 'ember-cp-validations';
 
 const Validations = buildValidations({
-    localityName: validator('presence', {
-        presence: true,
-        descriptionKey: 'component.locality-selector.locality-name'
+    localityName: [
+        validator('presence', {
+            presence: true,
+            descriptionKey: 'component.locality-selector.locality-name'
+        }),
+        validator('length', {
+            min: 0,
+            max: 255,
+            descriptionKey: 'component.locality-selector.locality-name'
+        })
+    ],
+    verbatimLatitude: validator('length', {
+        min: 0,
+        max: 50,
+        descriptionKey: 'component.locality-selector.verbatim-latitude',
+    }),
+    verbatimLongitude: validator('length', {
+        min: 0,
+        max: 50,
+        descriptionKey: 'component.locality-selector.verbatim-longitude',
     })
 });
 

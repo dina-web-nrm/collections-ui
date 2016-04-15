@@ -51,9 +51,12 @@
 {{partial 'partial/collecting-event/locality'}}
 <div class="row">
     <div class="col-xs-12">
-        {{dwcm-textfield
-            label='component.collecting-event.collecting-circumstance'
-            value=model.collectingEvent.remarks
-        }}
+        {{#validation/form-group}}
+            <label>{{t 'component.collecting-event.collecting-circumstance'}}:</label>
+            {{input
+                value=model.collectingEvent.remarks
+                class='form-control'
+            }}
+        {{/validation/form-group}}
     </div>
 </div>
