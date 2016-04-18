@@ -19,13 +19,13 @@ const previewAttributes = {
         title: ''
     }, {
         key: 'startDate',
-        title: 'definitions.date',
+        title: 'fields.labels.collecting-event.start-date.name',
         date: {
             precision: 'startDatePrecision'
         }
     }, {
         key: 'endDate',
-        title: 'definitions.date',
+        title: 'fields.labels.collecting-event.end-date.name',
         date: {
             precision: 'endDatePrecision'
         }
