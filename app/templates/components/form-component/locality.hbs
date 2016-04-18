@@ -167,22 +167,40 @@
 {{#unless configuration.hide.paleoContext}}
     <div class="row">
         <div class="col-xs-6">
-            {{dwcm-autocomplete-textfield
-                label="component.locality.lithostrat"
+            <label class="control-label">
+                {{t 'component.locality.lithostrat'}}:
+            </label>
+            {{#solr-autocomplete-input
                 storeName='lithostrat'
+                entityType='lithostrat'
                 displayField='fullName'
-                filterField='fullName'
+                sortBy='fullName'
+                filterKeys='disciplineID'
                 itemSelected=(action 'setStratigraphy' 'lithoStrat')
+                
+                as |autocompleteInput|
             }}
+                {{autocompleteInput.inline}}
+                {{autocompleteInput.dropdown}}
+            {{/solr-autocomplete-input}}
         </div>
         <div class="col-xs-6">
-            {{dwcm-autocomplete-textfield
-                label="component.locality.chronostrat"
+            <label class="control-label">
+                {{t 'component.locality.chronostrat'}}:
+            </label>
+            {{#solr-autocomplete-input
                 storeName='geologictimeperiod'
+                entityType='geologictimeperiod'
                 displayField='fullName'
-                filterField='fullName'
+                sortBy='fullName'
+                filterKeys='disciplineID'
                 itemSelected=(action 'setStratigraphy' 'chronosStrat')
+                
+                as |autocompleteInput|
             }}
+                {{autocompleteInput.inline}}
+                {{autocompleteInput.dropdown}}
+            {{/solr-autocomplete-input}}
         </div>
     </div>
 {{/unless}}
