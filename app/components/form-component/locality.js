@@ -24,9 +24,7 @@ export default Ember.Component.extend({
     newLocality: function () {
         if(!this._newLocality) {
             this._newLocality = this.get('store').createRecord('locality', {
-                /*paleoContext: this.get('store').createRecord('paleo-context', {
-                    timestampCreated: moment().unix()
-                })*/
+                paleoContext: this.get('store').createRecord('paleo-context', {})
             });
         }
 
