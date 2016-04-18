@@ -8,6 +8,8 @@ export default Ember.Component.extend(Filterable, {
 
     /** Inject services. */
     store: Ember.inject.service('store'),
+    formConfiguration: Ember.inject.service('form-configuration'),
+    configuration: Ember.computed.alias('formConfiguration.component.localitySelector'),
 
     filterKeys: 'disciplineID, geographyID',
 

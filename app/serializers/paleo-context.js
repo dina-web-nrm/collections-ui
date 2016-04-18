@@ -1,13 +1,16 @@
 import DS from 'ember-data';
 
 export default DS.JSONSerializer.extend({
+    primaryKey: 'paleoContextID',
     attrs: {
         chronosStrat: 'chronosStratID',
         lithoStrat: 'lithoStratID'
     },
     serialize(){
         var json = this._super(...arguments);
-        console.log(json);
+        if (json.paleoContextID) {
+            json.paleoContextID = parseInt(json.paleoContextID);   
+        }
         if (json.chronosStratID) {
             json.chronosStratID = parseInt(json.chronosStratID);   
         }

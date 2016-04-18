@@ -62,7 +62,7 @@ export default {
             'locality-name': 'Locality name',
             'show-map': 'Pick on map',
             'hide-map': 'Hide map',
-            'uncertainty-radius': 'Uncertainty radius',
+            'uncertainty-radius': 'Uncertainty radius (m)',
             'verbatim-longitude': 'Verbatim longitude',
             'verbatim-latitude': 'Verbatim latitude',
             'create-new': 'Create new locality',

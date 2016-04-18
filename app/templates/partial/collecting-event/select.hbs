@@ -78,31 +78,10 @@
             </div>
         {{/if}}
         <div class='col-xs-6'>
-            <ul>
-                <li>
-                    <span>{{t 'definitions.date'}}:</span> {{moment-format model.collectingEvent.startDate 'LL'}}
-                </li>
-                <li>
-                    <span>{{t 'fields.labels.collecting-event.method'}}:</span> {{model.collectingEvent.method}}
-                </li>
-                <li>
-                    <span>{{t 'definitions.collecting-place' count=1}}:</span> {{model.collectingEvent.locality.localityName}}
-                </li>
-                <li>
-                    <span>{{t 'definitions.geography'}}:</span> {{model.collectingEvent.locality.geography.name}}
-                </li>
-                <li>
-                    <span>{{t 'definitions.coordinates'}}:</span> {{model.collectingEvent.locality.location}}
-                </li>
-                <li>
-                    <span>{{t 'fields.labels.collector'}}</span>:
-                    {{#each model.collectingEvent.collectors as |collector|}}
-                        <span class="label label-default">
-                            {{collector.agent.fullName}}
-                        </span>
-                    {{/each}}
-                </li>
-            </ul>
+            {{attributes-list
+                model=model.collectingEvent
+                attributes=configuration.preview.attributes
+            }}
         </div>
     </div>
 {{/if}}
