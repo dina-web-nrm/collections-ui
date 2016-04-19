@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('locality-selector', 'Integration | Component | locality selector', {
+moduleForComponent('form-component/locality', 'Integration | Component | form component/locality', {
   integration: true
 });
 
@@ -9,7 +9,7 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });"
 
-  this.render(hbs`{{locality-selector update=(action (mut test)) enableCreate=(action (mut test))}}`);
+  this.render(hbs`{{form-component/locality enableSearch=(action (mut test)) update=(action (mut test))}}`);
 
-  assert.ok(this.$('.control-label').text().trim().indexOf('Fyndplats(lokal):') !== -1);
+  assert.equal(this.$('.header h4').text().trim(), 'Ny fyndplats');
 });

@@ -36,16 +36,24 @@
     </div>
     {{#unless configuration.hide.confidence}}
         <div class="col-xs-3">
-            {{dwcm-textfield
-                label='fields.labels.determination.confidence' value=model.confidence
+            {{#validation/form-group
+                isValid=(v-get model 'confidence' 'isValid')
+                message=(v-get model 'confidence' 'message')
             }}
+                <label>{{t 'fields.labels.determination.confidence'}}:</label>
+                {{input value=model.confidence class='form-control'}}
+            {{/validation/form-group}}
         </div>
     {{/unless}}
     {{#unless configuration.hide.method}}
         <div class="col-xs-3">
-            {{dwcm-textfield
-                label='fields.labels.determination.method' value=model.method
+            {{#validation/form-group
+                isValid=(v-get model 'method' 'isValid')
+                message=(v-get model 'method' 'message')
             }}
+                <label>{{t 'fields.labels.determination.method'}}:</label>
+                {{input value=model.method class='form-control'}}
+            {{/validation/form-group}}
         </div>
     {{/unless}}
 </div>
@@ -77,10 +85,13 @@
     </div>
     {{#unless configuration.hide.typeStatus}}
         <div class="col-md-2 col-xs-6">
-            {{dwcm-textfield
-                label='fields.labels.determination.type-status'
-                value=model.typeStatus
+            {{#validation/form-group
+                isValid=(v-get model 'typeStatus' 'isValid')
+                message=(v-get model 'typeStatus' 'message')
             }}
+                <label>{{t 'fields.labels.determination.type-status'}}:</label>
+                {{input value=model.typeStatus class='form-control'}}
+            {{/validation/form-group}}
         </div>
     {{/unless}}
 </div>

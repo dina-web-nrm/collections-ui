@@ -62,13 +62,17 @@ export default {
             'locality-name': 'Fyndplats/lokalnamn',
             'show-map': 'Välj från karta',
             'hide-map': 'Dölj karta',
-            'uncertainty-radius': 'Osäkerhetsradie',
+            'uncertainty-radius': 'Osäkerhetsradie(m)',
             'verbatim-longitude': 'Verbatim longitud',
             'verbatim-latitude': 'Verbatim latitud',
             'create-new': 'Skapa ny fyndplats',
             'center-map': 'Centrera på karta',
             'max-elevation': 'Höjd över hav',
             'min-elevation': 'Höjd under hav'
+        },
+        'locality': {
+            'lithostrat': 'Litostratigrafi',
+            'chronostrat': 'Kronostratigrafi' 
         },
         'preparation': {
             'object-type': 'Objektskategori',

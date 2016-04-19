@@ -16,11 +16,15 @@
         }}
     </div>
     <div class="col-xs-3">
-        {{dwcm-textfield
-            type='number'
-            label='component.preparation.individuals-count'
-            value=model.objectAttribute.totalCount
-        }}
+        {{#validation/form-group}}
+            <label>{{t 'component.preparation.individuals-count'}}:</label>
+            {{input
+                value=model.objectAttribute.totalCount
+                type='number'
+                min=0
+                class='form-control'
+            }}
+        {{/validation/form-group}}
     </div>
 </div>
 {{partial 'partial/preparation/list'}}

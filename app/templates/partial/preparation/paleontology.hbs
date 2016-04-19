@@ -1,16 +1,21 @@
 <div class="row">
     <div class="col-xs-6">
-        {{dwcm-textfield
-            label='component.preparation.preservation-stage'
-            value=model.objectAttribute.preservationStage
-        }}
+        {{#validation/form-group}}
+            <label>{{t 'component.preparation.preservation-stage'}}:</label>
+            {{input
+                value=model.objectAttribute.preservationStage
+                class='form-control'
+            }}
+        {{/validation/form-group}}
     </div>
     <div class="col-xs-6">
-        {{
-            dwcm-textfield
-            label='component.preparation.object-description'
-            value=model.objectAttribute.description
-        }}
+        {{#validation/form-group}}
+            <label>{{t 'component.preparation.object-description'}}:</label>
+            {{input
+                value=model.objectAttribute.description
+                class='form-control'
+            }}
+        {{/validation/form-group}}
     </div>
 </div>
 {{partial 'partial/preparation/list'}}

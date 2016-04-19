@@ -1,8 +1,8 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('locality', 'Unit | Model | locality', {
+moduleForModel('lithostrat', 'Unit | Model | lithostrat', {
   // Specify the other units that are required for this test.
-  needs: ['model:geography', 'model:agent', 'model:paleo-context']
+  needs: []
 });
 
 test('it exists', function(assert) {

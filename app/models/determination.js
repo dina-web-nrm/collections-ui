@@ -8,6 +8,21 @@ const Validations = buildValidations({
         errorFormat: 'YYYY-MM-DD',
         descriptionKey: 'fields.labels.determination.determined-date',
         allowBlank: true
+    }),
+    method: validator('length', {
+        min: 0,
+        max: 50,
+        descriptionKey: 'fields.labels.determination.method',
+    }),
+    confidence: validator('length', {
+        min: 0,
+        max: 50,
+        descriptionKey: 'fields.labels.determination.confidence',
+    }),
+    typeStatus: validator('length', {
+        min: 0,
+        max: 50,
+        descriptionKey: 'fields.labels.determination.type-status',
     })
 });
 
