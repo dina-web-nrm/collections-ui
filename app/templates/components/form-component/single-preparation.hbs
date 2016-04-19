@@ -1,4 +1,36 @@
-<i class="remove clickable glyphicon glyphicon-remove-circle" {{action "remove"}}></i>
+{{#if displayConfirmDialog}}
+    {{#modal-dialog
+        renderInPlace=true
+        targetAttachment="center"
+        translucentOverlay=true
+        containerClassNames='modal-dialog'
+    }}
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    {{t 'component.single-preparation.remove.title'}}
+                </h4>
+            </div>
+            <div class="modal-body">
+                {{t 'component.single-preparation.remove.body'}}
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-default btn-sm"
+                     {{action 'toggleDestroy'}}
+                >{{t 'definitions.abort'}}</button>
+                <button
+                    type="button"
+                    class="btn btn-danger btn-sm"
+                     {{action 'remove'}}
+                >{{t 'definitions.continue'}}</button>
+            </div>
+        </div>
+    {{/modal-dialog}}
+{{/if}}
+
+<i class="remove clickable glyphicon glyphicon-remove-circle" {{action 'toggleDestroy'}}></i>
 <div class="col-xs-12">
     <div class="row">
         <div class="col-xs-3">

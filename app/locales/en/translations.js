@@ -1,6 +1,8 @@
 export default {
     blank: '',
     definitions: {
+        abort: 'Abort',
+        continue: 'Continue',
         name: "Name",
         accession: "Accession",
         male: 'Male',
@@ -103,7 +105,17 @@ export default {
             'verbatim-date': 'Verbatim date'
         },
         'single-determination': {
-            'verbatim-taxon': 'Taxonomy, determined, date'
+            'verbatim-taxon': 'Taxonomy, determined, date',
+            'remove': {
+                'body': 'You are about to remove a determination. Do you want to continue?',
+                'title': 'Remove determination'
+            }
+        },
+        'single-preparation': {
+            'remove': {
+                'body': 'You are about to remove a preparation. Do you want to continue?',
+                'title': 'Remove preparation'
+            }
         }
     },
     collectionobject: {
