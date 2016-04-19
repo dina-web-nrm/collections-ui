@@ -43,7 +43,6 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         json.createdByAgentID = parseInt(json.createdByAgentID);
 
         json.catalogerID = parseInt(json.createdByAgentID);
-        json.catalogedDate = json.timestampCreated;
 
         json.determinationList = json.determinations;
         json.determinationList.forEach(function(element) {
@@ -93,7 +92,6 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         }
 
         delete json.collectingEvent;
-
         return json;
     }
 });
