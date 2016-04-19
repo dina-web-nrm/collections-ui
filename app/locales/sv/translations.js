@@ -1,6 +1,8 @@
 export default {
     blank: '',
     definitions: {
+        abort: 'Avbryt',
+        continue: 'Fortsätt',
         name: "Namn",
         accession: "Accession",
         male: 'Hane',
@@ -102,7 +104,17 @@ export default {
             'verbatim-date': 'Verbatimdatum'
         },
         'single-determination': {
-            'verbatim-taxon': 'Taxonomi, bestämmare, datum'
+            'verbatim-taxon': 'Taxonomi, bestämmare, datum',
+            'remove': {
+                'body': 'Du håller på att ta bort en bestämning. Vill du fortsätta?',
+                'title': 'Ta bort bestämning'
+            }
+        },
+        'single-preparation': {
+            'remove': {
+                'body': 'Du håller på att ta bort en en preparation. Vill du fortsätta?',
+                'title': 'Ta bort preparation'
+            }
         }
     },
     collectionobject: {

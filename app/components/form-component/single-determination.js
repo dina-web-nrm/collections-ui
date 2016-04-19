@@ -10,7 +10,10 @@ export default Ember.Component.extend({
     /** Inject services. */
     formConfiguration: Ember.inject.service('form-configuration'),
     configuration: Ember.computed.alias('formConfiguration.component.determination'),
-
+    
+    /** Display destroy modal dialog. */
+    displayConfirmDialog: false,
+    
     /** Convert index from zero index. */
     displayIndex: function () {
         let _index = this.get('index');
@@ -38,6 +41,11 @@ export default Ember.Component.extend({
         setDateWithPrecision(field, date, precision) {
             this.set(`model.${field}`, date);
             this.set(`model.${field}Precision`, precision);
+        },
+        
+        /** Toggle destroy dialog. */
+        toggleDestroy() {
+            this.toggleProperty('displayConfirmDialog');
         }
     }
 });
