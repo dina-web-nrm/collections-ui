@@ -32,17 +32,16 @@ export default Ember.Component.extend({
     }.property(),
 
     /** Center map over geography or locality. */
-    centerMap: function () {
-        if (this.get('newLocality.validLocation')) {
-            this.set('mapLocation', [
-                this.get('newLocality.location.firstObject'),
-                this.get('newLocality.location.lastObject')
-            ]);   
-        } else if (this.get('newLocality.geography.validCentroid')) {
+    focusGeography: function () {
+        if (this.get('newLocality.geography.validCentroid')) {
             this.set('mapLocation', [
                 this.get('newLocality.geography.centroid.firstObject'),
                 this.get('newLocality.geography.centroid.lastObject')
-            ]);    
+            ]);
+            
+            this.set('zoom', 10);
+        } else {
+            this.set('mapLocation', null);
         }
     }.observes('newLocality.geography'),
     
@@ -57,6 +56,17 @@ export default Ember.Component.extend({
         /** Set litho- or chronostratigraphy. */
         setStratigraphy(field, item){
             this.set(`newLocality.paleoContext.${field}`, item);
+        },
+        
+        focusLocality() {
+            if (this.get('newLocality.validLocation')) {
+                this.set('mapLocation', [
+                    this.get('newLocality.location.firstObject'),
+                    this.get('newLocality.location.lastObject')
+                ]);
+                
+                this.set('zoom', 14);
+            }
         }
     }
 });
