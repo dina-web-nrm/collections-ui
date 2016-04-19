@@ -1,25 +1,30 @@
-{{#unless isCreating}}
-    <div class="col-xs-12 {{if displayMap 'hidden'}}">
-        {{action-label
-            text='definitions.create-new.2'
-            label='fields.labels.collecting_place'
-            action=(action 'enableCreate')
-        }}
-        {{#solr-autocomplete-input
-            storeName='locality'
-            displayField='localityName'
-            entityType='locality'
+<div class="col-xs-12 {{if displayMap 'hidden'}}">
+    {{action-label
+        text='component.locality-selector.create-new'
+        label='fields.labels.collecting_place'
+        action=(action this.attrs.enableCreate)
+    }}
+    {{#solr-autocomplete-input
+        storeName='locality'
+        displayField='localityName'
+        entityType='locality'
 
-            multiSelect=multiSelect
+        multiSelect=multiSelect
 
-            itemSelected=(action this.attrs.update)
-            filterKeys='disciplineID'
+        itemSelected=(action this.attrs.update)
+        filterKeys='disciplineID'
 
-            item=selectedLocality
-            class='rich'
+        item=selectedLocality
+        class='rich'
 
-            as |dropdownItem|
-        }}
+        as |autocompleteInput|
+    }}
+        {{#autocompleteInput.inline}}
+            <a class="btn btn-primary btn-xs clickable" {{action 'toggleMap'}}>
+                {{t 'component.locality-selector.show-map'}}
+            </a>
+        {{/autocompleteInput.inline}}
+        {{#autocompleteInput.dropdown as |dropdownItem|}}
             <i class='row-icon glyphicon glyphicon-map-marker {{unless dropdownItem.latitude 'inactive'}}'></i>
             <p class='regular-row light'>{{dropdownItem.geography.displayName}}</p>
             <p class='regular-row {{if dropdownItem.latitude 'shrink'}}'>{{dropdownItem.localityName}}</p>
@@ -35,256 +40,146 @@
                     name=dropdownItem.agent.fullName
                 }}
             </p>
-        {{/solr-autocomplete-input}}
-        <a class="btn btn-primary btn-inside-form btn-xs clickable" {{action 'toggleMap'}}>
-            {{t 'component.locality-selector.show-map'}}
-        </a>
-    </div>
-    {{#if item}}
-        <div class='col-xs-12 preview {{if displayMap 'hidden'}}'>
-            <div class='row'>
-                {{#if item.latitude}}
-                    <div class='col-xs-5'>
-                        {{#map-view
-                            center=item.location
-                            zoom=zoom
-                            onZoom=(action (mut mapZoom))
-                        }}
-                            {{#circle-marker-layer
-                                location=item.location
-                                popupOpen=(readonly true)
+        {{/autocompleteInput.dropdown}}
+    {{/solr-autocomplete-input}}
+</div>
+{{#if item}}
+    <div class='col-xs-12 preview {{if displayMap 'hidden'}}'>
+        <div class='row'>
+            {{#if item.latitude}}
+                <div class='col-xs-5'>
+                    {{#map-view
+                        center=item.location
+                        zoom=zoom
+                        onZoom=(action (mut mapZoom))
+                    }}
+                        {{#circle-marker-layer
+                            location=item.location
+                            popupOpen=(readonly true)
 
-                                color="#FF0000"
-                                radius=(metersToPixels item.uncertaintyRadius mapZoom)
-                            }}
-                                <p>
-                                    <strong>{{item.localityName}}</strong>
-                                    <br>{{locality.geography.displayName}}
-                                </p>
-                            {{/circle-marker-layer}}
-                        {{/map-view}}
-                    </div>
-                {{/if}}
-                <div class='col-xs-6'>
-                    <ul>
-                        <li>
-                            <span>{{t 'definitions.collecting-place' count=1}}:</span> {{item.localityName}}
-                        </li>
-                        <li>
-                            <span>{{t 'definitions.geography'}}:</span> {{item.geography.displayName}}
-                        </li>
-                        <li>
-                            <span>{{t 'definitions.coordinates'}}:</span> {{item.location}}
-                        </li>
-                    </ul>
+                            color="#FF0000"
+                            radius=(metersToPixels item.uncertaintyRadius mapZoom)
+                        }}
+                            <p>
+                                <strong>{{item.localityName}}</strong>
+                                <br>{{locality.geography.displayName}}
+                            </p>
+                        {{/circle-marker-layer}}
+                    {{/map-view}}
                 </div>
+            {{/if}}
+            <div class='col-xs-6'>
+                {{attributes-list
+                    model=item attributes=configuration.preview.attributes
+                }}
             </div>
         </div>
-    {{/if}}
-    {{#if displayMap}}
-        <div class='col-xs-12'>
-            {{action-label
-                text='component.locality-selector.hide-map'
-                label='fields.labels.collecting_place'
-                action=(action 'toggleMap')
-            }}
-        </div>
-        <div class="col-xs-8 col-md-8">
-            {{#map-view
-                center=geography.centroid
-                zoom=zoom
-                onZoom=(action (mut pickMapZoom))
-                boundsUpdate=(action (mut bounds)) as |map|
-            }}
-                {{#unless maximumReached}}
-                    {{#each localities as |locality|}}
-                        {{#if locality.latitude}}
-                            {{#circle-marker-layer
-                                location=locality.location
-                                radius=(
-                                    if locality.hover (
-                                            metersToPixels locality.uncertaintyRadius pickMapZoom
-                                        ) (if locality.isOpen (
-                                            metersToPixels locality.uncertaintyRadius pickMapZoom
-                                        ) 5)
+    </div>
+{{/if}}
+{{#if displayMap}}
+    <div class='col-xs-12'>
+        {{action-label
+            text='component.locality-selector.hide-map'
+            label='fields.labels.collecting_place'
+            action=(action 'toggleMap')
+        }}
+    </div>
+    <div class="col-xs-8 col-md-8">
+        {{#map-view
+            center=geography.centroid
+            zoom=zoom
+            onZoom=(action (mut pickMapZoom))
+            boundsUpdate=(action (mut bounds)) as |map|
+        }}
+            {{#unless maximumReached}}
+                {{#each localities as |locality|}}
+                    {{#if locality.latitude}}
+                        {{#circle-marker-layer
+                            location=locality.location
+                            radius=(
+                                if locality.hover (
+                                        metersToPixels locality.uncertaintyRadius pickMapZoom
+                                    ) (if locality.isOpen (
+                                        metersToPixels locality.uncertaintyRadius pickMapZoom
+                                    ) 5)
+                            )
+                            opacity=(
+                                if locality.isOpen 1 (
+                                    if locality.hover 1 0.6
                                 )
-                                opacity=(
-                                    if locality.isOpen 1 (
-                                        if locality.hover 1 0.6
-                                    )
+                            )
+
+                            popupOpen=locality.isOpen
+
+                            color=(
+                                if locality.isOpen '#bd0026' (
+                                    if locality.hover '#bd0026' '#027cb1'
                                 )
+                            )
+                        }}
+                            <p>
+                                <strong>{{locality.localityName}}</strong>
+                                <br>{{locality.geography.displayName}}
+                            </p>
+                            <a
+                                class="btn btn-default btn-xs"
+                                {{action 'select' locality on='click'}}
+                            >
+                                    {{t 'definitions.use'}}
+                            </a>
+                        {{/circle-marker-layer}}
+                    {{/if}}
+                {{/each}}
+            {{/unless}}
+        {{/map-view}}
+    </div>
+    <div class="col-xs-4 col-md-4">
+        {{#solr-autocomplete-input
+            storeName='geography'
+            displayField='displayName'
+            entityType='geography'
+            sortBy='rankID'
+            filterKeys='disciplineID'
 
-                                popupOpen=locality.isOpen
+            placeholder='component.locality-selector.search-geography'
 
-                                color=(
-                                    if locality.isOpen '#bd0026' (
-                                        if locality.hover '#bd0026' '#027cb1'
-                                    )
-                                )
-                            }}
-                                <p>
-                                    <strong>{{locality.localityName}}</strong>
-                                    <br>{{locality.geography.displayName}}
-                                </p>
-                                <a
-                                    class="btn btn-default btn-xs"
-                                    {{action 'select' locality on='click'}}
-                                >
-                                        {{t 'definitions.use'}}
-                                </a>
-                            {{/circle-marker-layer}}
-                        {{/if}}
-                    {{/each}}
-                {{/unless}}
-            {{/map-view}}
-        </div>
-        <div class="col-xs-4 col-md-4">
-            {{#solr-autocomplete-input
-                storeName='geography'
-                displayField='displayName'
-                entityType='geography'
-                sortBy='rankID'
-                filterKeys='disciplineID'
+            itemSelected=(action 'geographySelected')
 
-                placeholder='component.locality-selector.search-geography'
+            class='rich'
 
-                itemSelected=(action 'geographySelected')
-
-                class='rich'
-
-                as |dropdownItem|
-            }}
+            as |autocompleteInput|
+        }}
+            {{autocompleteInput.inline class='hidden-xs hidden-sm hidden-md'}}
+            {{#autocompleteInput.dropdown as |dropdownItem|}}
                 <i class='row-icon small glyphicon glyphicon-map-marker {{unless dropdownItem.validCentroid 'inactive'}}'></i>
                 <p class='regular-row'>
                     {{make-bold dropdownItem.displayName match=dropdownItem.name}}
                 </p>
-            {{/solr-autocomplete-input}}
-            <h4>
-                {{t 'definitions.collecting-place' count=2}}, {{if maximumReached '+' ''}}{{localities.length}}{{t 'definitions.count'}}
-            </h4>
-            {{#if maximumReached}}
-                <p>{{t 'component.locality-selector.to-many-results'}}</p>
-            {{else}}
-                <div class="list-group">
-                    {{#each localities as |locality|}}
-                        <a
-                            class="list-group-item clickable"
-                            {{action 'open' locality on='click'}}
-                            {{action 'hover' locality true on='mouseEnter'}}
-                            {{action 'hover' locality false on='mouseLeave'}}
-                        >
-                            <p class="list-group-item-text list-header">
-                                <strong>{{locality.localityName}}</strong>
-                            </p>
-                            <p class="list-group-item-text">
-                                {{locality.geography.fullName}}
-                            </p>
-                        </a>
-                    {{/each}}
-                </div>
-            {{/if}}
-        </div>
-    {{/if}}
-{{else}}
-    <div class='col-xs-12 create'>
-        <div class="header">
-            <h4 class="pull-left">{{t 'component.locality-selector.new-locality'}}</h4>
-            <a class="pull-right clickable" {{action 'disableCreate'}}>{{t 'component.locality-selector.select-existing'}}</a>
-            <div class="clearfix"></div>
-        </div>
-        <div class='row'>
-            <div class='col-xs-12 col-sm-6'>
-                {{dwcm-textfield
-                    label='component.locality-selector.locality-name'
-                    value=newLocality.localityName
-                }}
+            {{/autocompleteInput.dropdown}}
+        {{/solr-autocomplete-input}}
+        <h4>
+            {{t 'definitions.collecting-place' count=2}}, {{if maximumReached '+' ''}}{{localities.length}}{{t 'definitions.count'}}
+        </h4>
+        {{#if maximumReached}}
+            <p>{{t 'component.locality-selector.to-many-results'}}</p>
+        {{else}}
+            <div class="list-group">
+                {{#each localities as |locality|}}
+                    <a
+                        class="list-group-item clickable"
+                        {{action 'open' locality on='click'}}
+                        {{action 'hover' locality true on='mouseEnter'}}
+                        {{action 'hover' locality false on='mouseLeave'}}
+                    >
+                        <p class="list-group-item-text list-header">
+                            <strong>{{locality.localityName}}</strong>
+                        </p>
+                        <p class="list-group-item-text">
+                            {{locality.geography.fullName}}
+                        </p>
+                    </a>
+                {{/each}}
             </div>
-            <div class='col-xs-12 col-sm-6'>
-                <label class="control-label">
-                    {{t 'definitions.geography'}}:
-                </label>
-                {{#solr-autocomplete-input
-                    storeName='geography'
-                    entityType='geography'
-                    sortBy='rankID'
-                    displayField='displayName'
-                    filterKeys='disciplineID'
-                    placeholder='component.locality-selector.search-geography'
-
-                    itemSelected=(action (mut newLocality.geography))
-
-                    class='rich'
-
-                    as |dropdownItem|
-                }}
-                    <i class='row-icon small glyphicon glyphicon-map-marker {{unless dropdownItem.validCentroid 'inactive'}}'></i>
-                    <p class='regular-row'>
-                        {{make-bold dropdownItem.displayName match=dropdownItem.name}}
-                    </p>
-                {{/solr-autocomplete-input}}
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-xs-6'>
-                {{#map-view
-                    zoom=zoom center=mapLocation
-                    onClick=(action 'onLocationUpdate')
-                    onZoom=(action (mut newMapZoom))
-                }}
-                    {{#if newLocality.validLocation}}
-                        {{circle-marker-layer
-                            location=newLocality.location
-                            radius=(metersToPixels newLocality.uncertaintyRadius newMapZoom)
-                            color="#FF0000"
-                        }}
-                    {{/if}}
-                {{/map-view}}
-            </div>
-            <div class='col-xs-6'>
-                <div class='row'>
-                    <div class='col-xs-5'>
-                        {{dwcm-textfield
-                            label='definitions.latitude'
-                            value=newLocality.latitude
-                        }}
-                    </div>
-                    <div class='col-xs-5'>
-                        {{dwcm-textfield
-                            label='definitions.longitude'
-                            value=newLocality.longitude
-                        }}
-                    </div>
-                    <div class='col-xs-1'>
-                        <label>&nbsp;</label>
-                        <button
-                            class="btn btn-primary btn-sm glyphicon glyphicon-record"
-                            disabled={{if newLocality.validLocation false true}}
-                            title={{t 'component.locality-selector.center-map'}}
-                            {{action this.centerMap}}
-                        ></button>
-                    </div>
-                </div>
-                <div class='row'>
-                    <div class='col-xs-12 col-md-7'>
-                        <label>{{t 'component.locality-selector.uncertainty-radius'}}:</label>
-                        {{x-slider class='form-control input-sm'
-                            min=15 step=2 max=2000 value=newLocality.uncertaintyRadius
-                        }}
-                    </div>
-                    <div class='col-xs-12 col-md-3'>
-                        <div class="form-group">
-                            <label>&nbsp;</label>
-                            <div class="input-group input-group-sm">
-                                {{input type="number"
-                                    min=5 max=5000 class="form-control"
-                                    value=newLocality.uncertaintyRadius
-                                }}
-                                <div class="input-group-addon">m</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {{/if}}
     </div>
-{{/unless}}
+{{/if}}

@@ -32,6 +32,12 @@ export default Ember.Component.extend({
         /** Set *agent* as determiner. */
         setDeterminer (agent) {
             this.model.set('determiner', agent);
+        },
+        
+        /** Set date and precision based on *field*, *date* and *precision*. */
+        setDateWithPrecision(field, date, precision) {
+            this.set(`model.${field}`, date);
+            this.set(`model.${field}Precision`, precision);
         }
     }
 });

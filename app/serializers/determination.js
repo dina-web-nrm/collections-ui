@@ -4,6 +4,7 @@ export default DS.JSONSerializer.extend({
     attrs: {
         'taxon': 'taxonID',
         'typeStatus': 'typeStatusName',
-        'determiner': 'determinerID'
+        'determiner': 'determinerID',
+        'verbatimTaxon': 'text1'
     }
 });

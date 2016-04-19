@@ -1,48 +1,41 @@
 <div class="row">
     <div class="col-xs-12 col-sm-6">
         <div class="row">
-            <div class="col-xs-6">
+                        <div class="col-xs-12 col-md-6">
                 <div class="form-group form-group-sm">
                     <label>
-                        {{t 'fields.labels.collecting-event.start-date'}}:
+                        {{t 'component.collecting-event.start-date'}}:
                     </label>
-                    {{#bs-datetimepicker
-                        updateDate=(action (mut model.collectingEvent.startDate))
-                        format='YYYY-MM-DD'
-                        forceDateOutput=true
-                        maxDate=(now)
+                    {{date-picker
+                        update=(action 'setDateWithPrecision' 'startDate')
+                        validationMessage=(v-get model.collectingEvent 'startDate' 'message')
+                        isValid=(v-get model.collectingEvent 'startDate' 'isValid')
                     }}
-                        {{
-                            input disabled=disabled class="form-control"
-                            name="Date" placeholder=(t 'fields.placeholder.date-format')
-                        }}
-                    {{/bs-datetimepicker}}
                 </div>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-md-6">
                 <div class="form-group form-group-sm">
-                    <label>&nbsp;</label>
-                    {{#bs-datetimepicker
-                        updateDate=(action (mut model.collectingEvent.endDate))
-                        format='YYYY-MM-DD'
-                        forceDateOutput=true
-                        maxDate=(now)
+                    <label>
+                        {{t 'component.collecting-event.end-date'}}:                        
+                    </label>
+                    {{date-picker
+                        update=(action 'setDateWithPrecision' 'endDate')
+                        validationMessage=(v-get model.collectingEvent 'endDate' 'message')
+                        isValid=(v-get model.collectingEvent 'endDate' 'isValid')
                     }}
-                        {{
-                            input disabled=disabled class="form-control"
-                            name="Date" placeholder=(t 'fields.placeholder.date-format')
-                        }}
-                    {{/bs-datetimepicker}}
                 </div>
             </div>
             <div class="col-xs-12">
-                {{dwcm-textfield
-                    width=6
-
-                    placeholder='definitions.date'
-                    value=model.collectingEvent.verbatimDate
-                    class='verbatim'
+                {{#validation/form-group
+                    message=(v-get model.collectingEvent 'verbatimDate' 'message')
+                    isValid=(v-get model.collectingEvent 'verbatimDate' 'isValid')
                 }}
+                    {{input
+                        value=model.collectingEvent.verbatimDate
+                        placeholder=(t 'definitions.date')
+                        class='form-control verbatim'
+                    }}
+                {{/validation/form-group}}
             </div>
         </div>
     </div>
@@ -67,3 +60,4 @@
         {{/dwcm-autocomplete-textfield}}
     </div>
 </div>
+{{partial 'partial/collecting-event/locality'}}

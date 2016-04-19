@@ -9,7 +9,7 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });"
 
-  this.render(hbs`{{locality-selector update=(action (mut test))}}`);
+  this.render(hbs`{{locality-selector update=(action (mut test)) enableCreate=(action (mut test))}}`);
 
   assert.ok(this.$('.control-label').text().trim().indexOf('Fyndplats(lokal):') !== -1);
 });

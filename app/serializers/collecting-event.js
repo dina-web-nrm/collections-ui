@@ -10,6 +10,7 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
             serialize: 'records'
         },
         givenName: 'text1',
+        description: 'text2',
         agent: 'createdByAgentID',
         collectors: {
             key: 'collectorList',

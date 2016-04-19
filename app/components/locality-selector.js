@@ -8,6 +8,8 @@ export default Ember.Component.extend(Filterable, {
 
     /** Inject services. */
     store: Ember.inject.service('store'),
+    formConfiguration: Ember.inject.service('form-configuration'),
+    configuration: Ember.computed.alias('formConfiguration.component.localitySelector'),
 
     filterKeys: 'disciplineID, geographyID',
 
@@ -20,15 +22,16 @@ export default Ember.Component.extend(Filterable, {
     selectedLocality: null,
 
     maximumReached: Ember.computed.gt('localities.length', 199),
-    
-    /** Return new locality. */
-    newLocality: function () {
-        if(!this._newLocality) {
-            this._newLocality = this.get('store').createRecord('locality');
-        }
 
-        return this._newLocality;
-    }.property(),
+    init() {
+        this._super(...arguments);
+        
+        if (this.attrs.update) {
+            Ember.run.schedule('actions', this, ()=>{
+                this.attrs.update();  
+            });
+        }
+    },
 
     fetchLocalities () {
         const bounds = this.get('bounds');
@@ -56,20 +59,6 @@ export default Ember.Component.extend(Filterable, {
     delayFetchLocalites: function () {
         Ember.run.debounce(this, this.fetchLocalities, 75);
     }.observes('filters', 'bounds.[]', 'geography'),
-    
-    centerMap: function () {
-        if (this.get('newLocality.validLocation')) {
-            this.set('mapLocation', [
-                this.get('newLocality.location.firstObject'),
-                this.get('newLocality.location.lastObject')
-            ]);   
-        } else if (this.get('newLocality.geography.validCentroid')) {
-            this.set('mapLocation', [
-                this.get('newLocality.geography.centroid.firstObject'),
-                this.get('newLocality.geography.centroid.lastObject')
-            ]);    
-        }
-    }.observes('newLocality.geography'),
 
     actions: {
 
@@ -102,23 +91,6 @@ export default Ember.Component.extend(Filterable, {
 
         toggleMap () {
             this.toggleProperty('displayMap');
-        },
-
-        enableCreate () {
-            this.attrs.update(this.get('newLocality'));
-            this.set('isCreating', true);
-        },
-
-        disableCreate () {
-            this.attrs.update();
-            this.set('isCreating', false);
-        },
-
-        onLocationUpdate (event) {
-            const latlng = event.latlng || event.target && event.target.getLatLng();
-            const coordinates = [latlng.lat, latlng.lng];
-
-            this.set('newLocality.location', coordinates);
         }
     }
 });

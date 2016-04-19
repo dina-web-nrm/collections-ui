@@ -10,33 +10,37 @@
             }}
         </div>
         <div class="col-xs-3">
-            {{dwcm-textfield
-                label='fields.labels.preparation.part'
-                value=model.description
-            }}
+            {{#validation/form-group}}
+                <label>{{t 'fields.labels.preparation.part'}}:</label>
+                {{input value=model.description class='form-control'}}
+            {{/validation/form-group}}
         </div>
         <div class="col-xs-2">
-            {{dwcm-textfield
-                type='number'
-                label='fields.labels.preparation.count'
-                value=model.countAmt
-            }}
+            {{#validation/form-group}}
+                <label>{{t 'fields.labels.preparation.count'}}:</label>
+                {{input
+                    type='number' min=0 value=model.countAmt
+                    class='form-control'
+                }}
+            {{/validation/form-group}}
         </div>
         {{#unless configuration.hide.individualsCount}}
             <div class="col-xs-2">
-                {{dwcm-textfield
-                    type='number'
-                    label='component.preparation.individuals-count'
-                    value=model.individualsCount
+            {{#validation/form-group}}
+                <label>{{t 'component.preparation.individuals-count'}}:</label>
+                {{input
+                    type='number' min=0 value=model.individualsCount
+                    class='form-control'
                 }}
+            {{/validation/form-group}}
             </div>
         {{/unless}}
         {{#unless configuration.hide.preparationNumber}}
             <div class="col-xs-2">
-                {{dwcm-textfield
-                    label='fields.labels.preparation.number'
-                    value=model.sampleNumber
-                }}
+                {{#validation/form-group}}
+                    <label>{{t 'fields.labels.preparation.number'}}:</label>
+                    {{input value=model.sampleNumber class='form-control'}}
+                {{/validation/form-group}}
             </div>
         {{/unless}}
     </div>
@@ -56,10 +60,10 @@
             }}
         </div>
         <div class="col-xs-4">
-            {{dwcm-textfield
-                label='fields.labels.preparation.status'
-                value=model.status
-            }}
+            {{#validation/form-group}}
+                <label>{{t 'fields.labels.preparation.status'}}:</label>
+                {{input value=model.status class='form-control'}}
+            {{/validation/form-group}}
         </div>
     </div>
     {{!--

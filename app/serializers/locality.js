@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 import Ember from 'ember';
 
-export default DS.JSONSerializer.extend({
+export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
     session: Ember.inject.service('session'),
 
     primaryKey: 'localityID',
@@ -10,13 +10,26 @@ export default DS.JSONSerializer.extend({
         'agent': 'createdByAgentID',
         'longitude': 'longitude1',
         'latitude': 'latitude1',
-        'uncertaintyRadius': 'latLongAccuracy'
+        'verbatimLongitude': 'long1Text',
+        'verbatimLatitude': 'lat1Text',
+        'uncertaintyRadius': 'latLongAccuracy',
+        'paleoContext': {
+            key: 'paleoContextID',
+            serialize: 'records'
+        }
     },
     serialize(){
         var json = this._super(...arguments);
         json.geographyID = parseInt(json.geographyID);
         json.createdByAgentID = parseInt(this.get('session').get('data.authenticated.id'));
         json.localityID = parseInt(json.localityID);
+        
+        if (json.paleoContext) {
+            json.paleoContextID = json.paleoContext;           
+        }
+
+        delete json.paleoContext;
+        
         return json;
     }
 });
