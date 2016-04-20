@@ -177,6 +177,9 @@ const CONFIGURATIONS = {
                 preview: {
                     attributes: previewAttributes.localitySelector
                 }
+            },
+            preparation: {
+                disableAdd: true
             }
         }
     },

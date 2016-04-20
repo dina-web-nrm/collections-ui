@@ -1,35 +1,37 @@
-{{#dwcm-field-group title=title identifier="dwcm-basic-data"}}
-    <div class="row">
-        <div class="col-xs-6">
-            {{dwcm-autocomplete-textfield
-                label="fields.labels.collection"
-                storeName='collection'
-                displayField='collectionName'
-                filterField='collectionName'
-                itemSelected=(action 'collectionSelected')
+{{#field-group title=title identifier=title as |fieldGroup|}}
+    {{#fieldGroup.content}}
+        <div class="row">
+            <div class="col-xs-6">
+                {{dwcm-autocomplete-textfield
+                    label="fields.labels.collection"
+                    storeName='collection'
+                    displayField='collectionName'
+                    filterField='collectionName'
+                    itemSelected=(action 'collectionSelected')
 
-                displayErrors=displayErrors
-                checkInvalid=(v-get model 'collection' 'isInvalid')
-                invalidMessage=(v-get model 'collection' 'message')
-            }}
-        </div>
-        <div class="col-xs-2">
-            {{#validation/form-group
-                isValid=(v-get model 'catalogNumber' 'isValid')
-                message=(v-get model 'catalogNumber' 'message')
-            }}
-                <label>{{t 'fields.labels.catalogNumber'}}:</label>
-                {{input value=model.catalogNumber class='form-control'}}
-            {{/validation/form-group}}
-        </div>
-        <div class="col-xs-4">
-            {{dwcm-autocomplete-textfield
-                label="fields.labels.accession"
-                storeName='accession'
-                displayField='accessionNumber'
-                filterField='accessionNumber'
-                itemSelected=(action 'accessionSelected')
-            }}
-        </div>
-   </div>
-{{/dwcm-field-group}}
+                    displayErrors=displayErrors
+                    checkInvalid=(v-get model 'collection' 'isInvalid')
+                    invalidMessage=(v-get model 'collection' 'message')
+                }}
+            </div>
+            <div class="col-xs-2">
+                {{#validation/form-group
+                    isValid=(v-get model 'catalogNumber' 'isValid')
+                    message=(v-get model 'catalogNumber' 'message')
+                }}
+                    <label>{{t 'fields.labels.catalogNumber'}}:</label>
+                    {{input value=model.catalogNumber class='form-control'}}
+                {{/validation/form-group}}
+            </div>
+            <div class="col-xs-4">
+                {{dwcm-autocomplete-textfield
+                    label="fields.labels.accession"
+                    storeName='accession'
+                    displayField='accessionNumber'
+                    filterField='accessionNumber'
+                    itemSelected=(action 'accessionSelected')
+                }}
+            </div>
+    </div>
+    {{/fieldGroup.content}}
+{{/field-group}}

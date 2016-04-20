@@ -7,10 +7,11 @@ export default Ember.Component.extend({
 
     /** Inject services. */
     store: Ember.inject.service('store'),
-    configuration: Ember.inject.service('form-configuration'),
-    
-    partialType: Ember.computed('configuration.type', function () {
-        return `partial/preparation/${this.get('configuration.type')}`;
+    formConfiguration: Ember.inject.service('form-configuration'),
+    configuration: Ember.computed.alias('formConfiguration.component.preparation'),
+
+    partialType: Ember.computed('formConfiguration.type', function () {
+        return `partial/preparation/${this.get('formConfiguration.type')}`;
     }),
     
     init() {
@@ -61,5 +62,13 @@ export default Ember.Component.extend({
                 'storage', storage
             );
         },
+        
+        /** Add comment to preparation. */
+        addComment(type) {
+            if (type === 'verbatim')
+                console.log('Add new VERBATIM FIELD!');
+            else
+                console.log('Add new COMMENT!');
+        }
     }
 });

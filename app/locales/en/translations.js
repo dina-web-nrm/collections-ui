@@ -35,7 +35,10 @@ export default {
             "zoology-entomology": "zoology, Entomology",
             "paleontology": "paleontology",
             "botany": "botany"
-        }
+        },
+        'comment-field': 'Comment',
+        'verbatim-field': 'Verbatim field',
+        'add-comment': 'Add comment/verbatimfield'
     },
     main: {
         application_name: "Collection manager",

@@ -1,16 +1,20 @@
-{{#dwcm-field-group
-    title=title identifier=title counter=model.determinations.length
+{{#field-group
+    title=title identifier=title
+    counter=model.determinations.length as |fieldGroup|
 }}
-    {{#each model.determinations as |determination index|}}
-        {{form-component/single-determination
-            model=determination
-            remove=(action "removeDetermination")
+    {{#fieldGroup.content}}
+        {{#each model.determinations as |determination index|}}
+            {{form-component/single-determination
+                model=determination
+                remove=(action "removeDetermination")
 
-            index=index
-        }}
-    {{/each}}
-
-    <a class="btn btn-primary btn-xs" {{action "addDetermination"}}>
-        <i class="glyphicon glyphicon-plus"></i> {{t 'fields.labels.determination.add'}}
-    </a>
-{{/dwcm-field-group}}
+                index=index
+            }}
+        {{/each}}
+     {{/fieldGroup.content}}
+     {{#fieldGroup.toolbar}}
+        <a class="btn btn-primary btn-xs" {{action "addDetermination"}}>
+            <i class="glyphicon glyphicon-plus"></i> {{t 'fields.labels.determination.add'}}
+        </a>
+     {{/fieldGroup.toolbar}}
+{{/field-group}}

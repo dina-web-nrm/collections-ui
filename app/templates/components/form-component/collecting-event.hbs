@@ -1,7 +1,23 @@
-{{#dwcm-field-group title=title identifier=title}}
-    {{#unless isCreating}}
-        {{partial 'partial/collecting-event/select'}}
-    {{else}}
-        {{partial 'partial/collecting-event/create'}}
-    {{/unless}}
-{{/dwcm-field-group}}
+{{#field-group title=title identifier=title as |fieldGroup|}}
+    {{#fieldGroup.content}}
+        {{#unless isCreating}}
+            {{partial 'partial/collecting-event/select'}}
+        {{else}}
+            {{partial 'partial/collecting-event/create'}}
+        {{/unless}}
+    {{/fieldGroup.content}}
+    {{#fieldGroup.toolbar}}
+        {{#dropdown-button
+            label='definitions.add-comment'
+            iconClass='glyphicon-comment'
+            class='pull-right' as |db|
+        }}
+            {{#db.item click=(action "addComment")}}
+                {{t 'definitions.comment-field'}}
+            {{/db.item}}
+            {{#db.item click=(action "addComment" "verbatim")}}
+                {{t 'definitions.verbatim-field'}}
+            {{/db.item}}
+        {{/dropdown-button}}
+    {{/fieldGroup.toolbar}}
+{{/field-group}}

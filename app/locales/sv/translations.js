@@ -35,7 +35,10 @@ export default {
             "zoology-entomology": "Zoologi, Entomologi",
             "paleontology": "Paleontologi",
             "botany": "Botanik"
-        }
+        },
+        'comment-field': 'Kommentarsfält',
+        'verbatim-field': 'Etikettsfält',
+        'add-comment': 'Lägg till kommentar/etikett'
     },
     main: {
         application_name: "Samlingshanteraren",
