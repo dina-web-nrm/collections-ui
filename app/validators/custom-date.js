@@ -43,7 +43,6 @@ export default BaseValidator.extend({
             after = model.get(after);
             after = after && this._parseDate(after, format);
 
-            console.log('After: ', after);
             if (after && after > date) {
                 options.after = after.format(errorFormat);
                 return this.createErrorMessage('after', value, options);

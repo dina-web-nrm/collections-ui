@@ -1,6 +1,8 @@
 export default {
     blank: '',
     definitions: {
+        abort: 'Avbryt',
+        continue: 'Fortsätt',
         name: "Namn",
         accession: "Accession",
         male: 'Hane',
@@ -62,13 +64,17 @@ export default {
             'locality-name': 'Fyndplats/lokalnamn',
             'show-map': 'Välj från karta',
             'hide-map': 'Dölj karta',
-            'uncertainty-radius': 'Osäkerhetsradie',
+            'uncertainty-radius': 'Osäkerhetsradie(m)',
             'verbatim-longitude': 'Verbatim longitud',
             'verbatim-latitude': 'Verbatim latitud',
             'create-new': 'Skapa ny fyndplats',
             'center-map': 'Centrera på karta',
             'max-elevation': 'Höjd över hav',
             'min-elevation': 'Höjd under hav'
+        },
+        'locality': {
+            'lithostrat': 'Litostratigrafi',
+            'chronostrat': 'Kronostratigrafi' 
         },
         'preparation': {
             'object-type': 'Objektskategori',
@@ -98,7 +104,17 @@ export default {
             'verbatim-date': 'Verbatimdatum'
         },
         'single-determination': {
-            'verbatim-taxon': 'Taxonomi, bestämmare, datum'
+            'verbatim-taxon': 'Taxonomi, bestämmare, datum',
+            'remove': {
+                'body': 'Du håller på att ta bort en bestämning. Vill du fortsätta?',
+                'title': 'Ta bort bestämning'
+            }
+        },
+        'single-preparation': {
+            'remove': {
+                'body': 'Du håller på att ta bort en en preparation. Vill du fortsätta?',
+                'title': 'Ta bort preparation'
+            }
         }
     },
     collectionobject: {

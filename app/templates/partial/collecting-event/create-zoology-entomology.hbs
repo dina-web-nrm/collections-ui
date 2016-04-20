@@ -28,16 +28,16 @@
                 </div>
             </div>
             <div class="col-xs-12">
-                {{dwcm-textfield
-                    width=6
-
-                    placeholder='definitions.date'
-                    value=model.collectingEvent.verbatimDate
-                    class='verbatim'
-                    
-                    validationMessage=(v-get model.collectingEvent 'verbatimDate' 'message')
-                    isInvalid=(v-get model.collectingEvent 'verbatimDate' 'isInvalid')
+                {{#validation/form-group
+                    message=(v-get model.collectingEvent 'verbatimDate' 'message')
+                    isValid=(v-get model.collectingEvent 'verbatimDate' 'isValid')
                 }}
+                    {{input
+                        value=model.collectingEvent.verbatimDate
+                        placeholder=(t 'definitions.date')
+                        class='form-control verbatim'
+                    }}
+                {{/validation/form-group}}
             </div>
             <div class="col-xs-12">
                 <label>{{t 'fields.labels.collecting-event.method'}}:</label>
@@ -52,12 +52,22 @@
     <div class="col-xs-12 col-sm-6">
         <div class="row">
             <div class="col-xs-12">
-                {{dwcm-textfield
-                    label='fields.labels.collecting-event.name'
-                    value=model.collectingEvent.givenName
-                    labelAction=(action 'selectExisting')
-                    actionText='fields.labels.collecting-event.select-existing'
+                {{#validation/form-group
+                    message=(v-get model.collectingEvent 'givenName' 'message')
+                    isValid=(v-get model.collectingEvent 'givenName' 'isValid')
                 }}
+                    {{action-label
+                        label='fields.labels.collecting-event.name'
+                        text='fields.labels.collecting-event.select-existing'
+                        action=(action 'selectExisting')
+                    }}
+                        
+                    {{input
+                        value=model.collectingEvent.givenName
+                        placeholder=(t 'definitions.date')
+                        class='form-control verbatim'
+                    }}
+                {{/validation/form-group}}
             </div>
             <div class="col-xs-12">
                 {{#dwcm-autocomplete-textfield
@@ -85,12 +95,13 @@
 {{partial 'partial/collecting-event/locality'}}
 <div class="row">
     <div class="col-xs-12 col-md-12">
-        {{dwcm-textfield
-            label='fields.labels.collecting-event.verbatim-locality'
-            placeholder='fields.labels.collecting-event.verbatim-locality'
-            value=model.collectingEvent.verbatimLocality
-
-            class='verbatim'
-        }}
+        {{#validation/form-group}}
+            <label>{{t 'fields.labels.collecting-event.verbatim-locality'}}:</label>    
+            {{input
+                value=model.collectingEvent.verbatimLocality
+                placeholder=(t 'fields.labels.collecting-event.verbatim-locality')
+                class='form-control verbatim'
+            }}
+        {{/validation/form-group}}
     </div>
 </div>

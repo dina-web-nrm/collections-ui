@@ -1,9 +1,12 @@
 <div class="row">
     <div class="col-xs-6">
-        {{dwcm-textfield
-            label='component.preparation.object-type'
-            value=model.objectAttribute.type
-        }}
+        {{#validation/form-group}}
+            <label>{{t 'component.preparation.object-type'}}:</label>
+            {{input
+                value=model.objectAttribute.type
+                class='form-control'
+            }}
+        {{/validation/form-group}}
     </div>
 </div>
 {{partial 'partial/preparation/list'}}

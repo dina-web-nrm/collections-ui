@@ -1,5 +1,54 @@
 import Ember from 'ember';
 
+const previewAttributes = {
+    localitySelector: [{
+        key: 'localityName',
+        title: 'component.locality-selector.locality-name'
+    }, {
+        key: 'geography.displayName',
+        title: 'definitions.geography'
+    }, {
+        key: 'uncertaintyRadius',
+        title: 'component.locality-selector.uncertainty-radius'
+    }, {
+        key: 'location',
+        title: 'definitions.coordinates'
+    }],
+    collectingEvent: [{
+        key: 'givenName',
+        title: ''
+    }, {
+        key: 'startDate',
+        title: 'fields.labels.collecting-event.start-date.name',
+        date: {
+            precision: 'startDatePrecision'
+        }
+    }, {
+        key: 'endDate',
+        title: 'fields.labels.collecting-event.end-date.name',
+        date: {
+            precision: 'endDatePrecision'
+        }
+    }, {
+        key: 'method',
+        title: 'fields.labels.collecting-event.method'
+    }, {
+        key: 'locality.localityName',
+        title: 'component.locality-selector.locality-name'
+    }, {
+        key: 'locality.geography.displayName',
+        title: 'definitions.geography'
+    }, {
+        key: 'locality.location',
+        title: 'definitions.coordinates'
+    }, {
+        arrayKey: 'collectors',
+        class: 'label label-default',
+        title: 'fields.labels.collector',
+        key: 'agent.fullName'
+    }]
+};
+
 const CONFIGURATIONS = {
     1: {
         type: 'zoology-mammals',
@@ -11,11 +60,20 @@ const CONFIGURATIONS = {
         },
         component: {
             collectingEvent: {
-                enableCreate: true
+                enableCreate: true,
+                preview: {
+                    attributes: previewAttributes.collectingEvent
+                }
             },
             locality: {
                 hide: {
-                    elevation: true
+                    elevation: true,
+                    paleoContext: true
+                }
+            },
+            localitySelector: {
+                preview: {
+                    attributes: previewAttributes.localitySelector
                 }
             }
         }
@@ -32,6 +90,21 @@ const CONFIGURATIONS = {
             determination: {
                 hide: {
                     confidence: true
+                }
+            },
+            locality: {
+                hide: {
+                    paleoContext: true
+                }
+            },
+            localitySelector: {
+                preview: {
+                    attributes: previewAttributes.localitySelector
+                }
+            },
+            collectingEvent: {
+                preview: {
+                    attributes: previewAttributes.collectingEvent
                 }
             }
         }
@@ -52,7 +125,18 @@ const CONFIGURATIONS = {
             },
             locality: {
                 hide: {
-                    elevation: true
+                    elevation: true,
+                    paleoContext: true
+                }
+            },
+            localitySelector: {
+                preview: {
+                    attributes: previewAttributes.localitySelector
+                }
+            },
+            collectingEvent: {
+                preview: {
+                    attributes: previewAttributes.collectingEvent
                 }
             }
         }
@@ -78,11 +162,20 @@ const CONFIGURATIONS = {
                 }
             },
             collectingEvent: {
-                enableCreate: true
+                enableCreate: true,
+                preview: {
+                    attributes: previewAttributes.collectingEvent
+                }
             },
             locality: {
                 hide: {
-                    elevation: true
+                    elevation: true,
+                    paleoContext: true
+                }
+            },
+            localitySelector: {
+                preview: {
+                    attributes: previewAttributes.localitySelector
                 }
             }
         }
@@ -103,11 +196,20 @@ const CONFIGURATIONS = {
                 }
             },
             collectingEvent: {
-                enableCreate: true
+                enableCreate: true,
+                preview: {
+                    attributes: previewAttributes.collectingEvent
+                }
             },
             locality: {
                 hide: {
-                    elevation: true
+                    elevation: true,
+                    paleoContext: true
+                }
+            },
+            localitySelector: {
+                preview: {
+                    attributes: previewAttributes.localitySelector
                 }
             }
         }
@@ -133,11 +235,31 @@ const CONFIGURATIONS = {
                 }
             },
             collectingEvent: {
-                enableCreate: true
+                enableCreate: true,
+                preview: {
+                    attributes: previewAttributes.collectingEvent.concat([{
+                        key: 'locality.paleoContext.lithoStrat.fullName',
+                        title: 'component.locality.lithostrat'
+                    }, {
+                        key: 'locality.paleoContext.chronosStrat.fullName',
+                        title: 'component.locality.chronostrat'        
+                    }])
+                }
             },
             locality: {
                 hide: {
                     elevation: true
+                }
+            },
+            localitySelector: {
+                preview: {
+                    attributes: previewAttributes.localitySelector.concat([{
+                        key: 'paleoContext.lithoStrat.fullName',
+                        title: 'component.locality.lithostrat'        
+                    }, {
+                        key: 'paleoContext.chronosStrat.fullName',
+                        title: 'component.locality.chronostrat'        
+                    }])
                 }
             }
         }

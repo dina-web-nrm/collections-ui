@@ -1,8 +1,19 @@
 <div class="row">
     <div class="col-xs-12 col-md-12">
-        {{locality-selector
-            update=(action 'selectedLocality')
-            item=model.collectingEvent.locality
-        }}
+        {{#if createLocality}}
+            {{form-component/locality
+                update=(action 'selectedLocality')
+                item=model.collectingEvent.locality
+                
+                enableSearch=(action this.toggleProperty 'createLocality')
+            }}
+        {{else}}
+            {{locality-selector
+                update=(action 'selectedLocality')
+                item=model.collectingEvent.locality
+                
+                enableCreate=(action this.toggleProperty 'createLocality')
+            }}
+        {{/if}}
     </div>
 </div>

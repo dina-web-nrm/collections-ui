@@ -14,12 +14,13 @@
             }}
         </div>
         <div class="col-xs-2">
-            {{dwcm-textfield
-                label='fields.labels.catalogNumber'
-                value=model.catalogNumber
-                isInvalid=(v-get model 'catalogNumber' 'isInvalid')
-                validationMessage=(v-get model 'catalogNumber' 'message')
+            {{#validation/form-group
+                isValid=(v-get model 'catalogNumber' 'isValid')
+                message=(v-get model 'catalogNumber' 'message')
             }}
+                <label>{{t 'fields.labels.catalogNumber'}}:</label>
+                {{input value=model.catalogNumber class='form-control'}}
+            {{/validation/form-group}}
         </div>
         <div class="col-xs-4">
             {{dwcm-autocomplete-textfield

@@ -1,0 +1,29 @@
+<ul>
+    {{#each attributes as |attribute|}}
+        {{#if attribute.arrayKey}}
+            <li>
+                {{t attribute.title}}:
+                {{#each (get model attribute.arrayKey) as |item|}}
+                    <span class="{{attribute.class}}">
+                        {{get item attribute.key}}
+                    </span>
+                {{/each}}
+            </li>    
+        {{else}}
+            {{#if (get model attribute.key)}}
+                <li>{{t attribute.title}}: 
+                    <span class="{{attribute.class}}">
+                        {{#if attribute.date}}
+                            {{moment-format
+                                (get model attribute.key)
+                                (date-precision (get model attribute.date.precision))
+                            }}
+                        {{else}}
+                            {{get model attribute.key}}
+                        {{/if}}
+                    </span>
+                </li>
+            {{/if}}
+        {{/if}}
+    {{/each}}
+</ul>

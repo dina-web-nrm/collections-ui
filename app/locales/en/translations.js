@@ -1,6 +1,8 @@
 export default {
     blank: '',
     definitions: {
+        abort: 'Abort',
+        continue: 'Continue',
         name: "Name",
         accession: "Accession",
         male: 'Male',
@@ -62,7 +64,7 @@ export default {
             'locality-name': 'Locality name',
             'show-map': 'Pick on map',
             'hide-map': 'Hide map',
-            'uncertainty-radius': 'Uncertainty radius',
+            'uncertainty-radius': 'Uncertainty radius (m)',
             'verbatim-longitude': 'Verbatim longitude',
             'verbatim-latitude': 'Verbatim latitude',
             'create-new': 'Create new locality',
@@ -70,6 +72,10 @@ export default {
             'max-elevation': 'Alt. over sea',
             'min-elevation': 'Alt. under sea'
 
+        },
+        'locality': {
+            'lithostrat': 'Lithostratigraphy',
+            'chronostrat': 'Chronostratigraphy' 
         },
         'preparation': {
             'object-type': 'Object category',
@@ -99,7 +105,17 @@ export default {
             'verbatim-date': 'Verbatim date'
         },
         'single-determination': {
-            'verbatim-taxon': 'Taxonomy, determined, date'
+            'verbatim-taxon': 'Taxonomy, determined, date',
+            'remove': {
+                'body': 'You are about to remove a determination. Do you want to continue?',
+                'title': 'Remove determination'
+            }
+        },
+        'single-preparation': {
+            'remove': {
+                'body': 'You are about to remove a preparation. Do you want to continue?',
+                'title': 'Remove preparation'
+            }
         }
     },
     collectionobject: {

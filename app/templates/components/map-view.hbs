@@ -1,5 +1,5 @@
 {{#leaflet-map
-    center=_center
+    center=sanitizedCenter
     zoom=_zoom
     onLoad=(action 'updateBounds')
     onMoveend=(action 'updateBounds')
