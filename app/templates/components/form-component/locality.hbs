@@ -39,6 +39,7 @@
             {{autocompleteInput.inline}}
             {{#autocompleteInput.dropdown as |dropdownItem|}}
                 <i class='row-icon small glyphicon glyphicon-map-marker {{unless dropdownItem.validCentroid 'inactive'}}'></i>
+                <p class='regular-row light'>{{dropdownItem.treeDef.name}}</p>
                 <p class='regular-row'>
                     {{make-bold dropdownItem.displayName match=dropdownItem.name}}
                 </p>

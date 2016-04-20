@@ -9,6 +9,8 @@ export default DS.Model.extend({
     centroidLat: DS.attr('number'),
     centroidLon: DS.attr('number'),
 
+    treeDef: DS.belongsTo('geography-treedef-item'),
+
     displayName: Ember.computed('fullName', function () {
         let fullName = this.get('fullName') || '';
         let displayName = fullName.split(',').invoke('trim').reverse().join(', ');
