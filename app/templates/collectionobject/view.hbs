@@ -7,110 +7,120 @@
     </div>
     <div class="row">
         <div class="col-xs-6">
-            {{#dwcm-field-group title='form-component-basic-data' collapsable=false}}
-                <ul>
-                    <li>
-                        <span>{{t 'fields.labels.collection'}}:</span> {{model.collection.collectionName}}
-                    </li>
-                    <li>
-                        <span>{{t 'fields.labels.accession'}}:</span> {{model.accession.accessionNumber}}
-                    </li>
-                </ul>
-            {{/dwcm-field-group}}
-            {{#dwcm-field-group title='form-component-determination' collapsable=false}}
-                <ol>
-                    {{#each model.determinations as |determination|}}
+            {{#field-group title='form-component-basic-data' collapsable=false as |fg|}}
+                {{#fg.content}}
+                    <ul>
                         <li>
-                            <ul>
-                                <li>
-                                    <span>{{t 'definitions.name'}}:</span> {{determination.taxonName}}
-                                </li>
-                                <li>
-                                    <span>{{t 'fields.labels.determination.determiner'}}:</span> {{determination.determinerName}}
-                                </li>
-                                <li>
-                                    <span>{{t 'fields.labels.determination.type-status'}}:</span> {{determination.typeStatus}}
-                                </li>
-                            </ul>
+                            <span>{{t 'fields.labels.collection'}}:</span> {{model.collection.collectionName}}
                         </li>
-                    {{/each}}
-                </ol>
-            {{/dwcm-field-group}}
-            {{#dwcm-field-group title='form-component-preparation' collapsable=false}}
-                <ul>
-                    <li>
-                        <span>{{t 'fields.labels.preparation.life-stage'}}:</span> {{model.objectAttribute.lifeStage}}
-                    </li>
-                    <li>
-                        <span>{{t 'fields.labels.preparation.age'}}:</span> {{model.objectAttribute.age}}
-                    </li>
-                    <li>
-                        <span>{{t 'fields.labels.preparation.sex'}}:</span> {{t
-                            (concat 'definitions.' (if model.objectAttribute.sex model.objectAttribute.sex 'unknown'))
-                        }}
-                    </li>
-                    <li>
-                        <span>{{t 'fields.labels.preparation.measurements'}}:</span> {{model.objectAttribute.measurements}}
-                    </li>
-                </ul>
-                <ol>
-                    {{#each model.preparations as |preparation index|}}
                         <li>
-                            <ul>
-                                <li>
-                                    <span>{{t 'fields.labels.preparation.preparation-type'}}:</span> {{preparation.preparationType.name}}
-                                </li>
-                                <li>
-                                    <span>{{t 'fields.labels.preparation.count'}}:</span> {{#if preparation.countAmt}}{{preparation.countAmt}} {{t 'definitions.count'}}{{/if}}
-                                </li>
-                                <li>
-                                    <span>{{t 'fields.labels.preparation.storage'}}:</span> {{preparation.storage.fullName}}
-                                </li>
-                            </ul>
+                            <span>{{t 'fields.labels.accession'}}:</span> {{model.accession.accessionNumber}}
                         </li>
-                    {{/each}}
-                </ol>
-            {{/dwcm-field-group}}
+                    </ul>
+                {{/fg.content}}
+            {{/field-group}}
+            {{#field-group title='form-component-determination' collapsable=false as |fg|}}
+                {{#fg.content}}
+                    <ol>
+                        {{#each model.determinations as |determination|}}
+                            <li>
+                                <ul>
+                                    <li>
+                                        <span>{{t 'definitions.name'}}:</span> {{determination.taxonName}}
+                                    </li>
+                                    <li>
+                                        <span>{{t 'fields.labels.determination.determiner'}}:</span> {{determination.determinerName}}
+                                    </li>
+                                    <li>
+                                        <span>{{t 'fields.labels.determination.type-status'}}:</span> {{determination.typeStatus}}
+                                    </li>
+                                </ul>
+                            </li>
+                        {{/each}}
+                    </ol>
+                {{/fg.content}}
+            {{/field-group}}
+            {{#field-group title='form-component-preparation' collapsable=false as |fg|}}
+                {{#fg.content}}
+                    <ul>
+                        <li>
+                            <span>{{t 'fields.labels.preparation.life-stage'}}:</span> {{model.objectAttribute.lifeStage}}
+                        </li>
+                        <li>
+                            <span>{{t 'fields.labels.preparation.age'}}:</span> {{model.objectAttribute.age}}
+                        </li>
+                        <li>
+                            <span>{{t 'fields.labels.preparation.sex'}}:</span> {{t
+                                (concat 'definitions.' (if model.objectAttribute.sex model.objectAttribute.sex 'unknown'))
+                            }}
+                        </li>
+                        <li>
+                            <span>{{t 'fields.labels.preparation.measurements'}}:</span> {{model.objectAttribute.measurements}}
+                        </li>
+                    </ul>
+                    <ol>
+                        {{#each model.preparations as |preparation index|}}
+                            <li>
+                                <ul>
+                                    <li>
+                                        <span>{{t 'fields.labels.preparation.preparation-type'}}:</span> {{preparation.preparationType.name}}
+                                    </li>
+                                    <li>
+                                        <span>{{t 'fields.labels.preparation.count'}}:</span> {{#if preparation.countAmt}}{{preparation.countAmt}} {{t 'definitions.count'}}{{/if}}
+                                    </li>
+                                    <li>
+                                        <span>{{t 'fields.labels.preparation.storage'}}:</span> {{preparation.storage.fullName}}
+                                    </li>
+                                </ul>
+                            </li>
+                        {{/each}}
+                    </ol>
+                {{/fg.content}}
+            {{/field-group}}
         </div>
         <div class="col-xs-6">
-            {{#dwcm-field-group title='form-component-collecting-event' collapsable=false}}
-                <ul>
-                    <li>
-                        <span>{{t 'fields.labels.collector'}}:</span>
-                        {{#each model.collectingEvent.collectors as |collector|}}
-                            <span class="badge">
-                                {{collector.agent.fullName}}
-                            </span>
-                        {{/each}}
-                    </li>
-                    <li>
-                        <span>{{t 'definitions.date'}}:</span> {{moment-format model.collectingEvent.startDate (date-precision model.collectingEvent.startDatePrecision)}}
-                    </li>
-                    <li>
-                        <span>{{t 'fields.labels.collecting-event.method'}}:</span> {{model.collectingEvent.method}}
-                    </li>
-                    <li>
-                        <span>{{t 'fields.labels.collecting_place'}}:</span> {{model.collectingEvent.locality.localityName}}
-                    </li>
-                </ul>
-            {{/dwcm-field-group}}
+            {{#field-group title='form-component-collecting-event' collapsable=false as |fg|}}
+                {{#fg.content}}
+                    <ul>
+                        <li>
+                            <span>{{t 'fields.labels.collector'}}:</span>
+                            {{#each model.collectingEvent.collectors as |collector|}}
+                                <span class="badge">
+                                    {{collector.agent.fullName}}
+                                </span>
+                            {{/each}}
+                        </li>
+                        <li>
+                            <span>{{t 'definitions.date'}}:</span> {{moment-format model.collectingEvent.startDate (date-precision model.collectingEvent.startDatePrecision)}}
+                        </li>
+                        <li>
+                            <span>{{t 'fields.labels.collecting-event.method'}}:</span> {{model.collectingEvent.method}}
+                        </li>
+                        <li>
+                            <span>{{t 'fields.labels.collecting_place'}}:</span> {{model.collectingEvent.locality.localityName}}
+                        </li>
+                    </ul>
+                {{/fg.content}}
+            {{/field-group}}
             {{#if model.collectingEvent.locality.validLocation}}
-                {{#dwcm-field-group title='definitions.map' class='dwcm-collectionobject-view__map' collapsable=false}}
-                    {{#map-view
-                        zoom=mapZoom
-                        center=model.collectingEvent.locality.location
-                        onZoom=(action (mut mapZoom))
-                    }}
-                        {{#circle-marker-layer
-                            location=model.collectingEvent.locality.location
-                            radius=(metersToPixels model.collectingEvent.locality.uncertaintyRadius mapZoom)
-
-                            color='#FF0000'
+                {{#field-group title='definitions.map' class='dwcm-collectionobject-view__map' collapsable=false as |fg|}}
+                    {{#fg.content}}
+                        {{#map-view
+                            zoom=mapZoom
+                            center=model.collectingEvent.locality.location
+                            onZoom=(action (mut mapZoom))
                         }}
-                            <p>{{model.collectingEvent.locality.localityName}}</p>
-                        {{/circle-marker-layer}}
-                    {{/map-view}}
-                {{/dwcm-field-group}}
+                            {{#circle-marker-layer
+                                location=model.collectingEvent.locality.location
+                                radius=(metersToPixels model.collectingEvent.locality.uncertaintyRadius mapZoom)
+
+                                color='#FF0000'
+                            }}
+                                <p>{{model.collectingEvent.locality.localityName}}</p>
+                            {{/circle-marker-layer}}
+                        {{/map-view}}
+                    {{/fg.content}}
+                {{/field-group}}
             {{/if}}
         </div>
     </div>
