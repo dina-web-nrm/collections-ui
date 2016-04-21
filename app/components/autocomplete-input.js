@@ -171,17 +171,19 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
         */
         onKeyDown (value, event) {
             this.set('hasFocus', true);
-
+            
             if ([38, 40, 13, 27, 9].indexOf(event.keyCode) !== -1) {
                 let index = this.get('highlightedIndex');
+                let preventDefault = false;
 
                 // Arrow key up.
                 if (event.keyCode === 38) {
                     index -= 1;
+                    preventDefault = true;
                 // Arrow key down
                 } else if (event.keyCode === 40) {
                     index += 1;
-
+                    preventDefault = true;
                 // Enter key
                 } else if (event.keyCode === 13) {
                     this.send(
@@ -193,6 +195,7 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
                 // ESC and TAB key should remove focus.
                 } else if ([27, 9].indexOf(event.keyCode) !== -1) {
                     this.set('hasFocus', false);
+                    preventDefault = true;
                 }
 
                 if (index < 0) {
@@ -202,7 +205,11 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
                 }
 
                 this.set('highlightedIndex', index);
-
+                
+                if (preventDefault) {
+                    event.preventDefault();
+                }
+                
                 return false;
             }
 
