@@ -1,18 +1,23 @@
 {{#dwcm-field-group title=title identifier="dwcm-basic-data"}}
     <div class="row">
         <div class="col-xs-6">
-            <label>{{t 'fields.labels.collection'}}</label>
-            {{#autocomplete-input
-                storeName='collection'
-                displayField='collectionName'
-                filterField='collectionName'
-                itemSelected=(action 'collectionSelected')
-                item=model.collection
-
-                as |ai|
+            {{#validation/form-group
+                isValid=(v-get model 'collection' 'isValid')
+                message=(v-get model 'collection' 'message')
             }}
-                {{ai.dropdown}}
-            {{/autocomplete-input}}
+                <label>{{t 'fields.labels.collection'}}:</label>
+                {{#autocomplete-input
+                    storeName='collection'
+                    displayField='collectionName'
+                    filterField='collectionName'
+                    itemSelected=(action 'collectionSelected')
+                    item=model.collection
+
+                    as |ai|
+                }}
+                    {{ai.dropdown}}
+                {{/autocomplete-input}}
+            {{/validation/form-group}}
         </div>
         <div class="col-xs-2">
             {{#validation/form-group

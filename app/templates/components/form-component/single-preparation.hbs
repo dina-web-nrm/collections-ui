@@ -34,12 +34,17 @@
 <div class="col-xs-12">
     <div class="row">
         <div class="col-xs-3">
-            <label>{{t 'fields.labels.preparation.preparation-type'}}:</label>
-            {{pick-list
-                model='prep-type' filterKeys='collectionID'
-                displayField='name' valueField='id'
-                update=(action 'setPreparationType')
+            {{#validation/form-group
+                isValid=(v-get model 'preparationType' 'isValid')
+                message=(v-get model 'preparationType' 'message')
             }}
+                <label>{{t 'fields.labels.preparation.preparation-type'}}:</label>
+                {{pick-list
+                    model='prep-type' filterKeys='collectionID'
+                    displayField='name' valueField='id'
+                    update=(action 'setPreparationType')
+                }}
+            {{/validation/form-group}}
         </div>
         <div class="col-xs-3">
             {{#validation/form-group}}
