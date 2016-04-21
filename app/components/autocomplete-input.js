@@ -18,7 +18,11 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
         if (value) {
             if (value !== this.get('value')) {
                 this.set('value', value);
+                this.set('selected', true);
             }
+        } else {
+            this.set('selected', false);
+            this.set('value', '');
         }
     },
 
@@ -154,11 +158,6 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
             this.fetchData();
         }
 
-        // Set item as undefined.
-        if (!this.get('multiSelect')) {
-            this.get('itemSelected')();
-        }
-
         this.set('highlightedIndex', -1);
     },
 
@@ -237,6 +236,11 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
 
             // Should be set from parent.
             this.attrs.itemSelected(item);
+        },
+        
+        /** Clear selection in field. */
+        clearSelection() {
+            this.attrs.itemSelected();
         }
     }
 });

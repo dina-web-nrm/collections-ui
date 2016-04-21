@@ -7,6 +7,18 @@
 }
 
 .autocomplete-input {
+    
+    .form-control[disabled] {
+        cursor: default;
+    }
+    
+    .autocomplete-input__clear-button {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: @gray-darker;
+    }
+    
     .autocomplete-input__dropdown-subset {
         background: @brand-danger-lighter;
         padding: 3px;
