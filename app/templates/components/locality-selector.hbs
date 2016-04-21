@@ -116,6 +116,9 @@
                                     if locality.hover '#bd0026' '#027cb1'
                                 )
                             )
+
+                            onMouseover=(action 'hover' locality true)
+                            onMouseout=(action 'hover' locality false)
                         }}
                             <p>
                                 <strong>{{locality.localityName}}</strong>
@@ -166,7 +169,7 @@
             <div class="list-group">
                 {{#each localities as |locality|}}
                     <a
-                        class="list-group-item clickable"
+                        class="list-group-item clickable {{if locality.hover 'hover'}}"
                         {{action 'open' locality on='click'}}
                         {{action 'hover' locality true on='mouseEnter'}}
                         {{action 'hover' locality false on='mouseLeave'}}
