@@ -39,7 +39,10 @@ module.exports = function(environment) {
                 piwikUrl: 'https://monitor.dina-web.net',
                 siteId: 2
             }
-    }]
+    }],
+    'ember-composable-helpers': {
+      only: ['filter-by']
+    }
   };
 
   if (environment === 'development') {

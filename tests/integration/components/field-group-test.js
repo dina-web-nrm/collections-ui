@@ -9,16 +9,22 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });"
 
-  this.render(hbs`{{field-group}}`);
+  this.render(hbs`{{field-group title='definitions.name'}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$().text().trim(), 'Namn');
 
   // Template block usage:"
   this.render(hbs`
-    {{#field-group}}
-      template block text
+    {{#field-group title='definitions.name' as |fg|}}
+        {{#fg.content}}
+            Content
+        {{/fg.content}}
+        {{#fg.toolbar}}
+            Toolbar
+        {{/fg.toolbar}}
     {{/field-group}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('.field-group__content').text().trim(), 'Content');
+  assert.equal(this.$('.field-group__toolbar').text().trim(), 'Toolbar');
 });

@@ -101,11 +101,8 @@ export default Ember.Component.extend({
         },
         
         /** Add comment to collecting event. */
-        addComment(type) {
-            if (type === 'verbatim')
-                console.log('Add new VERBATIM FIELD!');
-            else
-                console.log('Add new COMMENT!');
+        addComment(/* type */) {
+            // TODO: Add attachments.
         }
     }
 });
