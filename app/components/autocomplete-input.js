@@ -197,15 +197,15 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
                     this.set('hasFocus', false);
                     preventDefault = true;
                 }
-
+                
                 if (index < 0) {
                     index = 0;
-                } else if (index > this.get('previewData').length - 1) {
-                    index = this.get('previewData').length - 1;
+                } else if (index > this.get('previewData.length') - 1) {
+                    index = this.get('previewData.length') - 1;
                 }
 
                 this.set('highlightedIndex', index);
-                
+
                 if (preventDefault) {
                     event.preventDefault();
                 }
