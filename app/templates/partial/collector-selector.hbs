@@ -1,0 +1,24 @@
+<label>{{t 'fields.labels.collector'}}</label>
+<div class="label-group {{if model.collectingEvent.collectors.length '' 'closed'}}">
+    {{#each model.collectingEvent.collectors as |collector|}}
+        <span class="label label-default">
+            {{collector.agent.fullName}} 
+            <i class="glyphicon glyphicon-remove-circle clickable"
+                {{action 'removeCollector' collector}}
+            ></i>
+        </span>
+    {{/each}}
+</div>
+
+{{#autocomplete-input
+    multiSelect=true
+
+    storeName="agent"
+    filterField="lastName"
+    displayField="fullName"
+    itemSelected=(action "createCollector")
+
+    as |ai|
+}}
+    {{ai.dropdown}}
+{{/autocomplete-input}}

@@ -79,17 +79,18 @@
 
     <div class="row">
         <div class="col-xs-8">
-            {{dwcm-autocomplete-textfield
-                label='fields.labels.preparation.storage'
-
+            <label>{{t 'fields.labels.preparation.storage'}}</label>
+            {{#autocomplete-input
                 storeName='storage'
-
                 displayField='fullName'
                 filterField='fullName'
-
                 itemSelected=(action 'setStorage')
+                item=model.storage
 
+                as |ai|
             }}
+                {{ai.dropdown}}
+            {{/autocomplete-input}}
         </div>
         <div class="col-xs-4">
             {{#validation/form-group}}
