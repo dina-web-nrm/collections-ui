@@ -1,3 +1,5 @@
+/* global L */
+
 import Ember from 'ember';
 
 export default Ember.Component.extend({
@@ -57,6 +59,12 @@ export default Ember.Component.extend({
             if (this.attrs.onZoom) {
                 this.attrs.onZoom(event.target.getZoom(), event);
             }
+        },
+        onLoad(event) {
+            this.send('updateBounds', event);
+            
+            // Add scale indicator.
+            L.control.scale().addTo(event.target);
         }
     }
 });

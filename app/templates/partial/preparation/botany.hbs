@@ -1,26 +1,31 @@
 {{#each model.preparations as |preparation|}}
     <div class="row">
         <div class="col-xs-4">
-            <div class="form-group form-group-sm">
+            {{#validation/form-group
+                isValid=(v-get model.preparations.firstObject 'preparationType' 'isValid')
+                message=(v-get model.preparations.firstObject 'preparationType' 'message')
+            }}
                 <label>{{t 'fields.labels.preparation.preparation-type'}}:</label>
                 {{pick-list
                     model='prep-type' filterKeys='collectionID'
                     displayField='name' valueField='id'
                     update=(action 'setPreparationType')
                 }}
-            </div>
+            {{/validation/form-group}}
         </div>
         <div class="col-xs-8">
-            {{dwcm-autocomplete-textfield
-                label='fields.labels.preparation.storage'
-
+            <label>{{t 'fields.labels.preparation.storage'}}</label>
+            {{#autocomplete-input
                 storeName='storage'
-
                 displayField='fullName'
                 filterField='fullName'
-
                 itemSelected=(action 'setStorage')
+                item=model.preparations.firstObject.storage
+
+                as |ai|
             }}
+                {{ai.dropdown}}
+            {{/autocomplete-input}}
         </div>
     </div>
 {{/each}}

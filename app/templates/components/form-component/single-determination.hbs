@@ -55,16 +55,18 @@
 {{/if}}
 <div class="row">
     <div class="col-xs-6">
-        {{
-            dwcm-autocomplete-textfield
-            label="definitions.name"
-
+        <label>{{t 'definitions.name'}}:</label>
+        {{#autocomplete-input
             storeName='taxon'
-
             displayField='fullName'
             filterField='fullName'
             itemSelected=(action 'setTaxonomy')
+            item=model.taxon
+
+            as |ai|
         }}
+            {{ai.dropdown}}
+        {{/autocomplete-input}}
     </div>
     {{#unless configuration.hide.confidence}}
         <div class="col-xs-3">
@@ -91,16 +93,18 @@
 </div>
 <div class="row">
     <div class="col-xs-6">
-        {{
-            dwcm-autocomplete-textfield
-            label="fields.labels.determination.determiner"
-
+        <label>{{t 'fields.labels.determination.determiner'}}:</label>
+        {{#autocomplete-input
             storeName='agent'
-
             displayField='fullName'
             filterField='lastName'
             itemSelected=(action 'setDeterminer')
+            item=model.determiner
+            
+            as |ai|
         }}
+            {{ai.dropdown}}
+        {{/autocomplete-input}}
     </div>
     <div class="col-md-4 col-xs-6">
         <div class="form-group form-group-sm">
