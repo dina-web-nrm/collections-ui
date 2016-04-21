@@ -1,0 +1,69 @@
+.label-group {
+    margin-bottom: 5px;
+}
+
+.dropdown-group {
+    position: relative;
+}
+
+.autocomplete-input {
+    
+    .form-control[disabled] {
+        cursor: default;
+    }
+    
+    .autocomplete-input__clear-button {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: @gray-darker;
+        z-index: 1;
+        
+        &:hover {
+            color: @gray-dark;
+        }
+    }
+    
+    .autocomplete-input__dropdown-subset {
+        background: @brand-danger-lighter;
+        padding: 3px;
+        color: @brand-danger;
+        text-align: right;
+    }
+    
+    .autocomplete-input__inline {
+        position: absolute;
+        right: 0;
+        top: 0;
+        
+        .btn {
+            margin: 5px 5px;
+        }
+        
+        .result-subset {
+            float: left;
+            height: 35px;
+            line-height: 31px;
+            padding: 1px 0;
+            span {
+                height: 31px;
+                display: inline-block;
+                padding: 0 5px;
+                margin: 1px;
+                font-weight: bold;
+                border-radius: @border-radius-base;
+            }
+            
+            .subset-success {
+                background: @brand-success-lighter;
+                color: @brand-success;            
+            }
+            
+            .subset-danger {
+                background: @brand-danger-lighter;
+                color: @brand-danger;
+            }
+        }
+    }
+}
+

@@ -5,21 +5,24 @@ import Filterable from '../mixins/filterable';
 
 export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
 
-    /** Bind conditional classes. */
-    classNameBindings: ['hasSelected:has-success', 'isInvalid:has-error', '!removeCreate:input-group'],
-
     /** Setup component css classes. */
     classNames: [
         'autocomplete-input', 'dropdown-group'
     ],
 
     /** Update when item being updated from outside. */
-    didUpdateAttrs() {
+    didReceiveAttrs() {
         this._super(...arguments);
-        const item = this.get('item');
+        const value = this.get(`item.${this.get('displayField')}`);
 
-        if (item && item !== this.get('hasSelected')) {
-            this.set('hasSelected', item);
+        if (value) {
+            if (value !== this.get('value')) {
+                this.set('value', value);
+                this.set('selected', true);
+            }
+        } else {
+            this.set('selected', false);
+            this.set('value', '');
         }
     },
 
@@ -30,12 +33,6 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
      *
      */
     multiSelect: false,
-
-    /** Setting to disable create button. */
-    disableCreate: true,
-
-    /** Setting to hide the create button. */
-    removeCreate: true,
 
     /** Injected services. */
     store: Ember.inject.service('store'),
@@ -48,9 +45,6 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
     
     /** Limit number of responses. */
     limit: 40,
-
-    /** Has valid selection. */
-    hasSelected: false,
 
     /** Highligted index in dropdown. */
     highlightedIndex: -1,
@@ -66,27 +60,6 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
         }
     }.observes('highlightedIndex', 'hasFocus'),
 
-    /** Handle item select. */
-    onSelected: function () {
-        if (this.get('hasSelected')) {
-            this.set(
-                'value', this.get('hasSelected').get(this.get('displayField', 'name'))
-            );
-
-            this.set('hasFocus', false);
-        }
-    }.observes('hasSelected'),
-
-    /** Return if input is invalid. */
-    isInvalid: Ember.computed('hasSelected', 'hasFocus', 'value', function () {
-        const isInvalid = (
-            (this.get('value') && this.get('value').length > 0 && !this.get('multiSelect')) &&
-            !this.get('hasFocus') && !this.get('hasSelected')
-        );
-
-        return isInvalid;
-    }),
-
     /** Data to display in preview dropdown. */
     previewData: [],
 
@@ -101,7 +74,10 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
 
     /** Return if preview dropdown is visible. */
     isDropdownVisible: Ember.computed('previewData', 'hasFocus', function () {
-        const visible = (this.get('previewData').length || this.get('value.length')) && this.get('hasFocus');        
+        const visible = (
+            (this.get('previewData').length || this.get('value.length')) &&
+            this.get('hasFocus')
+        );
         return visible;
     }),
 
@@ -182,12 +158,6 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
             this.fetchData();
         }
 
-        // Set item as undefined.
-        if (!this.get('multiSelect')) {
-            this.get('itemSelected')();
-            this.set('hasSelected', false);
-        }
-
         this.set('highlightedIndex', -1);
     },
 
@@ -201,17 +171,19 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
         */
         onKeyDown (value, event) {
             this.set('hasFocus', true);
-
+            
             if ([38, 40, 13, 27, 9].indexOf(event.keyCode) !== -1) {
                 let index = this.get('highlightedIndex');
+                let preventDefault = false;
 
                 // Arrow key up.
                 if (event.keyCode === 38) {
                     index -= 1;
+                    preventDefault = true;
                 // Arrow key down
                 } else if (event.keyCode === 40) {
                     index += 1;
-
+                    preventDefault = true;
                 // Enter key
                 } else if (event.keyCode === 13) {
                     this.send(
@@ -223,16 +195,21 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
                 // ESC and TAB key should remove focus.
                 } else if ([27, 9].indexOf(event.keyCode) !== -1) {
                     this.set('hasFocus', false);
+                    preventDefault = true;
                 }
-
+                
                 if (index < 0) {
                     index = 0;
-                } else if (index > this.get('previewData').length - 1) {
-                    index = this.get('previewData').length - 1;
+                } else if (index > this.get('previewData.length') - 1) {
+                    index = this.get('previewData.length') - 1;
                 }
 
                 this.set('highlightedIndex', index);
 
+                if (preventDefault) {
+                    event.preventDefault();
+                }
+                
                 return false;
             }
 
@@ -251,19 +228,26 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
          * Handle click event in dropdown list.
          */
         onItemClick (item) {
-            // Should be set from parent.
-            this.attrs.itemSelected(item);
-
             if (!this.get('multiSelect')) {
-                this.set('hasSelected', item);
+                this.$('input').blur();
+                this.set('hasFocus', false);
 
-            // If multi select clear the value, close the dropdown and give focus to
+            // If multi select clear the value,
+            // close the dropdown and give focus to
             // input field.
             } else {
                 this.set('value', '');
                 this.set('previewData', []);
                 this.$('input').focus();
             }
+
+            // Should be set from parent.
+            this.attrs.itemSelected(item);
+        },
+        
+        /** Clear selection in field. */
+        clearSelection() {
+            this.attrs.itemSelected();
         }
     }
 });

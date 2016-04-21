@@ -1,16 +1,18 @@
 <div class="container">
     <form class="form-signin" {{action 'authenticate' on='submit'}}>
-        {{
-            dwcm-autocomplete-textfield
-            label="definitions.user"
+        <label>{{t 'definitions.user'}}</label>
+        {{#autocomplete-input
             storeName='agent'
             displayField='fullName'
             filterField='lastName'
 
             itemSelected=(action 'agentSelected')
+            item=agent
 
+            as |ai|
         }}
-
+            {{ai.dropdown}}
+        {{/autocomplete-input}}
         <button class="btn btn-md btn-primary btn-block" type="submit">
             {{t 'definitions.sign-in'}}
         </button>
