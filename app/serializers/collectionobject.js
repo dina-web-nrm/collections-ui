@@ -4,6 +4,10 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
     primaryKey: 'collectionObjectID',
     attrs: {
         agent: 'createdByAgentID',
+        attachments: {
+            key: 'collectionobjectattachmentsList',
+            serialize: 'records'
+        },
         cataloger: 'catalogerID',
         collection: 'collectionMemberID',
         accession: 'accessionID',
@@ -63,6 +67,13 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         });
 
         delete json.preparations;
+
+        json.collectionobjectattachmentList = json.attachments;
+        json.collectionobjectattachmentList.forEach(function(element) {
+            element.collectionMemberID = json.collectionMemberID;
+        });
+
+        delete json.attachments;
 
         json.collectionObjectAttributeID = json.objectAttribute;
 

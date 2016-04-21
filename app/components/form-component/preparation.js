@@ -65,10 +65,14 @@ export default Ember.Component.extend({
         
         /** Add comment to preparation. */
         addComment(type) {
-            if (type === 'verbatim')
-                console.log('Add new VERBATIM FIELD!');
-            else
-                console.log('Add new COMMENT!');
+            const store = this.get('store');
+
+            let attachment = store.createRecord('collection-object-attachment', {
+                ordinal: type === 'verbatim' ? 1 : 0, 
+                originalAttachment: store.createRecord('attachment', {})
+            });
+
+            this.model.get('attachments').pushObject(attachment);
         }
     }
 });
