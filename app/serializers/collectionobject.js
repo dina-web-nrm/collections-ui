@@ -5,7 +5,7 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
     attrs: {
         agent: 'createdByAgentID',
         attachments: {
-            key: 'collectionobjectattachmentsList',
+            key: 'collectionobjectattachmentList',
             serialize: 'records'
         },
         cataloger: 'catalogerID',

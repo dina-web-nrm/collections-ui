@@ -75,6 +75,28 @@
                             </li>
                         {{/each}}
                     </ol>
+                    <div class='row'>
+                        {{#each (filter-by "ordinal" 1 model.attachments) as |attachment index|}}
+                            <div class='col-xs-12 col-md-6'>
+                                <label>{{t 'definitions.verbatim-field'}} {{one-index index}}</label>
+                                {{textarea
+                                    value=attachment.originalAttachment.remarks
+                                    class='form-control input-sm verbatim'
+                                    readonly=true
+                                }}
+                            </div>
+                        {{/each}}
+                        {{#each (filter-by "ordinal" 0 model.attachments) as |attachment index|}}
+                            <div class='col-xs-12 col-md-6'>
+                                <label>{{t 'definitions.comment-field'}} {{one-index index}}</label>
+                                {{textarea
+                                    value=attachment.originalAttachment.remarks
+                                    class='form-control input-sm'
+                                    readonly=true
+                                }}
+                            </div>
+                        {{/each}}
+                    </div>
                 {{/fg.content}}
             {{/field-group}}
         </div>
