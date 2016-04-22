@@ -116,7 +116,9 @@ export default Ember.Component.extend({
         removeAttachment(attachment) {
             let original = attachment.get('originalAttachment');
             original.then((record)=>{
-                record && record.destroyRecord();
+                if (record) {
+                    record.destroyRecord();   
+                }
                 attachment.destroyRecord();
             });
         }
