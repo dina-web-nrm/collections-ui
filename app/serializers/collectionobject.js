@@ -100,6 +100,13 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
 
             json.collectingEventID.collectorList = json.collectingEventID.collectors;
             delete json.collectingEventID.collectors;
+
+            json.collectingEventID.collectingeventattachmentList = json.collectingEventID.attachments;
+            json.collectingEventID.collectingeventattachmentList.forEach(function(element) {
+                element.collectionMemberID = json.collectionMemberID;
+            });
+
+            delete json.collectingEventID.attachments;
         }
 
         delete json.collectingEvent;

@@ -100,9 +100,16 @@ export default Ember.Component.extend({
             this.set(`model.collectingEvent.${field}Precision`, precision);
         },
         
-        /** Add comment to collecting event. */
-        addComment(/* type */) {
-            // TODO: Add attachments.
+        /** Add comment to preparation. */
+        addComment(type) {
+            const store = this.get('store');
+
+            let attachment = store.createRecord('collecting-event-attachment', {
+                ordinal: type === 'verbatim' ? 1 : 0, 
+                originalAttachment: store.createRecord('attachment', {})
+            });
+
+            this.model.get('collectingEvent').get('attachments').pushObject(attachment);
         }
     }
 });

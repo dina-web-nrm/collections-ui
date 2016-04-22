@@ -4,26 +4,27 @@
 }}
     {{#fieldGroup.content}}
         {{partial partialType}}
+        {{attachments-list attachments=model.attachments}}
     {{/fieldGroup.content}}
-    
-    {{#unless configuration.disableAdd}}
-        {{#fieldGroup.toolbar}}
+
+    {{#fieldGroup.toolbar}}
+        {{#unless configuration.disableAdd}}
             <a class="btn btn-primary btn-xs" {{action "addPreparation"}}>
                 <i class="glyphicon glyphicon-plus"></i> 
                 {{t 'fields.labels.preparation.add'}}
             </a>
-            {{#dropdown-button
-                label='definitions.add-comment'
-                iconClass='glyphicon-comment'
-                class='pull-right' as |db|
-            }}
-                {{#db.item click=(action "addComment")}}
-                    {{t 'definitions.comment-field'}}
-                {{/db.item}}
-                {{#db.item click=(action "addComment" "verbatim")}}
-                    {{t 'definitions.verbatim-field'}}
-                {{/db.item}}
-            {{/dropdown-button}}
-        {{/fieldGroup.toolbar}}
-    {{/unless}}
+        {{/unless}}
+        {{#dropdown-button
+            label='definitions.add-comment'
+            iconClass='glyphicon-comment'
+            class='pull-right' as |db|
+        }}
+            {{#db.item click=(action "addComment")}}
+                {{t 'definitions.comment-field'}}
+            {{/db.item}}
+            {{#db.item click=(action "addComment" "verbatim")}}
+                {{t 'definitions.verbatim-field'}}
+            {{/db.item}}
+        {{/dropdown-button}}
+    {{/fieldGroup.toolbar}}
 {{/field-group}}
