@@ -103,25 +103,10 @@
         <div class="col-xs-6">
             {{#field-group title='form-component-collecting-event' collapsable=false as |fg|}}
                 {{#fg.content}}
-                    <ul>
-                        <li>
-                            <span>{{t 'fields.labels.collector'}}:</span>
-                            {{#each model.collectingEvent.collectors as |collector|}}
-                                <span class="badge">
-                                    {{collector.agent.fullName}}
-                                </span>
-                            {{/each}}
-                        </li>
-                        <li>
-                            <span>{{t 'definitions.date'}}:</span> {{moment-format model.collectingEvent.startDate (date-precision model.collectingEvent.startDatePrecision)}}
-                        </li>
-                        <li>
-                            <span>{{t 'fields.labels.collecting-event.method'}}:</span> {{model.collectingEvent.method}}
-                        </li>
-                        <li>
-                            <span>{{t 'fields.labels.collecting_place'}}:</span> {{model.collectingEvent.locality.localityName}}
-                        </li>
-                    </ul>
+                    {{attributes-list
+                        model=model.collectingEvent
+                        attributes=configuration.component.collectingEvent.preview.attributes
+                    }}
                 {{/fg.content}}
             {{/field-group}}
             {{#if model.collectingEvent.locality.validLocation}}

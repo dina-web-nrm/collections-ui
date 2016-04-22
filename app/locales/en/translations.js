@@ -105,7 +105,8 @@ export default {
             'habitat-substrate': 'Habitat/Substrate',
             'botany-description': 'Object description at collection',
             'collecting-circumstance': 'Collecting circumstance',
-            'verbatim-date': 'Verbatim date'
+            'verbatim-date': 'Verbatim date',
+            'given-name': 'Given name'
         },
         'single-determination': {
             'verbatim-taxon': 'Taxonomy, determined, date',
