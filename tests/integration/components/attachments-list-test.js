@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
@@ -6,19 +7,18 @@ moduleForComponent('attachments-list', 'Integration | Component | attachments li
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });"
+  this.set('attachments', [Ember.Object.create({ordinal: 0})]);
+  
+  this.render(hbs`{{attachments-list attachments=attachments}}`);
 
-  this.render(hbs`{{attachments-list}}`);
-
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$('').text().trim(), 'Kommentarsfält 1');
 
   // Template block usage:"
   this.render(hbs`
-    {{#attachments-list}}
-      template block text
+    {{#attachments-list attachments=attachments}}
+        This text should not be rendered
     {{/attachments-list}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), 'Kommentarsfält 1');
 });
