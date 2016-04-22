@@ -58,6 +58,12 @@ export default {
         "search.input": "Sök på art/ID"
     },
     component: {
+        'attachments-list': {
+            'remove': {
+                'title': 'Ta bort fält',
+                'body': 'Du håller på att ta bort ett extrafält. Vill du fortsätta?'
+            }
+        },
         'locality-selector': {
             'to-many-results': 'För många fyndplatser. Välj ett mindre område.',
             'search-geography': 'Sök på ort, område, land',

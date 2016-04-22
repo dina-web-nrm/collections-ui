@@ -1,35 +1,11 @@
-{{#if displayConfirmDialog}}
-    {{#modal-dialog
-        renderInPlace=true
-        targetAttachment="center"
-        translucentOverlay=true
-        containerClassNames='modal-dialog'
-    }}
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">
-                    {{t 'component.single-determination.remove.title'}}
-                </h4>
-            </div>
-            <div class="modal-body">
-                {{t 'component.single-determination.remove.body'}}
-            </div>
-            <div class="modal-footer">
-                <button
-                    type="button"
-                    class="btn btn-default btn-sm"
-                     {{action 'toggleDestroy'}}
-                >{{t 'definitions.abort'}}</button>
-                <button
-                    type="button"
-                    class="btn btn-danger btn-sm"
-                     {{action 'remove'}}
-                >{{t 'definitions.continue'}}</button>
-            </div>
-        </div>
-    {{/modal-dialog}}
-{{/if}}
-
+{{#confirm-dialog
+    title='component.single-determination.remove.title'
+    abort=(action 'toggleDestroy')
+    continue=(action 'remove')
+    isVisible=displayConfirmDialog
+}}
+    {{t 'component.single-determination.remove.body'}}
+{{/confirm-dialog}}
 <div class="dwcm-single-determination__header">
     <div class="pull-left dwcm-single-determination__current">
         {{input type='checkbox' checked=model.isCurrent}}
