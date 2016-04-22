@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('dwcm-field-group', 'Integration | Component | field group', {
+moduleForComponent('field-group/content', 'Integration | Component | field group/content', {
   integration: true
 });
 
@@ -9,16 +9,16 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });"
 
-  this.render(hbs`{{dwcm-field-group title="definitions.name"}}`);
+  this.render(hbs`{{field-group/content}}`);
 
-  assert.equal(this.$().text().trim(), 'Namn');
+  assert.equal(this.$().text().trim(), '');
 
   // Template block usage:"
   this.render(hbs`
-    {{#dwcm-field-group title="definitions.name"}}
+    {{#field-group/content}}
       template block text
-    {{/dwcm-field-group}}
+    {{/field-group/content}}
   `);
 
-  assert.equal(this.$('.panel-body').text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), 'template block text');
 });

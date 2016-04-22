@@ -11,6 +11,12 @@
         ></i>
     {{/if}}
 </div>
-<div class="panel-body {{if collapsed 'closed' ''}}">
-    {{yield}}
-</div>
+{{yield (hash
+    content=(
+        component 'field-group/content'
+        collapsed=collapsed
+    )
+    toolbar=(
+        component 'field-group/toolbar'
+    )
+)}}

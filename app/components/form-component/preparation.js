@@ -7,10 +7,11 @@ export default Ember.Component.extend({
 
     /** Inject services. */
     store: Ember.inject.service('store'),
-    configuration: Ember.inject.service('form-configuration'),
-    
-    partialType: Ember.computed('configuration.type', function () {
-        return `partial/preparation/${this.get('configuration.type')}`;
+    formConfiguration: Ember.inject.service('form-configuration'),
+    configuration: Ember.computed.alias('formConfiguration.component.preparation'),
+
+    partialType: Ember.computed('formConfiguration.type', function () {
+        return `partial/preparation/${this.get('formConfiguration.type')}`;
     }),
     
     init() {
@@ -61,5 +62,28 @@ export default Ember.Component.extend({
                 'storage', storage
             );
         },
+        
+        /** Add comment to preparation. */
+        addComment(type) {
+            const store = this.get('store');
+
+            let attachment = store.createRecord('collection-object-attachment', {
+                ordinal: type === 'verbatim' ? 1 : 0, 
+                originalAttachment: store.createRecord('attachment', {})
+            });
+
+            this.model.get('attachments').pushObject(attachment);
+        },
+        
+        /** Remove attachment. */
+        removeAttachment(attachment) {
+            let original = attachment.get('originalAttachment');
+            original.then((record)=>{
+                if (record) {
+                    record.destroyRecord();   
+                }
+                attachment.destroyRecord();
+            });
+        }
     }
 });

@@ -16,7 +16,7 @@ const previewAttributes = {
     }],
     collectingEvent: [{
         key: 'givenName',
-        title: ''
+        title: 'component.collecting-event.given-name'
     }, {
         key: 'startDate',
         title: 'fields.labels.collecting-event.start-date.name',
@@ -56,7 +56,7 @@ const CONFIGURATIONS = {
             'form-component-basic-data': 'form-component/basic-data',
             'form-component-determination': 'form-component/determination',
             'form-component-collecting-event': 'form-component/collecting-event',
-            'form-component-preparation': 'form-component/preparation'
+            'form-component-preparation': 'form-component/preparation',
         },
         component: {
             collectingEvent: {
@@ -177,6 +177,9 @@ const CONFIGURATIONS = {
                 preview: {
                     attributes: previewAttributes.localitySelector
                 }
+            },
+            preparation: {
+                disableAdd: true
             }
         }
     },

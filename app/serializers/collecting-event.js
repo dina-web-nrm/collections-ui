@@ -15,6 +15,10 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         collectors: {
             key: 'collectorList',
             serialize: 'records'
+        },
+        attachments: {
+            key: 'collectingeventattachmentList',
+            serialize: 'records'
         }
     },
     serialize() {

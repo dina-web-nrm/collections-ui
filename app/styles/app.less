@@ -11,15 +11,19 @@
 
 @import "components/dwcm-language-selector.less";
 @import "components/dwcm-spinner.less";
+@import "components/dwcm-autocomplete-textfield.less";
 
 @import "components/dwcm-error.less";
-@import "components/dwcm-autocomplete-textfield.less";
 
 @import "components/action-label.less";
 @import "components/attributes-list.less";
+@import "components/attachments-list.less";
 @import "components/autocomplete-input.less";
 
 @import "components/date-picker.less";
+@import "components/dropdown-button.less";
+
+@import "components/field-group.less";
 @import "components/locality-selector.less";
 
 @import "components/form-component/single-determination.less";
@@ -57,10 +61,10 @@ body {
     float: none;
 }
 
-input.verbatim, .verbatim input{
+.verbatim, .verbatim input, .verbatim textarea{
 
     @angle: 45deg;
-    @color: lighten(@brand-warning, 30%);
+    @color: lighten(@brand-warning, 35%);
 
     &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
         color:    @gray-dark;
@@ -79,22 +83,8 @@ input.verbatim, .verbatim input{
     &:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
         color:    @gray-dark;
     }
-
-    background-image: -webkit-linear-gradient(
-        @angle,
-        @color, @color 5px,
-        transparent 5px, transparent 10px
-    );
-    background-image: -o-linear-gradient(
-        @angle,
-        @color, @color 5px,
-        transparent 5px, transparent 10px
-    );
-    background-image: repeating-linear-gradient(
-        @angle,
-        @color, @color 5px,
-        transparent 5px, transparent 10px
-    );
+    
+    background-color: @color;
 }
 
 .btn-inside-form {

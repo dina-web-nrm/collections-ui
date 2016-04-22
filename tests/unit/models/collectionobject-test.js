@@ -9,7 +9,8 @@ moduleForModel('collectionobject', 'Unit | Model | collectionobject', {
       'model:accession',
       'model:preparation',
       'model:collection-object-attribute',
-      'model:collecting-event'
+      'model:collecting-event',
+      'model:collection-object-attachment'
   ]
 });
 

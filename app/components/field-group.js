@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 
     /** Set default css classes. */
-    classNames: ['panel', 'panel-default'],
+    classNames: ['field-group', 'panel', 'panel-default'],
 
     /** Bind passed in *identifier* as id of element. */
     attributeBindings: ['_identifier:id'],

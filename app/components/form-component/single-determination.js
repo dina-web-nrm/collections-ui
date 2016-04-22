@@ -13,12 +13,6 @@ export default Ember.Component.extend({
     
     /** Display destroy modal dialog. */
     displayConfirmDialog: false,
-    
-    /** Convert index from zero index. */
-    displayIndex: function () {
-        let _index = this.get('index');
-        return ++_index;
-    }.property('index'),
 
     actions: {
 
