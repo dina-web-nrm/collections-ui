@@ -53,10 +53,10 @@ const CONFIGURATIONS = {
     1: {
         type: 'zoology-mammals',
         components: {
-            'form-component-preparation': 'form-component/preparation',
             'form-component-basic-data': 'form-component/basic-data',
             'form-component-determination': 'form-component/determination',
             'form-component-collecting-event': 'form-component/collecting-event',
+            'form-component-preparation': 'form-component/preparation',
         },
         component: {
             collectingEvent: {
