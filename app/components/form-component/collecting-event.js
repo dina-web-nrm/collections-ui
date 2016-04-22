@@ -110,6 +110,15 @@ export default Ember.Component.extend({
             });
 
             this.model.get('collectingEvent').get('attachments').pushObject(attachment);
+        },
+        
+        /** Remove attachment. */
+        removeAttachment(attachment) {
+            let original = attachment.get('originalAttachment');
+            original.then((record)=>{
+                record && record.destroyRecord();
+                attachment.destroyRecord();
+            });
         }
     }
 });

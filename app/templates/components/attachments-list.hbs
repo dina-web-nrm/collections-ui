@@ -1,7 +1,13 @@
 <div class='row'>
     {{#each (filter-by "ordinal" 1 attachments) as |attachment index|}}
         <div class='col-xs-12 col-md-6'>
-            <label>{{t 'definitions.verbatim-field'}} {{one-index index}}</label>
+            <label>
+                {{t 'definitions.verbatim-field'}} {{one-index index}}
+            </label>
+            <i
+                class='attachments-list__remove-button glyphicon glyphicon-remove-circle'
+                {{action 'remove' attachment}}
+            ></i>
             {{textarea
                 value=attachment.originalAttachment.remarks
                 class='form-control input-sm verbatim'
@@ -10,7 +16,13 @@
     {{/each}}
     {{#each (filter-by "ordinal" 0 attachments) as |attachment index|}}
         <div class='col-xs-12 col-md-6'>
-            <label>{{t 'definitions.comment-field'}} {{one-index index}}</label>
+            <label>
+                {{t 'definitions.comment-field'}} {{one-index index}}
+            </label>
+            <i
+                class='attachments-list__remove-button glyphicon glyphicon-remove-circle'
+                {{action 'remove' attachment}}
+            ></i>
             {{textarea
                 value=attachment.originalAttachment.remarks
                 class='form-control input-sm'

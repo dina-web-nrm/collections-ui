@@ -4,7 +4,10 @@
             {{partial 'partial/collecting-event/select'}}
         {{else}}
             {{partial 'partial/collecting-event/create'}}
-            {{attachments-list attachments=model.collectingEvent.attachments}}
+            {{attachments-list
+                attachments=model.collectingEvent.attachments
+                remove=(action 'removeAttachment')
+            }}
         {{/unless}}
     {{/fieldGroup.content}}
     {{#if isCreating}}

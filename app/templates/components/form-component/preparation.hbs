@@ -4,7 +4,10 @@
 }}
     {{#fieldGroup.content}}
         {{partial partialType}}
-        {{attachments-list attachments=model.attachments}}
+        {{attachments-list
+            attachments=model.attachments
+            remove=(action 'removeAttachment')
+        }}
     {{/fieldGroup.content}}
 
     {{#fieldGroup.toolbar}}
