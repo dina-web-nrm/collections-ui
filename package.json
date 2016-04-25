@@ -1,6 +1,6 @@
 {
   "name": "dw-collections-manager",
-  "version": "0.1.26",
+  "version": "0.1.27",
   "description": "Collection Manager User Interface for managing Museum Collections.",
   "private": true,
   "directories": {
