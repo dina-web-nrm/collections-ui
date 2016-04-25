@@ -1,9 +1,9 @@
 sudo: required
-services:
-  - docker
 language: node_js
 node_js:
     - '0.12.9'
+services:
+  - docker
 cache:
   directories:
     - node_modules
