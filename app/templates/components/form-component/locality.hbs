@@ -31,7 +31,8 @@
             placeholder='component.locality-selector.search-geography'
 
             itemSelected=(action (mut newLocality.geography))
-
+            item=newLocality.geography
+            
             class='rich'
 
             as |autocompleteInput|
@@ -177,6 +178,7 @@
                 sortBy='fullName'
                 filterKeys='disciplineID'
                 itemSelected=(action 'setStratigraphy' 'lithoStrat')
+                item=newLocality.paleoContext.lithoStrat
                 
                 as |autocompleteInput|
             }}
@@ -195,6 +197,7 @@
                 sortBy='fullName'
                 filterKeys='disciplineID'
                 itemSelected=(action 'setStratigraphy' 'chronosStrat')
+                item=newLocality.paleoContext.chronosStrat
                 
                 as |autocompleteInput|
             }}

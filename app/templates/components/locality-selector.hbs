@@ -14,7 +14,7 @@
         itemSelected=(action this.attrs.update)
         filterKeys='disciplineID'
 
-        item=selectedLocality
+        item=item
         class='rich'
 
         as |autocompleteInput|
@@ -147,6 +147,7 @@
             placeholder='component.locality-selector.search-geography'
 
             itemSelected=(action 'geographySelected')
+            item=geography
 
             class='rich'
 
