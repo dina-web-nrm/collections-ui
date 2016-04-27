@@ -31,7 +31,8 @@
             placeholder='component.locality-selector.search-geography'
 
             itemSelected=(action (mut newLocality.geography))
-
+            item=newLocality.geography
+            
             class='rich'
 
             as |autocompleteInput|
@@ -53,12 +54,12 @@
         {{#map-view
             zoom=zoom center=mapLocation
             onClick=(action 'onLocationUpdate')
-            onZoom=(action (mut newMapZoom))
+            onZoom=(action (mut zoom))
         }}
             {{#if newLocality.validLocation}}
                 {{circle-marker-layer
                     location=newLocality.location
-                    radius=(metersToPixels newLocality.uncertaintyRadius newMapZoom)
+                    radius=(metersToPixels newLocality.uncertaintyRadius zoom)
                     color="#FF0000"
                 }}
             {{/if}}
@@ -84,7 +85,7 @@
                     class="btn btn-primary btn-sm glyphicon glyphicon-record"
                     disabled={{if newLocality.validLocation false true}}
                     title={{t 'component.locality-selector.center-map'}}
-                    {{action this.centerMap}}
+                    {{action 'focusLocality'}}
                 ></button>
             </div>
         </div>
@@ -178,6 +179,7 @@
                 sortBy='fullName'
                 filterKeys='disciplineID'
                 itemSelected=(action 'setStratigraphy' 'lithoStrat')
+                item=newLocality.paleoContext.lithoStrat
                 
                 as |autocompleteInput|
             }}
@@ -196,6 +198,7 @@
                 sortBy='fullName'
                 filterKeys='disciplineID'
                 itemSelected=(action 'setStratigraphy' 'chronosStrat')
+                item=newLocality.paleoContext.chronosStrat
                 
                 as |autocompleteInput|
             }}

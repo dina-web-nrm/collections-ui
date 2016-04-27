@@ -4,6 +4,10 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
     primaryKey: 'collectionObjectID',
     attrs: {
         agent: 'createdByAgentID',
+        attachments: {
+            key: 'collectionobjectattachmentList',
+            serialize: 'records'
+        },
         cataloger: 'catalogerID',
         collection: 'collectionMemberID',
         accession: 'accessionID',
@@ -43,7 +47,6 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         json.createdByAgentID = parseInt(json.createdByAgentID);
 
         json.catalogerID = parseInt(json.createdByAgentID);
-        json.catalogedDate = json.timestampCreated;
 
         json.determinationList = json.determinations;
         json.determinationList.forEach(function(element) {
@@ -64,6 +67,13 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         });
 
         delete json.preparations;
+
+        json.collectionobjectattachmentList = json.attachments;
+        json.collectionobjectattachmentList.forEach(function(element) {
+            element.collectionMemberID = json.collectionMemberID;
+        });
+
+        delete json.attachments;
 
         json.collectionObjectAttributeID = json.objectAttribute;
 
@@ -90,10 +100,16 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
 
             json.collectingEventID.collectorList = json.collectingEventID.collectors;
             delete json.collectingEventID.collectors;
+
+            json.collectingEventID.collectingeventattachmentList = json.collectingEventID.attachments;
+            json.collectingEventID.collectingeventattachmentList.forEach(function(element) {
+                element.collectionMemberID = json.collectionMemberID;
+            });
+
+            delete json.collectingEventID.attachments;
         }
 
         delete json.collectingEvent;
-
         return json;
     }
 });

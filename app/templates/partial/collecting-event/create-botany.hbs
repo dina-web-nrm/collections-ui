@@ -1,23 +1,6 @@
 <div class="row">
     <div class="col-xs-12 col-sm-6">
-        {{#dwcm-autocomplete-textfield
-            label="fields.labels.collector"
-
-            multiSelect=true
-
-            storeName="agent"
-            filterField="lastName"
-            displayField="fullName"
-            itemSelected=(action "createCollector")
-        }}
-            <div class="label-group {{if model.collectingEvent.collectors.length '' 'closed'}}">
-                {{#each model.collectingEvent.collectors as |collector|}}
-                    <span class="label label-default">
-                        {{collector.agent.fullName}} <i class="glyphicon glyphicon-remove clickable" {{action 'removeCollector' collector}}></i>
-                    </span>
-                {{/each}}
-            </div>
-        {{/dwcm-autocomplete-textfield}}
+        {{partial 'partial/collector-selector'}}
     </div>
     <div class="col-xs-12 col-sm-6">
         <div class="row">

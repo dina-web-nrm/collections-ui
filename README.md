@@ -26,9 +26,13 @@ You will need the following things properly installed on your computer.
 * `ember server`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
-### Code Generators
+### Setting up API connection
 
-Make use of the many generators for code, try `ember help generate` for more details
+To be able to use the application properly you will need to run a version of the API as well.
+The API and instructions on how to run it can be found in the [dina-web/dw-collections repository](https://github.com/DINA-Web/dw-collections).
+
+Once you have the API up and running modify the HOST  in the `development` section in `config/environment.js`
+to match the URL to your API.
 
 ### Running Tests
 
@@ -42,7 +46,22 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+The application can be deployed using [Docker](https://www.docker.com/) and a `Dockerfile` is included to build
+an image including a production build of the application and a [nginx](https://www.nginx.com/) server.
+
+To build a Docker image of the application:
+
+* `ember build --environment production --output-path dw-collection-manager`
+* `docker build --tag slug/repo_name:version .`
+
+Once you've run these two commands you'll have a Docker image that you can deploy.
+
+### Building with Travis
+
+By default this repository will be built using Travis-ci and a release will be generated
+and uploaded to github releases and [docker hub](https://hub.docker.com/r/dina/collections-ui/) for each tag.
+
+The integration repository [dina-web/dw-collections-ui](https://github.com/DINA-Web/dw-collections-ui) can be used to deploy the application.
 
 ## Further Reading / Useful Links
 

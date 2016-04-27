@@ -1,7 +1,5 @@
 import Ember from 'ember';
 
-import moment from 'moment';
-
 export default Ember.Controller.extend({
     
     /** Inject services. */
@@ -9,12 +7,7 @@ export default Ember.Controller.extend({
     session: Ember.inject.service(),
     configuration: Ember.inject.service('form-configuration'),
     solr: Ember.inject.service(),
-
-    _displayErrors: false,
-
-    validationError: Ember.computed('model.validations.messages', '_displayErrors', function () {
-        return this.get('_displayErrors') && this.model.get('validations.messages.length');
-    }),
+    validation: Ember.inject.service(),
 
     type: Ember.computed('configuration.type', function () {
         if (this.get('configuration.type')) {
@@ -34,9 +27,13 @@ export default Ember.Controller.extend({
 
     /** Trigger scroll to validation messages. */
     scrollToValidation () {
-        Ember.$('html, body').animate({
-            scrollTop: Ember.$('#validation-messages').offset().top - 10
-        }, 300);
+        let element = Ember.$('.form-group.has-error');
+        
+        if (element) {
+            Ember.$('html, body').animate({
+                scrollTop: element.offset().top - 10
+            }, 300);   
+        }
     },
 
     actions: {
@@ -44,7 +41,7 @@ export default Ember.Controller.extend({
         /** Handle navigation item click. */
         navigationClick(fieldGroupId) {
             Ember.$('html, body').animate({
-                scrollTop: Ember.$('#field-group-' + fieldGroupId).offset().top - 10
+                scrollTop: Ember.$('#field-group-' + fieldGroupId).offset().top - 50
             }, 300);
         },
 
@@ -57,11 +54,11 @@ export default Ember.Controller.extend({
             }
             
             this.model.validate({}, true).then(({model, validations}) => {
-                controller.set('_displayErrors', !validations.get('isValid'));
+                this.set('validation.isHidden', false);
 
                 if (validations.get('isValid')) {
-                    this.model.set('timestampCreated', moment().unix());
 
+                    this.set('validation.isHidden', true);
                     this.store.findRecord(
                         'agent', this.get('session').get('data.authenticated.id') || 3
                     ).then((agent) => {
@@ -75,7 +72,7 @@ export default Ember.Controller.extend({
                         });
                     });
                 } else {
-                    controller.scrollToValidation();
+                    Ember.run.next(this, controller.scrollToValidation);
                 }
             });
         },

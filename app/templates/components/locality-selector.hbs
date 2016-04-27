@@ -14,15 +14,17 @@
         itemSelected=(action this.attrs.update)
         filterKeys='disciplineID'
 
-        item=selectedLocality
+        item=item
         class='rich'
 
         as |autocompleteInput|
     }}
         {{#autocompleteInput.inline}}
-            <a class="btn btn-primary btn-xs clickable" {{action 'toggleMap'}}>
-                {{t 'component.locality-selector.show-map'}}
-            </a>
+            {{#unless item}}
+                <a class="btn btn-primary btn-xs clickable" {{action 'toggleMap'}}>
+                    {{t 'component.locality-selector.show-map'}}
+                </a>
+            {{/unless}}
         {{/autocompleteInput.inline}}
         {{#autocompleteInput.dropdown as |dropdownItem|}}
             <i class='row-icon glyphicon glyphicon-map-marker {{unless dropdownItem.latitude 'inactive'}}'></i>
@@ -116,6 +118,9 @@
                                     if locality.hover '#bd0026' '#027cb1'
                                 )
                             )
+
+                            onMouseover=(action 'hover' locality true)
+                            onMouseout=(action 'hover' locality false)
                         }}
                             <p>
                                 <strong>{{locality.localityName}}</strong>
@@ -144,6 +149,7 @@
             placeholder='component.locality-selector.search-geography'
 
             itemSelected=(action 'geographySelected')
+            item=geography
 
             class='rich'
 
@@ -166,7 +172,7 @@
             <div class="list-group">
                 {{#each localities as |locality|}}
                     <a
-                        class="list-group-item clickable"
+                        class="list-group-item clickable {{if locality.hover 'hover'}}"
                         {{action 'open' locality on='click'}}
                         {{action 'hover' locality true on='mouseEnter'}}
                         {{action 'hover' locality false on='mouseLeave'}}

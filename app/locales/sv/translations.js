@@ -35,7 +35,10 @@ export default {
             "zoology-entomology": "Zoologi, Entomologi",
             "paleontology": "Paleontologi",
             "botany": "Botanik"
-        }
+        },
+        'comment-field': 'Kommentarsfält',
+        'verbatim-field': 'Etikettsfält',
+        'add-comment': 'Lägg till kommentar/etikett'
     },
     main: {
         application_name: "Samlingshanteraren",
@@ -55,6 +58,12 @@ export default {
         "search.input": "Sök på art/ID"
     },
     component: {
+        'attachments-list': {
+            'remove': {
+                'title': 'Ta bort fält',
+                'body': 'Du håller på att ta bort ett extrafält. Vill du fortsätta?'
+            }
+        },
         'locality-selector': {
             'to-many-results': 'För många fyndplatser. Välj ett mindre område.',
             'search-geography': 'Sök på ort, område, land',
@@ -101,7 +110,8 @@ export default {
             'habitat-substrate': 'Habitat/Substrat',
             'botany-description': 'Beskrivning av föremål vid insamling',
             'collecting-circumstance': 'Fyndomständighet',
-            'verbatim-date': 'Verbatimdatum'
+            'verbatim-date': 'Verbatimdatum',
+            'given-name': 'Angivet namn'
         },
         'single-determination': {
             'verbatim-taxon': 'Taxonomi, bestämmare, datum',

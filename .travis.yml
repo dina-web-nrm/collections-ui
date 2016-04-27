@@ -1,7 +1,9 @@
+sudo: required
 language: node_js
 node_js:
-    - '0.12.9'
-sudo: false
+    - '5.11.0'
+services:
+  - docker
 cache:
   directories:
     - node_modules
@@ -19,6 +21,11 @@ script:
     - ember build --environment production --output-path dw-collection-manager
 before_deploy:
     - tar -zcvf release.tar.gz dw-collection-manager
+    - docker build --tag dina/collections-ui:$TRAVIS_TAG .
+    - docker build --tag dina/collections-ui .
+    - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+    - docker push dina/collections-ui
+
 deploy:
   provider: releases
   api_key:

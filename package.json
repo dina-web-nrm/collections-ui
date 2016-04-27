@@ -1,6 +1,6 @@
 {
   "name": "dw-collections-manager",
-  "version": "0.1.22",
+  "version": "0.1.35",
   "description": "Collection Manager User Interface for managing Museum Collections.",
   "private": true,
   "directories": {
@@ -17,7 +17,7 @@
     "url": "https://github.com/DINA-Web/collections-ui.git"
   },
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 5.11.0"
   },
   "author": {
     "name": "Carl Claesson",
@@ -41,6 +41,7 @@
     "ember-cli-release": "0.2.8",
     "ember-cli-sri": "^2.0.0",
     "ember-cli-uglify": "^1.2.0",
+    "ember-composable-helpers": "0.22.0",
     "ember-cp-validations": "2.7.0",
     "ember-data": "2.3.3",
     "ember-disable-proxy-controllers": "^1.0.1",

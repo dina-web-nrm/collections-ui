@@ -49,6 +49,7 @@ export default DS.Model.extend(Validations, DependentRelationships, {
     cataloger: DS.belongsTo('agent', {async: true}),
     collection: DS.belongsTo('collection', {async: true}),
     accession: DS.belongsTo('accession', {async: true}),
+    attachments: DS.hasMany('collection-object-attachment', {async: true}),
     determinations: DS.hasMany('determinations', {async: true}),
     preparations: DS.hasMany('preparations', {async: true}),
     objectAttribute: DS.belongsTo('collection-object-attribute', {async: true}),

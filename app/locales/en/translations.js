@@ -35,7 +35,10 @@ export default {
             "zoology-entomology": "zoology, Entomology",
             "paleontology": "paleontology",
             "botany": "botany"
-        }
+        },
+        'comment-field': 'Comment',
+        'verbatim-field': 'Verbatim field',
+        'add-comment': 'Add comment/verbatimfield'
     },
     main: {
         application_name: "Collection manager",
@@ -55,6 +58,12 @@ export default {
         "search.input": "Search for ID/Species"
     },
     component: {
+        'attachments-list': {
+            'remove': {
+                'title': 'Remove field',
+                'body': 'You are about to remove an extra field. Do you want to continue?'
+            }
+        },
         'locality-selector': {
             'to-many-results': 'Too many localities. Please select a smaller area.',
             'search-geography': 'Search for city, area or country',
@@ -102,7 +111,8 @@ export default {
             'habitat-substrate': 'Habitat/Substrate',
             'botany-description': 'Object description at collection',
             'collecting-circumstance': 'Collecting circumstance',
-            'verbatim-date': 'Verbatim date'
+            'verbatim-date': 'Verbatim date',
+            'given-name': 'Given name'
         },
         'single-determination': {
             'verbatim-taxon': 'Taxonomy, determined, date',

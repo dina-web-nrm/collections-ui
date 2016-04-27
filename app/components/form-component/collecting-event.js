@@ -98,6 +98,29 @@ export default Ember.Component.extend({
         setDateWithPrecision(field, date, precision) {
             this.set(`model.collectingEvent.${field}`, date);
             this.set(`model.collectingEvent.${field}Precision`, precision);
+        },
+        
+        /** Add comment to preparation. */
+        addComment(type) {
+            const store = this.get('store');
+
+            let attachment = store.createRecord('collecting-event-attachment', {
+                ordinal: type === 'verbatim' ? 1 : 0, 
+                originalAttachment: store.createRecord('attachment', {})
+            });
+
+            this.model.get('collectingEvent').get('attachments').pushObject(attachment);
+        },
+        
+        /** Remove attachment. */
+        removeAttachment(attachment) {
+            let original = attachment.get('originalAttachment');
+            original.then((record)=>{
+                if (record) {
+                    record.destroyRecord();   
+                }
+                attachment.destroyRecord();
+            });
         }
     }
 });

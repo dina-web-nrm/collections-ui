@@ -22,14 +22,6 @@
             </li>
         {{/each-in}}
     </ul>
-    <div id="validation-messages" class="alert alert-danger {{if validationError '' 'hidden'}}">
-        <strong>{{t 'main.validation-message.save'}}</strong>
-        <ul>
-            {{#each model.validations.messages as |message|}}
-                <li>{{message}}</li>
-            {{/each}}            
-        </ul>
-    </div>
     {{#each-in groups as |identifier componentName|}}
         {{component componentName title=identifier model=model}}
     {{/each-in}}

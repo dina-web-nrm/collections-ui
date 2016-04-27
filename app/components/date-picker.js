@@ -16,11 +16,7 @@ export default Ember.Component.extend({
     
     date: Ember.computed('year', 'month', 'day', function () {
         let date = this.parseDate();
-        if (date.isValid()) {
-            return date;
-        } else {
-            return undefined;
-        }
+        return date;
     }),
     
     hasSuccess: Ember.computed('hasError', function () {
@@ -33,7 +29,6 @@ export default Ember.Component.extend({
         } else {
             return !this.get('isValid');
         }
-        
     }),
     
     isNotEmpty: Ember.computed.or('year', 'month', 'day'),
@@ -58,18 +53,19 @@ export default Ember.Component.extend({
     
     parseDate() {
         const year = this.get('year');
-        const month = this.get('month');
-        const day = this.get('day');
+        const month = this.get('month') || '01';
+        const day = this.get('day') || '01';
 
         let date = year;
         
-        if (month) {
+        if (date && month) {
             date += `-${month}`;
         }
-        if (day) {
+        if (date && day) {
             date += `-${day}`;
         }
-        return moment(date, 'YYYY-MM-DD');
+
+        return date && moment(date, 'YYYY-MM-DD', true);
     },
     
     actions: {

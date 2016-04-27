@@ -1,0 +1,41 @@
+{{#confirm-dialog
+    title='component.attachments-list.remove.title'
+    abort=(action 'cancelRemove')
+    continue=(action 'remove')
+    isVisible=displayConfirm
+}}
+    {{t 'component.attachments-list.remove.body'}}
+{{/confirm-dialog}}
+
+<div class='row'>
+    {{#each (filter-by "ordinal" 1 attachments) as |attachment index|}}
+        <div class='col-xs-12 col-md-6'>
+            <label>
+                {{t 'definitions.verbatim-field'}} {{one-index index}}
+            </label>
+            <i
+                class='attachments-list__remove-button glyphicon glyphicon-remove-circle'
+                {{action 'confirmRemove' attachment}}
+            ></i>
+            {{textarea
+                value=attachment.originalAttachment.remarks
+                class='form-control input-sm verbatim'
+            }}
+        </div>
+    {{/each}}
+    {{#each (filter-by "ordinal" 0 attachments) as |attachment index|}}
+        <div class='col-xs-12 col-md-6'>
+            <label>
+                {{t 'definitions.comment-field'}} {{one-index index}}
+            </label>
+            <i
+                class='attachments-list__remove-button glyphicon glyphicon-remove-circle'
+                {{action 'confirmRemove' attachment}}
+            ></i>
+            {{textarea
+                value=attachment.originalAttachment.remarks
+                class='form-control input-sm'
+            }}
+        </div>
+    {{/each}}
+</div>
