@@ -158,9 +158,10 @@
             {{autocompleteInput.inline class='hidden-xs hidden-sm hidden-md'}}
             {{#autocompleteInput.dropdown as |dropdownItem|}}
                 <i class='row-icon small glyphicon glyphicon-map-marker {{unless dropdownItem.validCentroid 'inactive'}}'></i>
-                <p class='regular-row'>
+                <p class='regular-row no-overflow'>
                     {{make-bold dropdownItem.displayName match=dropdownItem.name}}
                 </p>
+                <p class='right-label light'>{{dropdownItem.treeDef.name}}</p>
             {{/autocompleteInput.dropdown}}
         {{/solr-autocomplete-input}}
         <h4>
