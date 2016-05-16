@@ -1,0 +1,31 @@
+{{#if isVisible}}
+    {{#modal-dialog
+        renderInPlace=true
+        targetAttachment="center"
+        translucentOverlay=true
+        containerClassNames='modal-dialog'
+    }}
+        <div class="modal-content">
+            {{#if title}}
+                <div class="modal-header">
+                    <h4 class="modal-title">{{t title}}</h4>
+                </div>
+            {{/if}}
+            <div class="modal-body">
+                {{yield}}
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-default btn-sm"
+                     {{action this.attrs.abort}}
+                >{{t 'definitions.abort'}}</button>
+                <button
+                    type="button"
+                    class="btn btn-danger btn-sm"
+                     {{action this.attrs.continue}}
+                >{{t 'definitions.continue'}}</button>
+            </div>
+        </div>
+    {{/modal-dialog}}
+{{/if}}

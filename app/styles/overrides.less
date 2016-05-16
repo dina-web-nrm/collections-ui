@@ -19,29 +19,6 @@
     margin: 10px;
 }
 
-/* Panel styling */
-.panel-default > .panel-heading {
-    border: none;
-    border-bottom: 1px solid @gray-lighter;
-
-    background-color: @white;
-    font-size: 20px;
-
-    .glyphicon {
-        font-size: 20px;
-        color: @gray-dark;
-        &:hover {
-            color: @gray-darker;
-        }
-    }
-
-    &:hover {
-        .glyphicon {
-            color: @gray-darker;
-        }
-    }
-}
-
 .label {
     margin-right: 5px;
 }
@@ -73,7 +50,6 @@ label {
     }
 }
 
-
 .navbar-default {
     padding-top: 10px;
 
@@ -85,4 +61,30 @@ label {
         color: @text-color;
         font-size: 25px;
     }
+}
+
+.help-block {
+    font-size: 12px;
+}
+
+.modal-header {
+    padding: 5px 10px;
+}
+
+.modal-footer {
+    padding: 5px 10px;
+}
+
+.modal-body {
+    padding: 20px 10px;
+}
+
+.list-group-item.hover {
+    text-decoration: none;
+    color: #555;
+    background-color: #ecf0f1;
+}
+
+.dropdown-menu {
+    z-index: 1002;
 }

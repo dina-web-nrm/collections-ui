@@ -1,16 +1,15 @@
 export default {
     blank: '',
     definitions: {
+        abort: 'Avbryt',
+        continue: 'Fortsätt',
         name: "Namn",
         accession: "Accession",
         male: 'Hane',
         female: 'Hona',
         unknown: 'Okänt',
         date: 'Datum',
-        'create-new': {
-            1: 'Skapa nytt',
-            2: 'Skapa ny'
-        },
+        'date-descriptive': 'Datum(åååå-mm-dd)',
         user: 'Användare',
         'sign-out': 'Logga ut',
         'sign-in': 'Logga in',
@@ -36,7 +35,10 @@ export default {
             "zoology-entomology": "Zoologi, Entomologi",
             "paleontology": "Paleontologi",
             "botany": "Botanik"
-        }
+        },
+        'comment-field': 'Kommentarsfält',
+        'verbatim-field': 'Etikettsfält',
+        'add-comment': 'Lägg till kommentar/etikett'
     },
     main: {
         application_name: "Samlingshanteraren",
@@ -56,21 +58,73 @@ export default {
         "search.input": "Sök på art/ID"
     },
     component: {
+        'attachments-list': {
+            'remove': {
+                'title': 'Ta bort fält',
+                'body': 'Du håller på att ta bort ett extrafält. Vill du fortsätta?'
+            }
+        },
         'locality-selector': {
             'to-many-results': 'För många fyndplatser. Välj ett mindre område.',
-            'search-geography': 'Sök på namn, ort, område, land',
+            'search-geography': 'Sök på ort, område, land',
             'created-by': 'Skapad {{date}} av {{name}}',
             'select-existing': 'Sök/välj sparad fyndplats',
             'new-locality': 'Ny fyndplats',
             'locality-name': 'Fyndplats/lokalnamn',
             'show-map': 'Välj från karta',
-            'hide-map': 'Dölj karta'
+            'hide-map': 'Dölj karta',
+            'uncertainty-radius': 'Osäkerhetsradie(m)',
+            'verbatim-longitude': 'Verbatim longitud',
+            'verbatim-latitude': 'Verbatim latitud',
+            'create-new': 'Skapa ny fyndplats',
+            'center-map': 'Centrera på karta',
+            'max-elevation': 'Höjd över hav',
+            'min-elevation': 'Höjd under hav'
+        },
+        'locality': {
+            'lithostrat': 'Litostratigrafi',
+            'chronostrat': 'Kronostratigrafi' 
         },
         'preparation': {
             'object-type': 'Objektskategori',
             'preservation-stage': 'Fossilt bevaringstillstånd',
             'individuals-count': 'Antal individer',
             'object-description': 'Beskrivning av objekt'
+        },
+        'pick-list': {
+            'no-values': 'Inga värden för vald samling',
+            'pick': 'Välj ett värde'
+        },
+        'autocomplete-input': {
+            'dropdown': {
+                'subset': 'Förfina din sökning för att se en mer komplett lista.'
+            },
+            'inline': {
+                'subset-danger': 'Visar {{max}} av <span class="subset-danger">{{count}}</span>'
+            }
+        },
+        'collecting-event': {
+            'create-new': 'Skapa nytt insamlingstillfälle',
+            'start-date': 'Startdatum(åååå-mm-dd)',
+            'end-date': 'Slutdatum(åååå-mm-dd)',
+            'habitat-substrate': 'Habitat/Substrat',
+            'botany-description': 'Beskrivning av föremål vid insamling',
+            'collecting-circumstance': 'Fyndomständighet',
+            'verbatim-date': 'Verbatimdatum',
+            'given-name': 'Angivet namn'
+        },
+        'single-determination': {
+            'verbatim-taxon': 'Taxonomi, bestämmare, datum',
+            'remove': {
+                'body': 'Du håller på att ta bort en bestämning. Vill du fortsätta?',
+                'title': 'Ta bort bestämning'
+            }
+        },
+        'single-preparation': {
+            'remove': {
+                'body': 'Du håller på att ta bort en en preparation. Vill du fortsätta?',
+                'title': 'Ta bort preparation'
+            }
         }
     },
     collectionobject: {
@@ -115,7 +169,7 @@ export default {
                 confidence: 'Osäkerhet',
                 method: 'Metod',
                 determiner: 'Bestämmare',
-                'determined-date': 'Datum(åååå-mm-dd)',
+                'determined-date': 'Bestämningsdatum',
                 'type-status': 'Typstatus',
                 add: 'Lägg till bestämning'
             },
@@ -135,7 +189,13 @@ export default {
                 add: 'Lägg till del/preparation'
             },
             'collecting-event': {
-                'start-date': 'Insamlingsdatum(åååå-mm-dd)',
+                'start-date': {
+                    label: 'Insamlingsdatum(åååå-mm-dd)',
+                    name: 'Insamlingsstart'
+                },
+                'end-date': {
+                    name: 'Insamlingsslut'
+                },
                 method: 'Insamlingsmetod',
                 'verbatim-locality': 'Verbatim lokal',
                 'verbatim-collector': 'Insamlare',
@@ -165,8 +225,8 @@ export default {
         tooLong: "{{description}} är för långt (max är {{max}} tecken)",
         tooShort: "{{description}} är för kort (minimum är {{min}} tecken)",
         before: "{{description}} måste vara före {{before}}",
-        after: "{{description}} måstae komma efter {{after}}",
-        wrongDateFormat: "{{description}} måste ha format {{format}}",
+        after: "{{description}} måste vara efter {{after}}",
+        wrongDateFormat: "{{description}} måste ha formatet {{format}}",
         wrongLength: "{{description}} har fel längd (ska ha {{is}} tecken)",
         notANumber: "{{description}} måste vara ett nummer",
         notAnInteger: "{{description}} måste vara ett heltal",
@@ -182,7 +242,8 @@ export default {
         date: "{{description}} måste vara ett giltigt datum",
         email: "{{description}} måste vara en giltig e-postadress",
         phone: "{{description}} måste vara ett giltigt telefonnummer",
-        url: "{{description}} måste vara en giltig url"
+        url: "{{description}} måste vara en giltig url",
+        unique: "{{description}} måste vara unik"
     },
     beta: {
         header: 'Samlingshanteraren beta',
@@ -195,7 +256,10 @@ export default {
             }
         },
         feedback: {
-            body: 'Har du förslag på förbättringar eller hittar något som inte fungerar? Fyll då gärna i feedback-formuläret.',
+            body: `
+                Har du förslag på förbättringar eller hittar något som inte fungerar?
+                Fyll då gärna i feedback-formuläret. Feedback som lämnas finns <a target="_blank" href="https://trello.com/b/GCfLYqt1/cm-feedback">tillgänglig att se på Trello</a>. 
+            `,
             header: 'Feedback',
             button: 'Lämna feedback'
         },
@@ -247,6 +311,38 @@ export default {
                     <li>Möjligt att klicka flera gånger på spara-knappen.</li>
                 `,
                 date: '2016-04-01'
+            },
+            4: {
+                body: `
+                    <span class="label label-success">Ny funktionalitet</span>
+                    <li>Visa att det finns fler resultat i "Sök och välj"-listor.</li>
+                    <li>Visa fler resultat som standard i "Sök och välj"-listor.</li>
+                    <li>Centrera resultat automatiskt i "Sök och välj"-listor.</li>
+                    <li>Nya datumfält med validering.<br>Möjligt att ange bara År, År+Månad eller År+Månad+Dag.</li>
+                    <li>Validera att katalognummer inte redan finns.</li>
+                    <li>Uppdaterat utseende på verbatimfält.</li>
+                    <li>Verbatimfält för koordinater.</li>
+                    <li>Validera fyndplatsnamn och visa varning om det saknas.</li>
+                    <li>Möjligt att specificera osäkerhet för nya fyndplatser.</li>
+                    <li>Knapp för att centrera kartan över angiven koordinat.</li>
+                    <li>Börjat lägga till samlingsspecifika värdelistor.</li>
+
+                    <li>
+                        <strong>Botanik:</strong> Lagt till "Habitat/Substrat" och "Beskrivning av föremål vid insamling".
+                    </li>
+                    <li>
+                        <strong>Entomologi:</strong> Lagt till "Höjd över/under hav".
+                    </li>
+                    <li>
+                        <strong>Däggdjur:</strong> Lagt till "Fyndomständighet".
+                    </li>
+
+                    <br><span class="label label-danger">Buggfixar</span>
+                    <li>Öppna och stäng box genom att klicka på rubrikraden sker oavsiktligt.</li>
+                    <li>"Välj på karta" felplacerad i vissa webbläsare.</li>
+                    <li>Uppdaterat "Skapa ny/nytt" och "Sök"-texter.</li>
+                `,
+                date: '2016-04-15'
             }
         }
     }

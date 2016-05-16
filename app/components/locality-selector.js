@@ -8,25 +8,30 @@ export default Ember.Component.extend(Filterable, {
 
     /** Inject services. */
     store: Ember.inject.service('store'),
+    formConfiguration: Ember.inject.service('form-configuration'),
+    configuration: Ember.computed.alias('formConfiguration.component.localitySelector'),
 
     filterKeys: 'disciplineID, geographyID',
 
     localities: [],
 
     bounds: null,
-
+    
+    zoom: 13,
+    
     selectedLocality: null,
 
     maximumReached: Ember.computed.gt('localities.length', 199),
 
-    /** Return new locality. */
-    newLocality: function () {
-        if(!this._newLocality) {
-            this._newLocality = this.get('store').createRecord('locality');
+    init() {
+        this._super(...arguments);
+        
+        if (this.attrs.update) {
+            Ember.run.schedule('actions', this, ()=>{
+                this.attrs.update();  
+            });
         }
-
-        return this._newLocality;
-    }.property(),
+    },
 
     fetchLocalities () {
         const bounds = this.get('bounds');
@@ -86,23 +91,6 @@ export default Ember.Component.extend(Filterable, {
 
         toggleMap () {
             this.toggleProperty('displayMap');
-        },
-
-        enableCreate () {
-            this.attrs.update(this.get('newLocality'));
-            this.set('isCreating', true);
-        },
-
-        disableCreate () {
-            this.attrs.update();
-            this.set('isCreating', false);
-        },
-
-        onLocationUpdate (event) {
-            const latlng = event.latlng || event.target && event.target.getLatLng();
-            const coordinates = [latlng.lat, latlng.lng];
-
-            this.set('newLocality.location', coordinates);
         }
     }
 });

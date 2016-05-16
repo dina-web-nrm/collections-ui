@@ -1,84 +1,121 @@
+{{#confirm-dialog
+    title='component.single-determination.remove.title'
+    abort=(action 'toggleDestroy')
+    continue=(action 'remove')
+    isVisible=displayConfirmDialog
+}}
+    {{t 'component.single-determination.remove.body'}}
+{{/confirm-dialog}}
 <div class="dwcm-single-determination__header">
     <div class="pull-left dwcm-single-determination__current">
         {{input type='checkbox' checked=model.isCurrent}}
-        {{#if displayIndex}}
-            <span class="index">{{displayIndex}}.</span>
+        {{#if index}}
+            <span class="index">{{index}}.</span>
         {{/if}}
     </div>
     <i
-        class="clickable glyphicon glyphicon-remove-circle" {{action "remove"}}
+        class="clickable glyphicon glyphicon-remove-circle" {{action 'toggleDestroy'}}
     ></i>
 </div>
+{{#if configuration.top.verbatimTaxon}}
+    <div class="row">
+        <div class="col-xs-12">
+            {{input
+                placeholder=(t 'component.single-determination.verbatim-taxon')
+                value=model.verbatimTaxon
+
+                class='verbatim form-control input-sm'
+            }}
+        </div>
+    </div>
+{{/if}}
 <div class="row">
     <div class="col-xs-6">
-        {{
-            dwcm-autocomplete-textfield
-            label="definitions.name"
-
+        <label>{{t 'definitions.name'}}:</label>
+        {{#autocomplete-input
             storeName='taxon'
-
             displayField='fullName'
             filterField='fullName'
             itemSelected=(action 'setTaxonomy')
+            item=model.taxon
+
+            as |ai|
         }}
+            {{ai.dropdown}}
+        {{/autocomplete-input}}
     </div>
     {{#unless configuration.hide.confidence}}
         <div class="col-xs-3">
-            {{dwcm-textfield
-                label='fields.labels.determination.confidence' value=model.confidence
+            {{#validation/form-group
+                isValid=(v-get model 'confidence' 'isValid')
+                message=(v-get model 'confidence' 'message')
             }}
+                <label>{{t 'fields.labels.determination.confidence'}}:</label>
+                {{input value=model.confidence class='form-control'}}
+            {{/validation/form-group}}
         </div>
     {{/unless}}
     {{#unless configuration.hide.method}}
         <div class="col-xs-3">
-            {{dwcm-textfield
-                label='fields.labels.determination.method' value=model.method
+            {{#validation/form-group
+                isValid=(v-get model 'method' 'isValid')
+                message=(v-get model 'method' 'message')
             }}
+                <label>{{t 'fields.labels.determination.method'}}:</label>
+                {{input value=model.method class='form-control'}}
+            {{/validation/form-group}}
         </div>
     {{/unless}}
 </div>
 <div class="row">
     <div class="col-xs-6">
-        {{
-            dwcm-autocomplete-textfield
-            label="fields.labels.determination.determiner"
-
+        <label>{{t 'fields.labels.determination.determiner'}}:</label>
+        {{#autocomplete-input
             storeName='agent'
-
             displayField='fullName'
             filterField='lastName'
             itemSelected=(action 'setDeterminer')
+            item=model.determiner
+            
+            as |ai|
         }}
+            {{ai.dropdown}}
+        {{/autocomplete-input}}
     </div>
     <div class="col-md-4 col-xs-6">
         <div class="form-group form-group-sm">
             <label>
-                {{t 'fields.labels.determination.determined-date'}}:
+                {{t 'definitions.date-descriptive'}}:
             </label>
-            {{#bs-datetimepicker
-                updateDate=(action (mut model.determinedDate))
-                format='YYYY-MM-DD'
-                forceDateOutput=true
+            {{date-picker
+                update=(action 'setDateWithPrecision' 'determinedDate')
                 maxDate=(now)
+                isValid=(v-get model 'determinedDate' 'isValid')
+                validationMessage=(v-get model 'determinedDate' 'message')
             }}
-                {{
-                    input disabled=disabled class="form-control"
-                    name="Date" placeholder=(t 'fields.placeholder.date-format')
-                }}
-            {{/bs-datetimepicker}}
         </div>
     </div>
     {{#unless configuration.hide.typeStatus}}
         <div class="col-md-2 col-xs-6">
-            {{dwcm-textfield
-                label='fields.labels.determination.type-status'
-                value=model.typeStatus
+            {{#validation/form-group
+                isValid=(v-get model 'typeStatus' 'isValid')
+                message=(v-get model 'typeStatus' 'message')
             }}
+                <label>{{t 'fields.labels.determination.type-status'}}:</label>
+                {{input value=model.typeStatus class='form-control'}}
+            {{/validation/form-group}}
         </div>
     {{/unless}}
 </div>
-{{!--
-<div class="row">
-    {{dwcm-field-placeholder disabled=true width=12 label='Taxonomi, bestämmare, datum'}}
-</div>
---}}
+{{#unless configuration.top.verbatimTaxon}}
+    <div class="row">
+        <div class="col-xs-12">
+            {{input
+                placeholder=(t 'component.single-determination.verbatim-taxon')
+                value=model.verbatimTaxon
+
+                class='verbatim form-control input-sm'
+            }}
+        </div>
+    </div>
+{{/unless}}

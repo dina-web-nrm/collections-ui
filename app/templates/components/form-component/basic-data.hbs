@@ -1,32 +1,48 @@
-{{#dwcm-field-group title=title identifier="dwcm-basic-data"}}
-    <div class="row">
-        <div class="col-xs-6">
-            {{dwcm-autocomplete-textfield
-                label="fields.labels.collection"
-                storeName='collection'
-                displayField='collectionName'
-                filterField='collectionName'
-                itemSelected=(action 'collectionSelected')
+{{#field-group title=title identifier=title as |fieldGroup|}}
+    {{#fieldGroup.content}}
+        <div class="row">
+            <div class="col-xs-6">
+                {{#validation/form-group
+                    isValid=(v-get model 'collection' 'isValid')
+                    message=(v-get model 'collection' 'message')
+                }}
+                    <label>{{t 'fields.labels.collection'}}:</label>
+                    {{#autocomplete-input
+                        storeName='collection'
+                        displayField='collectionName'
+                        filterField='collectionName'
+                        itemSelected=(action 'collectionSelected')
+                        item=model.collection
 
-                displayErrors=displayErrors
-                checkInvalid=(v-get model 'collection' 'isInvalid')
-                invalidMessage=(v-get model 'collection' 'message')
-            }}
+                        as |ai|
+                    }}
+                        {{ai.dropdown}}
+                    {{/autocomplete-input}}
+                {{/validation/form-group}}
+            </div>
+            <div class="col-xs-2">
+                {{#validation/form-group
+                    isValid=(v-get model 'catalogNumber' 'isValid')
+                    message=(v-get model 'catalogNumber' 'message')
+                }}
+                    <label>{{t 'fields.labels.catalogNumber'}}:</label>
+                    {{input value=model.catalogNumber class='form-control'}}
+                {{/validation/form-group}}
+            </div>
+            <div class="col-xs-4">
+                <label>{{t 'fields.labels.accession'}}:</label>
+                {{#autocomplete-input
+                    storeName='accession'
+                    displayField='accessionNumber'
+                    filterField='accessionNumber'
+                    itemSelected=(action 'accessionSelected')
+                    item=model.accession
+
+                    as |ai|
+                }}
+                    {{ai.dropdown}}
+                {{/autocomplete-input}}
+            </div>
         </div>
-        <div class="col-xs-2">
-            {{dwcm-textfield
-                label='fields.labels.catalogNumber'
-                value=model.catalogNumber
-            }}
-        </div>
-        <div class="col-xs-4">
-            {{dwcm-autocomplete-textfield
-                label="fields.labels.accession"
-                storeName='accession'
-                displayField='accessionNumber'
-                filterField='accessionNumber'
-                itemSelected=(action 'accessionSelected')
-            }}
-        </div>
-   </div>
-{{/dwcm-field-group}}
+    {{/fieldGroup.content}}
+{{/field-group}}

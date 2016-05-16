@@ -1,45 +1,41 @@
-.dwcm-autocomplete-textfield {
-    .label-group {
-        margin-bottom: 5px;
-    }
-}
 
-.dropdown-group {
-    position: relative;
-}
-
-.dwcm-autocomplete-dropdown, .autocomplete-input__dropdown {
+.autocomplete-input__dropdown {
     position: absolute;
     z-index: 1002;
-    background: @white;
     width: 100%;
     left: 0px;
     top: 36px;
-    list-style-type: none;
-    padding: 0;
     border: 1px solid @input-border;
     border-radius: 0 0 @border-radius-base @border-radius-base;
-    font-size: 13px;
-
+    background: @white;
     margin-bottom: calc(@footer-height + 10px);
-
     .box-shadow(0 6px 12px rgba(0, 0, 0, 0.175));
+    
+    .autocomplete-input__dropdown-list {
+        list-style-type: none;
+        padding: 0;
+        margin-bottom: 0;
+        font-size: 13px;
+        
+        overflow-y: scroll;
+        max-height: 400px;
 
-    li {
-        padding: 8px 5px;
-        border-bottom: 1px solid @gray-lighter;
+        li {
+            padding: 8px 5px;
+            border-bottom: 1px solid @gray-lighter;
 
-        &.active {
-            background: @gray-lighter;
-        }
+            &.active {
+                background: @gray-lighter;
+            }
 
-        &:hover {
-            background: @gray-lighter;
-            cursor: pointer;
-        }
+            &:hover {
+                background: @gray-lighter;
+                cursor: pointer;
+            }
 
-        &:last-child {
-            border-bottom: none;
+            &:last-child {
+                border-bottom: none;
+            }
         }
     }
 }
@@ -59,6 +55,10 @@
         white-space: nowrap;
         text-overflow: ellipsis;
 
+        &.light {
+            color: @gray-dark;
+        }
+
         &.regular-row {
             width: 80%;
             overflow: hidden;
@@ -66,12 +66,15 @@
             text-overflow: ellipsis;
             float: left;
 
-            &.light {
-                color: @gray-dark;
-            }
-
             &.shrink {
                 width: 60%;
+            }
+
+            &.no-overflow {
+                overflow: auto;
+                white-space: initial;
+                text-overflow: initial;
+                height: auto;
             }
         }
 
@@ -92,6 +95,14 @@
             right: 5px;
             top: 8px;
             text-align: right;
+        }
+
+        &.right-label {
+            position: absolute;
+            bottom: 8px;
+            right: 10px;
+            margin: 0;
+            width: auto;
         }
     }
 

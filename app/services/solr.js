@@ -8,7 +8,10 @@ export default Ember.Service.extend({
     core: 'dina',
     
     parseResponse (data) {
-        return data.response.docs.mapBy('primary_id');
+        return {
+            records: data.response.docs.mapBy('primary_id'),
+            totalRows: data.response.numFound
+        };
     },
     
     select (query, {entityType, fq, rows}) {
@@ -17,11 +20,11 @@ export default Ember.Service.extend({
 
         let fqString = '';
         if (entityType) {
-            fqString += `&fq=entity_type%3A${entityType}`;
+            fq['entity_type'] = entityType;
         }
 
         for(let key in fq) {
-            fqString += `&fq=${key}%3D${fq[key]}`;
+            fqString += `&fq=${key}%3A${fq[key]}`;
         }
         
         url += fqString;
@@ -32,7 +35,8 @@ export default Ember.Service.extend({
 
         return new Ember.RSVP.Promise(function (resolve, reject) {
             Ember.$.getJSON(url).success((data)=>{
-                resolve(service.parseResponse(data));
+                let {records, totalRows} = service.parseResponse(data);
+                resolve({records, totalRows});
             }).fail((error)=>{
                 reject(error);
             });

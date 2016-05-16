@@ -1,71 +1,83 @@
-<i class="remove clickable glyphicon glyphicon-remove-circle" {{action "remove"}}></i>
+{{#confirm-dialog
+    title='component.single-preparation.remove.title'
+    abort=(action 'toggleDestroy')
+    continue=(action 'remove')
+    isVisible=displayConfirmDialog
+}}
+    {{t 'component.single-preparation.remove.body'}}
+{{/confirm-dialog}}
+<i class="remove clickable glyphicon glyphicon-remove-circle" {{action 'toggleDestroy'}}></i>
 <div class="col-xs-12">
     <div class="row">
         <div class="col-xs-3">
-            {{
-                dwcm-autocomplete-textfield
-                label='fields.labels.preparation.preparation-type'
-
-                storeName='prep-type'
-
-                displayField='name'
-                filterField='name'
-
-                itemSelected=(action 'setPreparationType')
-                filterKeys='collectionID'
+            {{#validation/form-group
+                isValid=(v-get model 'preparationType' 'isValid')
+                message=(v-get model 'preparationType' 'message')
             }}
+                <label>{{t 'fields.labels.preparation.preparation-type'}}:</label>
+                {{pick-list
+                    model='prep-type' filterKeys='collectionID'
+                    displayField='name' valueField='id'
+                    update=(action 'setPreparationType')
+                }}
+            {{/validation/form-group}}
         </div>
         <div class="col-xs-3">
-            {{dwcm-textfield
-                label='fields.labels.preparation.part'
-                value=model.description
-            }}
+            {{#validation/form-group}}
+                <label>{{t 'fields.labels.preparation.part'}}:</label>
+                {{input value=model.description class='form-control'}}
+            {{/validation/form-group}}
         </div>
         <div class="col-xs-2">
-            {{dwcm-textfield
-                type='number'
-                label='fields.labels.preparation.count'
-                value=model.countAmt
-            }}
+            {{#validation/form-group}}
+                <label>{{t 'fields.labels.preparation.count'}}:</label>
+                {{input
+                    type='number' min=0 value=model.countAmt
+                    class='form-control'
+                }}
+            {{/validation/form-group}}
         </div>
         {{#unless configuration.hide.individualsCount}}
             <div class="col-xs-2">
-                {{dwcm-textfield
-                    type='number'
-                    label='component.preparation.individuals-count'
-                    value=model.individualsCount
+            {{#validation/form-group}}
+                <label>{{t 'component.preparation.individuals-count'}}:</label>
+                {{input
+                    type='number' min=0 value=model.individualsCount
+                    class='form-control'
                 }}
+            {{/validation/form-group}}
             </div>
         {{/unless}}
         {{#unless configuration.hide.preparationNumber}}
             <div class="col-xs-2">
-                {{dwcm-textfield
-                    label='fields.labels.preparation.number'
-                    value=model.sampleNumber
-                }}
+                {{#validation/form-group}}
+                    <label>{{t 'fields.labels.preparation.number'}}:</label>
+                    {{input value=model.sampleNumber class='form-control'}}
+                {{/validation/form-group}}
             </div>
         {{/unless}}
     </div>
 
     <div class="row">
         <div class="col-xs-8">
-            {{dwcm-autocomplete-textfield
-                label='fields.labels.preparation.storage'
-
+            <label>{{t 'fields.labels.preparation.storage'}}:</label>
+            {{#autocomplete-input
                 storeName='storage'
-
                 displayField='fullName'
                 filterField='fullName'
-
                 itemSelected=(action 'setStorage')
+                item=model.storage
 
+                as |ai|
             }}
+                {{ai.dropdown}}
+            {{/autocomplete-input}}
         </div>
         <div class="col-xs-4">
-            {{dwcm-textfield
-                label='fields.labels.preparation.status'
-                value=model.status
-            }}
+            {{#validation/form-group}}
+                <label>{{t 'fields.labels.preparation.status'}}:</label>
+                {{input value=model.status class='form-control'}}
+            {{/validation/form-group}}
         </div>
     </div>
     {{!--

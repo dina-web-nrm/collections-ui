@@ -1,0 +1,27 @@
+.dropdown-button {
+    .dropdown-menu {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-color: @gray-lighter;
+        padding: 0;
+        font-size: 13px;
+        & > li {
+            border-bottom: 1px solid @gray-lighter;
+            padding: 0;
+            &:last-child {
+                border-bottom: none;
+            }
+            & > a {
+                padding: 8px 5px;
+                background: @white;
+                color: @text-color;
+
+                &:hover {
+                    background: @gray-lighter;
+                    color: @text-color;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

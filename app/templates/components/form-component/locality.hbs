@@ -1,0 +1,210 @@
+<div class="header">
+    <h4 class="pull-left">{{t 'component.locality-selector.new-locality'}}</h4>
+    <a
+        class="pull-right clickable"
+        {{action this.attrs.enableSearch}}
+    >
+        {{t 'component.locality-selector.select-existing'}}
+    </a>
+    <div class="clearfix"></div>
+</div>
+<div class='row'>
+    <div class='col-xs-12 col-sm-6'>
+        {{#validation/form-group
+            isValid=(v-get newLocality 'localityName' 'isValid')
+            message=(v-get newLocality 'localityName' 'message')
+        }}
+            <label>{{t 'component.locality-selector.locality-name'}}:</label>
+            {{input value=newLocality.localityName class='form-control'}}
+        {{/validation/form-group}}
+    </div>
+    <div class='col-xs-12 col-sm-6'>
+        <label class="control-label">
+            {{t 'definitions.geography'}}:
+        </label>
+        {{#solr-autocomplete-input
+            storeName='geography'
+            entityType='geography'
+            sortBy='rankID'
+            displayField='displayName'
+            filterKeys='disciplineID'
+            placeholder='component.locality-selector.search-geography'
+
+            itemSelected=(action (mut newLocality.geography))
+            item=newLocality.geography
+            
+            class='rich'
+
+            as |autocompleteInput|
+        }}
+            {{autocompleteInput.inline}}
+            {{#autocompleteInput.dropdown as |dropdownItem|}}
+                <i class='row-icon small glyphicon glyphicon-map-marker {{unless dropdownItem.validCentroid 'inactive'}}'></i>
+                <p class='right-label light'>{{dropdownItem.treeDef.name}}</p>
+                <p class='regular-row no-overflow'>
+                    {{make-bold dropdownItem.displayName match=dropdownItem.name}}
+                </p>
+            {{/autocompleteInput.dropdown}}
+        {{/solr-autocomplete-input}}
+    </div>
+</div>
+<div class='row'>
+    
+    <div class='col-xs-6'>
+        {{#map-view
+            zoom=zoom center=mapLocation
+            onClick=(action 'onLocationUpdate')
+            onZoom=(action (mut zoom))
+        }}
+            {{#if newLocality.validLocation}}
+                {{circle-marker-layer
+                    location=newLocality.location
+                    radius=(metersToPixels newLocality.uncertaintyRadius zoom)
+                    color="#FF0000"
+                }}
+            {{/if}}
+        {{/map-view}}
+    </div>
+    <div class='col-xs-6'>
+        <div class='row'>
+            <div class='col-xs-5'>
+                {{#validation/form-group}}
+                    <label>{{t 'definitions.latitude'}}:</label>
+                    {{input value=newLocality.latitude class='form-control'}}
+                {{/validation/form-group}}
+            </div>
+            <div class='col-xs-5'>
+                {{#validation/form-group}}
+                    <label>{{t 'definitions.longitude'}}:</label>
+                    {{input value=newLocality.longitude class='form-control'}}
+                {{/validation/form-group}}
+            </div>
+            <div class='col-xs-1'>
+                <label>&nbsp;</label>
+                <button
+                    class="btn btn-primary btn-sm glyphicon glyphicon-record"
+                    disabled={{if newLocality.validLocation false true}}
+                    title={{t 'component.locality-selector.center-map'}}
+                    {{action 'focusLocality'}}
+                ></button>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-xs-5 col-md-5'>
+                {{#validation/form-group
+                    isValid=(v-get newLocality 'verbatimLatitude' 'isValid')
+                    message=(v-get newLocality 'verbatimLatitude' 'message')
+                }}
+                    {{input
+                        placeholder=(t 'component.locality-selector.verbatim-latitude')
+                        value=newLocality.verbatimLatitude
+                        class='form-control input-sm verbatim'
+                    }}
+                {{/validation/form-group}}
+            </div>
+            <div class='col-xs-5 col-md-5'>
+                {{#validation/form-group
+                    isValid=(v-get newLocality 'verbatimLongitude' 'isValid')
+                    message=(v-get newLocality 'verbatimLongitude' 'message')
+                }}
+                    {{input
+                        placeholder=(t 'component.locality-selector.verbatim-longitude')
+                        value=newLocality.verbatimLongitude
+                        class='form-control input-sm verbatim'
+                    }}
+                {{/validation/form-group}}
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-xs-12 col-md-7'>
+                <label>{{t 'component.locality-selector.uncertainty-radius'}}:</label>
+                {{x-slider class='form-control input-sm'
+                    min=15 step=2 max=2000 value=newLocality.uncertaintyRadius
+                }}
+            </div>
+            <div class='col-xs-12 col-md-3'>
+                <div class="form-group">
+                    <label>&nbsp;</label>
+                    <div class="input-group input-group-sm">
+                        {{input type="number"
+                            min=5 max=5000 class="form-control"
+                            value=newLocality.uncertaintyRadius
+                        }}
+                        <div class="input-group-addon">m</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{#unless configuration.hide.elevation}}
+            <div class='row'>
+                <div class='col-xs-4'>
+                    <div class="form-group">
+                        <label>{{t 'component.locality-selector.max-elevation'}}:</label>
+                        <div class="input-group input-group-sm">
+                            {{input type="number"
+                                min=1 max=5000 class="form-control"
+                                value=newLocality.maxElevation
+                            }}
+                            <div class="input-group-addon">m</div>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-xs-4'>
+                    <div class="form-group">
+                        <label>{{t 'component.locality-selector.min-elevation'}}:</label>
+                        <div class="input-group input-group-sm">
+                            {{input type="number"
+                                min=1 max=5000 class="form-control"
+                                value=newLocality.minElevation
+                            }}
+                            <div class="input-group-addon">m</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/unless}}
+    </div>
+
+</div>
+{{#unless configuration.hide.paleoContext}}
+    <div class="row">
+        <div class="col-xs-6">
+            <label class="control-label">
+                {{t 'component.locality.lithostrat'}}:
+            </label>
+            {{#solr-autocomplete-input
+                storeName='lithostrat'
+                entityType='lithostrat'
+                displayField='fullName'
+                sortBy='fullName'
+                filterKeys='disciplineID'
+                itemSelected=(action 'setStratigraphy' 'lithoStrat')
+                item=newLocality.paleoContext.lithoStrat
+                
+                as |autocompleteInput|
+            }}
+                {{autocompleteInput.inline}}
+                {{autocompleteInput.dropdown}}
+            {{/solr-autocomplete-input}}
+        </div>
+        <div class="col-xs-6">
+            <label class="control-label">
+                {{t 'component.locality.chronostrat'}}:
+            </label>
+            {{#solr-autocomplete-input
+                storeName='geologictimeperiod'
+                entityType='geologictimeperiod'
+                displayField='fullName'
+                sortBy='fullName'
+                filterKeys='disciplineID'
+                itemSelected=(action 'setStratigraphy' 'chronosStrat')
+                item=newLocality.paleoContext.chronosStrat
+                
+                as |autocompleteInput|
+            }}
+                {{autocompleteInput.inline}}
+                {{autocompleteInput.dropdown}}
+            {{/solr-autocomplete-input}}
+        </div>
+    </div>
+{{/unless}}

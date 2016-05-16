@@ -7,29 +7,29 @@
     focus-in="onFocus"
 
     placeholder=(t (if placeholder placeholder 'definitions.type-to-search'))
-    disabled=disabled
+    disabled=(readonly selected)
+    autocomplete=false
 }}
-
-{{#unless removeCreate}}
-    <div class="input-group-btn">
-        <button disabled title="Create new(not supported yet)" type="button" class="btn btn-primary" aria-label="Add">
-            <span class="glyphicon glyphicon-plus"></span>
-        </button>
-    </div>
-{{/unless}}
-
-{{#if isDropdownVisible}}
-    <ul class="autocomplete-input__dropdown">
-        {{#each previewData as |preview index|}}
-            <li data-index={{index}} {{action "onItemClick" preview}}>
-                {{#if hasBlock}}
-                    {{yield preview}}
-                {{else}}
-                    {{get preview displayField}}
-                {{/if}}
-            </li>
-        {{else}}
-            <li>{{t 'definitions.no-result'}}</li>
-        {{/each}}
-    </ul>
+{{#if selected}}
+    <i
+        class='autocomplete-input__clear-button glyphicon glyphicon-remove-circle clickable'
+        {{action 'clearSelection'}}
+    ></i>
 {{/if}}
+{{yield (hash
+    inline=(
+        component 'autocomplete-input/inline'
+        limit=limit
+        totalRows=totalRows
+        isResponseSubset=isResponseSubset
+        visibleSubset=isDropdownVisible
+    )
+    dropdown=(
+        component 'autocomplete-input/dropdown'
+        isDropdownVisible=isDropdownVisible
+        isResponseSubset=isResponseSubset
+        data=previewData
+        itemClick=(action 'onItemClick')
+        displayField=displayField
+    )
+)}}

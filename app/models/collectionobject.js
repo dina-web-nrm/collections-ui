@@ -12,8 +12,28 @@ const Validations = buildValidations({
         presence: true,
         descriptionKey: 'fields.labels.collection'
     }),
-
-    preparations: validator('has-many')
+    
+    catalogNumber: validator('unique-catalog-number', {
+        debounce: 300,
+        descriptionKey: 'fields.labels.catalogNumber',
+        dependentKeys: ['collection'],
+        disabled() {
+            return Ember.isBlank(this.get('model.catalogNumber'));
+        }
+    }),
+    
+    preparations: validator('has-many'),
+    determinations: validator('has-many'),
+    collectingEvent: validator('belongs-to', {
+        disabled() {
+            // Disable if Collecting event is not present.
+            // Using timestampCreated due to that is the only
+            // attr set on a newly created collecting event.
+            return Ember.isNone(
+                this.get('model.collectingEvent.timestampCreated')
+            );
+        }
+    })
 });
 
 
@@ -29,6 +49,7 @@ export default DS.Model.extend(Validations, DependentRelationships, {
     cataloger: DS.belongsTo('agent', {async: true}),
     collection: DS.belongsTo('collection', {async: true}),
     accession: DS.belongsTo('accession', {async: true}),
+    attachments: DS.hasMany('collection-object-attachment', {async: true}),
     determinations: DS.hasMany('determinations', {async: true}),
     preparations: DS.hasMany('preparations', {async: true}),
     objectAttribute: DS.belongsTo('collection-object-attribute', {async: true}),

@@ -1,16 +1,15 @@
 export default {
     blank: '',
     definitions: {
+        abort: 'Abort',
+        continue: 'Continue',
         name: "Name",
         accession: "Accession",
         male: 'Male',
         female: 'Female',
         unknown: 'Unknown',
         date: 'Date',
-        'create-new': {
-            1: 'Create new',
-            2: 'Create new'
-        },
+        'date-descriptive': 'Date (YYYY-MM-DD)',
         user: 'User',
         'sign-out': 'Sign out',
         'sign-in': 'Sign in',
@@ -36,7 +35,10 @@ export default {
             "zoology-entomology": "zoology, Entomology",
             "paleontology": "paleontology",
             "botany": "botany"
-        }
+        },
+        'comment-field': 'Comment',
+        'verbatim-field': 'Verbatim field',
+        'add-comment': 'Add comment/verbatimfield'
     },
     main: {
         application_name: "Collection manager",
@@ -56,21 +58,74 @@ export default {
         "search.input": "Search for ID/Species"
     },
     component: {
+        'attachments-list': {
+            'remove': {
+                'title': 'Remove field',
+                'body': 'You are about to remove an extra field. Do you want to continue?'
+            }
+        },
         'locality-selector': {
             'to-many-results': 'Too many localities. Please select a smaller area.',
-            'search-geography': 'Search on name, city, area or country',
+            'search-geography': 'Search for city, area or country',
             'created-by': 'Created {{date}} by {{name}}',
             'select-existing': 'Select existing locality',
             'new-locality': 'New locality',
             'locality-name': 'Locality name',
             'show-map': 'Pick on map',
-            'hide-map': 'Hide map'
+            'hide-map': 'Hide map',
+            'uncertainty-radius': 'Uncertainty radius (m)',
+            'verbatim-longitude': 'Verbatim longitude',
+            'verbatim-latitude': 'Verbatim latitude',
+            'create-new': 'Create new locality',
+            'center-map': 'Center on map',
+            'max-elevation': 'Alt. over sea',
+            'min-elevation': 'Alt. under sea'
+
+        },
+        'locality': {
+            'lithostrat': 'Lithostratigraphy',
+            'chronostrat': 'Chronostratigraphy' 
         },
         'preparation': {
             'object-type': 'Object category',
             'preservation-stage': 'Fossil preservation stage',
             'individuals-count': 'Nr. individuals',
             'object-description': 'Object description'
+        },
+        'pick-list': {
+            'no-values': 'No values for collection',
+            'pick': 'Pick a value'
+        },
+        'autocomplete-input': {
+            'dropdown': {
+                'subset': 'Refine your search for a more complete list.'
+            },
+            'inline': {
+                'subset-danger': 'Displaying {{max}} of <span class="subset-danger">{{count}}</span>'
+            }
+        },
+        'collecting-event': {
+            'create-new': 'Create new collecting event',
+            'start-date': 'Start date (YYYY-MM-DD)',
+            'end-date': 'End date (YYYY-MM-DD)',
+            'habitat-substrate': 'Habitat/Substrate',
+            'botany-description': 'Object description at collection',
+            'collecting-circumstance': 'Collecting circumstance',
+            'verbatim-date': 'Verbatim date',
+            'given-name': 'Given name'
+        },
+        'single-determination': {
+            'verbatim-taxon': 'Taxonomy, determined, date',
+            'remove': {
+                'body': 'You are about to remove a determination. Do you want to continue?',
+                'title': 'Remove determination'
+            }
+        },
+        'single-preparation': {
+            'remove': {
+                'body': 'You are about to remove a preparation. Do you want to continue?',
+                'title': 'Remove preparation'
+            }
         }
     },
     collectionobject: {
@@ -115,7 +170,7 @@ export default {
                 confidence: 'Confidence',
                 method: 'Method',
                 determiner: 'Determiner',
-                'determined-date': 'Date (yyyy-mm-dd)',
+                'determined-date': 'Determination date',
                 'type-status': 'Type status',
                 add: 'Add determination'
             },
@@ -135,7 +190,13 @@ export default {
                 add: 'Add part/preparation'
             },
             'collecting-event': {
-                'start-date': 'Collection date (yyyy-mm-dd)',
+                'start-date': {
+                    label: 'Collection date (yyyy-mm-dd)',
+                    name: 'Start date'
+                },
+                'end-date': {
+                    name: 'End date'
+                },
                 method: 'Method',
                 'verbatim-locality': 'Verbatim locality',
                 'verbatim-collector': 'Collector',
@@ -182,11 +243,12 @@ export default {
         date: "{{description}} must be a valid date",
         email: "{{description}} must be a valid email address",
         phone: "{{description}} must be a valid phone number",
-        url: "{{description}} must be a valid url"
+        url: "{{description}} must be a valid url",
+        unique: "{{description}} must be unique"
     },
     beta: {
         header: 'Collection manager beta',
-        intro: ' is a test site to evaluate the new collection manager. the site will be continuesly updated with new features and fixes based on the internal priority and feedback from user testing.',
+        intro: ' is a test site to evaluate the new collection manager. The site will be continuously updated with new features and fixes based on the internal priority and feedback from user testing.',
         information: {
             header: 'Information',
             body: {
@@ -247,6 +309,39 @@ export default {
                     <li>Possible to click several times on the save button.</li>
                 `,
                 date: '2016-04-01'
+            },
+            4: {
+                body: `
+                    <span class="label label-success">New features</span>
+                    <li>Display information about number of results in autocomplete dropdowns.</li>
+                    <li>Display more results in autocomplete dropdowns.</li>
+                    <li>Automatically center dropdown list.</li>
+                    <li>New date picker with validation.<br>Possible to add Year, year+Month or year+Month+Day.</li>
+                    <li>Validate uniqueness of catalog number.</li>
+                    <li>Updated style for verbatim fields.</li>
+                    <li>Verbatim fields for coordinates.</li>
+                    <li>Validate locality name and display warning if missing.</li>
+                    <li>Specify uncertainty when creating new locality.</li>
+                    <li>Center map over current coordinate with button.</li>
+                    <li>Started to add collection specific value lists.</li>
+
+                    <li>
+                        <strong>Botany:</strong> Added "Habitat/Substrate" and "Object description at collection".
+                    </li>
+                    <li>
+                        <strong>Entomology:</strong> Added "Altitude over/under sea".
+                    </li>
+                    <li>
+                        <strong>Mammals:</strong> Added "Collecting circumstance".
+                    </li>
+
+                    <br><span class="label label-danger">Fixes</span>
+                    <li>Toggling with box header occurs unintentionally.</li>
+                    <li>"Pick on map" misplaced in certain browsers.</li>
+                    <li>Unified "Create new" and "Search for" labels.</li>
+                    
+                `,
+                date: '2016-04-15'
             }
         }
     }

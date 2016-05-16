@@ -1,9 +1,11 @@
 {{#leaflet-map
-    center=_center
+    center=sanitizedCenter
     zoom=_zoom
-    onLoad=(action 'updateBounds')
+    onLoad=(action 'onLoad')
     onMoveend=(action 'updateBounds')
+    onZoomend=(action 'updateZoom')
     onClick=(action 'onClick')
+    
 }}
     {{tile-layer
         url='https://a.tile.openstreetmap.org/{z}/{x}/{y}.png'

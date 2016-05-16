@@ -1,6 +1,5 @@
-/* global moment */
-
 import Ember from 'ember';
+import moment from 'moment';
 
 export default Ember.Component.extend({
 
@@ -10,7 +9,10 @@ export default Ember.Component.extend({
     store: Ember.inject.service('store'),
     formConfiguration: Ember.inject.service('form-configuration'),
     configuration: Ember.computed.alias('formConfiguration.component.collectingEvent'),
-
+    
+    /** Default zoom level. */
+    mapZoom: 13,
+    
     /** Is creating new collection event. */
     isCreating: false,
 
@@ -21,7 +23,6 @@ export default Ember.Component.extend({
                 timestampCreated: moment().unix()
             });
         }
-
         return this._newCollectingEvent;
     }.property(),
     
@@ -32,11 +33,13 @@ export default Ember.Component.extend({
 
     /** Enable or disable create mode when changing configuration. */
     onConfigurationChange: function() {
-        if (this.get('configuration.enableCreate')) {
-            this.send('enableCreate');
-        } else {
-            this.send('selectExisting');
-        }
+        Ember.run.scheduleOnce('actions', this, ()=>{
+           if (this.get('configuration.enableCreate')) {
+                this.send('enableCreate');
+            } else {
+                this.send('selectExisting');
+            } 
+        });
     }.observes('configuration').on('init'),
 
     actions: {
@@ -89,6 +92,35 @@ export default Ember.Component.extend({
         /** Remove collector from collecting event. */
         removeCollector (collector) {
             collector.destroyRecord();
+        },
+        
+        /** Set date and precision based on *field*, *date* and *precision*. */
+        setDateWithPrecision(field, date, precision) {
+            this.set(`model.collectingEvent.${field}`, date);
+            this.set(`model.collectingEvent.${field}Precision`, precision);
+        },
+        
+        /** Add comment to preparation. */
+        addComment(type) {
+            const store = this.get('store');
+
+            let attachment = store.createRecord('collecting-event-attachment', {
+                ordinal: type === 'verbatim' ? 1 : 0, 
+                originalAttachment: store.createRecord('attachment', {})
+            });
+
+            this.model.get('collectingEvent').get('attachments').pushObject(attachment);
+        },
+        
+        /** Remove attachment. */
+        removeAttachment(attachment) {
+            let original = attachment.get('originalAttachment');
+            original.then((record)=>{
+                if (record) {
+                    record.destroyRecord();   
+                }
+                attachment.destroyRecord();
+            });
         }
     }
 });

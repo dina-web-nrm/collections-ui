@@ -1,0 +1,20 @@
+<button
+    type="button"
+    class="btn btn-default dropdown-toggle btn-xs"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+>   
+    {{#if iconClass}}
+        <i class="glyphicon {{iconClass}}"></i>
+    {{/if}} 
+    {{t label}}
+</button>
+<ul class="dropdown-menu">
+    {{yield (hash
+            item=(
+                component 'dropdown-button/item'
+            )
+        )
+    }}
+</ul>
