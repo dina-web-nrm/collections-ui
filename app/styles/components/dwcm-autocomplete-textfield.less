@@ -55,6 +55,10 @@
         white-space: nowrap;
         text-overflow: ellipsis;
 
+        &.light {
+            color: @gray-dark;
+        }
+
         &.regular-row {
             width: 80%;
             overflow: hidden;
@@ -62,12 +66,15 @@
             text-overflow: ellipsis;
             float: left;
 
-            &.light {
-                color: @gray-dark;
-            }
-
             &.shrink {
                 width: 60%;
+            }
+
+            &.no-overflow {
+                overflow: auto;
+                white-space: initial;
+                text-overflow: initial;
+                height: auto;
             }
         }
 
@@ -88,6 +95,14 @@
             right: 5px;
             top: 8px;
             text-align: right;
+        }
+
+        &.right-label {
+            position: absolute;
+            bottom: 8px;
+            right: 10px;
+            margin: 0;
+            width: auto;
         }
     }
 
