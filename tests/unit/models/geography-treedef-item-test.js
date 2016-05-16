@@ -1,8 +1,8 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('geography', 'Unit | Model | geography', {
+moduleForModel('geography-treedef-item', 'Unit | Model | geography treedef item', {
   // Specify the other units that are required for this test.
-  needs: ['model:geography-treedef-item']
+  needs: []
 });
 
 test('it exists', function(assert) {
