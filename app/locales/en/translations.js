@@ -11,8 +11,12 @@ export default {
         date: 'Date',
         'date-descriptive': 'Date (YYYY-MM-DD)',
         user: 'User',
+        username: 'Username',
+        password: 'Password',
+        usernameOrPassword: 'Username or password',
         'sign-out': 'Sign out',
         'sign-in': 'Sign in',
+        'signing-in': 'Signing in',
         map: 'Map',
         count: 'pcs',
         next: 'Next',
@@ -84,7 +88,7 @@ export default {
         },
         'locality': {
             'lithostrat': 'Lithostratigraphy',
-            'chronostrat': 'Chronostratigraphy' 
+            'chronostrat': 'Chronostratigraphy'
         },
         'preparation': {
             'object-type': 'Object category',
@@ -301,7 +305,7 @@ export default {
                     <li>Initial customization of form based on unit.<br>Order of boxes and content for determination, object/preparation and collecting event are now based on unit. To change unit use the menu in the top right corner in the form.</li>
                     <li>Updated test data for beta site.</li>
                     <li>Reversed ordering on list page.</li>
-                    
+
                     <br><span class="label label-danger">Fixes</span>
                     <li>Autocomplete dropdowns hidden by bottom menu.</li>
                     <li>Display entire geography in searches and after selection.</li>
@@ -339,7 +343,7 @@ export default {
                     <li>Toggling with box header occurs unintentionally.</li>
                     <li>"Pick on map" misplaced in certain browsers.</li>
                     <li>Unified "Create new" and "Search for" labels.</li>
-                    
+
                 `,
                 date: '2016-04-15'
             }

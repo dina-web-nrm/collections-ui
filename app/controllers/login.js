@@ -1,25 +1,49 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
+import { validator, buildValidations } from 'ember-cp-validations';
+
+const Validations = buildValidations({
+    username: validator('presence', {
+        presence: true,
+        descriptionKey: 'definitions.username'
+    }),
+    password: validator('presence', {
+        presence: true,
+        descriptionKey: 'definitions.password'
+    }),
+    invalidCredentials: validator('valid-credentials', {
+        presence: false,
+        descriptionKey: 'definitions.usernameOrPassword'
+    }),
+});
+
+export default Ember.Controller.extend(Validations, {
 
     session: Ember.inject.service('session'),
-
-    /** Selected agent. */
-    agent: null,
+    validation: Ember.inject.service(),
 
     actions: {
 
-        /** Handle *agent* being selected. */
-        agentSelected (agent) {
-            this.set('agent', agent);
-        },
-
         /** Authenticate and sign in with currently selected agent. */
         authenticate () {
-            this.get('session').authenticate(
-                'authenticator:oauth', 'reporter', 'reporter'
-            ).catch(reason => {
-                console.log(reason);
+            this.set('validation.isHidden', true);
+            this.set('invalidCredentials', null);
+            this.set('isValidating', true);
+
+            this.validate({}, true).then(({model, validations}) => {
+                if (validations.get('isValid')) {
+                    this.get('session').authenticate(
+                        'authenticator:oauth',
+                        this.get('username'), this.get('password')
+                    ).catch(() => {
+                        this.set('invalidCredentials', true);
+                        this.set('validation.isHidden', false);
+                        this.set('isValidating', false);
+                    });
+                } else {
+                    this.set('validation.isHidden', false);
+                    this.set('isValidating', false);
+                }
             });
         }
     }

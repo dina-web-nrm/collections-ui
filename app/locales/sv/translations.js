@@ -11,8 +11,12 @@ export default {
         date: 'Datum',
         'date-descriptive': 'Datum(åååå-mm-dd)',
         user: 'Användare',
+        username: 'Användarnamn',
+        password: 'Lösenord',
+        usernameOrPassword: 'Användarnamn eller lösenord',
         'sign-out': 'Logga ut',
         'sign-in': 'Logga in',
+        'signing-in': 'Loggar in',
         map: 'Karta',
         count: 'st',
         next: 'Nästa',
@@ -83,7 +87,7 @@ export default {
         },
         'locality': {
             'lithostrat': 'Litostratigrafi',
-            'chronostrat': 'Kronostratigrafi' 
+            'chronostrat': 'Kronostratigrafi'
         },
         'preparation': {
             'object-type': 'Objektskategori',
@@ -258,7 +262,7 @@ export default {
         feedback: {
             body: `
                 Har du förslag på förbättringar eller hittar något som inte fungerar?
-                Fyll då gärna i feedback-formuläret. Feedback som lämnas finns <a target="_blank" href="https://trello.com/b/GCfLYqt1/cm-feedback">tillgänglig att se på Trello</a>. 
+                Fyll då gärna i feedback-formuläret. Feedback som lämnas finns <a target="_blank" href="https://trello.com/b/GCfLYqt1/cm-feedback">tillgänglig att se på Trello</a>.
             `,
             header: 'Feedback',
             button: 'Lämna feedback'
@@ -303,7 +307,7 @@ export default {
                     <li>Påbörjad anpassning av formulär baserat på enhet.<br>Ordning på boxar samt innehåll i bestämning, objekt/preparation och insamlingstillfälle är nu baserat på enhet. Använd menyn upp till höger i formuläret för att ändra enhet.</li>
                     <li>Uppdaterad testdata på testsidan.</li>
                     <li>Omvänd ordning på listsidan.</li>
-                    
+
                     <br><span class="label label-danger">Buggfixar</span>
                     <li>"Sök och välj"-listor hamnar under bottenmenyn.</li>
                     <li>Visa hela geografin i söknigar och efter val.</li>
