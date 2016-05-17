@@ -18,23 +18,23 @@ const Router = Ember.Router.extend({
 
             Ember.get(this, 'metrics').trackPage({
                 page: page,
-                title: title
+                title: title,
             });
         });
-    }
+    },
 });
 
 Router.map(function() {
-  this.route('collectionobject');
+    this.route('collectionobject');
 
-  this.route('collectionobject.view', {
-      path: 'collectionobject/:collectionobject_id'
-  });
+    this.route('collectionobject.view', {
+        path: 'collectionobject/:collectionobject_id',
+    });
 
-  this.route('collectionobject.new', {
-      path: 'collectionobject/new'
-  });
-  this.route('login');
+    this.route('collectionobject.new', {
+        path: 'collectionobject/new',
+    });
+    this.route('login');
 });
 
 export default Router;
