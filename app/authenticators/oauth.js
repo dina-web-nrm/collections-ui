@@ -1,7 +1,5 @@
 import Ember from 'ember';
 
-const { RSVP, run } = Ember;
-
 import config from '../config/environment';
 import OAuth2PasswordGrantAuthenticator from 'ember-simple-auth/authenticators/oauth2-password-grant';
 
