@@ -34,6 +34,15 @@ The API and instructions on how to run it can be found in the [dina-web/dw-colle
 Once you have the API up and running modify the HOST  in the `development` section in `config/environment.js`
 to match the URL to your API.
 
+### Linting
+
+The project is using [ESLint](http://eslint.org/) for linting the JavaScript.
+
+If using Sumblime enable linting by:
+
+* Installing `ESLint` using `npm install -g eslint`
+* Install `SublimeLinter` and `SublimeLinter-contrib-eslint` using Sublime Package Control.
+
 ### Running Tests
 
 * `ember test`
