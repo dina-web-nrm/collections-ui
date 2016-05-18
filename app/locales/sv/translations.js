@@ -83,7 +83,7 @@ export default {
         },
         'locality': {
             'lithostrat': 'Litostratigrafi',
-            'chronostrat': 'Kronostratigrafi' 
+            'chronostrat': 'Kronostratigrafi'
         },
         'preparation': {
             'object-type': 'Objektskategori',
@@ -258,7 +258,7 @@ export default {
         feedback: {
             body: `
                 Har du förslag på förbättringar eller hittar något som inte fungerar?
-                Fyll då gärna i feedback-formuläret. Feedback som lämnas finns <a target="_blank" href="https://trello.com/b/GCfLYqt1/cm-feedback">tillgänglig att se på Trello</a>. 
+                Fyll då gärna i feedback-formuläret. Feedback som lämnas finns <a target="_blank" href="https://trello.com/b/GCfLYqt1/cm-feedback">tillgänglig att se på Trello</a>.
             `,
             header: 'Feedback',
             button: 'Lämna feedback'
@@ -303,7 +303,7 @@ export default {
                     <li>Påbörjad anpassning av formulär baserat på enhet.<br>Ordning på boxar samt innehåll i bestämning, objekt/preparation och insamlingstillfälle är nu baserat på enhet. Använd menyn upp till höger i formuläret för att ändra enhet.</li>
                     <li>Uppdaterad testdata på testsidan.</li>
                     <li>Omvänd ordning på listsidan.</li>
-                    
+
                     <br><span class="label label-danger">Buggfixar</span>
                     <li>"Sök och välj"-listor hamnar under bottenmenyn.</li>
                     <li>Visa hela geografin i söknigar och efter val.</li>
@@ -342,8 +342,32 @@ export default {
                     <li>"Välj på karta" felplacerad i vissa webbläsare.</li>
                     <li>Uppdaterat "Skapa ny/nytt" och "Sök"-texter.</li>
                 `,
-                date: '2016-04-15'
-            }
-        }
-    }
+                date: '2016-04-15',
+            },
+            5: {
+                body: `
+                    <span class="label label-success">Ny funktionalitet</span>
+                    <li>Möjligt att lägga till Kommentarsfält och etikettsfält på Insamlingstillfälle och Objekt/Preparationer.</li>
+                    <li>Visa geografityp i "Sök och välj"-listor(typen ej översatt).</li>
+                    <li>Visa skala i kartvyer.</li>
+                    <li>Mer validering på fält som har begränsningar.</li>
+                    <li>Visa enhetsspecifik information efter val i "Sök och välj"-listor.</li>
+                    <li>Standardvy för kartor är nu hela världen.</li>
+                    <li>Bekräfta borttagning av preparation, bestämning och extrafält.</li>
+                    <li>
+                        <strong>Paleontologi:</strong> Lagt till "Litostratigrafi" och "Kronostratigrafi" när man skapar fyndplats.
+                    </li>
+
+                    <br><span class="label label-danger">Buggfixar</span>
+                    <li>Långa geografinamn klipps av.</li>
+                    <li>Går inte att välja ett redan valt objekt i "Sök och välj"-listor.</li>
+                    <li>Uppdaterad stil på verbatimfält.</li>
+                    <li>Möjligt att fylla i felaktiga dagar och månader.</li>
+                    <li>Val av geografi med koordinater uppdaterade inte alltid kartan.</li>
+                    <li>Hover över fynplatser i kartan blir inte markerade i listvyn.</li>
+                `,
+                date: '2016-05-18',
+            },
+        },
+    },
 };

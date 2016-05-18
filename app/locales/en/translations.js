@@ -84,7 +84,7 @@ export default {
         },
         'locality': {
             'lithostrat': 'Lithostratigraphy',
-            'chronostrat': 'Chronostratigraphy' 
+            'chronostrat': 'Chronostratigraphy'
         },
         'preparation': {
             'object-type': 'Object category',
@@ -301,7 +301,7 @@ export default {
                     <li>Initial customization of form based on unit.<br>Order of boxes and content for determination, object/preparation and collecting event are now based on unit. To change unit use the menu in the top right corner in the form.</li>
                     <li>Updated test data for beta site.</li>
                     <li>Reversed ordering on list page.</li>
-                    
+
                     <br><span class="label label-danger">Fixes</span>
                     <li>Autocomplete dropdowns hidden by bottom menu.</li>
                     <li>Display entire geography in searches and after selection.</li>
@@ -339,10 +339,34 @@ export default {
                     <li>Toggling with box header occurs unintentionally.</li>
                     <li>"Pick on map" misplaced in certain browsers.</li>
                     <li>Unified "Create new" and "Search for" labels.</li>
-                    
+
                 `,
-                date: '2016-04-15'
-            }
-        }
-    }
+                date: '2016-04-15',
+            },
+            5: {
+                body: `
+                    <span class="label label-success">New features</span>
+                    <li>Possible to add notes and verbatim fields to Collecting event and Object/Preparations.</li>
+                    <li>Display geography rank in geography dropdowns(not translated).</li>
+                    <li>Display scale in maps.</li>
+                    <li>Add more validation to fields that have restrictions.</li>
+                    <li>Display unit specific information in autocomplete dropdowns.</li>
+                    <li>Default map view is now the entire world.</li>
+                    <li>Confirm removing preparation, determination and extra fields.</li>
+                    <li>
+                        <strong>Paleontology:</strong> Added "Lithostratigraphy" and "Chronostratigraphy" fields when creating locality.
+                    </li>
+
+                    <br><span class="label label-danger">Fixes</span>
+                    <li>Long geography names not visible.</li>
+                    <li>Cannot select an already selected item in autocomplete dropdowns.</li>
+                    <li>Updated style on verbatim fields.</li>
+                    <li>Possible to specify dates with day and month out of range.</li>
+                    <li>Selecting geography with coordinates does not always center on map.</li>
+                    <li>Hovering an locality in the map should highlight in list.</li>
+                `,
+                date: '2016-05-18',
+            },
+        },
+    },
 };
