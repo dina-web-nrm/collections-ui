@@ -345,8 +345,32 @@ export default {
                     <li>Unified "Create new" and "Search for" labels.</li>
 
                 `,
-                date: '2016-04-15'
-            }
-        }
-    }
+                date: '2016-04-15',
+            },
+            5: {
+                body: `
+                    <span class="label label-success">New features</span>
+                    <li>Possible to add notes and verbatim fields to Collecting event and Object/Preparations.</li>
+                    <li>Display geography rank in geography dropdowns(not translated).</li>
+                    <li>Display scale in maps.</li>
+                    <li>Add more validation to fields that have restrictions.</li>
+                    <li>Display unit specific information in autocomplete dropdowns.</li>
+                    <li>Default map view is now the entire world.</li>
+                    <li>Confirm removing preparation, determination and extra fields.</li>
+                    <li>
+                        <strong>Paleontology:</strong> Added "Lithostratigraphy" and "Chronostratigraphy" fields when creating locality.
+                    </li>
+
+                    <br><span class="label label-danger">Fixes</span>
+                    <li>Long geography names not visible.</li>
+                    <li>Cannot select an already selected item in autocomplete dropdowns.</li>
+                    <li>Updated style on verbatim fields.</li>
+                    <li>Possible to specify dates with day and month out of range.</li>
+                    <li>Selecting geography with coordinates does not always center on map.</li>
+                    <li>Hovering an locality in the map should highlight in list.</li>
+                `,
+                date: '2016-05-18',
+            },
+        },
+    },
 };
