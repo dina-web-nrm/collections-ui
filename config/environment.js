@@ -61,7 +61,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     ENV.HOST = 'http://local-api.dina-web.net';
-    ENV.AUTHENTICATION_HOST = 'http://beta-sso.dina-web.net'
+    ENV.AUTHENTICATION_HOST = 'http://beta-sso.dina-web.net';
   }
 
   if (environment === 'test') {
@@ -81,6 +81,7 @@ module.exports = function(environment) {
 
       // String to be replaced when running in production.
       ENV.HOST = 'REPLACEWITHHOST';
+      ENV.AUTHENTICATION_HOST = 'REPLACEWITHAUTHHOST';
   }
 
   return ENV;

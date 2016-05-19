@@ -12,7 +12,7 @@ export default OAuth2PasswordGrantAuthenticator.extend({
     serverTokenEndpoint: `${config.AUTHENTICATION_HOST}/auth/realms/dina/protocol/openid-connect/token`,
 
     /** Set client id. */
-    clientId: 'dina-rest-endpoint',
+    clientId: 'dina-rest',
 
     /** Override to add client id to data. */
     makeRequest(url, data) {
