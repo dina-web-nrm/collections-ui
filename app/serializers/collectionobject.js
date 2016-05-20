@@ -91,6 +91,10 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
                 json.collectingEventID.localityID = json.collectingEventID.locality;
                 json.collectingEventID.localityID.disciplineID = disciplineID;
 
+                if (json.collectingEventID.localityID.paleoContextID) {
+                    json.collectingEventID.localityID.paleoContextID.disciplineID = disciplineID;
+                }
+
                 delete json.collectingEventID.localityID.createdByAgentID;
             }
 
