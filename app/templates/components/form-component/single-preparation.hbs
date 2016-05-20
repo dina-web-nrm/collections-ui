@@ -76,7 +76,11 @@
         <div class="col-xs-4">
             {{#validation/form-group}}
                 <label>{{t 'fields.labels.preparation.status'}}:</label>
-                {{input value=model.status class='form-control'}}
+                {{pick-list
+                    name='dwInventoryStatus'
+                    filterKeys='collectionID'
+                    update=(action (mut model.status))
+                }}
             {{/validation/form-group}}
         </div>
     </div>

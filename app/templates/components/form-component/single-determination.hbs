@@ -76,7 +76,7 @@
             filterField='lastName'
             itemSelected=(action 'setDeterminer')
             item=model.determiner
-            
+
             as |ai|
         }}
             {{ai.dropdown}}
@@ -102,7 +102,11 @@
                 message=(v-get model 'typeStatus' 'message')
             }}
                 <label>{{t 'fields.labels.determination.type-status'}}:</label>
-                {{input value=model.typeStatus class='form-control'}}
+                {{pick-list
+                    name='dwTypeStatus'
+                    filterKeys='collectionID'
+                    update=(action (mut model.typeStatus))
+                }}
             {{/validation/form-group}}
         </div>
     {{/unless}}
