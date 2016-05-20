@@ -21,9 +21,4 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
             serialize: 'records'
         }
     },
-    serialize() {
-        let json = this._super(...arguments);
-        json.createdByAgentID = parseInt(this.get('session').get('data.authenticated.id'));
-        return json;
-    }
 });

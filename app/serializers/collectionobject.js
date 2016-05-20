@@ -37,22 +37,20 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         var json = this._super(...arguments);
         const disciplineID = snapshot.record.get('collection.disciplineID');
 
-
         // Copy CollectionMemberID to CollectionID.
         json.collectionID = parseInt(json.collectionMemberID);
         json.collectionMemberID = json.collectionID;
 
         // Parse AccessionID to integer.
         json.accessionID = json.accessionID && parseInt(json.accessionID);
-        json.createdByAgentID = parseInt(json.createdByAgentID);
+        delete json.createdByAgentID;
 
-        json.catalogerID = parseInt(json.createdByAgentID);
+        // json.catalogerID = parseInt(json.createdByAgentID);
 
         json.determinationList = json.determinations;
         json.determinationList.forEach(function(element) {
             element.collectionMemberID = json.collectionMemberID;
             element.taxonID = parseInt(element.taxonID);
-            element.createdByAgentID = parseInt(json.createdByAgentID);
             element.determinerID = parseInt(element.determinerID);
         });
 
@@ -61,7 +59,6 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         json.preparationList = json.preparations;
         json.preparationList.forEach(function(element) {
             element.collectionMemberID = json.collectionMemberID;
-            element.createdByAgentID = parseInt(json.createdByAgentID);
             element.prepTypeID = parseInt(element.prepTypeID);
             element.storageID = parseInt(element.storageID);
         });
@@ -78,7 +75,6 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         json.collectionObjectAttributeID = json.objectAttribute;
 
         json.collectionObjectAttributeID.collectionMemberID = json.collectionMemberID;
-        json.collectionObjectAttributeID.createdByAgentID = parseInt(json.createdByAgentID);
 
         delete json.objectAttribute;
 
@@ -94,6 +90,8 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
             if (json.collectingEventID.locality) {
                 json.collectingEventID.localityID = json.collectingEventID.locality;
                 json.collectingEventID.localityID.disciplineID = disciplineID;
+
+                delete json.collectingEventID.localityID.createdByAgentID;
             }
 
             delete json.collectingEventID.locality;
@@ -107,9 +105,10 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
             });
 
             delete json.collectingEventID.attachments;
+            delete json.collectingEventID.createdByAgentID;
         }
 
         delete json.collectingEvent;
         return json;
-    }
+    },
 });
