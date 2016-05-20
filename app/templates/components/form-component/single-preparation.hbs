@@ -25,7 +25,15 @@
         <div class="col-xs-3">
             {{#validation/form-group}}
                 <label>{{t 'fields.labels.preparation.part'}}:</label>
-                {{input value=model.description class='form-control'}}
+                {{#unless configuration.partPickList}}
+                    {{input value=model.description class='form-control'}}
+                {{else}}
+                    {{pick-list
+                        name='dwPreparationPart'
+                        filterKeys='collectionID'
+                        update=(action (mut model.status))
+                    }}
+                {{/unless}}
             {{/validation/form-group}}
         </div>
         <div class="col-xs-2">
