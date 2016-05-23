@@ -115,7 +115,7 @@ const CONFIGURATIONS = {
             'form-component-basic-data': 'form-component/basic-data',
             'form-component-determination': 'form-component/determination',
             'form-component-preparation': 'form-component/preparation',
-            'form-component-collecting-event': 'form-component/collecting-event'   
+            'form-component-collecting-event': 'form-component/collecting-event'
         },
         component: {
             determination: {
@@ -136,10 +136,13 @@ const CONFIGURATIONS = {
             },
             collectingEvent: {
                 preview: {
-                    attributes: previewAttributes.collectingEvent
-                }
-            }
-        }
+                    attributes: previewAttributes.collectingEvent,
+                },
+            },
+            singlePreparation: {
+                partPickList: true,
+            },
+        },
     },
     4: {
         type: 'botany',
@@ -245,7 +248,7 @@ const CONFIGURATIONS = {
                         title: 'component.locality.lithostrat'
                     }, {
                         key: 'locality.paleoContext.chronosStrat.fullName',
-                        title: 'component.locality.chronostrat'        
+                        title: 'component.locality.chronostrat'
                     }])
                 }
             },
@@ -258,10 +261,10 @@ const CONFIGURATIONS = {
                 preview: {
                     attributes: previewAttributes.localitySelector.concat([{
                         key: 'paleoContext.lithoStrat.fullName',
-                        title: 'component.locality.lithostrat'        
+                        title: 'component.locality.lithostrat'
                     }, {
                         key: 'paleoContext.chronosStrat.fullName',
-                        title: 'component.locality.chronostrat'        
+                        title: 'component.locality.chronostrat'
                     }])
                 }
             }
@@ -273,10 +276,10 @@ export default Ember.Service.extend({
 
     /** Inject services. */
     session: Ember.inject.service('session'),
-    
+
     /** All available configurations. */
     configurations: CONFIGURATIONS,
-    
+
     /** Return active configuration. */
     configuration: Ember.computed('session.data.division', function () {
         const DIVISION = this.get('session.data.division');
@@ -284,16 +287,16 @@ export default Ember.Service.extend({
             this.get('configurations')[DIVISION] ||
             this.get('configurations')[1]
         );
-        
+
         return configuration;
     }),
-    
+
     /** Return type based on division. */
     type: Ember.computed.alias('configuration.type'),
-    
+
     /** Return components based on division. */
     components: Ember.computed.alias('configuration.components'),
-    
+
     /** Return component specific configurations based on division. */
     component: Ember.computed.alias('configuration.component')
 

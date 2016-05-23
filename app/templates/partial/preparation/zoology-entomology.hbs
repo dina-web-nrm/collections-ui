@@ -2,7 +2,7 @@
     <div class="col-xs-4">
         <label>{{t 'fields.labels.preparation.life-stage'}}:</label>
         {{pick-list
-            name='Stage'
+            name='dwStage'
             filterKeys='collectionID'
             update=(action (mut model.objectAttribute.lifeStage))
         }}
@@ -10,7 +10,7 @@
     <div class="col-xs-3">
         <label>{{t 'fields.labels.preparation.sex'}}:</label>
         {{pick-list
-            name='Sex'
+            name='dwSex'
             filterKeys='collectionID'
             update=(action (mut model.objectAttribute.sex))
         }}

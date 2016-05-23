@@ -34,27 +34,14 @@
                 class="btn btn-success btn-sm"
                 disabled={{isSaving}}
                 {{action 'submitForm'}}
-            >                
+            >
                 {{#if isSaving}}
+                    {{dwcm-spinner button=true}}
                     {{t 'collectionobject.new.toolbar.saving'}}
-                    <div class="spinner button-spinner"></div>
                 {{else}}
                     {{t 'collectionobject.new.toolbar.save'}}
                 {{/if}}
             </button>
-            <!--
-            <div class="btn-group">
-                <a class="btn btn-default btn-sm">
-                    {{t 'collectionobject.new.toolbar.duplicate'}}
-                </a>
-                <a class="btn btn-default btn-sm">
-                    {{t 'collectionobject.new.toolbar.print'}}
-                </a>
-            </div>
-            <a class="btn btn-danger pull-right btn-sm">
-                {{t 'collectionobject.new.toolbar.close'}}
-            </a>
-            -->
         </div>
     </div>
 </footer>

@@ -3,7 +3,7 @@
         <h1>
             {{model.id}}{{if model.catalogNumber (concat ' / ' model.catalogNumber) ''}}
         </h1>
-        {{t 'fields.labels.cataloger'}} {{model.cataloger.fullName}}, {{moment-format model.catalogedDate 'LL'}}
+        {{t 'fields.labels.cataloger'}} {{model.agent.fullName}}, {{moment-format model.catalogedDate 'LL'}}
     </div>
     <div class="row">
         <div class="col-xs-6">

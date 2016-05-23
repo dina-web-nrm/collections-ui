@@ -15,21 +15,23 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         'uncertaintyRadius': 'latLongAccuracy',
         'paleoContext': {
             key: 'paleoContextID',
-            serialize: 'records'
-        }
+            serialize: 'records',
+        },
     },
     serialize(){
         var json = this._super(...arguments);
         json.geographyID = parseInt(json.geographyID);
-        json.createdByAgentID = parseInt(this.get('session').get('data.authenticated.id'));
-        json.localityID = parseInt(json.localityID);
-        
+
+        if (json.localityID) {
+            json.localityID = parseInt(json.localityID);
+        }
+
         if (json.paleoContext) {
-            json.paleoContextID = json.paleoContext;           
+            json.paleoContextID = json.paleoContext;
         }
 
         delete json.paleoContext;
-        
+
         return json;
-    }
+    },
 });
