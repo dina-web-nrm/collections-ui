@@ -13,14 +13,14 @@ export default Ember.Component.extend({
     partialType: Ember.computed('formConfiguration.type', function () {
         return `partial/preparation/${this.get('formConfiguration.type')}`;
     }),
-    
+
     init() {
         this._super(...arguments);
         Ember.run.schedule('actions', this, function() {
             this.send('addPreparation');
         });
     },
-    
+
     /** Default options for sex field. */
     sexOptions: [{
             value: 'unknown',
@@ -55,32 +55,36 @@ export default Ember.Component.extend({
                 'preparationType', preparationType
             );
         },
-        
+
         /** Set *preparationType* for first preparation on model. */
         setStorage (storage) {
             this.model.get('preparations.firstObject').set(
                 'storage', storage
             );
         },
-        
+
         /** Add comment to preparation. */
         addComment(type) {
             const store = this.get('store');
 
             let attachment = store.createRecord('collection-object-attachment', {
-                ordinal: type === 'verbatim' ? 1 : 0, 
-                originalAttachment: store.createRecord('attachment', {})
+                ordinal: type === 'verbatim' ? 1 : 0,
+                originalAttachment: store.createRecord('attachment', {
+                    // 1 is the magical ID for the Collection Object table in Specify
+                    // See: https://sourceforge.net/p/specify/code/HEAD/tree/trunk/Specify/config/specify_tableid_listing.xml
+                    tableID: 1,
+                }),
             });
 
             this.model.get('attachments').pushObject(attachment);
         },
-        
+
         /** Remove attachment. */
         removeAttachment(attachment) {
             let original = attachment.get('originalAttachment');
             original.then((record)=>{
                 if (record) {
-                    record.destroyRecord();   
+                    record.destroyRecord();
                 }
                 attachment.destroyRecord();
             });
