@@ -9,10 +9,10 @@ export default Ember.Component.extend({
     store: Ember.inject.service('store'),
     formConfiguration: Ember.inject.service('form-configuration'),
     configuration: Ember.computed.alias('formConfiguration.component.collectingEvent'),
-    
+
     /** Default zoom level. */
     mapZoom: 13,
-    
+
     /** Is creating new collection event. */
     isCreating: false,
 
@@ -25,7 +25,7 @@ export default Ember.Component.extend({
         }
         return this._newCollectingEvent;
     }.property(),
-    
+
     /** Return partial type based on division configuration. */
     partialType: Ember.computed('formConfiguration.type', function () {
         return `partial/collecting-event/create-${this.get('formConfiguration.type')}`;
@@ -38,7 +38,7 @@ export default Ember.Component.extend({
                 this.send('enableCreate');
             } else {
                 this.send('selectExisting');
-            } 
+            }
         });
     }.observes('configuration').on('init'),
 
@@ -93,31 +93,35 @@ export default Ember.Component.extend({
         removeCollector (collector) {
             collector.destroyRecord();
         },
-        
+
         /** Set date and precision based on *field*, *date* and *precision*. */
         setDateWithPrecision(field, date, precision) {
             this.set(`model.collectingEvent.${field}`, date);
             this.set(`model.collectingEvent.${field}Precision`, precision);
         },
-        
+
         /** Add comment to preparation. */
         addComment(type) {
             const store = this.get('store');
 
             let attachment = store.createRecord('collecting-event-attachment', {
-                ordinal: type === 'verbatim' ? 1 : 0, 
-                originalAttachment: store.createRecord('attachment', {})
+                ordinal: type === 'verbatim' ? 1 : 0,
+                originalAttachment: store.createRecord('attachment', {
+                    // 10 is the magical ID for the Collecting Event table in Specify
+                    // https://sourceforge.net/p/specify/code/HEAD/tree/trunk/Specify/config/specify_tableid_listing.xml
+                    tableID: 10,
+                }),
             });
 
             this.model.get('collectingEvent').get('attachments').pushObject(attachment);
         },
-        
+
         /** Remove attachment. */
         removeAttachment(attachment) {
             let original = attachment.get('originalAttachment');
             original.then((record)=>{
                 if (record) {
-                    record.destroyRecord();   
+                    record.destroyRecord();
                 }
                 attachment.destroyRecord();
             });
