@@ -263,7 +263,8 @@ export default {
         feedback: {
             body: 'Use the feedback form if you find anything that is not working correctly or if you have suggestions on improvements.',
             header: 'Feedback',
-            button: 'Send feedback'
+            button: 'Send feedback',
+            'sign-in': 'Sign in to leave feedback.',
         },
         sprint: {
             header: 'Current sprint',

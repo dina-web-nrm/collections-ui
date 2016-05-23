@@ -265,7 +265,8 @@ export default {
                 Fyll då gärna i feedback-formuläret. Feedback som lämnas finns <a target="_blank" href="https://trello.com/b/GCfLYqt1/cm-feedback">tillgänglig att se på Trello</a>.
             `,
             header: 'Feedback',
-            button: 'Lämna feedback'
+            button: 'Lämna feedback',
+            'sign-in': 'Logga in för att lämna feedback.',
         },
         sprint: {
             header: 'Nuvarande sprint',

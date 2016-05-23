@@ -17,6 +17,7 @@ export default SessionService.extend({
                         fullName: responseData.preferred_username,
                         agentId: responseData.agentId,
                         email: responseData.email,
+                        isFocusGroupMember: responseData.agentId !== '1016',
                     });
                 },
                 headers: {
