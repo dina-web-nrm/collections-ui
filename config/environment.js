@@ -1,49 +1,49 @@
 /* jshint node: true */
 
 module.exports = function(environment) {
-  var ENV = {
-    modulePrefix: 'dw-collections-manager',
-    environment: environment,
-    baseURL: '/',
-    locationType: 'hash',
-    i18n: {
-        defaultLocale: 'sv'
-    },
-    EmberENV: {
-    FEATURES: {
-        // Here you can enable experimental features on an ember canary build
-        // e.g. 'with-controller': true
-    }
-    },
+    var ENV = {
+        modulePrefix: 'dw-collections-manager',
+        environment: environment,
+        baseURL: '/',
+        locationType: 'hash',
+        i18n: {
+            defaultLocale: 'sv',
+        },
+        EmberENV: {
+            FEATURES: {
+                // Here you can enable experimental features on an ember canary build
+                // e.g. 'with-controller': true
+            },
+        },
 
-    APP: {
-    // Here you can pass flags/options to your application instance
-    // when it is created
-    },
-    moment: {
-        // To cherry-pick specific locale support into your application.
-        // Full list of locales: https://github.com/moment/moment/tree/2.10.3/locale
-        includeLocales: ['sv', 'en']
-    },
-    metricsAdapters: [{
+        APP: {
+        // Here you can pass flags/options to your application instance
+        // when it is created
+        },
+        moment: {
+            // To cherry-pick specific locale support into your application.
+            // Full list of locales: https://github.com/moment/moment/tree/2.10.3/locale
+            includeLocales: ['sv', 'en'],
+        },
+        metricsAdapters: [{
             name: 'Piwik',
             environments: ['production'],
             config: {
                 piwikUrl: 'https://monitor.dina-web.net',
                 siteId: 4
-            }
+            },
         }, {
             name: 'Piwik',
             environments: ['development'],
             config: {
                 piwikUrl: 'https://monitor.dina-web.net',
-                siteId: 2
-            }
-    }],
-    'ember-composable-helpers': {
-      only: ['filter-by']
-    }
-  };
+                siteId: 2,
+            },
+        }],
+        'ember-composable-helpers': {
+            only: ['filter-by', 'capitalize', 'w'],
+        },
+    };
 
   if (environment === 'development') {
 
@@ -61,7 +61,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     ENV.HOST = 'https://beta-api.dina-web.net';
-    ENV.AUTHENTICATION_HOST = 'https://beta-sso.dina-web.net';
+    ENV.AUTHENTICATION_HOST = 'https://beta-sso.dina-web.net/auth/realms/dina/protocol/openid-connect';
   }
 
   if (environment === 'test') {
@@ -81,7 +81,7 @@ module.exports = function(environment) {
 
       // String to be replaced when running in production.
       ENV.HOST = 'REPLACEWITHHOST';
-      ENV.AUTHENTICATION_HOST = 'REPLACEWITHAUTHHOST';
+      ENV.AUTHENTICATION_HOST = 'REPLACEWITHAUTHHOST/auth/realms/dina/protocol/openid-connect';
   }
 
   return ENV;
