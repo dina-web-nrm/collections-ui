@@ -9,7 +9,7 @@ export default OAuth2PasswordGrantAuthenticator.extend({
     refreshAccessTokens: true,
 
     /** Endpoint for authentication. */
-    serverTokenEndpoint: `${config.AUTHENTICATION_HOST}/auth/realms/dina/protocol/openid-connect/token`,
+    serverTokenEndpoint: `${config.AUTHENTICATION_HOST}/token`,
 
     /** Set client id. */
     clientId: 'dina-rest',

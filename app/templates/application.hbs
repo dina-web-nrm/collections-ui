@@ -6,7 +6,8 @@
         {{dwcm-language-selector class="pull-right"}}
         <div class="pull-right user-menu">
             {{#if session.isAuthenticated}}
-                {{session.data.authenticated.fullName}}(<a class="clickable" {{action 'invalidateSession'}}>{{t 'definitions.sign-out'}}</a>)
+                <span class="capitalized">{{session.userProfile.fullName}}</span>
+                (<a class="clickable" {{action 'invalidateSession'}}>{{t 'definitions.sign-out'}}</a>)
             {{else}}
                 {{#link-to 'login'}}
                     {{t 'definitions.sign-in'}}

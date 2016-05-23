@@ -263,11 +263,12 @@ export default {
         feedback: {
             body: 'Use the feedback form if you find anything that is not working correctly or if you have suggestions on improvements.',
             header: 'Feedback',
-            button: 'Send feedback'
+            button: 'Send feedback',
+            'sign-in': 'Sign in to leave feedback.',
         },
         sprint: {
             header: 'Current sprint',
-            body: 'The current sprint is focusing on Collecting events, Localities, User authentication and being able to test with real data.'
+            body: 'Main focus in the current sprint will be extra fields for Collecting event and Locality and fixing minor bugs reported in the feedback form.',
         },
         changes: {
             header: 'Release log',
@@ -350,6 +351,9 @@ export default {
             5: {
                 body: `
                     <span class="label label-success">New features</span>
+                    <li>User authentication<br>
+                        Users are now required to be signed in to create and list collection objects.
+                    </li>
                     <li>Possible to add notes and verbatim fields to Collecting event and Object/Preparations.</li>
                     <li>Display geography rank in geography dropdowns(not translated).</li>
                     <li>Display scale in maps.</li>

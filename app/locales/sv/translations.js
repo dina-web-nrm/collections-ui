@@ -265,11 +265,12 @@ export default {
                 Fyll då gärna i feedback-formuläret. Feedback som lämnas finns <a target="_blank" href="https://trello.com/b/GCfLYqt1/cm-feedback">tillgänglig att se på Trello</a>.
             `,
             header: 'Feedback',
-            button: 'Lämna feedback'
+            button: 'Lämna feedback',
+            'sign-in': 'Logga in för att lämna feedback.',
         },
         sprint: {
             header: 'Nuvarande sprint',
-            body: 'Sprinten som pågår just nu kommer att fokusera på Insamlingstillfälle, Fyndplatser, Inloggning med riktiga användare och riktig testdata.'
+            body: 'Fokus i nuvarande sprint ligger på extrafält för Insamlingstillfälle och Fyndplats samt uppsamling av mindre buggar/fixar som har kommit in som feedback.',
         },
         changes: {
             header: 'Förändringar',
@@ -351,6 +352,9 @@ export default {
             5: {
                 body: `
                     <span class="label label-success">Ny funktionalitet</span>
+                    <li>Inloggning<br>
+                        För att lista och skapa nya föremål krävs nu att man är inloggad.
+                    </li>
                     <li>Möjligt att lägga till Kommentarsfält och etikettsfält på Insamlingstillfälle och Objekt/Preparationer.</li>
                     <li>Visa geografityp i "Sök och välj"-listor(typen ej översatt).</li>
                     <li>Visa skala i kartvyer.</li>
