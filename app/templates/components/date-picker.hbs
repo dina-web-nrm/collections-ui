@@ -1,16 +1,19 @@
 {{input
     type="number" class="form-control" disabled=disabled value=year
     key-up=(action 'change')
+    change=(action 'change')
 }}
 <div class="pull-left">-</div>
 {{input
     type="number" class="form-control small" disabled=disabled value=month
     key-up=(action 'change')
+    change=(action 'change')
 }}
 <div class="pull-left">-</div>
 {{input
     type="number" class="form-control small" disabled=disabled value=day
     key-up=(action 'change')
+    change=(action 'change')
 }}
 <div class="clearfix"></div>
 {{#unless isValid}}
