@@ -14,7 +14,7 @@
 
             itemSelected=(action "selectedCollectingEvent")
             item=model.collectingEvent
-            
+
             class='rich'
 
             as |autocompleteInput|
@@ -63,11 +63,12 @@
                 {{#map-view
                     center=model.collectingEvent.locality.location
                     zoom=mapZoom
+                    onZoom=(action (mut mapZoom))
                 }}
                     {{#circle-marker-layer
                         location=model.collectingEvent.locality.location
                         popupOpen=(readonly true)
-                        color='#FF0000'                        
+                        color='#FF0000'
                         radius=(metersToPixels model.collectingEvent.locality.uncertaintyRadius mapZoom)
                     }}
                         <p>
