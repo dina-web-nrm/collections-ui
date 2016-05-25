@@ -1,13 +1,15 @@
-<div class="header">
-    <h4 class="pull-left">{{t 'component.locality-selector.new-locality'}}</h4>
-    <a
-        class="pull-right clickable"
-        {{action this.attrs.enableSearch}}
-    >
-        {{t 'component.locality-selector.select-existing'}}
-    </a>
-    <div class="clearfix"></div>
-</div>
+{{#unless configuration.hide.header}}
+    <div class="header">
+        <h4 class="pull-left">{{t 'component.locality-selector.new-locality'}}</h4>
+        <a
+            class="pull-right clickable"
+            {{action this.attrs.enableSearch}}
+        >
+            {{t 'component.locality-selector.select-existing'}}
+        </a>
+        <div class="clearfix"></div>
+    </div>
+{{/unless}}
 <div class='row'>
     <div class='col-xs-12 col-sm-6'>
         {{#validation/form-group
@@ -32,7 +34,7 @@
 
             itemSelected=(action (mut newLocality.geography))
             item=newLocality.geography
-            
+
             class='rich'
 
             as |autocompleteInput|
@@ -49,7 +51,6 @@
     </div>
 </div>
 <div class='row'>
-    
     <div class='col-xs-6'>
         {{#map-view
             zoom=zoom center=mapLocation
@@ -180,7 +181,7 @@
                 filterKeys='disciplineID'
                 itemSelected=(action 'setStratigraphy' 'lithoStrat')
                 item=newLocality.paleoContext.lithoStrat
-                
+
                 as |autocompleteInput|
             }}
                 {{autocompleteInput.inline}}
@@ -199,7 +200,7 @@
                 filterKeys='disciplineID'
                 itemSelected=(action 'setStratigraphy' 'chronosStrat')
                 item=newLocality.paleoContext.chronosStrat
-                
+
                 as |autocompleteInput|
             }}
                 {{autocompleteInput.inline}}

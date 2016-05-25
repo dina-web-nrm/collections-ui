@@ -133,6 +133,7 @@ const CONFIGURATIONS = {
                 hide: {
                     elevation: true,
                     paleoContext: true,
+                    header: true,
                 },
             },
             localitySelector: {
@@ -141,6 +142,7 @@ const CONFIGURATIONS = {
                 },
             },
             collectingEvent: {
+                enableCreateLocality: true,
                 preview: {
                     attributes: previewAttributes.collectingEvent,
                 },
@@ -172,6 +174,7 @@ const CONFIGURATIONS = {
             },
             collectingEvent: {
                 enableCreate: true,
+                enableCreateLocality: true,
                 preview: {
                     attributes: previewAttributes.collectingEvent,
                 },
@@ -180,6 +183,7 @@ const CONFIGURATIONS = {
                 hide: {
                     elevation: true,
                     paleoContext: true,
+                    header: true,
                 },
             },
             localitySelector: {

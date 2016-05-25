@@ -4,15 +4,15 @@
             {{form-component/locality
                 update=(action 'selectedLocality')
                 item=model.collectingEvent.locality
-                
-                enableSearch=(action this.toggleProperty 'createLocality')
+
+                enableSearch=(action this.toggleProperty 'isCreatingLocality')
             }}
         {{else}}
             {{locality-selector
                 update=(action 'selectedLocality')
                 item=model.collectingEvent.locality
-                
-                enableCreate=(action this.toggleProperty 'createLocality')
+
+                enableCreate=(action this.toggleProperty 'isCreatingLocality')
             }}
         {{/if}}
     </div>
