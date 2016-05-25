@@ -108,6 +108,11 @@ const CONFIGURATIONS = {
                     attributes: previewAttributes.collectingEvent,
                 },
             },
+            singlePreparation: {
+                hide: {
+                    partCount: true,
+                },
+            },
         },
     },
     3: {

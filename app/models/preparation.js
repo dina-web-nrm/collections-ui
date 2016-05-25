@@ -5,8 +5,8 @@ import {validator, buildValidations} from 'ember-cp-validations';
 const Validations = buildValidations({
     preparationType: validator('presence', {
         presence: true,
-        descriptionKey: 'fields.labels.preparation.preparation-type'
-    })
+        descriptionKey: 'fields.labels.preparation.preparation-type',
+    }),
 });
 
 export default DS.Model.extend(Validations, {
@@ -18,5 +18,7 @@ export default DS.Model.extend(Validations, {
 
     'preparationType': DS.belongsTo('prep-type'),
     'storage':  DS.belongsTo('storage'),
-    'individualsCount': DS.attr('number'),
+    'individualsCount': DS.attr('number', {
+        defaultValue() { return 1; },
+    }),
 });

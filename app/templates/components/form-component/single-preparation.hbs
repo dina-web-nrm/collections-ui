@@ -36,15 +36,17 @@
                 {{/unless}}
             {{/validation/form-group}}
         </div>
-        <div class="col-xs-2">
-            {{#validation/form-group}}
-                <label>{{t 'fields.labels.preparation.count'}}:</label>
-                {{input
-                    type='number' min=0 value=model.countAmt
-                    class='form-control'
-                }}
-            {{/validation/form-group}}
-        </div>
+        {{#unless configuration.hide.partCount}}
+            <div class="col-xs-2">
+                {{#validation/form-group}}
+                    <label>{{t 'fields.labels.preparation.count'}}:</label>
+                    {{input
+                        type='number' min=0 value=model.countAmt
+                        class='form-control'
+                    }}
+                {{/validation/form-group}}
+            </div>
+        {{/unless}}
         {{#unless configuration.hide.individualsCount}}
             <div class="col-xs-2">
             {{#validation/form-group}}
