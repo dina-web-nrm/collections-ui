@@ -5,12 +5,28 @@
     onMoveend=(action 'updateBounds')
     onZoomend=(action 'updateZoom')
     onClick=(action 'onClick')
-    
+
 }}
-    {{tile-layer
-        url='https://a.tile.openstreetmap.org/{z}/{x}/{y}.png'
-        attribution='© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }}
+    {{#layer-group name="Open Street Maps" baselayer=true default=true}}
+        {{tile-layer
+            url='https://a.tile.openstreetmap.org/{z}/{x}/{y}.png'
+            attribution='© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }}
+    {{/layer-group}}
+    {{#layer-group name="Satellite" baselayer=true}}
+        {{tile-layer
+            url="http://otile1.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.png"
+            attribution='© <a href="http://www.mapquest.com/satellite-maps/">MapQuest</a>'
+        }}
+    {{/layer-group}}
+    {{#layer-group name="Outdoor" baselayer=true}}
+        {{tile-layer
+            url="http://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png"
+            attribution='© <a href="http://http://www.thunderforest.com/outdoors/">Thunderforest</a>'
+        }}
+    {{/layer-group}}
+
+    {{layer-control}}
 
     {{yield this}}
 {{/leaflet-map}}

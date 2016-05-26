@@ -49,6 +49,7 @@
     "ember-i18n": "4.2.0",
     "ember-i18n-cp-validations": "2.3.0",
     "ember-leaflet": "2.1.2",
+    "ember-leaflet-layer-control": "0.0.1",
     "ember-leaflet-marker-cluster": "0.0.2",
     "ember-metrics": "0.6.0",
     "ember-modal-dialog": "0.8.3",
