@@ -7,7 +7,7 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
 
     /** Setup component css classes. */
     classNames: [
-        'autocomplete-input', 'dropdown-group'
+        'autocomplete-input', 'dropdown-group',
     ],
 
     /** Update when item being updated from outside. */
@@ -42,7 +42,7 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
 
     /** Value of the input field */
     value: '',
-    
+
     /** Limit number of responses. */
     limit: 40,
 
@@ -112,7 +112,7 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
         var queryParams = {
             search: true,
             limit: limit,
-            orderby: filterField
+            orderby: filterField,
         };
 
         queryParams[filterField] = filterValue;
@@ -171,7 +171,7 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
         */
         onKeyDown (value, event) {
             this.set('hasFocus', true);
-            
+
             if ([38, 40, 13, 27, 9].indexOf(event.keyCode) !== -1) {
                 let index = this.get('highlightedIndex');
                 let preventDefault = false;
@@ -195,9 +195,9 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
                 // ESC and TAB key should remove focus.
                 } else if ([27, 9].indexOf(event.keyCode) !== -1) {
                     this.set('hasFocus', false);
-                    preventDefault = true;
+                    return true;
                 }
-                
+
                 if (index < 0) {
                     index = 0;
                 } else if (index > this.get('previewData.length') - 1) {
@@ -209,7 +209,7 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
                 if (preventDefault) {
                     event.preventDefault();
                 }
-                
+
                 return false;
             }
 
@@ -221,7 +221,7 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
          * Handle focus events from input field.
          */
         onFocus () {
-            this.set('hasFocus', true);            
+            this.set('hasFocus', true);
         },
 
         /**
@@ -244,10 +244,10 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
             // Should be set from parent.
             this.attrs.itemSelected(item);
         },
-        
+
         /** Clear selection in field. */
         clearSelection() {
             this.attrs.itemSelected();
-        }
-    }
+        },
+    },
 });
