@@ -3,50 +3,50 @@ import Ember from 'ember';
 const previewAttributes = {
     localitySelector: [{
         key: 'localityName',
-        title: 'component.locality-selector.locality-name'
+        title: 'component.locality-selector.locality-name',
     }, {
         key: 'geography.displayName',
-        title: 'definitions.geography'
+        title: 'definitions.geography',
     }, {
         key: 'uncertaintyRadius',
-        title: 'component.locality-selector.uncertainty-radius'
+        title: 'component.locality-selector.uncertainty-radius',
     }, {
         key: 'location',
-        title: 'definitions.coordinates'
+        title: 'definitions.coordinates',
     }],
     collectingEvent: [{
         key: 'givenName',
-        title: 'component.collecting-event.given-name'
+        title: 'component.collecting-event.given-name',
     }, {
         key: 'startDate',
         title: 'fields.labels.collecting-event.start-date.name',
         date: {
-            precision: 'startDatePrecision'
-        }
+            precision: 'startDatePrecision',
+        },
     }, {
         key: 'endDate',
         title: 'fields.labels.collecting-event.end-date.name',
         date: {
-            precision: 'endDatePrecision'
-        }
+            precision: 'endDatePrecision',
+        },
     }, {
         key: 'method',
-        title: 'fields.labels.collecting-event.method'
+        title: 'fields.labels.collecting-event.method',
     }, {
         key: 'locality.localityName',
-        title: 'component.locality-selector.locality-name'
+        title: 'component.locality-selector.locality-name',
     }, {
         key: 'locality.geography.displayName',
-        title: 'definitions.geography'
+        title: 'definitions.geography',
     }, {
         key: 'locality.location',
-        title: 'definitions.coordinates'
+        title: 'definitions.coordinates',
     }, {
         arrayKey: 'collectors',
         class: 'label label-default',
         title: 'fields.labels.collector',
-        key: 'agent.fullName'
-    }]
+        key: 'agent.fullName',
+    }],
 };
 
 const CONFIGURATIONS = {
@@ -62,21 +62,21 @@ const CONFIGURATIONS = {
             collectingEvent: {
                 enableCreate: true,
                 preview: {
-                    attributes: previewAttributes.collectingEvent
-                }
+                    attributes: previewAttributes.collectingEvent,
+                },
             },
             locality: {
                 hide: {
                     elevation: true,
-                    paleoContext: true
-                }
+                    paleoContext: true,
+                },
             },
             localitySelector: {
                 preview: {
-                    attributes: previewAttributes.localitySelector
-                }
-            }
-        }
+                    attributes: previewAttributes.localitySelector,
+                },
+            },
+        },
     },
     2: {
         type: 'zoology-entomology',
@@ -84,30 +84,36 @@ const CONFIGURATIONS = {
             'form-component-basic-data': 'form-component/basic-data',
             'form-component-determination': 'form-component/determination',
             'form-component-collecting-event': 'form-component/collecting-event',
-            'form-component-preparation': 'form-component/preparation'
+            'form-component-preparation': 'form-component/preparation',
         },
         component: {
             determination: {
                 hide: {
-                    confidence: true
-                }
+                    confidence: true,
+                },
             },
             locality: {
                 hide: {
-                    paleoContext: true
-                }
+                    paleoContext: true,
+                },
             },
             localitySelector: {
                 preview: {
-                    attributes: previewAttributes.localitySelector
-                }
+                    attributes: previewAttributes.localitySelector,
+                },
             },
             collectingEvent: {
+                enableCreate: true,
                 preview: {
-                    attributes: previewAttributes.collectingEvent
-                }
-            }
-        }
+                    attributes: previewAttributes.collectingEvent,
+                },
+            },
+            singlePreparation: {
+                hide: {
+                    partCount: true,
+                },
+            },
+        },
     },
     3: {
         type: 'zoology-invertebrate',
@@ -115,26 +121,28 @@ const CONFIGURATIONS = {
             'form-component-basic-data': 'form-component/basic-data',
             'form-component-determination': 'form-component/determination',
             'form-component-preparation': 'form-component/preparation',
-            'form-component-collecting-event': 'form-component/collecting-event'
+            'form-component-collecting-event': 'form-component/collecting-event',
         },
         component: {
             determination: {
                 hide: {
-                    method: true
-                }
+                    method: true,
+                },
             },
             locality: {
                 hide: {
                     elevation: true,
-                    paleoContext: true
-                }
+                    paleoContext: true,
+                    header: true,
+                },
             },
             localitySelector: {
                 preview: {
-                    attributes: previewAttributes.localitySelector
-                }
+                    attributes: previewAttributes.localitySelector,
+                },
             },
             collectingEvent: {
+                enableCreateLocality: true,
                 preview: {
                     attributes: previewAttributes.collectingEvent,
                 },
@@ -151,40 +159,42 @@ const CONFIGURATIONS = {
             'form-component-preparation': 'form-component/preparation',
             'form-component-collecting-event': 'form-component/collecting-event',
             'form-component-type-status': 'form-component/type-status',
-            'form-component-determination': 'form-component/determination'
+            'form-component-determination': 'form-component/determination',
         },
         component: {
             determination: {
                 hide: {
                     method: true,
                     confidence: true,
-                    typeStatus: true
+                    typeStatus: true,
                 },
                 top: {
-                    verbatimTaxon: true
-                }
+                    verbatimTaxon: true,
+                },
             },
             collectingEvent: {
                 enableCreate: true,
+                enableCreateLocality: true,
                 preview: {
-                    attributes: previewAttributes.collectingEvent
-                }
+                    attributes: previewAttributes.collectingEvent,
+                },
             },
             locality: {
                 hide: {
                     elevation: true,
-                    paleoContext: true
-                }
+                    paleoContext: true,
+                    header: true,
+                },
             },
             localitySelector: {
                 preview: {
-                    attributes: previewAttributes.localitySelector
-                }
+                    attributes: previewAttributes.localitySelector,
+                },
             },
             preparation: {
-                disableAdd: true
-            }
-        }
+                disableAdd: true,
+            },
+        },
     },
     5: {
         type: 'paleontology',
@@ -192,33 +202,33 @@ const CONFIGURATIONS = {
             'form-component-basic-data': 'form-component/basic-data',
             'form-component-collecting-event': 'form-component/collecting-event',
             'form-component-preparation': 'form-component/preparation',
-            'form-component-determination': 'form-component/determination'
+            'form-component-determination': 'form-component/determination',
         },
         component: {
             singlePreparation: {
                 hide: {
                     individualsCount: true,
-                    preparationNumber: true
-                }
+                    preparationNumber: true,
+                },
             },
             collectingEvent: {
                 enableCreate: true,
                 preview: {
-                    attributes: previewAttributes.collectingEvent
-                }
+                    attributes: previewAttributes.collectingEvent,
+                },
             },
             locality: {
                 hide: {
                     elevation: true,
-                    paleoContext: true
-                }
+                    paleoContext: true,
+                },
             },
             localitySelector: {
                 preview: {
-                    attributes: previewAttributes.localitySelector
-                }
-            }
-        }
+                    attributes: previewAttributes.localitySelector,
+                },
+            },
+        },
     },
     6: {
         type: 'geology',
@@ -226,50 +236,50 @@ const CONFIGURATIONS = {
             'form-component-basic-data': 'form-component/basic-data',
             'form-component-collecting-event': 'form-component/collecting-event',
             'form-component-determination': 'form-component/determination',
-            'form-component-preparation': 'form-component/preparation'
+            'form-component-preparation': 'form-component/preparation',
         },
         component: {
             singlePreparation: {
                 hide: {
                     individualsCount: true,
-                    preparationNumber: true
-                }
+                    preparationNumber: true,
+                },
             },
             determination: {
                 hide: {
-                    confidence: true
-                }
+                    confidence: true,
+                },
             },
             collectingEvent: {
                 enableCreate: true,
                 preview: {
                     attributes: previewAttributes.collectingEvent.concat([{
                         key: 'locality.paleoContext.lithoStrat.fullName',
-                        title: 'component.locality.lithostrat'
+                        title: 'component.locality.lithostrat',
                     }, {
                         key: 'locality.paleoContext.chronosStrat.fullName',
-                        title: 'component.locality.chronostrat'
-                    }])
-                }
+                        title: 'component.locality.chronostrat',
+                    }]),
+                },
             },
             locality: {
                 hide: {
-                    elevation: true
-                }
+                    elevation: true,
+                },
             },
             localitySelector: {
                 preview: {
                     attributes: previewAttributes.localitySelector.concat([{
                         key: 'paleoContext.lithoStrat.fullName',
-                        title: 'component.locality.lithostrat'
+                        title: 'component.locality.lithostrat',
                     }, {
                         key: 'paleoContext.chronosStrat.fullName',
-                        title: 'component.locality.chronostrat'
-                    }])
-                }
-            }
-        }
-    }
+                        title: 'component.locality.chronostrat',
+                    }]),
+                },
+            },
+        },
+    },
 };
 
 export default Ember.Service.extend({
@@ -298,6 +308,6 @@ export default Ember.Service.extend({
     components: Ember.computed.alias('configuration.components'),
 
     /** Return component specific configurations based on division. */
-    component: Ember.computed.alias('configuration.component')
+    component: Ember.computed.alias('configuration.component'),
 
 });

@@ -4,6 +4,9 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
+    /** Set default css classes. */
+    classNames: ['map-view'],
+
     sanitizedCenter: Ember.computed('_center', function () {
         const center = this.get('_center');
         const coordinates = (
@@ -16,10 +19,10 @@ export default Ember.Component.extend({
 
         if (!coordinates) {
             this.set('_zoom', 2);
-            
+
             return [59.3687594, 18.0533395];
         }
-        
+
         return coordinates;
     }),
 
@@ -28,13 +31,13 @@ export default Ember.Component.extend({
 
         let zoom = this.get('zoom') || 10;
         let center = this.get('center');
-        
+
         if (this.get('_zoom') !== zoom) {
-            this.set('_zoom', zoom);            
+            this.set('_zoom', zoom);
         }
-        
+
         if (this.get('_center') !== center) {
-            this.set('_center', center);            
+            this.set('_center', center);
         }
     },
 
@@ -46,7 +49,7 @@ export default Ember.Component.extend({
             if (this.attrs.boundsUpdate) {
                 this.attrs.boundsUpdate([
                     bounds.getNorth(), bounds.getEast(),
-                    bounds.getSouth(), bounds.getWest()
+                    bounds.getSouth(), bounds.getWest(),
                 ]);
             }
         },
@@ -55,16 +58,16 @@ export default Ember.Component.extend({
                 this.attrs.onClick(event);
             }
         },
-        updateZoom (event) {            
+        updateZoom (event) {
             if (this.attrs.onZoom) {
                 this.attrs.onZoom(event.target.getZoom(), event);
             }
         },
         onLoad(event) {
             this.send('updateBounds', event);
-            
+
             // Add scale indicator.
             L.control.scale().addTo(event.target);
-        }
-    }
+        },
+    },
 });

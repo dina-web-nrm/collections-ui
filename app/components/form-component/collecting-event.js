@@ -16,6 +16,16 @@ export default Ember.Component.extend({
     /** Is creating new collection event. */
     isCreating: false,
 
+    /** Keep track of creating locality state. */
+    isCreatingLocality: false,
+
+    createLocality: Ember.computed(
+        'configuration.enableCreateLocality',
+        'isCreatingLocality', function() {
+            return this.get('configuration.enableCreateLocality') || this.get('isCreatingLocality');
+        }
+    ),
+
     /** Return new collecting event. */
     newCollectingEvent: function () {
         if(!this._newCollectingEvent) {
