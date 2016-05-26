@@ -12,10 +12,10 @@
 
     {{#fieldGroup.toolbar}}
         {{#unless configuration.disableAdd}}
-            <a class="btn btn-primary btn-xs" {{action "addPreparation"}}>
-                <i class="glyphicon glyphicon-plus"></i> 
+            <button class="btn btn-primary btn-xs" {{action "addPreparation"}}>
+                <i class="glyphicon glyphicon-plus"></i>
                 {{t 'fields.labels.preparation.add'}}
-            </a>
+            </button>
         {{/unless}}
         {{#dropdown-button
             label='definitions.add-comment'
