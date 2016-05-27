@@ -148,7 +148,9 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
         this._fetchRemoteData(
             this.get('filterField'), this.get('value'), this.get('limit')
         ).finally(() => {
-            this.set('isLoading', false);
+            setTimeout(()=>{
+                this.set('isLoading', false);
+            }, 300);
         });
     },
 

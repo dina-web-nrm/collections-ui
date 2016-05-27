@@ -9,14 +9,20 @@
 .autocomplete-input__dropdown-list {
     .spinner {
         margin: 0 0 0 5px;
-        width: 25px;
+        width: auto;
     }
 
     .spinner > div {
         width: 5px;
         height: 5px;
 
-        background-color: @text-color;
+        background-color: @gray-dark;
+    }
+
+    li.no-result {
+        text-align: center;
+        color: @gray-dark;
+        padding: 10px 0;
     }
 }
 
