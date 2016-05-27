@@ -16,6 +16,7 @@
         {{action 'clearSelection'}}
     ></i>
 {{/if}}
+
 {{yield (hash
     inline=(
         component 'autocomplete-input/inline'
@@ -31,5 +32,7 @@
         data=previewData
         itemClick=(action 'onItemClick')
         displayField=displayField
+        historyItems=historyItems
+        displayHistory=displayHistory
     )
 )}}

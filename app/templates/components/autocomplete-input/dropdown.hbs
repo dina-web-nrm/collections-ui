@@ -6,17 +6,32 @@
             </div>
         {{/if}}
         <ul class="autocomplete-input__dropdown-list">
-            {{#each data as |preview index|}}
-                <li data-index={{index}} {{action this.attrs.itemClick preview}}>
-                    {{#if hasBlock}}
-                        {{yield preview}}
-                    {{else}}
-                        {{get preview displayField}}
-                    {{/if}}
+            {{#if displayHistory}}
+                <li class="previous-selection">
+                    <i class="glyphicon glyphicon-time" /> {{t 'component.autocomplete-input.previous-selection'}}
                 </li>
+                {{#each historyItems as |historyItem index|}}
+                    <li data-index={{index}} {{action this.attrs.itemClick historyItem}}>
+                        {{#if hasBlock}}
+                            {{yield historyItem}}
+                        {{else}}
+                            {{get historyItem displayField}}
+                        {{/if}}
+                    </li>
+                {{/each}}
             {{else}}
-                <li>{{t 'definitions.no-result'}}</li>
-            {{/each}}
+                {{#each data as |preview index|}}
+                    <li data-index={{index}} {{action this.attrs.itemClick preview}}>
+                        {{#if hasBlock}}
+                            {{yield preview}}
+                        {{else}}
+                            {{get preview displayField}}
+                        {{/if}}
+                    </li>
+                {{else}}
+                    <li>{{t 'definitions.no-result'}}</li>
+                {{/each}}
+            {{/if}}
         </ul>
     </div>
 {{/if}}

@@ -68,6 +68,7 @@ export default {
                 'body': 'You are about to remove an extra field. Do you want to continue?'
             }
         },
+        'autocomplete-input.previous-selection': 'Previous choices',
         'locality-selector': {
             'to-many-results': 'Too many localities. Please select a smaller area.',
             'search-geography': 'Search for city, area or country',
