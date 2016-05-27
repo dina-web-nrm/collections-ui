@@ -5,5 +5,5 @@ export default Ember.Component.extend({
     classNameBindings: ['button:button'],
 
     /** Text to display together with spinner. */
-    loadingText: ''
+    loadingText: '',
 });

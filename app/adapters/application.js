@@ -10,9 +10,9 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
         "Accept": "application/json",
         "Content-type": "application/json"
     },
-    
+
     authorizer: 'authorizer:oauth',
-    
+
     /**
      * Override to disable pluralization for object types.
      */
@@ -30,7 +30,7 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
         if (query && query.search) {
             url = url + '/search';
             delete query.search;
-            
+
             if (query && query.ids) {
                 url = `${url}/(${query.ids.join()})`;
                 delete query.ids;

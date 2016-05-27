@@ -132,7 +132,7 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
 
         Ember.$.extend(queryParams, this.get('filters'));
 
-        this.get('store').query(this.storeName, queryParams).then((response) => {
+        return this.get('store').query(this.storeName, queryParams).then((response) => {
             this.set('previewData', response);
         }).catch((reason) => {
             this.set('previewData', []);
@@ -144,9 +144,12 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
      * Fetch data based on search value and update store.
      */
     fetchData () {
+        this.set('isLoading', true);
         this._fetchRemoteData(
             this.get('filterField'), this.get('value'), this.get('limit')
-        );
+        ).finally(() => {
+            this.set('isLoading', false);
+        });
     },
 
     /** Handle event when user clicks outside of component. */
@@ -216,6 +219,7 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
                 }
 
                 this.set('highlightedIndex', index);
+
 
                 if (preventDefault) {
                     event.preventDefault();

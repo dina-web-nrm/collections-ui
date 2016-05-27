@@ -29,7 +29,13 @@
                         {{/if}}
                     </li>
                 {{else}}
-                    <li>{{t 'definitions.no-result'}}</li>
+                    <li>
+                        {{#if isLoading}}
+                            {{dwcm-spinner}}
+                        {{else}}
+                            {{t 'definitions.no-result'}}
+                        {{/if}}
+                    </li>
                 {{/each}}
             {{/if}}
         </ul>
