@@ -24,13 +24,17 @@ function metersToPixels(meters, zoomLevel) {
         18:0.596,
         19:0.0005
     };
-    
+
     if (!zoomConversion[zoomLevel]) {
         console.warn('Cannot convert zoomLevel: ', zoomLevel);
         return 0;
     }
-    
+
     return meters / zoomConversion[zoomLevel];
 }
 
-export { metersToPixels };
+function roundCoordinate(coordinate) {
+    return Math.round(coordinate * 100000) / 100000;
+}
+
+export { metersToPixels, roundCoordinate };

@@ -83,13 +83,15 @@ const CONFIGURATIONS = {
         components: {
             'form-component-basic-data': 'form-component/basic-data',
             'form-component-determination': 'form-component/determination',
+            'form-component-type-status': 'form-component/type-status',
             'form-component-collecting-event': 'form-component/collecting-event',
             'form-component-preparation': 'form-component/preparation',
         },
         component: {
             determination: {
                 hide: {
-                    confidence: true,
+                    method: true,
+                    typeStatus: true,
                 },
             },
             locality: {
