@@ -1,16 +1,23 @@
 import Ember from 'ember';
 
-export function makeBold(params, hash) {
+export function makeBold(params, hash={}) {
     let output = params[0];
-    const needle = hash && hash.match;
+    const { match, highlight } = hash;
+    const needles = match && match.split(' ') || [];
 
-    if (needle) {
-        const regEx = new RegExp(needle, "ig");
-        var replaceMask = `<b>${needle}</b>`;
+    if (needles.length) {
+        needles.forEach((needle_)=>{
+            if(!needle_.length) {
+                return;
+            }
 
-        output = output.replace(regEx, replaceMask);
+            const regEx = new RegExp(needle_, 'ig');
+            output = output.replace(regEx, (matched) => {
+                return `<span class="make-bold ${highlight ? 'highlight' : ''}">${matched}</span>`;
+            });
+        });
     } else {
-        output = `<b>${output}</b>`;
+        output = `<span class="make-bold ${highlight ? 'highlight' : ''}">${output}</span>`;
     }
 
     return Ember.String.htmlSafe(output);
