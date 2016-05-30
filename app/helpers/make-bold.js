@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
-export function makeBold(params, hash) {
+export function makeBold(params, hash={}) {
     let output = params[0];
     const { match, highlight } = hash;
-    const needles = match.split(' ');
+    const needles = match && match.split(' ') || [];
 
     if (needles.length) {
         needles.forEach((needle_)=>{
