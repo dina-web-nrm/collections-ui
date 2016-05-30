@@ -114,7 +114,7 @@ export default {
             'habitat-substrate': 'Habitat/Substrat',
             'botany-description': 'Beskrivning av föremål vid insamling',
             'collecting-circumstance': 'Fyndomständighet',
-            'verbatim-date': 'Verbatimdatum',
+            'verbatim-date': 'Verbatim datum',
             'given-name': 'Angivet namn',
         },
         'single-determination': {
