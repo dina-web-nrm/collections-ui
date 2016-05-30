@@ -5,8 +5,8 @@ export default Ember.Mixin.create({
     _filters: Ember.inject.service('filters'),
 
     appliedFilterKeys: Ember.computed('filterKeys', function () {
-       const filterKeys = this.get('filterKeys') || '';
-       return filterKeys.split(',').invoke('trim');
+        const filterKeys = this.get('filterKeys') || '';
+        return filterKeys.split(',').invoke('trim');
     }),
 
     filters: Ember.computed('_filters.items.[]', '_filterArray', function () {
@@ -21,5 +21,5 @@ export default Ember.Mixin.create({
         });
 
         return filterObject;
-    })
+    }),
 });
