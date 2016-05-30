@@ -16,7 +16,7 @@
             <div class="col-xs-12 col-md-6">
                 <div class="form-group form-group-sm">
                     <label>
-                        {{t 'component.collecting-event.end-date'}}:                        
+                        {{t 'component.collecting-event.end-date'}}:
                     </label>
                     {{date-picker
                         update=(action 'setDateWithPrecision' 'endDate')
@@ -32,7 +32,7 @@
                 }}
                     {{input
                         value=model.collectingEvent.verbatimDate
-                        placeholder=(t 'definitions.date')
+                        placeholder=(t 'component.collecting-event.verbatim-date')
                         class='form-control verbatim'
                     }}
                 {{/validation/form-group}}
