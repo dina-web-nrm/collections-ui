@@ -9,11 +9,9 @@
     </div>
     <div class="col-xs-3">
         <label>{{t 'fields.labels.preparation.age'}}</label>
-        {{pick-list
-            name='dwAge'
-            filterKeys='collectionID'
-            update=(action (mut model.objectAttribute.age))
-        }}
+        {{#validation/form-group}}
+            {{input value=model.objectAttribute.age class='form-control'}}
+        {{/validation/form-group}}
     </div>
     <div class="col-xs-3">
         <label>{{t 'fields.labels.preparation.sex'}}</label>
