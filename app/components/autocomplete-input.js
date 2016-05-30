@@ -100,11 +100,10 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
 
     /** Update dropdown list when index change. */
     historyObserver: function () {
-        const component = this;
         this.set('historyItems', []);
         this.get('history').forEach((itemId) => {
             this.get('store').findRecord(this.get('storeName'), itemId).then((record) => {
-                component.get('historyItems').pushObject(record);
+                this.get('historyItems').pushObject(record);
             });
         });
 
@@ -197,9 +196,13 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
                     preventDefault = true;
                 // Enter key
                 } else if (event.keyCode === 13) {
-                    this.send(
-                        'onItemClick', this.get('previewData').objectAt(index)
-                    );
+                    let item;
+                    if(this.get('displayHistory')) {
+                        item = this.get('historyItems').objectAt(index);
+                    } else {
+                        item = this.get('previewData').objectAt(index);
+                    }
+                    this.send('onItemClick', item);
 
                     return;
 
@@ -210,8 +213,9 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
                 }
 
                 let dataLength = this.get('previewData.length') - 1;
+
                 if (this.get('displayHistory')) {
-                    dataLength = this.get('historyItems') - 1;
+                    dataLength = this.get('historyItems.length') - 1;
                 }
 
                 if (index < 0) {
