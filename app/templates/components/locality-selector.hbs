@@ -26,10 +26,14 @@
                 </a>
             {{/unless}}
         {{/autocompleteInput.inline}}
-        {{#autocompleteInput.dropdown as |dropdownItem|}}
+        {{#autocompleteInput.dropdown as |dropdownItem searchValue|}}
             <i class='row-icon glyphicon glyphicon-map-marker {{unless dropdownItem.latitude 'inactive'}}'></i>
-            <p class='regular-row light'>{{dropdownItem.geography.displayName}}</p>
-            <p class='regular-row {{if dropdownItem.latitude 'shrink'}}'>{{dropdownItem.localityName}}</p>
+            <p class='regular-row light'>
+                {{make-bold dropdownItem.geography.displayName match=searchValue highlight=true}}
+            </p>
+            <p class='regular-row {{if dropdownItem.latitude 'shrink'}}'>
+                {{make-bold dropdownItem.localityName match=searchValue highlight=true}}
+            </p>
             {{#if dropdownItem.latitude}}
                 <p class='regular-row right hidden-xs'>
                     <i class="glyphicon glyphicon-map-marker"></i>{{dropdownItem.location}}

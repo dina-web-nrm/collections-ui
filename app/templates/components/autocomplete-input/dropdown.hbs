@@ -9,9 +9,9 @@
             {{#each data as |preview index|}}
                 <li data-index={{index}} {{action this.attrs.itemClick preview}}>
                     {{#if hasBlock}}
-                        {{yield preview}}
+                        {{yield preview searchValue}}
                     {{else}}
-                        {{get preview displayField}}
+                        {{make-bold (get preview displayField) match=searchValue highlight=true}}
                     {{/if}}
                 </li>
             {{else}}
