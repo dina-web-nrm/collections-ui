@@ -89,7 +89,7 @@ const CONFIGURATIONS = {
         component: {
             determination: {
                 hide: {
-                    confidence: true,
+                    method: true,
                 },
             },
             locality: {
