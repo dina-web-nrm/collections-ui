@@ -63,16 +63,19 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
     /** Highligted index in dropdown. */
     highlightedIndex: -1,
 
+    /** Set to enable history logging. */
+    history: false,
+
     /** History items loaded as models */
     historyItems: [],
 
     /** Should display history. */
-    displayHistory: Ember.computed('historyItems.@each', 'value', function () {
-        return this.get('historyItems').length && !this.get('value.length');
+    displayHistory: Ember.computed('historyItems.@each', 'value', 'history', function () {
+        return this.get('historyItems').length && !this.get('value.length') && this.get('history');
     }),
 
     /** Id's of items in history. */
-    history: Ember.computed('session.data.history.{}', 'storeName', {
+    historyIds: Ember.computed('session.data.history.{}', 'storeName', {
         get() {
             const storeName = this.get('storeName');
             return this.get(`session.data.history.${storeName}`) || [];
@@ -101,19 +104,18 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
     /** Update dropdown list when index change. */
     historyObserver: function () {
         this.set('historyItems', []);
-        this.get('history').forEach((itemId) => {
+        this.get('historyIds').forEach((itemId) => {
             this.get('store').findRecord(this.get('storeName'), itemId).then((record) => {
                 this.get('historyItems').pushObject(record);
             });
         });
-
-    }.observes('history').on('init'),
+    }.observes('historyIds').on('init'),
 
     /** Return if preview dropdown is visible. */
-    isDropdownVisible: Ember.computed('previewData', 'hasFocus', 'history', function () {
+    isDropdownVisible: Ember.computed('previewData', 'hasFocus', 'historyItems', function () {
         const visible = (
-            (this.get('previewData').length || this.get('value.length') || this.get('historyItems.length')) &&
-            this.get('hasFocus')
+            (this.get('previewData').length || this.get('value.length') ||
+                this.get('displayHistory')) && this.get('hasFocus')
         );
 
         return visible;
@@ -263,11 +265,11 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
                 this.$('input').focus();
             }
 
-            let history = this.get('history');
+            let history = this.get('historyIds');
             history.splice(0, 0, item.get('id'));
 
             let uniqueHistory = history.uniq();
-            this.set('history', uniqueHistory.slice(0, 3));
+            this.set('historyIds', uniqueHistory.slice(0, 3));
 
             // Should be set from parent.
             this.attrs.itemSelected(item);
