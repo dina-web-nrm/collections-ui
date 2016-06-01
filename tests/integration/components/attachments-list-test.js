@@ -3,22 +3,22 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('attachments-list', 'Integration | Component | attachments list', {
-  integration: true
+    integration: true,
 });
 
 test('it renders', function(assert) {
-  this.set('attachments', [Ember.Object.create({ordinal: 0})]);
-  
-  this.render(hbs`{{attachments-list attachments=attachments}}`);
+    this.set('attachments', [Ember.Object.create({ordinal: 1})]);
 
-  assert.equal(this.$('').text().trim(), 'Kommentarsfält 1');
+    this.render(hbs`{{attachments-list attachments=attachments}}`);
 
-  // Template block usage:"
-  this.render(hbs`
-    {{#attachments-list attachments=attachments}}
-        This text should not be rendered
-    {{/attachments-list}}
-  `);
+    assert.equal(this.$('').text().trim(), 'Verbatimfält');
 
-  assert.equal(this.$().text().trim(), 'Kommentarsfält 1');
+    // Template block usage:"
+    this.render(hbs`
+      {{#attachments-list attachments=attachments}}
+          This text should not be rendered
+      {{/attachments-list}}
+    `);
+
+    assert.equal(this.$().text().trim(), 'Verbatimfält');
 });
