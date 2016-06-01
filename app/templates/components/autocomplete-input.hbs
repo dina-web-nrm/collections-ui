@@ -10,12 +10,14 @@
     disabled=(readonly selected)
     autocomplete=false
 }}
+
 {{#if selected}}
     <i
         class='autocomplete-input__clear-button glyphicon glyphicon-remove-circle clickable'
         {{action 'clearSelection'}}
     ></i>
 {{/if}}
+
 {{yield (hash
     inline=(
         component 'autocomplete-input/inline'
@@ -31,5 +33,8 @@
         data=previewData
         itemClick=(action 'onItemClick')
         displayField=displayField
+        historyItems=historyItems
+        displayHistory=displayHistory
+        isLoading=isLoading
     )
 )}}

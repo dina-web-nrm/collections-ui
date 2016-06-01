@@ -68,6 +68,7 @@ export default {
                 'body': 'Du håller på att ta bort ett extrafält. Vill du fortsätta?',
             },
         },
+        'autocomplete-input.previous-selection': 'Tidigare val',
         'locality-selector': {
             'to-many-results': 'För många fyndplatser. Välj ett mindre område.',
             'search-geography': 'Sök på ort, område, land',

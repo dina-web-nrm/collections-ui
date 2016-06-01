@@ -18,8 +18,9 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
         if (value) {
             if (value !== this.get('value')) {
                 this.set('value', value);
-                this.set('selected', true);
             }
+
+            this.set('selected', true);
         } else {
             this.set('selected', false);
             this.set('value', '');
@@ -36,6 +37,7 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
 
     /** Injected services. */
     store: Ember.inject.service('store'),
+    session: Ember.inject.service('session'),
 
     /** Name of the store to fetch data from. */
     storeName: null,
@@ -45,20 +47,6 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
 
     /** Limit number of responses. */
     limit: 40,
-
-    /** Highligted index in dropdown. */
-    highlightedIndex: -1,
-
-    /** Update dropdown list when index change. */
-    onHighlightedIndexChange: function () {
-        if (this.get('hasFocus')) {
-            let listItem = this.$('li[data-index='+ this.get('highlightedIndex') +']');
-
-            if (listItem) {
-                listItem.addClass('active').siblings().removeClass('active');
-            }
-        }
-    }.observes('highlightedIndex', 'hasFocus'),
 
     /** Data to display in preview dropdown. */
     previewData: [],
@@ -72,40 +60,66 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
     /** Timeout between keyup events. */
     keyupTimeout: 150,
 
-    /** Return if preview dropdown is visible. */
-    isDropdownVisible: Ember.computed('previewData', 'hasFocus', function () {
-        const visible = (
-            (this.get('previewData').length || this.get('value.length')) &&
-            this.get('hasFocus')
-        );
-        return visible;
+    /** Highligted index in dropdown. */
+    highlightedIndex: -1,
+
+    /** Set to enable history logging. */
+    history: false,
+
+    /** History items loaded as models */
+    historyItems: [],
+
+    /** Should display history. */
+    displayHistory: Ember.computed('historyItems.@each', 'value', 'history', function () {
+        return this.get('historyItems').length && !this.get('value.length') && this.get('history');
     }),
 
-    /** Override init. */
-    init () {
+    /** Id's of items in history. */
+    historyIds: Ember.computed('session.data.history.{}', 'storeName', {
+        get() {
+            const storeName = this.get('storeName');
+            return this.get(`session.data.history.${storeName}`) || [];
+        },
+        set(key, value) {
+            const storeName = this.get('storeName');
+            const history = this.get('session.data.history') || {};
 
-        /** If using local data decrease the timeout. */
-        if (this.localData) {
-            this.keyupTimeout = 10;
+            history[storeName] = value;
+            this.get('session').set('data.history', history);
+            return value;
+        },
+    }),
+
+    /** Update dropdown list when index change. */
+    onHighlightedIndexChange: function () {
+        if (this.get('hasFocus')) {
+            let listItem = this.$(`li[data-index=${this.get('highlightedIndex')}]`);
+
+            if (listItem) {
+                listItem.addClass('active').siblings().removeClass('active');
+            }
         }
+    }.observes('highlightedIndex', 'hasFocus'),
 
-        return this._super(...arguments);
-    },
+    /** Update dropdown list when index change. */
+    historyObserver: function () {
+        this.set('historyItems', []);
+        this.get('historyIds').forEach((itemId) => {
+            this.get('store').findRecord(this.get('storeName'), itemId).then((record) => {
+                this.get('historyItems').pushObject(record);
+            });
+        });
+    }.observes('historyIds').on('init'),
 
-    /** Fetch data stored in client store with out request.
-     *
-     * Using this method it's up to the application to keep the data up to date.
-     *
-     */
-    _fetchLocalData (filterField, filterValue, limit) {
-        var result = this.get('store').peekAll(this.storeName).filter((item) => {
-            let fieldValue = item.get(filterField).toLowerCase();
+    /** Return if preview dropdown is visible. */
+    isDropdownVisible: Ember.computed('previewData', 'hasFocus', 'historyItems', function () {
+        const visible = (
+            (this.get('previewData').length || this.get('value.length') ||
+                this.get('displayHistory')) && this.get('hasFocus')
+        );
 
-            return fieldValue.indexOf(filterValue.toLowerCase()) !== -1;
-        }).sortBy(filterField).slice(0, limit + 1);
-
-        this.set('previewData', result);
-    },
+        return visible;
+    }),
 
     /** Fetch data from remote server. */
     _fetchRemoteData (filterField, filterValue, limit) {
@@ -119,12 +133,11 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
 
         Ember.$.extend(queryParams, this.get('filters'));
 
-        this.get('store').query(this.storeName, queryParams).then((response) => {
+        return this.get('store').query(this.storeName, queryParams).then((response) => {
             this.set('previewData', response);
         }).catch((reason) => {
             this.set('previewData', []);
-
-            console.warn('Invalid response from server: ', reason);
+            Ember.Logger.warn('Invalid response from server: ', reason);
         });
     },
 
@@ -132,15 +145,14 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
      * Fetch data based on search value and update store.
      */
     fetchData () {
-        if (this.localData) {
-            this._fetchLocalData(
-                this.get('filterField'), this.get('value'), this.get('limit')
-            );
-        } else {
-            this._fetchRemoteData(
-                this.get('filterField'), this.get('value'), this.get('limit')
-            );
-        }
+        this.set('isLoading', true);
+        this._fetchRemoteData(
+            this.get('filterField'), this.get('value'), this.get('limit')
+        ).finally(() => {
+            setTimeout(()=>{
+                this.set('isLoading', false);
+            }, 300);
+        });
     },
 
     /** Handle event when user clicks outside of component. */
@@ -186,9 +198,13 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
                     preventDefault = true;
                 // Enter key
                 } else if (event.keyCode === 13) {
-                    this.send(
-                        'onItemClick', this.get('previewData').objectAt(index)
-                    );
+                    let item;
+                    if(this.get('displayHistory')) {
+                        item = this.get('historyItems').objectAt(index);
+                    } else {
+                        item = this.get('previewData').objectAt(index);
+                    }
+                    this.send('onItemClick', item);
 
                     return;
 
@@ -198,13 +214,20 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
                     return true;
                 }
 
+                let dataLength = this.get('previewData.length') - 1;
+
+                if (this.get('displayHistory')) {
+                    dataLength = this.get('historyItems.length') - 1;
+                }
+
                 if (index < 0) {
                     index = 0;
-                } else if (index > this.get('previewData.length') - 1) {
-                    index = this.get('previewData.length') - 1;
+                } else if (index > dataLength) {
+                    index = dataLength;
                 }
 
                 this.set('highlightedIndex', index);
+
 
                 if (preventDefault) {
                     event.preventDefault();
@@ -228,6 +251,8 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
          * Handle click event in dropdown list.
          */
         onItemClick (item) {
+            this.set('previewData', []);
+
             if (!this.get('multiSelect')) {
                 this.$('input').blur();
                 this.set('hasFocus', false);
@@ -237,9 +262,14 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
             // input field.
             } else {
                 this.set('value', '');
-                this.set('previewData', []);
                 this.$('input').focus();
             }
+
+            let history = this.get('historyIds');
+            history.splice(0, 0, item.get('id'));
+
+            let uniqueHistory = history.uniq();
+            this.set('historyIds', uniqueHistory.slice(0, 3));
 
             // Should be set from parent.
             this.attrs.itemSelected(item);

@@ -10,14 +10,14 @@
     background: @white;
     margin-bottom: calc(@footer-height + 10px);
     .box-shadow(0 6px 12px rgba(0, 0, 0, 0.175));
-    
+
     .autocomplete-input__dropdown-list {
         list-style-type: none;
         padding: 0;
         margin-bottom: 0;
         font-size: 13px;
-        
-        overflow-y: scroll;
+
+        overflow-y: auto;
         max-height: 400px;
 
         li {
@@ -35,6 +35,16 @@
 
             &:last-child {
                 border-bottom: none;
+            }
+
+            &.previous-selection {
+                background: @gray-lighter;
+                color: @text-color;
+                padding: 5px 5px;
+            }
+            &.previous-selection:hover {
+                background-color: @gray-lighter;
+                cursor: default;
             }
         }
     }
