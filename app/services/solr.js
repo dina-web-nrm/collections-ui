@@ -6,17 +6,19 @@ export default Ember.Service.extend({
     host: config.HOST,
     namespace: 'solr',
     core: 'dina',
-    
+
     parseResponse (data) {
         return {
             records: data.response.docs.mapBy('primary_id'),
-            totalRows: data.response.numFound
+            totalRows: data.response.numFound,
         };
     },
-    
+
     select (query, {entityType, fq, rows}) {
         const service = this;
-        let url = `${this.host}/${this.namespace}/${this.core}/select?q=${query}&fl=primary_id&wt=json&indent=true`;
+        const encodedQuery = encodeURI(query);
+
+        let url = `${this.host}/${this.namespace}/${this.core}/select?q=${encodedQuery}&fl=primary_id&wt=json&indent=true`;
 
         let fqString = '';
         if (entityType) {
@@ -26,9 +28,9 @@ export default Ember.Service.extend({
         for(let key in fq) {
             fqString += `&fq=${key}%3A${fq[key]}`;
         }
-        
+
         url += fqString;
-        
+
         if (rows) {
             url += `&rows=${rows}`;
         }
@@ -45,5 +47,5 @@ export default Ember.Service.extend({
     updateIndex () {
         const url = `${this.host}/${this.namespace}/${this.core}/dataimport?command=delta-import&commit=1&wt=json`;
         Ember.$.getJSON(url);
-    }
+    },
 });
