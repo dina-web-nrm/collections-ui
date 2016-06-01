@@ -8,10 +8,12 @@
 {{/confirm-dialog}}
 
 <div class='row'>
-    {{#each (filter-by "ordinal" 1 attachments) as |attachment index|}}
+    {{#each
+        (filter-by "ordinal" 1 attachments) as |attachment index|
+    }}
         <div class='col-xs-12 col-md-6'>
             <label>
-                {{t 'definitions.verbatim-field'}} {{one-index index}}
+                {{t 'definitions.verbatim-field'}}
             </label>
             <i
                 class='attachments-list__remove-button glyphicon glyphicon-remove-circle'
@@ -23,10 +25,31 @@
             }}
         </div>
     {{/each}}
-    {{#each (filter-by "ordinal" 0 attachments) as |attachment index|}}
+    {{#each
+        (filter-by "originalAttachment.isPublic" false (filter-by "ordinal" 0 attachments))
+        as |attachment index|
+    }}
         <div class='col-xs-12 col-md-6'>
             <label>
-                {{t 'definitions.comment-field'}} {{one-index index}}
+                {{t 'definitions.comment-field-private'}}
+            </label>
+            <i
+                class='attachments-list__remove-button glyphicon glyphicon-remove-circle'
+                {{action 'confirmRemove' attachment}}
+            ></i>
+            {{textarea
+                value=attachment.originalAttachment.remarks
+                class='form-control input-sm'
+            }}
+        </div>
+    {{/each}}
+    {{#each
+        (filter-by "originalAttachment.isPublic" true (filter-by "ordinal" 0 attachments))
+        as |attachment index|
+    }}
+        <div class='col-xs-12 col-md-6'>
+            <label>
+                {{t 'definitions.comment-field'}}
             </label>
             <i
                 class='attachments-list__remove-button glyphicon glyphicon-remove-circle'

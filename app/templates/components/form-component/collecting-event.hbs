@@ -17,10 +17,26 @@
                 iconClass='glyphicon-comment'
                 class='pull-right' as |db|
             }}
-                {{#db.item click=(action "addComment")}}
+                {{#db.item
+                    action=(action "addComment")
+                    disabled=(get (
+                        filter-by "isPublic" true (filter-by "ordinal" 0 model.collectingEvent.attachments)
+                    ) "length")
+                }}
                     {{t 'definitions.comment-field'}}
                 {{/db.item}}
-                {{#db.item click=(action "addComment" "verbatim")}}
+                {{#db.item
+                    action=(action "addComment" "" false)
+                    disabled=(get (
+                        filter-by "isPublic" false (filter-by "ordinal" 0 model.collectingEvent.attachments)
+                    ) "length")
+                }}
+                    {{t 'definitions.comment-field-private'}}
+                {{/db.item}}
+                {{#db.item
+                    action=(action "addComment" "verbatim")
+                    disabled=(get (filter-by "ordinal" 1 model.collectingEvent.attachments) "length")
+                }}
                     {{t 'definitions.verbatim-field'}}
                 {{/db.item}}
             {{/dropdown-button}}
