@@ -23,14 +23,14 @@ export default Ember.Component.extend({
 
     /** Default options for sex field. */
     sexOptions: [{
-            value: 'unknown',
-            displayName: 'definitions.unknown'
-        }, {
-            value: 'female',
-            displayName: 'definitions.female'
-        }, {
-            value: 'male',
-            displayName: 'definitions.male'
+        value: 'unknown',
+        displayName: 'definitions.unknown',
+    }, {
+        value: 'female',
+        displayName: 'definitions.female',
+    }, {
+        value: 'male',
+        displayName: 'definitions.male',
     }],
 
     actions: {
@@ -39,7 +39,7 @@ export default Ember.Component.extend({
         addPreparation () {
             let preparation = this.get('store').createRecord('preparation', {
                 timestampCreated: moment().unix(),
-                countAmt: 0
+                countAmt: 0,
             });
             this.model.get('preparations').pushObject(preparation);
         },
@@ -64,7 +64,7 @@ export default Ember.Component.extend({
         },
 
         /** Add comment to preparation. */
-        addComment(type) {
+        addComment(type, isPublic=true) {
             const store = this.get('store');
 
             let attachment = store.createRecord('collection-object-attachment', {
@@ -73,6 +73,7 @@ export default Ember.Component.extend({
                     // 1 is the magical ID for the Collection Object table in Specify
                     // See: https://sourceforge.net/p/specify/code/HEAD/tree/trunk/Specify/config/specify_tableid_listing.xml
                     tableID: 1,
+                    isPublic: isPublic,
                 }),
             });
 

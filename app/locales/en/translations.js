@@ -38,9 +38,10 @@ export default {
             'zoology-invertebrate': 'zoology, Inv/Fish/Herp',
             'zoology-entomology': 'zoology, Entomology',
             'paleontology': 'paleontology',
-            'botany': 'botany'
+            'botany': 'botany',
         },
         'comment-field': 'Comment',
+        'comment-field-private': 'Comment(private)',
         'verbatim-field': 'Verbatim field',
         'add-comment': 'Add comment/verbatimfield',
     },

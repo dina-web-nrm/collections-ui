@@ -78,7 +78,7 @@
                     <div class='row'>
                         {{#each (filter-by "ordinal" 1 model.attachments) as |attachment index|}}
                             <div class='col-xs-12 col-md-6'>
-                                <label>{{t 'definitions.verbatim-field'}} {{one-index index}}</label>
+                                <label>{{t 'definitions.verbatim-field'}}</label>
                                 {{textarea
                                     value=attachment.originalAttachment.remarks
                                     class='form-control input-sm verbatim'
@@ -86,9 +86,25 @@
                                 }}
                             </div>
                         {{/each}}
-                        {{#each (filter-by "ordinal" 0 model.attachments) as |attachment index|}}
+                        {{#each
+                            (filter-by "isPublic" false (filter-by "ordinal" 0 model.attachments))
+                            as |attachment index|
+                        }}
                             <div class='col-xs-12 col-md-6'>
-                                <label>{{t 'definitions.comment-field'}} {{one-index index}}</label>
+                                <label>{{t 'definitions.comment-field-private'}}</label>
+                                {{textarea
+                                    value=attachment.originalAttachment.remarks
+                                    class='form-control input-sm'
+                                    readonly=true
+                                }}
+                            </div>
+                        {{/each}}
+                        {{#each
+                            (filter-by "isPublic" true (filter-by "ordinal" 0 model.attachments))
+                            as |attachment index|
+                        }}
+                            <div class='col-xs-12 col-md-6'>
+                                <label>{{t 'definitions.comment-field'}}</label>
                                 {{textarea
                                     value=attachment.originalAttachment.remarks
                                     class='form-control input-sm'
@@ -110,7 +126,7 @@
                     <div class='row'>
                         {{#each (filter-by "ordinal" 1 model.collectingEvent.attachments) as |attachment index|}}
                             <div class='col-xs-12 col-md-6'>
-                                <label>{{t 'definitions.verbatim-field'}} {{one-index index}}</label>
+                                <label>{{t 'definitions.verbatim-field'}}</label>
                                 {{textarea
                                     value=attachment.originalAttachment.remarks
                                     class='form-control input-sm verbatim'
@@ -118,9 +134,25 @@
                                 }}
                             </div>
                         {{/each}}
-                        {{#each (filter-by "ordinal" 0 model.collectingEvent.attachments) as |attachment index|}}
+                        {{#each
+                            (filter-by "isPublic" false (filter-by "ordinal" 0 model.collectingEvent.attachments))
+                            as |attachment index|
+                        }}
                             <div class='col-xs-12 col-md-6'>
-                                <label>{{t 'definitions.comment-field'}} {{one-index index}}</label>
+                                <label>{{t 'definitions.comment-field-private'}}</label>
+                                {{textarea
+                                    value=attachment.originalAttachment.remarks
+                                    class='form-control input-sm'
+                                    readonly=true
+                                }}
+                            </div>
+                        {{/each}}
+                        {{#each
+                            (filter-by "isPublic" true (filter-by "ordinal" 0 model.collectingEvent.attachments))
+                            as |attachment index|
+                        }}
+                            <div class='col-xs-12 col-md-6'>
+                                <label>{{t 'definitions.comment-field'}}</label>
                                 {{textarea
                                     value=attachment.originalAttachment.remarks
                                     class='form-control input-sm'

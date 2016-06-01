@@ -41,7 +41,8 @@ export default {
             'botany': 'Botanik',
         },
         'comment-field': 'Kommentarsfält',
-        'verbatim-field': 'Etikettsfält',
+        'verbatim-field': 'Verbatimfält',
+        'comment-field-private': 'Kommentarsfält(privat)',
         'add-comment': 'Lägg till kommentar/etikett',
     },
     main: {

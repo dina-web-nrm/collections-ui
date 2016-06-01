@@ -30,7 +30,7 @@ export default Ember.Component.extend({
     newCollectingEvent: function () {
         if(!this._newCollectingEvent) {
             this._newCollectingEvent = this.get('store').createRecord('collecting-event', {
-                timestampCreated: moment().unix()
+                timestampCreated: moment().unix(),
             });
         }
         return this._newCollectingEvent;
@@ -44,7 +44,7 @@ export default Ember.Component.extend({
     /** Enable or disable create mode when changing configuration. */
     onConfigurationChange: function() {
         Ember.run.scheduleOnce('actions', this, ()=>{
-           if (this.get('configuration.enableCreate')) {
+            if (this.get('configuration.enableCreate')) {
                 this.send('enableCreate');
             } else {
                 this.send('selectExisting');
@@ -93,7 +93,7 @@ export default Ember.Component.extend({
                 agent: agent,
                 isPrimary: isPrimary,
                 orderNumber: numberOfCollectors + 1,
-                timestampCreated: moment().unix()
+                timestampCreated: moment().unix(),
             });
 
             this.model.get('collectingEvent').get('collectors').pushObject(collector);
@@ -111,7 +111,7 @@ export default Ember.Component.extend({
         },
 
         /** Add comment to preparation. */
-        addComment(type) {
+        addComment(type, isPublic=true) {
             const store = this.get('store');
 
             let attachment = store.createRecord('collecting-event-attachment', {
@@ -120,6 +120,7 @@ export default Ember.Component.extend({
                     // 10 is the magical ID for the Collecting Event table in Specify
                     // https://sourceforge.net/p/specify/code/HEAD/tree/trunk/Specify/config/specify_tableid_listing.xml
                     tableID: 10,
+                    isPublic: isPublic,
                 }),
             });
 
@@ -135,6 +136,6 @@ export default Ember.Component.extend({
                 }
                 attachment.destroyRecord();
             });
-        }
-    }
+        },
+    },
 });
