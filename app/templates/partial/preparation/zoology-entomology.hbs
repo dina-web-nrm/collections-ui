@@ -15,5 +15,14 @@
             update=(action (mut model.objectAttribute.sex))
         }}
     </div>
+    <div class="col-xs-5">
+        {{#validation/form-group}}
+            <label>{{t 'component.preparation.object-description'}}:</label>
+            {{input
+                value=model.objectAttribute.description
+                class='form-control'
+            }}
+        {{/validation/form-group}}
+    </div>
 </div>
 {{partial 'partial/preparation/list'}}
