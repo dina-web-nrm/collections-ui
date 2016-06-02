@@ -5,13 +5,21 @@ export function makeBold(params, hash={}) {
     const { match, highlight } = hash;
     const needles = match && match.split(' ') || [];
 
-    if (needles.length) {
-        needles.forEach((needle_)=>{
-            if(!needle_.length) {
+    if (!output) {
+        return output;
+    }
+    else if (needles.length) {
+        needles.forEach((needle)=>{
+            if(!needle.length) {
                 return;
             }
 
-            const regEx = new RegExp(needle_, 'ig');
+            const cleanedNeedle = needle.replace(/[&\/\\#,+()$~%.'":*?<>{}-]/g, '').replace(/(OR|AND)/, '');
+            if (!cleanedNeedle) {
+                return;
+            }
+
+            const regEx = new RegExp(cleanedNeedle, 'ig');
             output = output.replace(regEx, (matched) => {
                 return `<span class="make-bold ${highlight ? 'highlight' : ''}">${matched}</span>`;
             });
