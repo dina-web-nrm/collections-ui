@@ -222,13 +222,13 @@ export default {
         inclusion: '{{description}} is not included in the list',
         exclusion: '{{description}} is reserved',
         invalid: '{{description}} is invalid',
-        confirmation: `{{description}} doesn't match {{on}}`,
+        confirmation: '{{description}} doesn\'t match {{on}}',
         accepted: '{{description}} must be accepted',
-        empty: `{{description}} can't be empty`,
-        blank: `{{description}} can't be blank`,
+        empty: '{{description}} can\'t be empty',
+        blank: '{{description}} can\'t be blank',
         present: '{{description}} must be blank',
         collection: '{{description}} must be a collection',
-        singular: `{{description}} can't be a collection`,
+        singular: '{{description}} can\'t be a collection',
         tooLong: '{{description}} is too long (maximum is {{max}} characters)',
         tooShort: '{{description}} is too short (minimum is {{min}} characters)',
         before: '{{description}} must be before {{before}}',
@@ -364,7 +364,7 @@ export default {
                     <li>Default map view is now the entire world.</li>
                     <li>Confirm removing preparation, determination and extra fields.</li>
                     <li>
-                        <strong>Paleontology:</strong> Added 'Lithostratigraphy' and 'Chronostratigraphy' fields when creating locality.
+                        <strong>Geology:</strong> Added 'Lithostratigraphy' and 'Chronostratigraphy' fields when creating locality.
                     </li>
 
                     <br><span class='label label-danger'>Fixes</span>
@@ -376,6 +376,57 @@ export default {
                     <li>Hovering an locality in the map should highlight in list.</li>
                 `,
                 date: '2016-05-18',
+            },
+            6: {
+                body: `
+                    <span class='label label-success'>New features</span>
+                    <li>Private comments<br>
+                        Possible to add private comments.
+                    </li>
+                    <li>Limit the number of extra fields to one of each kind(Private, Regular, Verbatim)</li>
+                    <li>Display latest choices in Collection search field.</li>
+                    <li>Display loading indicator when searching in autocomplete inpus fields.</li>
+                    <li>More map layers<br>
+                        Possible to change layer to "Outdoor", "Satelite" or "Open Street Maps"
+                    </li>
+                    <li>
+                        <strong>Entomology:</strong> Added "Object description" to Object/Preparations.
+                    </li>
+                    <li>
+                        <strong>Entomology:</strong> "Create Collecting Event" mode as default.
+                    </li>
+                    <li>
+                        <strong>Entomology:</strong> Removed "Count" from Object/Preparations.
+                    </li>
+                    <li>
+                        <strong>Entomology:</strong> Replace "Method" with "Uncertainty" in Determination.
+                    </li>
+                    <li>
+                        <strong>Botany:</strong> "Habitat/Substrate" and "Object description" should be verbatim fields.
+                    </li>
+                    <li>
+                        <strong>Botany:</strong> "Habitat/Substrate" and "Object description" should be placed first.
+                    </li>
+                    <li>
+                        <strong>Botany:</strong> "Create Locality" mode as default.
+                    </li>
+                    <br><span class='label label-danger'>Fixes</span>
+                    <li>Cannot search for locality or geography with "ÄÖÅ" in name(only Internet Explorer).</li>
+                    <li>Cannot use tab in autocomplete fields.</li>
+                    <li>Uncertainty radius slider not working(only Internet Explorer)</li>
+                    <li>Uncertainty radius slider only allows up to 2000m.</li>
+                    <li>Decreased the number of decimals on coordinates.</li>
+                    <li>Single digits without leading 0 should be valid day and month.</li>
+                    <li>Date validation no working when using arrow buttons</li>
+                    <li>Update label for "Verbatim determination".</li>
+                    <li>Update label for "Verbatim date".</li>
+                    <li>Number of individuals shuold default to one (1).</li>
+                    <li>"Age" should be text input.</li>
+                    <li>Uncertainty radius not displaying correct in Collecting event preview.</li>
+                    <li>Cannot search for "Given name" for Collecting event.</li>
+                    <li>"Add determination" and "Add object/preparation" should be regular buttons to allow tabbing.</li>
+                `,
+                date: '2016-06-03',
             },
         },
     },
