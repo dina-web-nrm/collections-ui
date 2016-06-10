@@ -55,6 +55,8 @@ If using Sumblime enable linting by:
 
 ### Deploying
 
+[Detailed deploy instructions](docs/release_and_deploy.md)
+
 The application can be deployed using [Docker](https://www.docker.com/) and a `Dockerfile` is included to build
 an image including a production build of the application and a [nginx](https://www.nginx.com/) server.
 
