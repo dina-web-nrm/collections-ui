@@ -70,17 +70,38 @@
 <div class="row">
     <div class="col-xs-6">
         <label>{{t 'fields.labels.determination.determiner'}}:</label>
-        {{#autocomplete-input
+        {{#solr-autocomplete-input
             storeName='agent'
             displayField='fullName'
-            filterField='lastName'
+
+            entityType='agent'
+            filterKeys='disciplineID'
+
             itemSelected=(action 'setDeterminer')
             item=model.determiner
 
-            as |ai|
+            class='rich'
+
+            as |autocompleteInput|
         }}
-            {{ai.dropdown}}
-        {{/autocomplete-input}}
+            {{autocompleteInput.inline}}
+            {{#autocompleteInput.dropdown as |agent|}}
+                <i class='row-icon small glyphicon glyphicon-user inactive'></i>
+                {{#if agent.division.name}}
+                    <p class='regular-row light'>{{agent.division.name}}</p>
+                    <p class='right'></p>
+                {{/if}}
+                <p class='regular-row'>{{agent.fullName}}</p>
+                <p class='timestamp hidden-sm hidden-xs'>
+                    {{#if agent.dateOfBirth}}
+                        <i class="glyphicon glyphicon-heart"></i> {{moment-format agent.dateOfBirth 'L'}},&nbsp;
+                    {{/if}}
+                    {{#if agent.dateOfDeath}}
+                        <i class="glyphicon glyphicon-plus"></i> {{moment-format agent.dateOfDeath 'L'}}
+                    {{/if}}
+                </p>
+            {{/autocompleteInput.dropdown}}
+        {{/solr-autocomplete-input}}
     </div>
     <div class="col-md-4 col-xs-6">
         <div class="form-group form-group-sm">
