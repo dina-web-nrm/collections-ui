@@ -14,5 +14,4 @@ export default DS.Model.extend({
             return `${this.get('firstName') || this.get('lastName')}`;
         }
     }),
-    division: DS.belongsTo('division', {async: true}),
 });

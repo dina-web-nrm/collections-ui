@@ -87,10 +87,6 @@
             {{autocompleteInput.inline}}
             {{#autocompleteInput.dropdown as |agent|}}
                 <i class='row-icon small glyphicon glyphicon-user inactive'></i>
-                {{#if agent.division.name}}
-                    <p class='regular-row light'>{{agent.division.name}}</p>
-                    <p class='right'></p>
-                {{/if}}
                 <p class='regular-row'>{{agent.fullName}}</p>
                 <p class='timestamp hidden-sm hidden-xs'>
                     {{#if agent.dateOfBirth}}

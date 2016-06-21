@@ -1,7 +1,3 @@
 import DS from 'ember-data';
 
-export default DS.JSONSerializer.extend({
-    attrs: {
-        division: 'divisionID',
-    },
-});
+export default DS.JSONSerializer.extend({});
