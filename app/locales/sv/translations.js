@@ -40,9 +40,9 @@ export default {
             'paleontology': 'Paleontologi',
             'botany': 'Botanik',
         },
-        'comment-field': 'Kommentarsfält',
+        'comment-field': 'Kommentarsfält externt',
         'verbatim-field': 'Verbatimfält',
-        'comment-field-private': 'Kommentarsfält(privat)',
+        'comment-field-private': 'Kommentarsfält internt',
         'add-comment': 'Lägg till kommentar/etikett',
     },
     main: {
@@ -113,8 +113,8 @@ export default {
             'create-new': 'Skapa nytt insamlingstillfälle',
             'start-date': 'Startdatum(åååå-mm-dd)',
             'end-date': 'Slutdatum(åååå-mm-dd)',
-            'habitat-substrate': 'Habitat/Substrat',
-            'botany-description': 'Beskrivning av föremål vid insamling',
+            'habitat-substrate': 'Habitat/Substrat, enligt etikett',
+            'botany-description': 'Beskrivning av föremål, enligt etikett',
             'collecting-circumstance': 'Fyndomständighet',
             'verbatim-date': 'Verbatim datum',
             'given-name': 'Angivet namn',
@@ -365,7 +365,7 @@ export default {
                     <li>Standardvy för kartor är nu hela världen.</li>
                     <li>Bekräfta borttagning av preparation, bestämning och extrafält.</li>
                     <li>
-                        <strong>Paleontologi:</strong> Lagt till 'Litostratigrafi' och 'Kronostratigrafi' när man skapar fyndplats.
+                        <strong>Geologi:</strong> Lagt till 'Litostratigrafi' och 'Kronostratigrafi' när man skapar fyndplats.
                     </li>
 
                     <br><span class='label label-danger'>Buggfixar</span>
@@ -377,6 +377,57 @@ export default {
                     <li>Hover över fynplatser i kartan blir inte markerade i listvyn.</li>
                 `,
                 date: '2016-05-18',
+            },
+            6: {
+                body: `
+                    <span class='label label-success'>Ny funktionalitet</span>
+                    <li>Privata kommentarer<br>
+                        Möjligt att lägga till privata kommentarer.
+                    </li>
+                    <li>Begränsa antalet kommentarer till en av varje typ(Privat, Vanlig, Verbatim)</li>
+                    <li>Visa senaste använda samlingar i "Sök och välj" för samling.</li>
+                    <li>Visa laddningsinkdikator när man söker i "Sök och välj"-listor.</li>
+                    <li>Fler kartvyer<br>
+                        Möjligt att ändra vy i kartor till "Outdoor", "Satelite" eller "Open Street Maps"
+                    </li>
+                    <li>
+                        <strong>Entomologi:</strong> Lagt till "Beskrivning av objekt" till Objekt/Preparationer.
+                    </li>
+                    <li>
+                        <strong>Entomologi:</strong> "Skapa nytt insamlingstillfälle" som standard.
+                    </li>
+                    <li>
+                        <strong>Entomologi:</strong> Tagit bort "Antal del" från Objekt/Preparationer.
+                    </li>
+                    <li>
+                        <strong>Entomologi:</strong> Ersatt "Metod" med "Osäkerhet" i Taxonomi/Bestämning.
+                    </li>
+                    <li>
+                        <strong>Botanik:</strong> "Habitat/Substrat" och "Beskrivning av föremål vid insamling" ska vara verbatimfält.
+                    </li>
+                    <li>
+                        <strong>Botanik:</strong> "Habitat/Substrat" och "Beskrivning av föremål vid insamling" ska vara placerade tidigare.
+                    </li>
+                    <li>
+                        <strong>Botanik:</strong> "Skapa ny fyndplats" som standard.
+                    </li>
+                    <br><span class='label label-danger'>Buggfixar</span>
+                    <li>Kan inte söka efter lokal eller geografi med "ÄÖÅ" i namnet(endast Internet Explorer).</li>
+                    <li>Kan inte tabba från "Sök och välj"-listor.</li>
+                    <li>Reglage för osäkerhetsradie fungerar inte(endast Internet Explorer)</li>
+                    <li>Reglage för osäkerhetsradie stödjer endast 2000m.</li>
+                    <li>Koordinater har för många decimaler.</li>
+                    <li>Ensiffriga siffror utan ledande nolla (0) är inte giltiga datum.</li>
+                    <li>Datumvalidering fungerar inte när man använder pilknapparna.</li>
+                    <li>Uppdaterat rubrik för "Verbatim bestämning".</li>
+                    <li>Uppdaterat rubrik för "Verbatim datum".</li>
+                    <li>"Antal individer" ska vara satt till ett (1) som standard.</li>
+                    <li>"Ålder" ska vara textfält.</li>
+                    <li>Osäkerhetsradie visas inte rätt i förhandsvisning av Insamlingstillfälle.</li>
+                    <li>Går ej att söka efter "Angivet namn" när man söker efter Insamlingstillfälle.</li>
+                    <li>"Lägg till bestämning" and "Lägg till del/preparation" går inte att tabba till.</li>
+                `,
+                date: '2016-06-03',
             },
         },
     },

@@ -20,6 +20,11 @@ export default SessionService.extend({
                         isFocusGroupMember: responseData.agentId !== '1016',
                     });
                 },
+                error: () => {
+                    // If fetching the user profile errors, sign out to
+                    // retrieve a new token.
+                    this.invalidate();
+                },
                 headers: {
                     Authorization: `bearer ${this.get('data.authenticated.access_token')}`,
                 },
