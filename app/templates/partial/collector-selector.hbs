@@ -2,7 +2,7 @@
 <div class="label-group {{if model.collectingEvent.collectors.length '' 'closed'}}">
     {{#each model.collectingEvent.collectors as |collector|}}
         <span class="label label-primary">
-            {{collector.agent.fullName}} 
+            {{collector.agent.fullName}}
             <i class="glyphicon glyphicon-remove-circle clickable"
                 {{action 'removeCollector' collector}}
             ></i>
@@ -10,15 +10,35 @@
     {{/each}}
 </div>
 
-{{#autocomplete-input
+{{#solr-autocomplete-input
+    storeName='agent'
+    displayField='fullName'
+
+    entityType='agent'
+    filterKeys='disciplineID'
+
+    itemSelected=(action "createCollector")
     multiSelect=true
 
-    storeName="agent"
-    filterField="lastName"
-    displayField="fullName"
-    itemSelected=(action "createCollector")
+    class='rich'
 
-    as |ai|
+    as |autocompleteInput|
 }}
-    {{ai.dropdown}}
-{{/autocomplete-input}}
+    {{autocompleteInput.inline}}
+    {{#autocompleteInput.dropdown as |agent|}}
+        <i class='row-icon small glyphicon glyphicon-user inactive'></i>
+        {{#if agent.division.name}}
+            <p class='regular-row light'>{{agent.division.name}}</p>
+            <p class='right'></p>
+        {{/if}}
+        <p class='regular-row'>{{agent.fullName}}</p>
+        <p class='timestamp hidden-sm hidden-xs'>
+            {{#if agent.dateOfBirth}}
+                <i class="glyphicon glyphicon-heart"></i> {{moment-format agent.dateOfBirth 'L'}},&nbsp;
+            {{/if}}
+            {{#if agent.dateOfDeath}}
+                <i class="glyphicon glyphicon-plus"></i> {{moment-format agent.dateOfDeath 'L'}}
+            {{/if}}
+        </p>
+    {{/autocompleteInput.dropdown}}
+{{/solr-autocomplete-input}}
