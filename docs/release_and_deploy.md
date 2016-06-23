@@ -22,7 +22,8 @@ Once you've got the application locally, make the changes you want. Eg. fixing b
 When you've made your changes make sure that all tests pass before releasing. The tests are executed by navigating to http://localhost:4200/tests or checking the build status for your pull request on Travis, https://travis-ci.org/DINA-Web/collections-ui/builds
 
 If the tests pass and no one complains on the pull request, merge it and move on the creating a new version.
-Tag and create new version
+
+### Tag and create new version ###
 
 When you've made new changes that you want to bundle in a release, checkout the branch that contains the changes. In most cases this should be the Master branch.
 
