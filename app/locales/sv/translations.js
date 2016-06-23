@@ -170,6 +170,7 @@ export default {
             collecting_place: 'Fyndplats(lokal)',
             collecting_event: 'Insamlingstillfälle',
             collection: 'Samling/delsamling',
+            collection_code: 'Samlingskod',
             catalogNumber: 'Katalognr',
             determination: {
                 confidence: 'Osäkerhet',

@@ -171,6 +171,7 @@ export default {
             collecting_place: 'Locality',
             collecting_event: 'Collecting event',
             collection: 'Collection',
+            collection_code: 'Collection Code',
             catalogNumber: 'Catalog number',
             determination: {
                 confidence: 'Confidence',
