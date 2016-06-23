@@ -40,9 +40,9 @@ export default {
             'paleontology': 'Paleontologi',
             'botany': 'Botanik',
         },
-        'comment-field': 'Kommentarsfält',
+        'comment-field': 'Kommentarsfält externt',
         'verbatim-field': 'Verbatimfält',
-        'comment-field-private': 'Kommentarsfält(privat)',
+        'comment-field-private': 'Kommentarsfält internt',
         'add-comment': 'Lägg till kommentar/etikett',
     },
     main: {
