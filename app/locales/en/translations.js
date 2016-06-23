@@ -428,6 +428,19 @@ export default {
                 `,
                 date: '2016-06-03',
             },
+            7: {
+                body: `
+                    <span class='label label-success'>New features</span>
+                    <li>Seach for first and last name when searching for determiner and collectors.</li>
+                    <li>Display birth and death date when searching for determiner and collectors.</li>
+                    <br><span class='label label-danger'>Fixes</span>
+                    <li>Renamed comments to "Internal" and "External".</li>
+                    <li>
+                        <strong>Botany:</strong> Change label for "Object description" and "Habitat/Substrate"
+                    </li>
+                `,
+                date: '2016-06-23',
+            },
         },
     },
 };

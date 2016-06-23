@@ -429,6 +429,19 @@ export default {
                 `,
                 date: '2016-06-03',
             },
+            7: {
+                body: `
+                    <span class='label label-success'>Ny funktionalitet</span>
+                    <li>Sök på både för- och efternamn i sökning efter bestämmare och insamlare.</li>
+                    <li>Visa födelse- och dödsdatum i sökning efter bestämmare och insamlare.</li>
+                    <br><span class='label label-danger'>Buggfixar</span>
+                    <li>Bytt namn på kommentarer till "Interna" och "Externa".</li>
+                    <li>
+                        <strong>Botanik:</strong> Uppdaterat rubriker för "Beskrivning av föremål" samt "Habitat/Substrat".
+                    </li>
+                `,
+                date: '2016-06-23',
+            },
         },
     },
 };
