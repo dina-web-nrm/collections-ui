@@ -26,7 +26,7 @@ This is a short example of how the authentication is performed.
 1. When data is requested from the API using Ember Data the `DataAdapterMixin` specified in [adapters/application.js](../app/adapters/application.js) will make sure that the `Access Token` is present in the headers.
 1. When the API recieves the request it will take the `Access Token` from the headers and validate it against Keycloak.
     1. It will both check that it's a valid `Access Token` and that the user has the correct permissions.
-    1. If valid return response otherwise return `405 Method Not Allowed`.
+    1. If valid return response otherwise return `403 Permission Denied` or `401 Unauthorized`.
 
 ## Solr Search Index ##
 
