@@ -19,7 +19,7 @@ They handle the communication with Keycloak and will append the authentication t
 This is a short example of how the authentication is performed.
 
 1. The user tries to access restricted view. Eg. register or list view.
-1. Ember Simple Auth checks if the user is logged in by validating the precense of an ´Access Token´ in local storage.
+1. Ember Simple Auth checks if the user is logged in by validating the precense of an `Access Token` in local storage.
     1. If user is not logged in the user is redirected to the login page
     1. When the user submits its' credentials they are sent to Keycloak which will validate them and if correct return a newly issued `Access Token`.
 1. If the user is logged in the view is displayed.
