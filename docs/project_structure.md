@@ -19,14 +19,14 @@ They handle the communication with Keycloak and will append the authentication t
 This is a short example of how the authentication is performed.
 
 1. The user tries to access restricted view. Eg. register or list view.
-1. Ember Simple Auth checks if the user is logged in by validating the precense of an ´Access Token´ in local storage.
+1. Ember Simple Auth checks if the user is logged in by validating the precense of an `Access Token` in local storage.
     1. If user is not logged in the user is redirected to the login page
     1. When the user submits its' credentials they are sent to Keycloak which will validate them and if correct return a newly issued `Access Token`.
 1. If the user is logged in the view is displayed.
 1. When data is requested from the API using Ember Data the `DataAdapterMixin` specified in [adapters/application.js](../app/adapters/application.js) will make sure that the `Access Token` is present in the headers.
 1. When the API recieves the request it will take the `Access Token` from the headers and validate it against Keycloak.
     1. It will both check that it's a valid `Access Token` and that the user has the correct permissions.
-    1. If valid return response otherwise return `405 Method Not Allowed`.
+    1. If valid return response otherwise return `403 Permission Denied` or `401 Unauthorized`.
 
 ## Solr Search Index ##
 
