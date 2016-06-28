@@ -80,9 +80,9 @@ The integration repository [dina-web/dw-collections-ui](https://github.com/DINA-
 
 ### Internal docs ###
 
-[Detailed deploy instructions](docs/release_and_deploy.md)
-[Project structure](docs/project_structure.md)
-[Tips and trix](docs/tips_and_trix.md)
+* [Detailed deploy instructions](docs/release_and_deploy.md)
+* [Project structure](docs/project_structure.md)
+* [Tips and trix](docs/tips_and_trix.md)
 
 ### External reading ###
 
