@@ -78,6 +78,14 @@ The integration repository [dina-web/dw-collections-ui](https://github.com/DINA-
 
 ## Further Reading / Useful Links
 
+### Internal docs ###
+
+[Detailed deploy instructions](docs/release_and_deploy.md)
+[Project structure](docs/project_structure.md)
+[Tips and trix](docs/tips_and_trix.md)
+
+### External reading ###
+
 * [ember.js](http://emberjs.com/)
 * [ember-cli](http://www.ember-cli.com/)
 * Development Browser Extensions
