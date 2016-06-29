@@ -34,5 +34,6 @@ Similar as `Ember Observer` and also contains information from Ember Observer.
 
 ## Blogs and video tutorials ##
 
+* https://emberway.io/
 * http://emberwatch.com/
 * https://dockyard.com/blog/categories/ember
