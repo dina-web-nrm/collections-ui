@@ -59,7 +59,8 @@ export default {
         'collection_object.root': 'Collection object',
         'collection_object.add': 'Register new',
         'collection_object.list': 'List all',
-        'collection.list': 'List Collections',
+        'collection.root': 'Collections',
+        'collection.list': 'List',
         'search.button': 'Search',
         'search.input': 'Search for ID/Species',
     },
@@ -156,6 +157,11 @@ export default {
                 close: 'Close',
                 duplicate: 'Duplicate',
             },
+        },
+    },
+    collection: {
+        list: {
+            header: 'List and search for collections',
         },
     },
 
