@@ -59,6 +59,7 @@ export default {
         'collection_object.root': 'Samlingsföremål',
         'collection_object.add': 'Registrera föremål',
         'collection_object.list': 'Lista',
+        'collection.list': 'Lista samlingar',
         'search.button': 'Sök',
         'search.input': 'Sök på art/ID',
     },

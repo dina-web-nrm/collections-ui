@@ -59,6 +59,7 @@ export default {
         'collection_object.root': 'Collection object',
         'collection_object.add': 'Register new',
         'collection_object.list': 'List all',
+        'collection.list': 'List Collections',
         'search.button': 'Search',
         'search.input': 'Search for ID/Species',
     },
