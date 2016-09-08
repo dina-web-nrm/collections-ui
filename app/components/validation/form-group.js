@@ -23,7 +23,7 @@ export default Ember.Component.extend({
     hasError: Ember.computed('isValid', 'isHidden', function () {
         return this.get('isValid') === false && !this.get('isHidden');
     }),
-    
+
     /** Return if validation is successful. */
     hasSuccess: Ember.computed('hasError', 'onlyError', function () {
         return !this.get('onlyError') && this.get('isValid');

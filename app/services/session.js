@@ -8,7 +8,7 @@ export default SessionService.extend({
     tokenObserver: Ember.observer('data.authenticated.access_token', function() {
         if (this.get('data.authenticated.access_token')) {
             const url = `${config.AUTHENTICATION_HOST}/userinfo`;
-
+            console.log(url);
             Ember.$.ajax({
                 dataType: 'json',
                 url: url,
@@ -20,7 +20,8 @@ export default SessionService.extend({
                         isFocusGroupMember: responseData.agentId !== '1016',
                     });
                 },
-                error: () => {
+                error: (responseData) => {
+                    console.log(responseData);
                     // If fetching the user profile errors, sign out to
                     // retrieve a new token.
                     this.invalidate();
