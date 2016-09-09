@@ -25,16 +25,20 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-    this.route('collectionobject');
+  this.route('collectionobject');
 
-    this.route('collectionobject.view', {
-        path: 'collectionobject/:collectionobject_id',
-    });
+  this.route('collectionobject.view', {
+      path: 'collectionobject/:collectionobject_id',
+  });
 
-    this.route('collectionobject.new', {
-        path: 'collectionobject/new',
-    });
-    this.route('login');
+  this.route('collectionobject.new', {
+      path: 'collectionobject/new',
+  });
+  this.route('login');
+  this.route('collection');
+  this.route('collection.view', {
+      path: 'collection/:collection_id',
+  });
 });
 
 export default Router;

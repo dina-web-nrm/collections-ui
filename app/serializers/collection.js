@@ -1,5 +1,8 @@
 import DS from 'ember-data';
 
 export default DS.JSONSerializer.extend({
-    primaryKey: 'collectionId'
+    primaryKey: 'collectionId',
+    attrs: {
+        agent: 'createdByAgentID'
+    }
 });

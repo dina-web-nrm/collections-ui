@@ -1,0 +1,33 @@
+<div class="container dwcm-collectionobject-view">
+    <div class="page-header">
+        <h1>
+            {{model.collectionName}}
+        </h1>
+        {{t 'fields.labels.cataloger'}} {{model.agent.fullName}}, {{moment-format model.timestampCreated 'LL'}}
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            {{#field-group title='form-component-basic-data' collapsable=false as |fg|}}
+                {{#fg.content}}
+                    <ul>
+                        <li>
+                            <span>{{t 'fields.labels.collection'}}:</span> {{model.collectionName}}
+                        </li>
+                        <li>
+                            <span>Collection code:</span> {{model.code}}
+                        </li>
+                        <li>
+                            <span>Description:</span> {{model.description}}
+                        </li>
+                        <li>
+                            <span>Institution:</span>{{model.institutionType.name}}
+                        </li>
+                        <li>
+                            <span>Discipline:</span> {{model.disciplineID.name}}
+                        </li>
+                    </ul>
+                {{/fg.content}}
+            {{/field-group}}
+        </div>
+    </div>
+</div>

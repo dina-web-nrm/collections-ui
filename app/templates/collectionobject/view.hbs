@@ -11,7 +11,9 @@
                 {{#fg.content}}
                     <ul>
                         <li>
-                            <span>{{t 'fields.labels.collection'}}:</span> {{model.collection.collectionName}}
+                            {{#link-to 'collection.view' model.collection}}
+                                {{model.collection.collectionName}}
+                            {{/link-to}}
                         </li>
                         <li>
                             <span>{{t 'fields.labels.accession'}}:</span> {{model.accession.accessionNumber}}

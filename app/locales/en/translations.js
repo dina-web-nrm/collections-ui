@@ -59,6 +59,8 @@ export default {
         'collection_object.root': 'Collection object',
         'collection_object.add': 'Register new',
         'collection_object.list': 'List all',
+        'collection.root': 'Collections',
+        'collection.list': 'List',
         'search.button': 'Search',
         'search.input': 'Search for ID/Species',
     },
@@ -157,6 +159,11 @@ export default {
             },
         },
     },
+    collection: {
+        list: {
+            header: 'List and search for collections',
+        },
+    },
 
     'form-component-basic-data': 'Basic data',
     'form-component-determination': 'Taxonomy/Determination',
@@ -171,6 +178,7 @@ export default {
             collecting_place: 'Locality',
             collecting_event: 'Collecting event',
             collection: 'Collection',
+            collection_code: 'Collection Code',
             catalogNumber: 'Catalog number',
             determination: {
                 confidence: 'Confidence',

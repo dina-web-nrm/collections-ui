@@ -59,6 +59,8 @@ export default {
         'collection_object.root': 'Samlingsföremål',
         'collection_object.add': 'Registrera föremål',
         'collection_object.list': 'Lista',
+        'collection.root': 'Samlingar',
+        'collection.list': 'Lista',
         'search.button': 'Sök',
         'search.input': 'Sök på art/ID',
     },
@@ -156,7 +158,11 @@ export default {
             },
         },
     },
-
+    collection: {
+        list: {
+            header: 'Lista och sök efter samlingar',
+        },
+    },
     'form-component-basic-data': 'Grunddata',
     'form-component-determination': 'Taxonomi/Bestämning',
     'form-component-collecting-event': 'Insamling/Fyndplats',
@@ -170,6 +176,7 @@ export default {
             collecting_place: 'Fyndplats(lokal)',
             collecting_event: 'Insamlingstillfälle',
             collection: 'Samling/delsamling',
+            collection_code: 'Samlingskod',
             catalogNumber: 'Katalognr',
             determination: {
                 confidence: 'Osäkerhet',
