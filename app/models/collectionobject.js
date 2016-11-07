@@ -19,7 +19,7 @@ const Validations = buildValidations({
         dependentKeys: ['collection'],
         disabled() {
             return Ember.isBlank(this.get('model.catalogNumber'));
-        }
+        },
     }),
     
     preparations: validator('has-many'),
@@ -38,11 +38,12 @@ const Validations = buildValidations({
 
 
 export default DS.Model.extend(Validations, DependentRelationships, {
-    guid: DS.attr('string'),
-    catalogNumber: DS.attr('string'),
+    //guid: DS.attr('string'),
+    //catalogNumber: DS.attr('string'),
     timestampCreated: DS.attr('number'),
     catalogedDate: DS.attr('date'),
-    name: DS.attr('string'),
+    //name: DS.attr('string'),
+    collectionObjectID: DS.attr('number'),
 
     agent: DS.belongsTo('agent', {async: true}),
 
@@ -58,4 +59,5 @@ export default DS.Model.extend(Validations, DependentRelationships, {
     formattedDate: Ember.computed('timestampCreated', function () {
         return moment(this.get('timestampCreated')).format('Do MMMM YYYY');
     })
+
 });

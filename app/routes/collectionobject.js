@@ -8,8 +8,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     queryParams: {
         offset: {
             refreshModel: true,
-            scope: 'controller'
-        }
+            scope: 'controller',
+        },
     },
 
     model(params) {
@@ -19,10 +19,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
                     offset: params.offset,
                     orderby: 'collectionObjectID',
                     limit: 20,
-                    sort: 'desc'
+                    sort: 'desc',
                 }
             ),
-            collections: this.store.findAll('collection')
+            collections: this.store.findAll('collection'),
         });
     },
 });

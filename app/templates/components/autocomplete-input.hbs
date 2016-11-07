@@ -1,3 +1,4 @@
+
 {{input
     type="text"
     class="form-control input-sm"
@@ -5,11 +6,13 @@
 
     key-down="onKeyDown"
     focus-in="onFocus"
-
-    placeholder=(t (if placeholder placeholder 'definitions.type-to-search'))
     disabled=(readonly selected)
+    placeholder=(t (if placeholder placeholder 'definitions.type-to-search'))
+
     autocomplete=false
 }}
+
+    <!--disabled=(readonly selected)-->
 
 {{#if selected}}
     <i

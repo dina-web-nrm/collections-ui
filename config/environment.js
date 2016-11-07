@@ -61,6 +61,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     ENV.HOST = 'https://beta-api.dina-web.net';
+    //ENV.HOST = 'http://172.16.210.127';
     ENV.AUTHENTICATION_HOST = 'https://beta-sso.dina-web.net/auth/realms/dina/protocol/openid-connect';
   }
 

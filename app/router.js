@@ -39,6 +39,7 @@ Router.map(function() {
   this.route('collection.view', {
       path: 'collection/:collection_id',
   });
+  this.route('collection-test');
 });
 
 export default Router;

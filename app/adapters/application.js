@@ -5,7 +5,10 @@ import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 
 export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
     host: config.HOST,
-    namespace: 'collections/v0',
+    //host: 'http://tracktracker.se',
+    namespace: 'collections/v1',
+    //namespace: 'collection',
+    
     headers: {
         "Accept": "application/json",
         "Content-type": "application/json"
@@ -19,13 +22,16 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
     pathForType (type) {
         return type.classify().toLowerCase();
     },
-
+    
+    // defaultSerializer: '-default',
     /**
      * Override method to be able to append eg. "search"
      * to the url.
      */
+
     urlForQuery (query, modelName) {
         var url = this._super(query, modelName);
+        console.log(url);
 
         if (query && query.search) {
             url = url + '/search';
@@ -39,4 +45,5 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
 
         return url;
     }
+
 });

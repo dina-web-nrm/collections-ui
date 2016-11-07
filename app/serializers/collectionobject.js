@@ -1,7 +1,15 @@
 import DS from 'ember-data';
 
-export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
-    primaryKey: 'collectionObjectID',
+export default DS.JSONAPISerializer.extend(DS.EmbeddedRecordsMixin, {
+
+    //primaryKey: 'collectionObjectID',
+   
+
+    attrs: {
+        collection: 'collectionMemberID',
+    },
+
+   /*
     attrs: {
         agent: 'createdByAgentID',
         attachments: {
@@ -28,19 +36,24 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
             serialize: 'records'
         }
     },
+*/
 
     /**
-     * Override serialize to set attributes required by the
+     * OverrIde serialize to set attributes required by the
      * database that are not used in UI.
      */
+    
+
+
     serialize(snapshot) {
         var json = this._super(...arguments);
+        console.log(snapshot.record.get('collection.disciplineID'));
         const disciplineID = snapshot.record.get('collection.disciplineID');
 
         // Copy CollectionMemberID to CollectionID.
         json.collectionID = parseInt(json.collectionMemberID);
         json.collectionMemberID = json.collectionID;
-
+/*
         // Parse AccessionID to integer.
         json.accessionID = json.accessionID && parseInt(json.accessionID);
         delete json.createdByAgentID;
@@ -113,6 +126,8 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         }
 
         delete json.collectingEvent;
+        */
         return json;
-    },
+    }, 
+    
 });

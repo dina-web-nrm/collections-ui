@@ -449,6 +449,17 @@ export default {
                 `,
                 date: '2016-06-23',
             },
+
+            8: {
+                body: `
+                    <span class='label label-success'>Ny funktionalitet</span>
+                    <li>Vy för samlingar, med detaljer</li>
+                    
+                    <br><span class='label label-danger'>Buggfixar</span>
+                    <li>..</li>
+                `,
+                date: '2016-09-26',
+            },
         },
     },
 };

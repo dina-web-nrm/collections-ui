@@ -449,6 +449,18 @@ export default {
                 `,
                 date: '2016-06-23',
             },
+
+            8: {
+                body: `
+                    <span class='label label-success'>New features</span>
+                    <li>Veiw for collections with details</li>
+                    
+                    <br><span class='label label-danger'>Fixes</span>
+                    <li>..</li>
+                `,
+                date: '2016-09-26',
+            },
+            
         },
     },
 };

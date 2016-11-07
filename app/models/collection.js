@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
+    catalogFormatNumName: DS.attr('string'),
     collectionName: DS.attr('string'),
     code: DS.attr('string'),
     diciplinID: DS.attr('number'),
