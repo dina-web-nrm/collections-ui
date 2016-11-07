@@ -5,7 +5,7 @@ Basic knowlege in Git, Node, Ember & Docker.
 
 ## Dependencies: ##
 
-- git
+- Git
 - Node with NPM
 - Ember.js
 - Docker
@@ -13,7 +13,7 @@ Basic knowlege in Git, Node, Ember & Docker.
 
 ## Installation ##
 
-1. Clone the [proxy-docker](https://github.com/DINA-Web/collections-ui) from github.
+1. Clone the [proxy-docker](https://github.com/DINA-Web/proxy-docker) from github.
 
 1. Clone the [collections-api](https://github.com/DINA-Web/collections-api) from github. (This might not be neccessary, needs to be verified).
 
