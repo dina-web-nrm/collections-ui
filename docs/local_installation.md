@@ -1,5 +1,8 @@
 # Step by step installation instructions #
 
+## Asumptions: ##
+Basic knowlege in Git, Node, Ember & Docker.
+
 ## Dependencies: ##
 
 - git
