@@ -21,9 +21,7 @@ Basic knowlege in Git, Node, Ember & Docker.
 
 1. Edit your host file (ig: `/etc/hosts`)and point the following domains to your local machine:
 `127.0.0.1       api.dina-web
-
 127.0.0.1       beta-sso.dina-web.net
-
 127.0.0.1       beta-api.dina-web.net`
 
 1. Go to the proxy folder in the terminal and write `make`. Check that it is up and running with `docker-compose ps`.
