@@ -19,9 +19,11 @@ Basic knowlege in Git, Node, Ember & Docker.
 
 1. Clone the [collections-ui](https://github.com/DINA-Web/collections-ui) from github.
 
-1. Edit your host file (ig: `/etc/hosts`)and point the following domains to your local machine:<br>
-`127.0.0.1       api.dina-web<br>  
-127.0.0.1       beta-sso.dina-web.net<br>  
+1. Edit your host file (ig: `/etc/hosts`)and point the following domains to your local machine:
+`127.0.0.1       api.dina-web
+
+127.0.0.1       beta-sso.dina-web.net
+
 127.0.0.1       beta-api.dina-web.net`
 
 1. Go to the proxy folder in the terminal and write `make`. Check that it is up and running with `docker-compose ps`.
