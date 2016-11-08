@@ -7,6 +7,7 @@ Basic knowlege in Git, Node, Ember & Docker.
 
 - Git
 - Node with NPM
+- Curl
 - Ember.js
 - Docker
 - Docker-compose
@@ -28,13 +29,13 @@ Basic knowlege in Git, Node, Ember & Docker.
 
 1. Go to the collections-api-docker folder and write `make`. Check that it is up and running with `docker-compose ps`. **collectionsapidocker_fs-api_1** and **collectionsapidocker_fs_1** has an Exit 0, that is ok.
 
-1. Navigate to [https://beta-sso.dina-web.net/auth/](https://beta-sso.dina-web.net/auth/).
+1. Navigate to [https://beta-sso.dina-web.net/auth/](http://beta-sso.dina-web.net/auth/).
 
 1. Go to "Administration console" User: **admin**, password: **dina**.
 
-1. Got to users in the left hand column, and then **add user** to the left.
+1. Go to users in the left hand column, and then **add user** to the left.
 
-1. Fill in the desired user name and **save**.
+1. Fill in the desired username and **save**.
 
 1. Go to **Attributes**. Set the **key** to `agentId` and the value to `1`. Press *add* and **save**.
 
