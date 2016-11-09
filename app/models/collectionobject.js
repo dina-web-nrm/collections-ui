@@ -12,7 +12,7 @@ const Validations = buildValidations({
         presence: true,
         descriptionKey: 'fields.labels.collection'
     }),
-    
+  /*  
     catalogNumber: validator('unique-catalog-number', {
         debounce: 300,
         descriptionKey: 'fields.labels.catalogNumber',
@@ -34,16 +34,18 @@ const Validations = buildValidations({
             );
         }
     })
+    */
 });
 
 
 export default DS.Model.extend(Validations, DependentRelationships, {
-    //guid: DS.attr('string'),
-    //catalogNumber: DS.attr('string'),
+    guid: DS.attr('string'),
+    catalogNumber: DS.attr('string'),
     timestampCreated: DS.attr('number'),
     catalogedDate: DS.attr('date'),
-    //name: DS.attr('string'),
+    name: DS.attr('string'),
     collectionObjectID: DS.attr('number'),
+    collectionMemberID: DS.attr('number'),
 
     agent: DS.belongsTo('agent', {async: true}),
 

@@ -44,16 +44,16 @@ export default DS.JSONAPISerializer.extend(DS.EmbeddedRecordsMixin, {
      */
     
 
-
+/*
     serialize(snapshot) {
         var json = this._super(...arguments);
-        console.log(snapshot.record.get('collection.disciplineID'));
-        const disciplineID = snapshot.record.get('collection.disciplineID');
+        //console.log(snapshot.record.get('collection.disciplineID'));
+        //const disciplineID = snapshot.record.get('collection.disciplineID');
 
         // Copy CollectionMemberID to CollectionID.
         json.collectionID = parseInt(json.collectionMemberID);
         json.collectionMemberID = json.collectionID;
-/*
+
         // Parse AccessionID to integer.
         json.accessionID = json.accessionID && parseInt(json.accessionID);
         delete json.createdByAgentID;
@@ -126,8 +126,8 @@ export default DS.JSONAPISerializer.extend(DS.EmbeddedRecordsMixin, {
         }
 
         delete json.collectingEvent;
-        */
+        
         return json;
     }, 
-    
+  */  
 });

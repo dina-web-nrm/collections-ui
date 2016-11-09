@@ -54,11 +54,11 @@ module.exports = function(environment) {
     // step made while transitioning into a route, including
     // `beforeModel`, `model`, and `afterModel` hooks, and
     // information about redirects and aborted transitions
-    ENV.LOG_TRANSITIONS_INTERNAL = true
+    //ENV.LOG_TRANSITIONS_INTERNAL = true
 
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    //ENV.APP.LOG_RESOLVER = true;
+     ENV.APP.LOG_ACTIVE_GENERATION = true;
+    ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     ENV.HOST = 'https://beta-api.dina-web.net';
     //ENV.HOST = 'http://172.16.210.127';

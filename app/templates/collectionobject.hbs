@@ -32,11 +32,11 @@
                                     <td>
                                         {{collectionObject.id}}
                                     </td>
-                                    <td>
-                                        {{collectionObject.collection.timestampCreated}}<br>{{debugger}}                                        
+                                    <td>{{! debugger}}
+                                        {{collectionObject.collection.collectionName}} [X]<br>                                        
                                     </td>
                                     <td>
-                                        {{collectionObject.agent.fullName}}
+                                        {{! collectionObject.agent.fullName}}
                                     </td>
                                 {{/link-to}}
                             {{/each}}
