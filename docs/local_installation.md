@@ -11,10 +11,10 @@ Basic knowlege in Git, Node, Ember & Docker.
 - Bower
 - Curl
 - Ember.js
-- Docker*
+- Docker
 - Docker-compose
 
-* Make sure that you follow the right installation instructions if you are using a "systemd" system as Ubuntu 16.04 or newer versions of Fedora.
+*Note: Make sure that you follow the right installation instructions if you are using a "systemd" system as Ubuntu 16.04 or newer versions of Fedora.*
 
 
 
