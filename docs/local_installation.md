@@ -1,16 +1,22 @@
 # Step by step installation instructions #
 
 ## Asumptions: ##
+Linux,
 Basic knowlege in Git, Node, Ember & Docker.
 
 ## Dependencies: ##
 
 - Git
 - Node with NPM
+- Bower
 - Curl
 - Ember.js
-- Docker
+- Docker*
 - Docker-compose
+
+* Make sure that you follow the right installation instructions if you are using a "systemd" system as Ubuntu 16.04 or newer versions of Fedora.
+
+
 
 ## Installation ##
 
@@ -43,6 +49,9 @@ Basic knowlege in Git, Node, Ember & Docker.
 
 1. Go to **Role mappings** and give access to everything.
 
-1. Go to the collections-ui folder and run `ember s`.
+1. Go to the collections-ui folder and run:
+`npm install`,
+`bower install`,
+`ember s`.
 
 
