@@ -1,8 +1,7 @@
 # Step by step installation instructions #
 
 ## Asumptions: ##
-Linux,
-Basic knowlege in Git, Node, Ember & Docker.
+Basic knowlege in Git, Node, Ember & Docker. This guide is covers installation from a Linux perpective, but the project should be able to run on any platfrom that supports Docker.
 
 ## Dependencies: ##
 
