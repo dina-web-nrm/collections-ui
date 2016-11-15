@@ -13,10 +13,13 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     },
 
     deactivate () {
-        let model = this.controllerFor('collectionobject.new').get('model');
+        const controller = this.controllerFor('collectionobject.new');
+        const model = controller.get('model');
 
         // TODO: Create a mixin to override `rollbackAttributes` and
         // apply `rollbackAttributes` to any dirty relationship as well.
         model.rollbackAttributes();
+
+        controller.set('_displayErrors', false);
     }
 });
