@@ -1,33 +1,7 @@
 import DS from 'ember-data';
+import {addRelation} from '../utils/serializerUtils';
 
-export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
-    primaryKey: 'collectionObjectID',
-    attrs: {
-        agent: 'createdByAgentID',
-        attachments: {
-            key: 'collectionobjectattachmentList',
-            serialize: 'records'
-        },
-        cataloger: 'catalogerID',
-        collection: 'collectionMemberID',
-        accession: 'accessionID',
-        determinations: {
-            key: 'determinationList',
-            serialize: 'records'
-        },
-        preparations: {
-            key: 'preparationList',
-            serialize: 'records'
-        },
-        objectAttribute: {
-            key: 'collectionObjectAttributeID',
-            serialize: 'records'
-        },
-        collectingEvent: {
-            key: 'collectingEventID',
-            serialize: 'records'
-        }
-    },
+export default DS.JSONAPISerializer.extend(DS.EmbeddedRecordsMixin, {
 
     /**
      * Override serialize to set attributes required by the
@@ -36,7 +10,7 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
     serialize(snapshot) {
         var json = this._super(...arguments);
         const disciplineID = snapshot.record.get('collection.disciplineID');
-
+        // console.log(json);
         // Copy CollectionMemberID to CollectionID.
         json.collectionID = parseInt(json.collectionMemberID);
         json.collectionMemberID = json.collectionID;
@@ -114,5 +88,14 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
 
         delete json.collectingEvent;
         return json;
+    },
+
+    normalizeResponse(store, primaryModelClass, payload, id, requestType) {
+
+        //addRelation(fieldName, type, key, payload) ---//
+        addRelation('collection', 'collection', 'collection-member-id', payload);
+        addRelation('determinations', 'determinations', 'determinationList', payload);
+
+        return this._super(...arguments);
     },
 });
