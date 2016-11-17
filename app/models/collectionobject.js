@@ -57,5 +57,5 @@ export default DS.Model.extend(Validations, DependentRelationships, {
 
     formattedDate: Ember.computed('timestampCreated', function () {
         return moment(this.get('timestampCreated')).format('Do MMMM YYYY');
-    })
+    }),
 });

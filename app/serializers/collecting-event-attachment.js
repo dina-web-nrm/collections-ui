@@ -1,6 +1,6 @@
 import DS from 'ember-data';
 
-export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
+export default DS.JSONAPISerializer.extend(DS.EmbeddedRecordsMixin, {
     attrs: {
         originalAttachment: {
             key: 'attachmentID',
@@ -16,5 +16,12 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
         }
         
         return json;
-    }
+    },
+    normalizeResponse(store, primaryModelClass, payload, id, requestType) {
+        payload.data.forEach(function(element) {
+            element.type = 'collecting-event-attachment';
+        }, this);
+
+        return this._super(...arguments);
+    },
 });

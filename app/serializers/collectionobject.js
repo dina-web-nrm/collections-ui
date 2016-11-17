@@ -9,9 +9,12 @@ export default DS.JSONAPISerializer.extend(DS.EmbeddedRecordsMixin, {
      */
     serialize(snapshot) {
         var json = this._super(...arguments);
+        json.data.type = 'collectionobject';
+        console.log(json);
+        /*
         const disciplineID = snapshot.record.get('collection.disciplineID');
-        // console.log(json);
-        // Copy CollectionMemberID to CollectionID.
+        
+         Copy CollectionMemberID to CollectionID.
         json.collectionID = parseInt(json.collectionMemberID);
         json.collectionMemberID = json.collectionID;
 
@@ -87,14 +90,28 @@ export default DS.JSONAPISerializer.extend(DS.EmbeddedRecordsMixin, {
         }
 
         delete json.collectingEvent;
-        return json;
+        return json;*/
     },
 
     normalizeResponse(store, primaryModelClass, payload, id, requestType) {
 
-        //addRelation(fieldName, type, key, payload) ---//
+        
+        var  mySon = JSON.parse(JSON.stringify(payload)); //Kopierar json
+        console.log(mySon);
+
+        //addRelation(fieldName in model, modelname, id key in incomming json, payload from above) ---//
         addRelation('collection', 'collection', 'collection-member-id', payload);
-        addRelation('determinations', 'determinations', 'determinationList', payload);
+        addRelation('determinations', 'determination', 'determinationList', payload);
+        addRelation('agent', 'agent', 'created-by-agent-id', payload);
+        addRelation('cataloger', 'agent', 'cataloger-id', payload);
+        addRelation('accession', 'accession', 'accession-id', payload);
+        addRelation('attachments', 'collection-object-attachment', 'collectionobjectattachmentList', payload);
+        addRelation('preparations', 'preparations', 'preparationList', payload);
+        addRelation('objectAttribute', 'collection-object-attribute', 'collection-object-attribute-id', payload);
+        addRelation('collectingEvent', 'collecting-event', 'collecting-event-id', payload);
+
+        mySon = JSON.parse(JSON.stringify(payload)); //Kopierar json
+        console.log(mySon);
 
         return this._super(...arguments);
     },

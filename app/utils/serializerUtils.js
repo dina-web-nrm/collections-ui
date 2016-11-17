@@ -39,8 +39,6 @@ function getRelData(payload, key, type) {
 function createRelationships(fieldName, type, key, payload) {
     var tmp = {};
     var data = null;
-    var mySon = JSON.parse(JSON.stringify(payload)); //Kopierar json
-    console.log(mySon);
     
 
     if(Array.isArray(payload.length)) { //multi item payload
@@ -59,9 +57,6 @@ function createRelationships(fieldName, type, key, payload) {
     if(data != null) {
         tmp.data = data;
     }
-
-    mySon = JSON.parse(JSON.stringify(tmp)); //Kopierar json
-    console.log(mySon);
 
     return tmp;
 }
@@ -97,11 +92,11 @@ function addRelation(fieldName, type, key, payload) {
     var data = payload.data;
     if(Array.isArray(data)) { //multi data
         for(var i= 0; i < data.length;i++) {
-            data[i].relationships = buildRelations(fieldName, type, key, data[i])
+            data[i].relationships = buildRelations(fieldName, type, key, data[i]);
         }
     }
     else {
-        data.relationships = buildRelations(fieldName, type, key, data);
+        data.relationships= buildRelations(fieldName, type, key, data);
     }
 }
 export {addRelation};

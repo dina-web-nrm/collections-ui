@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
-export default DS.JSONSerializer.extend({
-    primaryKey: 'paleoContextID',
+export default DS.JSONAPISerializer.extend({
+    //primaryKey: 'paleoContextID',
     attrs: {
         chronosStrat: 'chronosStratID',
         lithoStrat: 'lithoStratID'
@@ -19,5 +19,12 @@ export default DS.JSONSerializer.extend({
         }
 
         return json;
-    }
+    },
+    normalizeResponse(store, primaryModelClass, payload, id, requestType) {
+        payload.data.forEach(function(element) {
+            element.type = 'paleo-context';
+        }, this);
+
+        return this._super(...arguments);
+    },
 });
