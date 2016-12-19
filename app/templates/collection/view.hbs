@@ -3,7 +3,7 @@
         <h1>
             {{model.collectionName}}
         </h1>
-        {{t 'fields.labels.cataloger'}} {{model.agent.fullName}}, {{moment-format model.timestampCreated 'LL'}}
+        {{t 'fields.labels.cataloger'}} {{model.createdByAgent.fullName}}, {{moment-format model.timestampCreated 'LL'}}
     </div>
     <div class="row">
         <div class="col-xs-12">
@@ -23,7 +23,7 @@
                             <span>Institution:</span>{{model.institutionType.name}}
                         </li>
                         <li>
-                            <span>Discipline:</span> {{model.disciplineID.name}}
+                            <span>Discipline:</span> {{model.discipline.name}}
                         </li>
                     </ul>
                 {{/fg.content}}

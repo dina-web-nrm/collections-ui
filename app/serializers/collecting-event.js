@@ -1,9 +1,10 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
-export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
+export default DS.JSONAPISerializer.extend(DS.EmbeddedRecordsMixin, {
     session: Ember.inject.service('session'),
-    primaryKey: 'collectingEventID',
+  //  primaryKey: 'collectingEventID',
+    primaryKey: 'id',
     attrs: {
         locality: {
             key: 'localityID',

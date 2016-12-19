@@ -3,7 +3,7 @@
         <h1>
             {{model.id}}{{if model.catalogNumber (concat ' / ' model.catalogNumber) ''}}
         </h1>
-        {{t 'fields.labels.cataloger'}} {{model.agent.fullName}}, {{moment-format model.catalogedDate 'LL'}}
+        {{t 'fields.labels.cataloger'}} {{model.createdByAgent.fullName}}, {{moment-format model.catalogedDate 'LL'}}
     </div>
     <div class="row">
         <div class="col-xs-6">
@@ -31,7 +31,9 @@
                                         <span>{{t 'definitions.name'}}:</span> {{determination.taxonName}}
                                     </li>
                                     <li>
-                                        <span>{{t 'fields.labels.determination.determiner'}}:</span> {{determination.determinerName}}
+                                        <span>{{t 'fields.labels.determination.determiner'}}:</span> 
+                                        test
+                                       <!-- {{! determination.determinerName}} -->
                                     </li>
                                     <li>
                                         <span>{{t 'fields.labels.determination.type-status'}}:</span> {{determination.typeStatus}}
@@ -46,18 +48,20 @@
                 {{#fg.content}}
                     <ul>
                         <li>
-                            <span>{{t 'fields.labels.preparation.life-stage'}}:</span> {{model.objectAttribute.lifeStage}}
+                            <span>{{t 'fields.labels.preparation.life-stage'}}:</span> {{model.collectionObjectAttribute.lifeStage}}
                         </li>
                         <li>
-                            <span>{{t 'fields.labels.preparation.age'}}:</span> {{model.objectAttribute.age}}
+                            <span>{{t 'fields.labels.preparation.age'}}:</span>
+                            {{model.collectionObjectAttribute.age}}
                         </li>
                         <li>
-                            <span>{{t 'fields.labels.preparation.sex'}}:</span> {{t
-                                (concat 'definitions.' (if model.objectAttribute.sex model.objectAttribute.sex 'unknown'))
+                            <span>{{t 'fields.labels.preparation.sex'}}:</span> 
+                            {{t (concat 'definitions.' (if model.objectAttribute.sex model.collectionObjectAttribute.sex 'unknown'))
                             }}
                         </li>
                         <li>
-                            <span>{{t 'fields.labels.preparation.measurements'}}:</span> {{model.objectAttribute.measurements}}
+                            <span>{{t 'fields.labels.preparation.measurements'}}:</span> 
+                            {{model.collectionObjectAttribute.measurements}}
                         </li>
                     </ul>
                     <ol>
@@ -78,11 +82,11 @@
                         {{/each}}
                     </ol>
                     <div class='row'>
-                        {{#each (filter-by "ordinal" 1 model.attachments) as |attachment index|}}
+                        {{#each (filter-by "ordinal" 1 model.collectionobjectattachments) as |attachment index|}}
                             <div class='col-xs-12 col-md-6'>
                                 <label>{{t 'definitions.verbatim-field'}}</label>
                                 {{textarea
-                                    value=attachment.originalAttachment.remarks
+                                    value=collectionobjectattachments.originalAttachment.remarks
                                     class='form-control input-sm verbatim'
                                     readonly=true
                                 }}

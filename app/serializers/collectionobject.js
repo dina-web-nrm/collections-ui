@@ -1,32 +1,32 @@
 import DS from 'ember-data';
 
-export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
-    primaryKey: 'collectionObjectID',
+export default DS.JSONAPISerializer.extend(DS.EmbeddedRecordsMixin, {
+  //  primaryKey: 'collectionObjectID',
     attrs: {
-        agent: 'createdByAgentID',
-        attachments: {
-            key: 'collectionobjectattachmentList',
-            serialize: 'records'
-        },
-        cataloger: 'catalogerID',
+    //    agent: 'createdByAgent',
+     //   attachments: {
+     //       key: 'collectionobjectattachmentList',
+     //       serialize: 'records'
+     //   },
+     //   cataloger: 'catalogerID',
         collection: 'collectionMemberID',
-        accession: 'accessionID',
-        determinations: {
-            key: 'determinationList',
-            serialize: 'records'
-        },
-        preparations: {
-            key: 'preparationList',
-            serialize: 'records'
-        },
-        objectAttribute: {
-            key: 'collectionObjectAttributeID',
-            serialize: 'records'
-        },
-        collectingEvent: {
-            key: 'collectingEventID',
-            serialize: 'records'
-        }
+     //   accession: 'accessionID',
+     //   determinations: {
+    //      key: 'determinationList',
+     //       serialize: 'records'
+     //   },
+    //    preparations: {
+     //       key: 'preparationList',
+      //      serialize: 'records'
+     //   },
+     //   objectAttribute: {
+     //       key: 'collectionObjectAttributeID',
+      //      serialize: 'records'
+    //    },
+     //   collectingEvent: {
+      //      key: 'collectingEventID',
+     //      serialize: 'records'
+     //   }
     },
 
     /**
@@ -35,7 +35,7 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
      */
     serialize(snapshot) {
         var json = this._super(...arguments);
-        const disciplineID = snapshot.record.get('collection.disciplineID');
+        const discipline = snapshot.record.get('collection.discipline');
 
         // Copy CollectionMemberID to CollectionID.
         json.collectionID = parseInt(json.collectionMemberID);

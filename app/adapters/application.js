@@ -5,7 +5,7 @@ import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 
 export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
     host: config.HOST,
-    namespace: 'collections/v0',
+    namespace: 'collections/v1',
     headers: {
         "Accept": "application/json",
         "Content-type": "application/json"

@@ -44,7 +44,7 @@ export default DS.Model.extend(Validations, DependentRelationships, {
     catalogedDate: DS.attr('date'),
     name: DS.attr('string'),
 
-    agent: DS.belongsTo('agent', {async: true}),
+    createdByAgent: DS.belongsTo('agent', {async: true}),
 
     cataloger: DS.belongsTo('agent', {async: true}),
     collection: DS.belongsTo('collection', {async: true}),

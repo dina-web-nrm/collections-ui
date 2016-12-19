@@ -38,8 +38,8 @@ export default DS.Model.extend(Validations, {
     verbatimTaxon: DS.attr('string'),
 
     taxon: DS.belongsTo('taxon', {async: true}),
-    determiner: DS.belongsTo('agent', {async: true}),
+    determinerID: DS.belongsTo('agent', {async: true}),
 
     taxonName: Ember.computed.alias('taxon.fullName'),
-    determinerName: Ember.computed.alias('determiner.fullName')
+    determinerName: Ember.computed.alias('determinerID.fullName')
 });
