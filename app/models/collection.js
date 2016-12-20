@@ -11,5 +11,5 @@ export default DS.Model.extend({
     createdByAgent: DS.belongsTo('agent', {async: true}),
     institutionType: DS.belongsTo('institution', {async: true}),
     discipline: DS.belongsTo('discipline', {async: true}),
-    collectionObject: DS.belongsTo('collectionObject', {async: true}),
+ //   collectionObject: DS.belongsTo('collectionobject', {async: true}),
 });
