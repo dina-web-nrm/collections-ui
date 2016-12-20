@@ -5,6 +5,7 @@ import BaseValidator from 'ember-cp-validations/validators/base';
 import moment from 'moment';
 
 export default BaseValidator.extend({
+
     _parseDate(dateStr, format) {
         if (dateStr === 'now' || Ember.isEmpty(dateStr)) {
             return moment();
@@ -50,7 +51,7 @@ export default BaseValidator.extend({
         }
         
         if (!allowFuture) {
-            let now = this._parseDate(now, format);
+            let now = this._parseDate('now', format);
             if (now < date) {
                 options.before = now.format(errorFormat);
                 return this.createErrorMessage('before', value, options);

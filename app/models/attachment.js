@@ -5,7 +5,7 @@ export default DS.Model.extend({
     origFilename: DS.attr('string', {
         defaultValue() { return 'attachment'; },
     }),
-    tableID: DS.attr('string', {
+    table: DS.attr('string', {
 
         /* Dummy value due to NON-NULL restriction in database. */
         defaultValue() { return 1; },

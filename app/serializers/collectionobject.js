@@ -7,7 +7,11 @@ export default DS.JSONAPISerializer.extend(DS.EmbeddedRecordsMixin, {
 
     attrs: {
         collection: 'collectionMemberID',
-    },
+        collectingEvent: {
+            key: 'collectingEvent',
+            serialize: 'records'
+        }
+    }
 
    /*
     attrs: {

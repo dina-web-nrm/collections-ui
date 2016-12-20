@@ -47,17 +47,17 @@ export default DS.Model.extend(Validations, DependentRelationships, {
     collectionObjectID: DS.attr('number'),
     collectionMemberID: DS.attr('number'),
 
-    agent: DS.belongsTo('agent', {async: true}),
+    createdByAgent: DS.belongsTo('agent', {async: true}),
 
-    cataloger: DS.belongsTo('agent', {async: true}),
+  //  cataloger: DS.belongsTo('agent', {async: true}),
     collection: DS.belongsTo('collection', {async: true}),
-    accession: DS.belongsTo('accession', {async: true}),
-    attachments: DS.hasMany('collection-object-attachment', {async: true}),
-    determinations: DS.hasMany('determinations', {async: true}),
-    preparations: DS.hasMany('preparations', {async: true}),
-    objectAttribute: DS.belongsTo('collection-object-attribute', {async: true}),
+  //  accession: DS.belongsTo('accession', {async: true}),
+ //   collectionobjectattachments: DS.hasMany('collection-object-attachment', {async: true}),
+  //  determinations: DS.hasMany('determinations', {async: true}),
+  //  preparations: DS.hasMany('preparations', {async: true}),
+   // collectionObjectAttribute: DS.belongsTo('collection-object-attribute', {async: true}),
     collectingEvent: DS.belongsTo('collecting-event', {async: true}),
-
+  
     formattedDate: Ember.computed('timestampCreated', function () {
         return moment(this.get('timestampCreated')).format('Do MMMM YYYY');
     })

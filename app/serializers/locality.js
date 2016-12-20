@@ -1,12 +1,12 @@
 import DS from 'ember-data';
 import Ember from 'ember';
 
-export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
+export default DS.JSONAPISerializer.extend(DS.EmbeddedRecordsMixin, {
     session: Ember.inject.service('session'),
-
-    primaryKey: 'localityID',
+ 
+ /*
     attrs: {
-        'geography': 'geographyID',
+       'geography': 'geographyID',
         'agent': 'createdByAgentID',
         'longitude': 'longitude1',
         'latitude': 'latitude1',
@@ -34,4 +34,5 @@ export default DS.JSONSerializer.extend(DS.EmbeddedRecordsMixin, {
 
         return json;
     },
+    */
 });

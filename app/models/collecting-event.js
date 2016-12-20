@@ -50,10 +50,10 @@ export default DS.Model.extend(Validations, {
     // Description of object when collecting.
     description: DS.attr('string'),
     
-    attachments: DS.hasMany('collecting-event-attachment', {async: true}),
+    collectingegentattachments: DS.hasMany('collecting-event-attachment', {async: true}),
     locality: DS.belongsTo('locality', {async: true}),
     collectors: DS.hasMany('collector', {async: true}),
-    agent: DS.belongsTo('agent', {async: true}),
+    createdByAgent: DS.belongsTo('agent', {async: true}),
     
     displayName: Ember.computed('locality', 'givenName', function () {
         if (this.get('givenName')) {
