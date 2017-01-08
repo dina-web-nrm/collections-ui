@@ -2,27 +2,37 @@ import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.JSONAPISerializer.extend(DS.EmbeddedRecordsMixin, {
-    session: Ember.inject.service('session'),
- 
-   
+    session: Ember.inject.service('session'), 
 
-/*
-    attrs: {
+    attrs: {  
         locality: {
             key: 'locality',
             serialize: 'records'
         },
         givenName: 'text1',
         description: 'text2',
-        //agent: 'createdByAgentID',
+        
         collectors: {
             key: 'collectors',
             serialize: 'records'
-        },
-        attachments: {
-            key: 'collectingeventattachments',
-            serialize: 'records'
-        }
+        }  
+     //   collectingeventattachments: {
+     //       key: 'collectingeventattachments',
+    //        serialize: 'records'
+      //  }
+        
+    }, 
+
+
+/*
+   // keyForRelationship: function(key, relationship, method) { 
+    keyForRelationship: function(key) { 
+        return key;
     },
+
+    keyForAttribute: function(attr) {
+      return attr;
+    }
     */
+ 
 });

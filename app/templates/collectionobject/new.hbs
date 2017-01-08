@@ -12,7 +12,7 @@
                         {{capitalize-string (t (concat 'definitions.type.' value.type))}}
                     {{/x-option}}
                 {{/each-in}}
-            {{/x-select}}
+            {{/x-select}} 
         </h2>
     </div>
     <ul class="nav nav-pills">
@@ -23,7 +23,7 @@
         {{/each-in}}
     </ul>
     {{#each-in groups as |identifier componentName|}}
-        {{component componentName title=identifier model=model}}
+        {{component componentName title=identifier model=model}} 
     {{/each-in}}
 </div>
 

@@ -50,17 +50,20 @@
                 {{#fg.content}}
                     <ul>
                         <li>
-                            <span>{{t 'fields.labels.preparation.life-stage'}}:</span> {{model.collectionObjectAttribute.lifeStage}}
+                            <span>{{t 'fields.labels.preparation.life-stage'}}:</span> 
+                            {{model.objectAttribute.lifeStage}}
                         </li>
                         <li>
-                            <span>{{t 'fields.labels.preparation.age'}}:</span> {{model.collectionObjectAttribute.age}}
+                            <span>{{t 'fields.labels.preparation.age'}}:</span> {{model.objectAttribute.age}}
                         </li>
                         <li>
                             <span>{{t 'fields.labels.preparation.sex'}}:</span> 
-                            {{t (concat 'definitions.' (if model.collectionObjectAttribute.sex model.collectionObjectAttribute.sex 'unknown')) }}
+                            {{t (concat 'definitions.' (if model.objectAttribute.sex 
+                            model.objectAttribute.sex 'unknown')) }}
                         </li>
                         <li>
-                            <span>{{t 'fields.labels.preparation.measurements'}}:</span> {{model.collectionObjectAttribute.measurements}}
+                            <span>{{t 'fields.labels.preparation.measurements'}}:</span> 
+                            {{model.objectAttribute.measurements}}
                         </li>
                     </ul>
                     <ol>

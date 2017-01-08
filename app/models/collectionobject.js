@@ -35,8 +35,7 @@ const Validations = buildValidations({
         }
     })
     */
-});
-
+}); 
 
 export default DS.Model.extend(Validations, DependentRelationships, {
     guid: DS.attr('string'),
@@ -49,13 +48,14 @@ export default DS.Model.extend(Validations, DependentRelationships, {
 
     createdByAgent: DS.belongsTo('agent', {async: true}),
 
-  //  cataloger: DS.belongsTo('agent', {async: true}),
+    cataloger: DS.belongsTo('agent', {async: true}),
     collection: DS.belongsTo('collection', {async: true}),
-  //  accession: DS.belongsTo('accession', {async: true}),
- //   collectionobjectattachments: DS.hasMany('collection-object-attachment', {async: true}),
-  //  determinations: DS.hasMany('determinations', {async: true}),
-  //  preparations: DS.hasMany('preparations', {async: true}),
-   // collectionObjectAttribute: DS.belongsTo('collection-object-attribute', {async: true}),
+    accession: DS.belongsTo('accession', {async: true}),
+    collectionobjectattachments: DS.hasMany('collection-object-attachment', {async: true}),
+    objectAttribute: DS.belongsTo('collection-object-attribute', {async: true}),
+ //   collectionObjectAttribute: DS.belongsTo('collection-object-attribute', {async: true}),
+    determinations: DS.hasMany('determination', {async: true}),
+    preparations: DS.hasMany('preparation', {async: true}), 
     collectingEvent: DS.belongsTo('collecting-event', {async: true}),
   
     formattedDate: Ember.computed('timestampCreated', function () {

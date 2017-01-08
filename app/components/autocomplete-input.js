@@ -104,9 +104,11 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
     /** Update dropdown list when index change. */
     historyObserver: function () {
         this.set('historyItems', []);
-        this.get('historyIds').forEach((itemId) => {
+        this.get('historyIds').forEach((itemId) => { 
             this.get('store').findRecord(this.get('storeName'), itemId).then((record) => {
-                this.get('historyItems').pushObject(record);
+                if(this.get('storeName') != null) {
+                    this.get('historyItems').pushObject(record);
+                }  
             });
         });
     }.observes('historyIds').on('init'),
@@ -146,13 +148,15 @@ export default Ember.Component.extend(Filterable, ClickOutsideComponent, {
      */
     fetchData () {
         this.set('isLoading', true);
-        this._fetchRemoteData(
-            this.get('filterField'), this.get('value'), this.get('limit')
-        ).finally(() => {
-            setTimeout(()=>{
-                this.set('isLoading', false);
-            }, 300);
-        });
+        if(this.get('value').length > 3) {
+            this._fetchRemoteData(
+                this.get('filterField'), this.get('value'), this.get('limit')
+            ).finally(() => {
+                setTimeout(()=>{
+                    this.set('isLoading', false);
+                }, 300);
+            });
+        } 
     },
 
     /** Handle event when user clicks outside of component. */

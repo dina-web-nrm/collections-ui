@@ -4,10 +4,11 @@ import Ember from 'ember';
 export default DS.JSONAPISerializer.extend(DS.EmbeddedRecordsMixin, {
     session: Ember.inject.service('session'),
  
- /*
+
     attrs: {
-       'geography': 'geographyID',
-        'agent': 'createdByAgentID',
+        'geography': { 
+            serialize: 'ids'
+        }, 
         'longitude': 'longitude1',
         'latitude': 'latitude1',
         'verbatimLongitude': 'long1Text',
@@ -18,6 +19,19 @@ export default DS.JSONAPISerializer.extend(DS.EmbeddedRecordsMixin, {
             serialize: 'records',
         },
     },
+
+/*
+
+       // keyForRelationship: function(key, relationship, method) { 
+    keyForRelationship: function(key) { 
+        return key;
+    },
+
+    keyForAttribute: function(attr) {
+      return attr;
+    }
+    */
+/*
     serialize(){
         var json = this._super(...arguments);
         json.geographyID = parseInt(json.geographyID);
@@ -35,4 +49,5 @@ export default DS.JSONAPISerializer.extend(DS.EmbeddedRecordsMixin, {
         return json;
     },
     */
+  
 });

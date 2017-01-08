@@ -6,8 +6,7 @@ import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
     host: config.HOST,
     //host: 'http://tracktracker.se',
-    namespace: 'collections/v1',
-    //namespace: 'collection',
+    namespace: 'collections/v1', 
     
     headers: {
         "Accept": "application/json",

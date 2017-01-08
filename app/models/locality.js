@@ -43,7 +43,7 @@ export default DS.Model.extend(Validations, {
     srcLatLongUnit: DS.attr('number', {
         defaultValue() { return 0; }
     }),
-    createdByAgentID: DS.attr('number'),
+    createdByAgent: DS.attr('number'),
     uncertaintyRadius: DS.attr('number', {
         defaultValue() { return 200; }
     }),

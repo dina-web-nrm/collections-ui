@@ -9,8 +9,8 @@ export default Ember.Component.extend({
         /** Handle collection being selected. */
         collectionSelected (collection) {
             this.get('model').set('collection', collection);
-
-            if (collection) {
+             
+            if (collection) { 
                 this.get('filters').add(
                     {
                         key: 'disciplineID',

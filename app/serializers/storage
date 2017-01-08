@@ -1,0 +1,407 @@
+{
+   "meta" : {
+      "statusCode" : 200,
+      "callDate" : "Jan 06, 2017 at 10.12.20",
+      "next" : "http://as:8080/collections/v1/storage?offset=50&limit=50&sort=ASC",
+      "contentLicenses" : "",
+      "resultLanguages" : "en-US",
+      "supportedLanguages" : [
+         "GB_en",
+         "SE_sv"
+      ],
+      "maintenanceContact" : "admin@dina-system.org",
+      "sortOrder" : "ASC",
+      "offest" : 0,
+      "orderBy" : [],
+      "apiVersion" : 1,
+      "limit" : 50,
+      "callEndpoint" : "http://as:8080/collections/v1/storage?offset=0&limit=50&sort=ASC",
+      "resultCount" : 13
+   },
+   "data" : [
+      {
+         "id" : 1,
+         "attributes" : {
+            "name" : "Site",
+            "rank-id" : 0,
+            "full-name" : "Site",
+            "storage-id" : 1
+         },
+         "type" : "storage",
+         "relationships" : {
+            "storage-tree-def" : {
+               "data" : {
+                  "type" : "storageTreeDef",
+                  "id" : 0
+               }
+            },
+            "storage-tree-def-item" : {
+               "data" : {
+                  "id" : 0,
+                  "type" : "stroageTreeDefItem"
+               }
+            }
+         }
+      },
+      {
+         "type" : "storage",
+         "id" : 2,
+         "attributes" : {
+            "name" : "building A",
+            "storage-id" : 2,
+            "rank-id" : 100,
+            "full-name" : "building A"
+         },
+         "relationships" : {
+            "parent" : {
+               "data" : {
+                  "id" : 1,
+                  "type" : "storage"
+               }
+            },
+            "storage-tree-def-item" : {
+               "data" : {
+                  "type" : "stroageTreeDefItem",
+                  "id" : 0
+               }
+            },
+            "storage-tree-def" : {
+               "data" : {
+                  "id" : 0,
+                  "type" : "storageTreeDef"
+               }
+            }
+         }
+      },
+      {
+         "type" : "storage",
+         "attributes" : {
+            "rank-id" : 200,
+            "storage-id" : 3,
+            "full-name" : "room 1",
+            "name" : "room 1"
+         },
+         "id" : 3,
+         "relationships" : {
+            "storage-tree-def-item" : {
+               "data" : {
+                  "type" : "stroageTreeDefItem",
+                  "id" : 0
+               }
+            },
+            "parent" : {
+               "data" : {
+                  "type" : "storage",
+                  "id" : 2
+               }
+            },
+            "storage-tree-def" : {
+               "data" : {
+                  "type" : "storageTreeDef",
+                  "id" : 0
+               }
+            }
+         }
+      },
+      {
+         "id" : 4,
+         "attributes" : {
+            "name" : "room 2",
+            "full-name" : "room 2",
+            "rank-id" : 200,
+            "storage-id" : 4
+         },
+         "type" : "storage",
+         "relationships" : {
+            "storage-tree-def" : {
+               "data" : {
+                  "type" : "storageTreeDef",
+                  "id" : 0
+               }
+            },
+            "parent" : {
+               "data" : {
+                  "type" : "storage",
+                  "id" : 2
+               }
+            },
+            "storage-tree-def-item" : {
+               "data" : {
+                  "type" : "stroageTreeDefItem",
+                  "id" : 0
+               }
+            }
+         }
+      },
+      {
+         "relationships" : {
+            "storage-tree-def-item" : {
+               "data" : {
+                  "id" : 0,
+                  "type" : "stroageTreeDefItem"
+               }
+            },
+            "parent" : {
+               "data" : {
+                  "type" : "storage",
+                  "id" : 2
+               }
+            },
+            "storage-tree-def" : {
+               "data" : {
+                  "id" : 0,
+                  "type" : "storageTreeDef"
+               }
+            }
+         },
+         "id" : 5,
+         "attributes" : {
+            "rank-id" : 200,
+            "storage-id" : 5,
+            "full-name" : "room 3",
+            "name" : "room 3"
+         },
+         "type" : "storage"
+      },
+      {
+         "type" : "storage",
+         "id" : 6,
+         "attributes" : {
+            "rank-id" : 100,
+            "storage-id" : 6,
+            "full-name" : "building B",
+            "name" : "building B"
+         },
+         "relationships" : {
+            "storage-tree-def" : {
+               "data" : {
+                  "type" : "storageTreeDef",
+                  "id" : 0
+               }
+            },
+            "storage-tree-def-item" : {
+               "data" : {
+                  "type" : "stroageTreeDefItem",
+                  "id" : 0
+               }
+            },
+            "parent" : {
+               "data" : {
+                  "id" : 1,
+                  "type" : "storage"
+               }
+            }
+         }
+      },
+      {
+         "relationships" : {
+            "storage-tree-def" : {
+               "data" : {
+                  "type" : "storageTreeDef",
+                  "id" : 0
+               }
+            },
+            "storage-tree-def-item" : {
+               "data" : {
+                  "id" : 0,
+                  "type" : "stroageTreeDefItem"
+               }
+            },
+            "parent" : {
+               "data" : {
+                  "type" : "storage",
+                  "id" : 6
+               }
+            }
+         },
+         "id" : 7,
+         "attributes" : {
+            "full-name" : "room 1",
+            "rank-id" : 200,
+            "storage-id" : 7,
+            "name" : "room 1"
+         },
+         "type" : "storage"
+      },
+      {
+         "relationships" : {
+            "storage-tree-def" : {
+               "data" : {
+                  "type" : "storageTreeDef",
+                  "id" : 0
+               }
+            },
+            "parent" : {
+               "data" : {
+                  "id" : 6,
+                  "type" : "storage"
+               }
+            },
+            "storage-tree-def-item" : {
+               "data" : {
+                  "id" : 0,
+                  "type" : "stroageTreeDefItem"
+               }
+            }
+         },
+         "type" : "storage",
+         "id" : 8,
+         "attributes" : {
+            "rank-id" : 200,
+            "storage-id" : 8,
+            "full-name" : "room 2",
+            "name" : "room 2"
+         }
+      },
+      {
+         "type" : "storage",
+         "attributes" : {
+            "rank-id" : 200,
+            "storage-id" : 9,
+            "full-name" : "room 3",
+            "name" : "room 3"
+         },
+         "id" : 9,
+         "relationships" : {
+            "parent" : {
+               "data" : {
+                  "id" : 6,
+                  "type" : "storage"
+               }
+            },
+            "storage-tree-def-item" : {
+               "data" : {
+                  "id" : 0,
+                  "type" : "stroageTreeDefItem"
+               }
+            },
+            "storage-tree-def" : {
+               "data" : {
+                  "id" : 0,
+                  "type" : "storageTreeDef"
+               }
+            }
+         }
+      },
+      {
+         "relationships" : {
+            "storage-tree-def" : {
+               "data" : {
+                  "id" : 0,
+                  "type" : "storageTreeDef"
+               }
+            },
+            "storage-tree-def-item" : {
+               "data" : {
+                  "type" : "stroageTreeDefItem",
+                  "id" : 0
+               }
+            },
+            "parent" : {
+               "data" : {
+                  "type" : "storage",
+                  "id" : 1
+               }
+            }
+         },
+         "id" : 10,
+         "attributes" : {
+            "name" : "building C",
+            "full-name" : "building C",
+            "rank-id" : 100,
+            "storage-id" : 10
+         },
+         "type" : "storage"
+      },
+      {
+         "relationships" : {
+            "storage-tree-def" : {
+               "data" : {
+                  "id" : 0,
+                  "type" : "storageTreeDef"
+               }
+            },
+            "parent" : {
+               "data" : {
+                  "id" : 10,
+                  "type" : "storage"
+               }
+            },
+            "storage-tree-def-item" : {
+               "data" : {
+                  "id" : 0,
+                  "type" : "stroageTreeDefItem"
+               }
+            }
+         },
+         "type" : "storage",
+         "attributes" : {
+            "name" : "room 1",
+            "rank-id" : 200,
+            "storage-id" : 11,
+            "full-name" : "room 1"
+         },
+         "id" : 11
+      },
+      {
+         "relationships" : {
+            "storage-tree-def" : {
+               "data" : {
+                  "type" : "storageTreeDef",
+                  "id" : 0
+               }
+            },
+            "parent" : {
+               "data" : {
+                  "type" : "storage",
+                  "id" : 10
+               }
+            },
+            "storage-tree-def-item" : {
+               "data" : {
+                  "id" : 0,
+                  "type" : "stroageTreeDefItem"
+               }
+            }
+         },
+         "id" : 12,
+         "attributes" : {
+            "name" : "room 2",
+            "rank-id" : 200,
+            "storage-id" : 12,
+            "full-name" : "room 2"
+         },
+         "type" : "storage"
+      },
+      {
+         "id" : 13,
+         "attributes" : {
+            "storage-id" : 13,
+            "rank-id" : 200,
+            "full-name" : "room 3",
+            "name" : "room 3"
+         },
+         "type" : "storage",
+         "relationships" : {
+            "storage-tree-def" : {
+               "data" : {
+                  "type" : "storageTreeDef",
+                  "id" : 0
+               }
+            },
+            "storage-tree-def-item" : {
+               "data" : {
+                  "id" : 0,
+                  "type" : "stroageTreeDefItem"
+               }
+            },
+            "parent" : {
+               "data" : {
+                  "id" : 10,
+                  "type" : "storage"
+               }
+            }
+         }
+      }
+   ]
+}

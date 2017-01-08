@@ -34,7 +34,7 @@ export default DS.Model.extend(Validations, {
     confidence: DS.attr('string'),
     typeStatus: DS.attr('string'),
     timestampCreated: DS.attr('number'),
-    collectionMemberID: DS.attr('number'),
+    collectionMember: DS.attr('number'),
     verbatimTaxon: DS.attr('string'),
 
     taxon: DS.belongsTo('taxon', {async: true}),
