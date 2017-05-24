@@ -164,7 +164,7 @@ export default {
         },
     },
     'form-component-basic-data': 'Grunddata',
-    'form-component-determination': 'Taxonomi/Bestämning',
+    'form-component-determination': 'Bestämning',
     'form-component-collecting-event': 'Insamling/Fyndplats',
     'form-component-preparation': 'Objekt/Preparationer',
     'form-component-type-status': 'Typstatus',

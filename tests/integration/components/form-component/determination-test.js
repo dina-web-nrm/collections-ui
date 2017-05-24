@@ -18,5 +18,5 @@ test('it renders', function(assert) {
 
     this.render(hbs`{{form-component/determination title='form-component-determination' model=model}}`);
 
-    assert.equal(this.$('.panel-heading').text().trim(), 'Taxonomi/Bestämning');
+    assert.equal(this.$('.panel-heading').text().trim(), 'Bestämning');
 });

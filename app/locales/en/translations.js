@@ -166,7 +166,7 @@ export default {
     },
 
     'form-component-basic-data': 'Basic data',
-    'form-component-determination': 'Taxonomy/Determination',
+    'form-component-determination': 'Determination',
     'form-component-collecting-event': 'Collecting event/Locality',
     'form-component-preparation': 'Object/Preparations',
     'form-component-type-status': 'Type status',
