@@ -15,21 +15,21 @@ export default BaseValidator.extend({
         const errorFormat = options.errorFormat || 'MMM Do, YYYY';
         const format = options.format;
         let { before, after, allowFuture } = options;
-    
+
         if (options.allowBlank && Ember.isEmpty(value)) {
             return true;
         }
-    
+
         const date = this._parseDate(value, format);
-    
+
         if (!date.isValid()) {
             return this.createErrorMessage('date', value, options);
         }
-    
+
         if (format && !moment(value, format, true).isValid()) {
             return this.createErrorMessage('wrongDateFormat', value, options);
         }
-    
+
         if (before) {
             before = model.get(before);
             before = before && this._parseDate(before, format);
@@ -38,7 +38,7 @@ export default BaseValidator.extend({
                 return this.createErrorMessage('before', value, options);
             }
         }
-    
+
         if (after) {
             after = model.get(after);
             after = after && this._parseDate(after, format);
@@ -48,15 +48,15 @@ export default BaseValidator.extend({
                 return this.createErrorMessage('after', value, options);
             }
         }
-        
+
         if (!allowFuture) {
-            let now = this._parseDate(now, format);
+            let now = this._parseDate('now', format);
             if (now < date) {
                 options.before = now.format(errorFormat);
                 return this.createErrorMessage('before', value, options);
-            }            
+            }
         }
-        
+
         return true;
     }
 });
