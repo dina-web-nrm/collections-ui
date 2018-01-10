@@ -1,10 +1,9 @@
 # DINA Collections UI
 
-```
-**Note: This repository is inactive.**
-Archived version of the UI is at https://archive-cm.dina-web.net/
-New UI is being built on respository at https://github.com/DINA-Web/dina-collections-ui
-```
+## Note: This repository is inactive.
+* Archived version of the UI is at https://archive-cm.dina-web.net/
+* New UI is being built on respository at https://github.com/DINA-Web/dina-collections-ui
+
 
 [![Build Status](https://travis-ci.org/DINA-Web/collections-ui.svg?branch=master)](https://travis-ci.org/DINA-Web/collections-ui)
 
